@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Doctor Portal - EdgeCare VIP</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 4.7 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- SweetAlert2 Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <style>
+        /* =========================================
+           VIP THEME VARIABLES
+           ========================================= */
+        :root {
+            --vip-primary:    #2563EB; /* Royal Blue */
+            --vip-purple:     #7C3AED;
+            --vip-cyan:       #06b6d4;
+            --vip-dark:       #0F172A;
+            --vip-text:       #334155;
+            --vip-text-muted: #64748B;
+            --vip-success:    #10B981;
+            --vip-warning:    #F59E0B;
+            --vip-danger:     #EF4444;
+            --vip-shadow:     0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --glass-border:   1px solid rgba(255, 255, 255, 0.3);
+            --transition:     all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
+
+        /* CUSTOM GRADIENT SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--vip-primary), var(--vip-purple));
+            border-radius: 4px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--vip-text);
+            margin: 0; padding: 0;
+            background: #F8FAFC;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; /* Prevents whole page scroll on desktop */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* BACKGROUND ORBS */
+        .bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: #F0F9FF;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: floatOrb 20s infinite alternate ease-in-out;
+        }
+        
+        .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(124, 58, 237, 0.2), transparent 70%); top: -10%; right: -10%; }
+        .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%); bottom: -10%; left: -5%; animation-delay: -5s; }
+        .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent 70%); top: 30%; left: 30%; animation-duration: 25s; animation-delay: -10s; }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 30px) scale(1.1); }
+        }
+
+        /* DASHBOARD LAYOUT */
+        .dashboard-container {
+            width: 95%; height: 92vh;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 32px;
+            border: var(--glass-border);
+            box-shadow: var(--vip-shadow);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            animation: containerEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes containerEntrance {
+            from { opacity: 0; transform: scale(0.96) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 260px;
+            background: rgba(255, 255, 255, 0.8);
+            border-right: var(--glass-border);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1000; /* High Z-Index for mobile overlay */
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .brand-logo {
+            font-size: 22px; font-weight: 800;
+            display: flex; align-items: center; gap: 10px;
+            color: var(--vip-primary); margin-bottom: 50px; padding-left: 10px;
+        }
+
+        .nav-links { list-style: none; padding: 0; margin: 0; flex: 1; overflow-y: auto; }
+        .nav-item { margin-bottom: 8px; }
+
+        .nav-link {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px 16px; border-radius: 14px;
+            text-decoration: none; color: var(--vip-text-muted);
+            font-weight: 600; font-size: 14px;
+            transition: var(--transition); cursor: pointer;
+        }
+
+        .nav-link:hover { background: rgba(255, 255, 255, 0.6); color: var(--vip-primary); transform: translateX(4px); }
+        
+        .nav-link.active {
+            background: linear-gradient(135deg, var(--vip-primary), var(--vip-purple));
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        .nav-link.active i { color: #fff; }
+
+        .user-mini-profile {
+            background: rgba(255, 255, 255, 0.5); padding: 15px;
+            border-radius: 16px; display: flex; align-items: center;
+            gap: 12px; border: var(--glass-border); cursor: pointer;
+            transition: var(--transition);
+            margin-top: 20px;
+        }
+        .user-mini-profile:hover { background: rgba(255, 255, 255, 0.9); transform: translateY(-2px); }
+        .user-mini-profile img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+
+        /* OVERLAY for Mobile */
+        .sidebar-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 900;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; pointer-events: auto; }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1; padding: 30px 40px;
+            overflow-y: auto; position: relative;
+            display: flex; flex-direction: column;
+        }
+
+        /* HEADER */
+        .top-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;
+            flex-shrink: 0;
+            gap: 10px;
+        }
+        .welcome-text h1 { font-size: 28px; margin: 0; color: var(--vip-dark); letter-spacing: -0.5px; }
+        .welcome-text p { margin: 4px 0 0; color: var(--vip-text-muted); font-size: 14px; }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            width: 45px; height: 45px; border-radius: 14px; border: none;
+            background: rgba(255, 255, 255, 0.6); color: var(--vip-text-muted);
+            font-size: 18px; cursor: pointer; transition: var(--transition);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .icon-btn:hover { background: #fff; color: var(--vip-primary); transform: translateY(-2px); box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
+        .icon-btn.has-notification { position: relative; }
+        .icon-btn.has-notification::after {
+            content: ''; position: absolute; top: 12px; right: 12px;
+            width: 8px; height: 8px; background: var(--vip-danger);
+            border-radius: 50%; border: 2px solid #fff;
+        }
+        
+        .mobile-menu-btn { display: none; }
+
+        /* DASHBOARD GRID SYSTEM */
+        .dashboard-grid {
+            display: grid; grid-template-columns: 2fr 1fr; gap: 25px;
+        }
+        /* Min-width: 0 prevents flex children from blowing out width */
+        .section-column { display: flex; flex-direction: column; gap: 25px; min-width: 0; }
+
+        /* STAT CARDS ROW */
+        .stats-row {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 25px;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 20px;
+            padding: 20px; display: flex; align-items: center; gap: 15px;
+            transition: var(--transition);
+        }
+        .stat-card:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+        .stat-icon-bg {
+            width: 50px; height: 50px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 20px;
+            flex-shrink: 0;
+        }
+        .stat-info { min-width: 0; } /* Prevent text overflow */
+        .stat-info h3 { margin: 0; font-size: 24px; color: var(--vip-dark); font-weight: 800; white-space: nowrap; }
+        .stat-info p { margin: 0; font-size: 13px; color: var(--vip-text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* NEXT PATIENT HERO */
+        .next-patient-card {
+            background: linear-gradient(135deg, var(--vip-dark), #1e293b);
+            border-radius: 24px; padding: 30px; color: white;
+            position: relative; overflow: hidden;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.3);
+        }
+        .np-badge {
+            background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 20px;
+            font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            display: inline-block; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.2);
+        }
+        .np-details { display: flex; gap: 20px; align-items: center; margin-bottom: 25px; flex-wrap: wrap; }
+        .np-img { width: 70px; height: 70px; border-radius: 18px; border: 3px solid rgba(255,255,255,0.2); flex-shrink: 0; }
+        .np-info h2 { margin: 0 0 5px; font-size: 22px; }
+        .np-info p { margin: 0; opacity: 0.7; font-size: 14px; }
+        .np-symptoms { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+        .symptom-tag { background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 8px; font-size: 12px; white-space: nowrap; }
+        
+        .btn-consult {
+            background: var(--vip-success); color: white; border: none;
+            padding: 12px 25px; border-radius: 12px; font-weight: 600; font-size: 14px;
+            cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+            transition: var(--transition); box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+            white-space: nowrap;
+        }
+        .btn-consult:hover { transform: translateY(-2px); background: #059669; }
+        .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        /* GENERIC GLASS CARD & TABLES */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 24px;
+            padding: 25px; transition: var(--transition);
+            display: flex; flex-direction: column;
+            width: 100%;
+        }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;}
+        .card-title { font-size: 18px; font-weight: 700; color: var(--vip-dark); }
+        .card-action { color: var(--vip-primary); font-size: 13px; font-weight: 600; cursor: pointer; }
+
+        /* Responsive Table Wrapper */
+        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .patient-table { width: 100%; border-collapse: collapse; min-width: 600px; /* Ensure table doesn't squash */ }
+        .patient-table th { text-align: left; padding: 12px; color: var(--vip-text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; }
+        .patient-table td { padding: 12px; border-top: 1px solid rgba(255,255,255,0.4); font-size: 14px; vertical-align: middle; }
+        .patient-row:hover { background: rgba(255,255,255,0.5); cursor: pointer; }
+        
+        .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+        .status-critical { background: rgba(239, 68, 68, 0.15); color: var(--vip-danger); }
+        .status-stable { background: rgba(16, 185, 129, 0.15); color: var(--vip-success); }
+        .status-pending { background: rgba(245, 158, 11, 0.15); color: var(--vip-warning); }
+
+        /* ACTIVITY WIDGET (Recent Data) */
+        .activity-list { display: flex; flex-direction: column; gap: 15px; }
+        .activity-item { display: flex; gap: 12px; align-items: flex-start; }
+        .activity-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--vip-primary); margin-top: 5px; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); flex-shrink: 0; }
+        .activity-content h4 { margin: 0 0 2px; font-size: 13px; color: var(--vip-dark); }
+        .activity-content p { margin: 0; font-size: 12px; color: var(--vip-text-muted); }
+
+        /* CALENDAR STYLES */
+        .calendar-header { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; margin-bottom: 10px; font-weight: 600; color: var(--vip-text-muted); font-size: 12px; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+        
+        /* Mini Cal Specifics */
+        .mini-cal .cal-day { height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 12px; cursor: pointer; }
+        .mini-cal .cal-day.today { background: var(--vip-primary); color: white; font-weight: 700; }
+        .mini-cal .cal-day.has-appt { position: relative; }
+        .mini-cal .cal-day.has-appt::after { content:''; position:absolute; bottom:2px; left:50%; transform:translateX(-50%); width:4px; height:4px; background:var(--vip-purple); border-radius:50%; }
+        
+        /* Full Cal Specifics */
+        .full-cal .cal-day { height: 100px; padding: 8px; border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; background: rgba(255,255,255,0.2); display: flex; flex-direction: column; gap: 5px; transition: var(--transition); }
+        .full-cal .cal-day:hover { background: rgba(255,255,255,0.5); }
+        .full-cal .cal-day .day-num { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .full-cal .cal-event { font-size: 10px; padding: 4px; border-radius: 4px; background: var(--vip-primary); color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .full-cal .cal-event.surgery { background: var(--vip-purple); }
+
+        /* MESSAGES VIEW */
+        .msg-container { display: flex; gap: 20px; height: 100%; min-height: 0; }
+        .msg-list { width: 300px; display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
+        .msg-item { padding: 15px; border-radius: 16px; background: rgba(255,255,255,0.4); cursor: pointer; display: flex; gap: 10px; align-items: center; transition: var(--transition); }
+        .msg-item:hover, .msg-item.active { background: white; transform: translateX(5px); }
+        .msg-area { flex: 1; background: rgba(255,255,255,0.5); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; min-width: 0; }
+        .chat-bubble { padding: 12px 18px; border-radius: 14px; margin-bottom: 10px; max-width: 80%; font-size: 14px; animation: fadeInUp 0.3s forwards; word-wrap: break-word; }
+        .chat-bubble.me { background: var(--vip-primary); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .chat-bubble.them { background: white; color: var(--vip-text); align-self: flex-start; border-bottom-left-radius: 2px; }
+
+        /* VIEW SWITCHING ANIMATION */
+        .view-section { display: none; animation: fadeInView 0.5s ease forwards; height: 100%; overflow-y: auto; padding-bottom: 20px; }
+        .view-section.active { display: block; }
+        @keyframes fadeInView { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* =========================================
+           RESPONSIVE MEDIA QUERIES
+           ========================================= */
+        
+        /* TABLET & SMALL LAPTOP (Max 1100px) */
+        @media (max-width: 1100px) {
+            .sidebar { width: 80px; padding: 20px 10px; }
+            .brand-logo span, .nav-link span, .user-mini-profile div, .user-mini-profile i { display: none; }
+            .nav-link { justify-content: center; padding: 15px 0; }
+            .brand-logo { justify-content: center; padding: 0; }
+            .user-mini-profile { justify-content: center; }
+            
+            /* Adjust chat for tablet portrait */
+            .msg-container { flex-direction: column; }
+            .msg-list { width: 100%; height: auto; max-height: 160px; overflow-y: hidden; overflow-x: auto; display: flex; flex-direction: row; gap: 10px; padding-bottom: 5px; }
+            .msg-item { min-width: 200px; margin: 0; }
+            .msg-item:hover, .msg-item.active { transform: translateY(-2px); }
+        }
+
+        /* TABLET PORTRAIT & MOBILE (Max 900px) */
+        @media (max-width: 900px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: repeat(3, 1fr); }
+            .top-header { flex-wrap: wrap; }
+            .header-actions { margin-left: auto; }
+        }
+
+        /* MOBILE (Max 768px) */
+        @media (max-width: 768px) {
+            /* General Layout Reset */
+            body { 
+                height: 100dvh; /* Dynamic viewport height for mobile browsers */
+                display: block; 
+                background: #F0F9FF;
+                overflow: hidden; /* Prevent body scroll */
+            }
+            .bg-mesh { position: absolute; }
+            
+            .dashboard-container { 
+                width: 100%; height: 100%; 
+                border-radius: 0; border: none; 
+                flex-direction: column;
+                overflow: hidden;
+            }
+
+            /* Sidebar Mobile Logic */
+            .mobile-menu-btn { display: flex; }
+            .sidebar { 
+                position: absolute; top: 0; left: 0; height: 100%; 
+                width: 280px; transform: translateX(-100%); 
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+            }
+            .sidebar.mobile-open { transform: translateX(0); }
+            
+            /* Restore Sidebar Content for Mobile Slide-out */
+            .sidebar .brand-logo span, .sidebar .nav-link span, 
+            .sidebar .user-mini-profile div, .sidebar .user-mini-profile i { display: block; }
+            .sidebar .nav-link { justify-content: flex-start; padding: 14px 16px; }
+            .sidebar .brand-logo { justify-content: flex-start; padding-left: 10px; }
+            .sidebar .user-mini-profile { justify-content: flex-start; }
+
+            /* Main Content Adjustments */
+            .main-content { padding: 15px; width: 100%; }
+            .top-header { margin-bottom: 15px; gap: 10px; }
+            .welcome-text h1 { font-size: 20px; }
+            .header-actions .icon-btn { width: 38px; height: 38px; }
+
+            /* Stats & Grid Stacking */
+            .stats-row { grid-template-columns: 1fr; gap: 10px; }
+            .stat-card { padding: 15px; }
+            .stat-icon-bg { width: 40px; height: 40px; font-size: 18px; }
+            .stat-info h3 { font-size: 20px; }
+
+            /* Next Patient Card */
+            .next-patient-card { padding: 20px; }
+            .np-details { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .btn-group { width: 100%; }
+            .btn-consult { flex: 1; justify-content: center; font-size: 13px; padding: 10px 15px; }
+
+            /* Calendar */
+            .full-cal .cal-day { height: 80px; }
+            .calendar-header { font-size: 10px; }
+            
+            /* Chat */
+            .msg-list { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; max-width: 100vw; }
+            .msg-item { min-width: 80vw; margin-right: 5px; } /* Chat items take full width to swipe */
+            .chat-bubble { max-width: 90%; font-size: 13px; }
+            .msg-area { padding: 15px; border-radius: 16px; }
+        }
+
+        /* SMALL PHONES (Max 480px) */
+        @media (max-width: 480px) {
+            .welcome-text h1 { font-size: 18px; }
+            .welcome-text p { font-size: 12px; }
+            .icon-btn { width: 35px; height: 35px; font-size: 14px; }
+            .brand-logo { font-size: 18px; }
+            .np-info h2 { font-size: 18px; }
+            .card-title { font-size: 16px; }
+            
+            /* Compact tables */
+            .patient-table th, .patient-table td { padding: 8px; font-size: 12px; }
+            .glass-card { padding: 15px; }
+            
+            /* Calendar extreme compact */
+            .full-cal .cal-day { height: 60px; padding: 4px; }
+            .full-cal .cal-day .day-num { font-size: 11px; }
+            .full-cal .cal-event { font-size: 8px; padding: 2px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-mesh">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="dashboard-container">
+        
+        <!-- MOBILE OVERLAY -->
+        <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar" id="sidebar">
+            <div>
+                <div class="brand-logo">
+                    <!-- Close button for mobile inside sidebar -->
+                    <i class="fa fa-times mobile-close" style="cursor: pointer; margin-right: 10px; font-size: 18px; display: none;" onclick="toggleSidebar()"></i>
+                    <i ><img src="../assets/img/edited-photo.png" width="45px" alt=""></i> <span><a href="index.html" style="text-decoration: none;">EdgeCare</a></span>
+                </div>
+                <ul class="nav-links">
+                    <li class="nav-item">
+                        <a onclick="switchView('dashboard')" class="nav-link active" data-target="dashboard">
+                            <i class="fa fa-th-large"></i> <span>Overview</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="switchView('patients')" class="nav-link" data-target="patients">
+                            <i class="fa fa-users"></i> <span>My Patients</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="switchView('schedule')" class="nav-link" data-target="schedule">
+                            <i class="fa fa-calendar"></i> <span>Schedule</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="switchView('messages')" class="nav-link" data-target="messages">
+                            <i class="fa fa-comments-o"></i> <span>Consults</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="switchView('reports')" class="nav-link" data-target="reports">
+                            <i class="fa fa-clipboard"></i> <span>Reports</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="user-mini-profile">
+                <a href="member_pro.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; flex: 1; overflow: hidden;">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Doctor" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                    <div style="flex: 1; overflow: hidden;">
+                        <div style="font-weight: 700; font-size: 14px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Dr. Strange</div>
+                        <div style="font-size: 11px; color: var(--vip-text-muted);">Neurologist</div>
+                    </div>
+                </a>
+                
+                <div onclick="logout()" style="cursor: pointer; padding: 5px;" title="Logout">
+                    <i class="fa fa-sign-out" style="color: var(--vip-text-muted); font-size: 16px;"></i>
+                </div>
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            
+            <div class="top-header">
+                <!-- Mobile Menu Toggle -->
+                <button class="icon-btn mobile-menu-btn" style="margin-right: 5px;" onclick="toggleSidebar()">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <div class="welcome-text" style="flex: 1; min-width: 0;">
+                    <h1 id="page-title">Ready, Doctor? 🩺</h1>
+                    <p id="page-desc">8 appointments today.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" onclick="toggleSearch()"><i class="fa fa-search"></i></button>
+                    <button class="icon-btn has-notification" onclick="showNotifications()"><i class="fa fa-bell-o"></i></button>
+                </div>
+            </div>
+
+            <!-- 1. DASHBOARD VIEW -->
+            <div id="view-dashboard" class="view-section active">
+                
+                <!-- KPI Stats -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-icon-bg" style="background: #EFF6FF; color: var(--vip-primary);">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>1,240</h3>
+                            <p>Total Patients</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon-bg" style="background: #F3E8FF; color: var(--vip-purple);">
+                            <i class="fa fa-calendar-check-o"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>08</h3>
+                            <p>Appointments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon-bg" style="background: #FEF3C7; color: var(--vip-warning);">
+                            <i class="fa fa-flask"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>03</h3>
+                            <p>Pending Labs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Left Col -->
+                    <div class="section-column">
+                        
+                        <!-- Next Patient Hero -->
+                        <div class="next-patient-card">
+                            <div class="np-badge">Up Next • 10:00 AM</div>
+                            <div class="np-details">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="np-img" alt="Patient">
+                                <div class="np-info">
+                                    <h2>Sarah Connor</h2>
+                                    <p>Female, 29 Years • Last Visit: 2 months ago</p>
+                                </div>
+                            </div>
+                            <div class="np-symptoms">
+                                <span class="symptom-tag">Migraine</span>
+                                <span class="symptom-tag">Light Sensitivity</span>
+                                <span class="symptom-tag">Nausea</span>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn-consult" onclick="startConsult('Sarah Connor')">
+                                    <i class="fa fa-video-camera"></i> Start Consult
+                                </button>
+                                <button class="btn-consult" style="background: rgba(255,255,255,0.2); box-shadow: none;" onclick="viewHistory()">
+                                    <i class="fa fa-file-text-o"></i> History
+                                </button>
+                            </div>
+                            <i class="fa fa-heartbeat" style="position: absolute; right: -20px; bottom: -30px; font-size: 180px; opacity: 0.05; transform: rotate(-10deg);"></i>
+                        </div>
+
+                        <!-- Recent Patients Table -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">Waiting Room</div>
+                                <div class="card-action" onclick="switchView('patients')">View All</div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="patient-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient Name</th>
+                                            <th>Time</th>
+                                            <th>Reason</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="patient-row" onclick="viewPatient('James Smith')">
+                                            <td>
+                                                <div style="display: flex; align-items: center; gap: 10px;">
+                                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" style="width: 30px; height: 30px; border-radius: 8px;">
+                                                    <span style="font-weight: 600;">James Smith</span>
+                                                </div>
+                                            </td>
+                                            <td>10:30 AM</td>
+                                            <td>Follow-up</td>
+                                            <td><span class="status-badge status-stable">Checked In</span></td>
+                                            <td><i class="fa fa-ellipsis-h" style="color: var(--vip-text-muted);"></i></td>
+                                        </tr>
+                                        <tr class="patient-row" onclick="viewPatient('Emma Watson')">
+                                            <td>
+                                                <div style="display: flex; align-items: center; gap: 10px;">
+                                                    <img src="https://randomuser.me/api/portraits/women/23.jpg" style="width: 30px; height: 30px; border-radius: 8px;">
+                                                    <span style="font-weight: 600;">Emma Watson</span>
+                                                </div>
+                                            </td>
+                                            <td>11:00 AM</td>
+                                            <td>Acute Pain</td>
+                                            <td><span class="status-badge status-critical">Urgent</span></td>
+                                            <td><i class="fa fa-ellipsis-h" style="color: var(--vip-text-muted);"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Col -->
+                    <div class="section-column">
+                        <!-- Quick Notes -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">Quick Notes</div>
+                                <div class="card-action"><i class="fa fa-sticky-note-o"></i></div>
+                            </div>
+                            <textarea id="quick-note-text" placeholder="Jot down quick observations..." style="width: 100%; height: 120px; background: rgba(255,255,255,0.5); border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 10px; font-family: inherit; font-size: 13px; resize: none;"></textarea>
+                            <button class="btn-consult" style="width: 100%; justify-content: center; margin-top: 10px; padding: 8px; font-size: 12px; background: var(--vip-primary);" onclick="saveNote()">Save Note</button>
+                        </div>
+
+                        <!-- Mini Cal -->
+                        <div class="glass-card">
+                            <div class="card-header">
+                                <div class="card-title">Schedule</div>
+                                <div class="card-action" onclick="switchView('schedule')"><i class="fa fa-expand"></i></div>
+                            </div>
+                            <div class="calendar-header">
+                                <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                            </div>
+                            <div class="calendar-grid mini-cal" id="doc-mini-cal">
+                                <!-- JS Generated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. PATIENTS VIEW -->
+            <div id="view-patients" class="view-section">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <div class="card-title">Patient Database</div>
+                        <div style="display:flex; gap:10px;">
+                            <input type="text" placeholder="Search..." style="padding: 10px 15px; border-radius: 12px; border: none; background: rgba(255,255,255,0.5); width: 120px;">
+                            <button class="btn-consult" style="padding: 10px 15px; font-size:12px;"><i class="fa fa-filter"></i></button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="patient-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Age/Gender</th>
+                                    <th>Condition</th>
+                                    <th>Last Visit</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="patient-row">
+                                    <td>#P-1024</td>
+                                    <td style="font-weight: 700;">Sarah Connor</td>
+                                    <td>29 / F</td>
+                                    <td>Chronic Migraine</td>
+                                    <td>Aug 12, 2023</td>
+                                    <td><span class="status-badge status-pending">Treatment</span></td>
+                                    <td><i class="fa fa-eye" style="color: var(--vip-primary);"></i></td>
+                                </tr>
+                                <tr class="patient-row">
+                                    <td>#P-1025</td>
+                                    <td style="font-weight: 700;">Kyle Reese</td>
+                                    <td>34 / M</td>
+                                    <td>Fracture (Recovering)</td>
+                                    <td>Sep 01, 2023</td>
+                                    <td><span class="status-badge status-stable">Stable</span></td>
+                                    <td><i class="fa fa-eye" style="color: var(--vip-primary);"></i></td>
+                                </tr>
+                                <tr class="patient-row">
+                                    <td>#P-1026</td>
+                                    <td style="font-weight: 700;">John Doe</td>
+                                    <td>45 / M</td>
+                                    <td>Hypertension</td>
+                                    <td>Oct 10, 2023</td>
+                                    <td><span class="status-badge status-critical">High Risk</span></td>
+                                    <td><i class="fa fa-eye" style="color: var(--vip-primary);"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. SCHEDULE VIEW (FULL CALENDAR) -->
+            <div id="view-schedule" class="view-section">
+                <div class="glass-card" style="min-height: 100%;">
+                    <div class="card-header">
+                        <div class="card-title">October 2023 Roster</div>
+                        <div class="btn-group">
+                            <button class="btn-consult" style="padding:8px 15px; font-size:12px; background:white; color:var(--vip-text);">Day</button>
+                            <button class="btn-consult" style="padding:8px 15px; font-size:12px; background:white; color:var(--vip-text);">Week</button>
+                            <button class="btn-consult" style="padding:8px 15px; font-size:12px;">Month</button>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; min-height: 500px;">
+                        <div class="calendar-header" style="margin-bottom: 15px; font-size: 14px;">
+                            <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+                        </div>
+                        <div class="calendar-grid full-cal" id="doc-full-cal" style="height: 100%; align-content: start;">
+                            <!-- JS Generated -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. MESSAGES VIEW (CONSULTS) -->
+            <div id="view-messages" class="view-section">
+                <div class="msg-container">
+                    <!-- List -->
+                    <div class="msg-list">
+                         <div class="glass-card" style="padding: 15px; margin-bottom: 0;">
+                            <input type="text" placeholder="Search..." style="width: 100%; padding: 10px; border-radius: 10px; border:none; background: rgba(255,255,255,0.5);">
+                        </div>
+                        <div class="msg-item active" onclick="setActiveChat(this, 'Sarah Connor')">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" style="width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;">
+                            <div>
+                                <div style="font-weight: 700; font-size: 14px;">Sarah Connor</div>
+                                <div style="font-size: 12px; opacity: 0.7;">Is the nausea normal?</div>
+                            </div>
+                        </div>
+                        <div class="msg-item" onclick="setActiveChat(this, 'John Doe')">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" style="width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;">
+                            <div>
+                                <div style="font-weight: 700; font-size: 14px;">John Doe</div>
+                                <div style="font-size: 12px; opacity: 0.7;">Refill request pending.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chat Area -->
+                    <div class="msg-area">
+                        <div class="card-header">
+                            <div class="card-title" id="chat-header-name">Sarah Connor</div>
+                            <div style="font-size: 12px; color: var(--vip-success); display: flex; align-items: center; gap: 5px;">
+                                <div style="width: 8px; height: 8px; background: var(--vip-success); border-radius: 50%;"></div> Online
+                            </div>
+                        </div>
+                        <div id="chat-history" style="flex: 1; overflow-y: auto; padding-right: 10px; margin-bottom: 15px;">
+                            <div class="chat-bubble them">Doctor, I've been taking the meds but the nausea is persistent.</div>
+                            <div class="chat-bubble me">Hi Sarah. Did you take them with food as discussed?</div>
+                            <div class="chat-bubble them">No, I took them on an empty stomach this morning.</div>
+                            <div class="chat-bubble me">That's the likely cause. Please try taking the next dose after a full meal. Let me know if it persists.</div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <input id="chat-input" type="text" placeholder="Type a message..." style="flex: 1; padding: 15px; border-radius: 14px; border:none; background: white;">
+                            <button class="icon-btn" style="background: var(--vip-primary); color: white;" onclick="sendMessage()"><i class="fa fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. REPORTS VIEW -->
+            <div id="view-reports" class="view-section">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <div class="card-title">Pending Lab Reviews</div>
+                        <button class="btn-consult" style="padding: 8px 16px; font-size: 12px;">Batch Sign-off</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="patient-table">
+                            <thead>
+                                <tr>
+                                    <th>Patient</th>
+                                    <th>Test Type</th>
+                                    <th>Date Received</th>
+                                    <th>Result</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: 600;">Sarah Connor</td>
+                                    <td>MRI Brain Scan</td>
+                                    <td>Oct 12, 10:00 AM</td>
+                                    <td><span style="color: var(--vip-danger); font-weight:700;">Abnormal</span></td>
+                                    <td><span class="status-badge status-critical">Urgent Review</span></td>
+                                    <td><button class="btn-consult" style="padding: 6px 12px; font-size: 11px;">View Scan</button></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 600;">John Doe</td>
+                                    <td>Lipid Panel</td>
+                                    <td>Oct 11, 04:30 PM</td>
+                                    <td><span style="color: var(--vip-success); font-weight:700;">Normal</span></td>
+                                    <td><span class="status-badge status-pending">Pending Sign-off</span></td>
+                                    <td><button class="btn-consult" style="padding: 6px 12px; font-size: 11px; background: var(--vip-text-muted);">Sign</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // ========================
+        // MOBILE SIDEBAR TOGGLE
+        // ========================
+        function toggleSidebar() {
+            $('.sidebar').toggleClass('mobile-open');
+            $('.sidebar-overlay').toggleClass('active');
+            
+            // Toggle icon for visual feedback
+            if($('.sidebar').hasClass('mobile-open')) {
+                $('.mobile-menu-btn i').removeClass('fa-bars').addClass('fa-times');
+                $('.mobile-close').show(); // Show inside close button if needed
+            } else {
+                $('.mobile-menu-btn i').removeClass('fa-times').addClass('fa-bars');
+                $('.mobile-close').hide();
+            }
+        }
+
+        // ========================
+        // NAVIGATION LOGIC
+        // ========================
+        const titles = {
+            dashboard: { title: "Ready, Doctor? 🩺", desc: "8 appointments today." },
+            patients: { title: "Patient Database 🏥", desc: "Access records & history." },
+            schedule: { title: "My Roster 📅", desc: "Manage slots." },
+            messages: { title: "Consultations 💬", desc: "Telemedicine chats." },
+            reports: { title: "Lab Reports 🔬", desc: "Review test results." }
+        };
+
+        function switchView(viewName) {
+            $('.nav-link').removeClass('active');
+            $(`.nav-link[data-target="${viewName}"]`).addClass('active');
+            $('.view-section').removeClass('active').hide();
+            $(`#view-${viewName}`).show().addClass('active');
+            
+            // Update Header Text
+            if(titles[viewName]) {
+                $('#page-title').text(titles[viewName].title);
+                $('#page-desc').text(titles[viewName].desc);
+            }
+
+            // Close mobile sidebar automatically after selection
+            if(window.innerWidth <= 768) {
+                toggleSidebar();
+            }
+        }
+
+        // ========================
+        // INTERACTIONS
+        // ========================
+        function startConsult(name) {
+            Swal.fire({
+                title: `Calling ${name}...`,
+                text: 'Establishing secure video connection.',
+                icon: 'info',
+                timer: 2000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            }).then(() => {
+                Swal.fire('Connected', 'Session recording started.', 'success');
+            });
+        }
+
+        function viewPatient(name) {
+            Swal.fire({
+                title: name,
+                html: `
+                    <div style="text-align: left; font-size: 14px;">
+                        <p><strong>ID:</strong> #88392</p>
+                        <p><strong>Last BP:</strong> 120/80</p>
+                        <p><strong>Allergies:</strong> Penicillin</p>
+                        <hr>
+                        <button class="btn-consult" style="width:100%; justify-content:center;">Open Full Record</button>
+                    </div>
+                `,
+                showConfirmButton: false,
+                showCloseButton: true
+            });
+        }
+        
+        function viewHistory() {
+             switchView('patients');
+        }
+
+        function logout() {
+            Swal.fire({
+                title: 'End Shift?',
+                text: 'Have a good evening, Doctor.',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#2563EB',
+                confirmButtonText: 'Logout'
+            }).then((result) => {
+                if (result.isConfirmed) window.location.reload();
+            });
+        }
+
+        // ========================
+        // HEADER ACTIONS (Search/Notify)
+        // ========================
+        function toggleSearch() {
+            Swal.fire({
+                title: 'Global Search',
+                input: 'text',
+                inputPlaceholder: 'Search for patients, reports, or messages...',
+                showCancelButton: true,
+                confirmButtonText: 'Search',
+                confirmButtonColor: '#2563EB'
+            }).then((result) => {
+                if(result.value) {
+                    Swal.fire('Results found', `Showing 3 results for "${result.value}"`, 'success');
+                }
+            });
+        }
+
+        function showNotifications() {
+            Swal.fire({
+                title: 'Notifications (3)',
+                html: `
+                    <div style="text-align:left; font-size:14px; display:flex; flex-direction:column; gap:10px;">
+                        <div style="padding:10px; background:#EFF6FF; border-radius:8px;"><strong>Lab Alert:</strong> Sarah Connor's MRI is ready.</div>
+                        <div style="padding:10px; background:#F0FDF4; border-radius:8px;"><strong>System:</strong> Backup completed successfully.</div>
+                         <div style="padding:10px; background:#FEF2F2; border-radius:8px;"><strong>Urgent:</strong> ICU Bed request pending approval.</div>
+                    </div>
+                `,
+                confirmButtonText: 'Clear All'
+            });
+        }
+
+        // ========================
+        // RIGHT COLUMN (Quick Notes)
+        // ========================
+        function saveNote() {
+            const note = $('#quick-note-text').val().trim();
+            if(note) {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Note Saved to Profile',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                $('#quick-note-text').val(''); // Clear
+            } else {
+                 Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: 'Cannot save empty note',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+        }
+
+        // ========================
+        // MESSAGES LOGIC
+        // ========================
+        function setActiveChat(el, name) {
+            $('.msg-item').removeClass('active');
+            $(el).addClass('active');
+            $('#chat-header-name').text(name);
+            
+            // On mobile, scroll to chat area when a user is selected
+            if(window.innerWidth <= 1100) {
+                 // Basic visual feedback since layout changes on mobile
+                 $('html, body, .main-content').animate({
+                    scrollTop: $(".msg-area").offset().top - 100
+                 }, 500);
+            }
+        }
+
+        function sendMessage() {
+            const input = $('#chat-input');
+            const txt = input.val().trim();
+            if(txt) {
+                $('#chat-history').append(`<div class="chat-bubble me">${txt}</div>`);
+                input.val('');
+                const history = $('#chat-history');
+                history.scrollTop(history[0].scrollHeight);
+                
+                // Mock reply
+                setTimeout(() => {
+                     $('#chat-history').append(`<div class="chat-bubble them">Thanks, Doctor. I'll update you tomorrow.</div>`);
+                     history.scrollTop(history[0].scrollHeight);
+                }, 1000);
+            }
+        }
+        
+        $('#chat-input').keypress(function(e) {
+            if(e.which == 13) sendMessage();
+        });
+
+        // ========================
+        // CALENDAR RENDER LOGIC
+        // ========================
+        $(document).ready(function() {
+            const daysInMonth = 30;
+            const today = new Date().getDate();
+            
+            // 1. Mini Calendar
+            let miniHtml = '';
+            for(let i=1; i<=daysInMonth; i++) {
+                let classes = 'cal-day';
+                if(i === today) classes += ' today';
+                if([5, 12, 18, 24, 28].includes(i)) classes += ' has-appt';
+                miniHtml += `<div class="${classes}">${i}</div>`;
+            }
+            $('#doc-mini-cal').html(miniHtml);
+
+            // 2. Full Calendar
+            const events = [
+                { day: 5, text: "09:00 - Ward Rounds", type: "normal" },
+                { day: 5, text: "14:00 - Consults (5)", type: "normal" },
+                { day: 12, text: "10:00 - Surgery", type: "surgery" },
+                { day: 18, text: "Conference: Neuro", type: "normal" },
+                { day: 24, text: "08:00 - Clinic Duty", type: "normal" }
+            ];
+            
+            let fullHtml = '';
+            for(let i=1; i<=daysInMonth; i++) {
+                const dayEvents = events.filter(e => e.day === i);
+                let dayContent = `<div class="day-num">${i}</div>`;
+                
+                dayEvents.forEach(evt => {
+                    const evtClass = evt.type === 'surgery' ? 'cal-event surgery' : 'cal-event';
+                    dayContent += `<div class="${evtClass}">${evt.text}</div>`;
+                });
+
+                fullHtml += `<div class="cal-day">${dayContent}</div>`;
+            }
+            $('#doc-full-cal').html(fullHtml);
+        });
+    </script>
+</body>
+</html>

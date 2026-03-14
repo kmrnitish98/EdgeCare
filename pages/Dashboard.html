@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard - EdgeCare VIP</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <style>
+        /* =========================================
+           VIP THEME VARIABLES (PREFIX: BDGS-T10-PR)
+           ========================================= */
+        :root {
+            --BDGS-T10-PR-primary:    #2563EB;
+            --BDGS-T10-PR-purple:     #7C3AED;
+            --BDGS-T10-PR-cyan:       #06b6d4;
+            --BDGS-T10-PR-dark:       #0F172A;
+            --BDGS-T10-PR-text:       #334155;
+            --BDGS-T10-PR-text-muted: #64748B;
+            --BDGS-T10-PR-success:    #10B981;
+            --BDGS-T10-PR-warning:    #F59E0B;
+            --BDGS-T10-PR-error:      #EF4444;
+            --BDGS-T10-PR-shadow:     0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --BDGS-T10-PR-glass-border: 1px solid rgba(255, 255, 255, 0.3);
+            --BDGS-T10-PR-transition:   all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { box-sizing: border-box; outline: none; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--BDGS-T10-PR-text);
+            margin: 0; padding: 0;
+            background: #F8FAFC;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* DYNAMIC BACKGROUND ORBS */
+        .BDGS-T10-PR-bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: #F0F9FF;
+        }
+
+        .BDGS-T10-PR-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: floatOrb 20s infinite alternate ease-in-out;
+        }
+        
+        .BDGS-T10-PR-orb-1 {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%);
+            top: -10%; left: -10%;
+        }
+        
+        .BDGS-T10-PR-orb-2 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.2), transparent 70%);
+            bottom: -10%; right: -5%;
+            animation-delay: -5s;
+        }
+
+        .BDGS-T10-PR-orb-3 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent 70%);
+            top: 20%; left: 40%;
+            animation-duration: 25s;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 30px) scale(1.1); }
+        }
+
+        /* =========================================
+           DASHBOARD LAYOUT
+           ========================================= */
+        .BDGS-T10-PR-dashboard-container {
+            width: 95%;
+            height: 92vh;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 32px;
+            border: var(--BDGS-T10-PR-glass-border);
+            box-shadow: var(--BDGS-T10-PR-shadow);
+            display: flex;
+            overflow: hidden;
+            animation: containerEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes containerEntrance {
+            from { opacity: 0; transform: scale(0.96) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* SIDEBAR */
+        .BDGS-T10-PR-sidebar {
+            width: 260px;
+            background: rgba(255, 255, 255, 0.4);
+            border-right: var(--BDGS-T10-PR-glass-border);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 10;
+        }
+
+        .BDGS-T10-PR-brand-logo {
+            font-size: 22px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--BDGS-T10-PR-primary);
+            margin-bottom: 50px;
+            padding-left: 10px;
+        }
+
+        .BDGS-T10-PR-nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+        }
+
+        .BDGS-T10-PR-nav-item {
+            margin-bottom: 8px;
+        }
+
+        .BDGS-T10-PR-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--BDGS-T10-PR-text-muted);
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--BDGS-T10-PR-transition);
+            cursor: pointer;
+        }
+
+        .BDGS-T10-PR-nav-link:hover {
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--BDGS-T10-PR-primary);
+            transform: translateX(4px);
+        }
+
+        .BDGS-T10-PR-nav-link.active {
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        .BDGS-T10-PR-nav-link.active i { color: #fff; }
+
+        .BDGS-T10-PR-user-mini-profile {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 10px 15px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Space between profile info and logout */
+            gap: 10px;
+            border: var(--BDGS-T10-PR-glass-border);
+            transition: var(--BDGS-T10-PR-transition);
+        }
+
+        .BDGS-T10-PR-user-mini-profile:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* MAIN CONTENT */
+        .BDGS-T10-PR-main-content {
+            flex: 1;
+            padding: 30px 40px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* Views Logic */
+        .BDGS-T10-PR-view-section {
+            display: none;
+            animation: fadeInView 0.5s ease forwards;
+        }
+        .BDGS-T10-PR-view-section.active {
+            display: block;
+        }
+
+        @keyframes fadeInView {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header */
+        .BDGS-T10-PR-top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .BDGS-T10-PR-welcome-text h1 {
+            font-size: 28px;
+            margin: 0;
+            color: var(--BDGS-T10-PR-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .BDGS-T10-PR-welcome-text p {
+            margin: 4px 0 0;
+            color: var(--BDGS-T10-PR-text-muted);
+            font-size: 14px;
+        }
+
+        .BDGS-T10-PR-header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .BDGS-T10-PR-icon-btn {
+            width: 45px; height: 45px;
+            border-radius: 14px;
+            border: none;
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--BDGS-T10-PR-text-muted);
+            font-size: 18px;
+            cursor: pointer;
+            transition: var(--BDGS-T10-PR-transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .BDGS-T10-PR-icon-btn:hover {
+            background: #fff;
+            color: var(--BDGS-T10-PR-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+        }
+
+        .BDGS-T10-PR-icon-btn.has-notification {
+            position: relative;
+        }
+        .BDGS-T10-PR-icon-btn.has-notification::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 8px; height: 8px;
+            background: var(--BDGS-T10-PR-error);
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        /* Hero Card */
+        .BDGS-T10-PR-hero-card {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            border-radius: 24px;
+            padding: 35px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.25);
+        }
+
+        .BDGS-T10-PR-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 60%;
+        }
+
+        .BDGS-T10-PR-hero-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+        .BDGS-T10-PR-hero-desc { font-size: 15px; opacity: 0.9; margin-bottom: 25px; line-height: 1.6; }
+        
+        .BDGS-T10-PR-btn-cta {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--BDGS-T10-PR-transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .BDGS-T10-PR-btn-cta:hover {
+            background: white;
+            color: var(--BDGS-T10-PR-primary);
+            transform: translateY(-2px);
+        }
+
+        .BDGS-T10-PR-hero-img {
+            position: absolute;
+            right: -20px;
+            bottom: -40px;
+            width: 300px;
+            opacity: 0.9;
+            transform: rotate(-10deg);
+            pointer-events: none;
+        }
+
+        /* Grid Layout */
+        .BDGS-T10-PR-dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+
+        .BDGS-T10-PR-section-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* Glass Cards Generic */
+        .BDGS-T10-PR-glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 24px;
+            padding: 25px;
+            transition: var(--BDGS-T10-PR-transition);
+        }
+
+        .BDGS-T10-PR-glass-card:hover {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .BDGS-T10-PR-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .BDGS-T10-PR-card-title { font-size: 18px; font-weight: 700; color: var(--BDGS-T10-PR-dark); }
+        .BDGS-T10-PR-card-action { color: var(--BDGS-T10-PR-primary); font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer; }
+
+        /* Vitals Grid */
+        .BDGS-T10-PR-vitals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .BDGS-T10-PR-vital-item {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: var(--BDGS-T10-PR-transition);
+        }
+        .BDGS-T10-PR-vital-item:hover { transform: translateY(-3px); background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+        .BDGS-T10-PR-vital-icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center; justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 18px;
+        }
+        .BDGS-T10-PR-vital-value { font-size: 20px; font-weight: 800; color: var(--BDGS-T10-PR-dark); margin-bottom: 4px; }
+        .BDGS-T10-PR-vital-label { font-size: 12px; color: var(--BDGS-T10-PR-text-muted); font-weight: 500; }
+
+        /* Doctor List */
+        .BDGS-T10-PR-doctor-list { display: flex; flex-direction: column; gap: 15px; }
+        .BDGS-T10-PR-doctor-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.3);
+            transition: var(--BDGS-T10-PR-transition);
+            cursor: pointer;
+        }
+        .BDGS-T10-PR-doctor-card:hover { background: #fff; transform: translateX(5px); }
+        .BDGS-T10-PR-doc-img { width: 45px; height: 45px; border-radius: 12px; object-fit: cover; }
+        .BDGS-T10-PR-doc-info { flex: 1; }
+        .BDGS-T10-PR-doc-name { font-weight: 700; color: var(--BDGS-T10-PR-dark); font-size: 14px; margin: 0; }
+        .BDGS-T10-PR-doc-spec { font-size: 12px; color: var(--BDGS-T10-PR-text-muted); margin: 2px 0 0; }
+        .BDGS-T10-PR-doc-time { 
+            background: #EFF6FF; color: var(--BDGS-T10-PR-primary); 
+            padding: 6px 12px; border-radius: 8px; 
+            font-size: 11px; font-weight: 700;
+        }
+
+        /* REAL CALENDAR STYLES (DASHBOARD WIDGET & FULL VIEW) */
+        .BDGS-T10-PR-calendar-wrapper { width: 100%; }
+        
+        .BDGS-T10-PR-calendar-days-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .BDGS-T10-PR-calendar-days-header span {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--BDGS-T10-PR-text-muted);
+        }
+
+        .BDGS-T10-PR-calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        
+        .BDGS-T10-PR-cal-day {
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 13px;
+            color: var(--BDGS-T10-PR-text);
+            cursor: pointer;
+            transition: var(--BDGS-T10-PR-transition);
+        }
+        
+        .BDGS-T10-PR-cal-day:hover { background: rgba(255,255,255,0.8); }
+        .BDGS-T10-PR-cal-day.empty { cursor: default; background: none; }
+        
+        .BDGS-T10-PR-cal-day.today {
+            background: var(--BDGS-T10-PR-primary);
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        .BDGS-T10-PR-cal-day.has-event {
+            position: relative;
+        }
+        .BDGS-T10-PR-cal-day.has-event::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: var(--BDGS-T10-PR-purple);
+        }
+
+        /* Full Calendar Specifics */
+        .BDGS-T10-PR-full-cal-grid .BDGS-T10-PR-cal-day {
+            height: 80px;
+            align-items: flex-start;
+            padding: 8px;
+            justify-content: flex-start;
+            flex-direction: column; 
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .BDGS-T10-PR-full-cal-grid .BDGS-T10-PR-cal-day:hover { background: rgba(255,255,255,0.5); }
+        .BDGS-T10-PR-full-cal-grid .BDGS-T10-PR-cal-day.today { background: rgba(37, 99, 235, 0.1); color: var(--BDGS-T10-PR-primary); }
+
+        /* Messages View Styles */
+        .BDGS-T10-PR-messages-container { display: flex; gap: 20px; height: 100%; }
+        .BDGS-T10-PR-msg-list { width: 300px; display: flex; flex-direction: column; gap: 10px; }
+        .BDGS-T10-PR-msg-item { 
+            padding: 15px; border-radius: 16px; background: rgba(255,255,255,0.4); 
+            cursor: pointer; display: flex; gap: 10px; align-items: center; 
+            transition: var(--BDGS-T10-PR-transition);
+        }
+        .BDGS-T10-PR-msg-item:hover, .BDGS-T10-PR-msg-item.active { background: white; transform: translateX(5px); }
+        .BDGS-T10-PR-msg-chat { flex: 1; background: rgba(255,255,255,0.5); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; }
+        .BDGS-T10-PR-chat-bubble { padding: 12px 18px; border-radius: 14px; margin-bottom: 10px; max-width: 70%; font-size: 14px; position: relative; }
+        .BDGS-T10-PR-chat-bubble.me { background: var(--BDGS-T10-PR-primary); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .BDGS-T10-PR-chat-bubble.them { background: white; color: var(--BDGS-T10-PR-text); align-self: flex-start; border-bottom-left-radius: 2px; }
+
+        /* Animation for Chat */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Records Table */
+        .BDGS-T10-PR-records-table { width: 100%; border-collapse: collapse; }
+        .BDGS-T10-PR-records-table th { text-align: left; padding: 15px; color: var(--BDGS-T10-PR-text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; }
+        .BDGS-T10-PR-records-table td { padding: 15px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 14px; color: var(--BDGS-T10-PR-text); }
+        .BDGS-T10-PR-file-icon { width: 30px; height: 30px; border-radius: 8px; background: rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; color: var(--BDGS-T10-PR-primary); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .BDGS-T10-PR-dashboard-container { width: 100%; height: 100%; border-radius: 0; border: none; }
+            .BDGS-T10-PR-dashboard-grid { grid-template-columns: 1fr; }
+            .BDGS-T10-PR-sidebar { width: 80px; padding: 20px 10px; align-items: center; }
+            .BDGS-T10-PR-brand-logo span, .BDGS-T10-PR-nav-link span, .BDGS-T10-PR-user-mini-profile .user-details { display: none; }
+            .BDGS-T10-PR-nav-link { justify-content: center; padding: 15px; }
+            .BDGS-T10-PR-hero-img { width: 200px; }
+        }
+        @media (max-width: 768px) {
+            .BDGS-T10-PR-sidebar { display: none; }
+            .BDGS-T10-PR-main-content { padding: 20px; }
+            .BDGS-T10-PR-vitals-grid { grid-template-columns: 1fr 1fr; }
+            .BDGS-T10-PR-messages-container { flex-direction: column; }
+            .BDGS-T10-PR-msg-list { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="BDGS-T10-PR-bg-mesh">
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-1"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-2"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-3"></div>
+    </div>
+
+    <div class="BDGS-T10-PR-dashboard-container">
+        
+        <nav class="BDGS-T10-PR-sidebar">
+            <div>
+                <div class="BDGS-T10-PR-brand-logo">
+                    <i ><img src="../assets/img/edited-photo.png" width="45px" alt=""></i> <span><a href="index.html" style="text-decoration: none;">EdgeCare</a></span>
+                </div>
+                <ul class="BDGS-T10-PR-nav-links">
+                    <li class="BDGS-T10-PR-nav-item">
+                        <a onclick="switchView('dashboard')" class="BDGS-T10-PR-nav-link active" data-target="dashboard">
+                            <i class="fa fa-th-large"></i> <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="BDGS-T10-PR-nav-item">
+                        <a onclick="switchView('schedule')" class="BDGS-T10-PR-nav-link" data-target="schedule">
+                            <i class="fa fa-calendar-check-o"></i> <span>Schedule</span>
+                        </a>
+                    </li>
+                    <li class="BDGS-T10-PR-nav-item">
+                        <a onclick="switchView('messages')" class="BDGS-T10-PR-nav-link" data-target="messages">
+                            <i class="fa fa-comments-o"></i> <span>Messages</span>
+                        </a>
+                    </li>
+                    <li class="BDGS-T10-PR-nav-item">
+                        <a onclick="switchView('analytics')" class="BDGS-T10-PR-nav-link" data-target="analytics">
+                            <i class="fa fa-line-chart"></i> <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li class="BDGS-T10-PR-nav-item">
+                        <a onclick="switchView('records')" class="BDGS-T10-PR-nav-link" data-target="records">
+                            <i class="fa fa-file-text-o"></i> <span>Records</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="BDGS-T10-PR-user-mini-profile">
+                <a href="Patient_Pro.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; flex: 1; overflow: hidden;">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200" alt="User" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                    <div class="user-details" style="flex: 1; overflow: hidden;">
+                        <div style="font-weight: 700; font-size: 14px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Sarah Jenkins</div>
+                        <div style="font-size: 11px; color: var(--BDGS-T10-PR-text-muted);">View Profile</div>
+                    </div>
+                </a>
+                
+                <div onclick="logout()" style="cursor: pointer; padding: 5px;" title="Logout">
+                    <i class="fa fa-sign-out" style="color: var(--BDGS-T10-PR-text-muted); font-size: 16px;"></i>
+                </div>
+            </div>
+
+        </nav>
+
+        <main class="BDGS-T10-PR-main-content">
+            
+            <div class="BDGS-T10-PR-top-header">
+                <div class="BDGS-T10-PR-welcome-text">
+                    <h1 id="BDGS-T10-PR-page-title">Good Morning, Sarah ! ☀️</h1>
+                    <p id="BDGS-T10-PR-page-desc">Here is your daily health overview.</p>
+                </div>
+                <div class="BDGS-T10-PR-header-actions">
+                    <button class="BDGS-T10-PR-icon-btn"><i class="fa fa-search"></i></button>
+                    <button class="BDGS-T10-PR-icon-btn has-notification"><i class="fa fa-bell-o"></i></button>
+                </div>
+            </div>
+
+            <div id="BDGS-T10-PR-view-dashboard" class="BDGS-T10-PR-view-section active">
+                <div class="BDGS-T10-PR-dashboard-grid">
+                    
+                    <div class="BDGS-T10-PR-section-column">
+                        
+                        <div class="BDGS-T10-PR-hero-card">
+                            <div class="BDGS-T10-PR-hero-content">
+                                <div class="BDGS-T10-PR-hero-title">Feeling unwell?</div>
+                                <div class="BDGS-T10-PR-hero-desc">
+                                    Our AI-powered triage system can analyze your symptoms instantly and recommend the next best step.
+                                </div>
+                                <button class="BDGS-T10-PR-btn-cta" onclick="startAI()">
+                                    <i class="fa fa-stethoscope"></i> Start Assessment
+                                </button>
+                            </div>
+                            <img src="https://cdn3d.iconscout.com/3d/premium/thumb/medical-robot-5561330-4648177.png" class="BDGS-T10-PR-hero-img" alt="AI Robot">
+                        </div>
+
+                        <div class="BDGS-T10-PR-glass-card">
+                            <div class="BDGS-T10-PR-card-header">
+                                <div class="BDGS-T10-PR-card-title">Live Vitals</div>
+                                <div class="BDGS-T10-PR-card-action"><i class="fa fa-refresh"></i></div>
+                            </div>
+                            <div class="BDGS-T10-PR-vitals-grid">
+                                <div class="BDGS-T10-PR-vital-item">
+                                    <div class="BDGS-T10-PR-vital-icon" style="background: rgba(239, 68, 68, 0.1); color: #EF4444;">
+                                        <i class="fa fa-heartbeat"></i>
+                                    </div>
+                                    <div class="BDGS-T10-PR-vital-value">72 <span style="font-size:12px; font-weight:400;">bpm</span></div>
+                                    <div class="BDGS-T10-PR-vital-label">Heart Rate</div>
+                                </div>
+                                <div class="BDGS-T10-PR-vital-item">
+                                    <div class="BDGS-T10-PR-vital-icon" style="background: rgba(59, 130, 246, 0.1); color: #3B82F6;">
+                                        <i class="fa fa-tint"></i>
+                                    </div>
+                                    <div class="BDGS-T10-PR-vital-value">118/75</div>
+                                    <div class="BDGS-T10-PR-vital-label">Blood Pressure</div>
+                                </div>
+                                <div class="BDGS-T10-PR-vital-item">
+                                    <div class="BDGS-T10-PR-vital-icon" style="background: rgba(245, 158, 11, 0.1); color: #F59E0B;">
+                                        <i class="fa fa-fire"></i>
+                                    </div>
+                                    <div class="BDGS-T10-PR-vital-value">2,430</div>
+                                    <div class="BDGS-T10-PR-vital-label">Calories</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="BDGS-T10-PR-section-column">
+                        
+                        <div class="BDGS-T10-PR-glass-card BDGS-T10-PR-mini-calendar">
+                            <div class="BDGS-T10-PR-card-header" style="margin-bottom: 15px;">
+                                <div class="BDGS-T10-PR-card-title" id="BDGS-T10-PR-mini-cal-month">October 2023</div>
+                                <div class="BDGS-T10-PR-card-action" onclick="switchView('schedule')"><i class="fa fa-expand"></i></div>
+                            </div>
+                            <div class="BDGS-T10-PR-calendar-wrapper">
+                                <div class="BDGS-T10-PR-calendar-days-header">
+                                    <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                                </div>
+                                <div class="BDGS-T10-PR-calendar-grid" id="BDGS-T10-PR-mini-cal-grid">
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="BDGS-T10-PR-glass-card">
+                            <div class="BDGS-T10-PR-card-header">
+                                <div class="BDGS-T10-PR-card-title">Appointments</div>
+                                <a onclick="switchView('schedule')" class="BDGS-T10-PR-card-action">View All</a>
+                            </div>
+                            <div class="BDGS-T10-PR-doctor-list">
+                                <div class="BDGS-T10-PR-doctor-card">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" class="BDGS-T10-PR-doc-img" alt="Dr">
+                                    <div class="BDGS-T10-PR-doc-info">
+                                        <h4 class="BDGS-T10-PR-doc-name">Dr. Sarah Smith</h4>
+                                        <p class="BDGS-T10-PR-doc-spec">Cardiologist</p>
+                                    </div>
+                                    <div class="BDGS-T10-PR-doc-time">10:00 AM</div>
+                                </div>
+                                <div class="BDGS-T10-PR-doctor-card">
+                                    <img src="https://randomuser.me/api/portraits/men/45.jpg" class="BDGS-T10-PR-doc-img" alt="Dr">
+                                    <div class="BDGS-T10-PR-doc-info">
+                                        <h4 class="BDGS-T10-PR-doc-name">Dr. James Wilson</h4>
+                                        <p class="BDGS-T10-PR-doc-spec">Neurologist</p>
+                                    </div>
+                                    <div class="BDGS-T10-PR-doc-time">02:30 PM</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="BDGS-T10-PR-view-schedule" class="BDGS-T10-PR-view-section">
+                <div class="BDGS-T10-PR-glass-card" style="height: 100%;">
+                    <div class="BDGS-T10-PR-card-header">
+                        <div class="BDGS-T10-PR-card-title" id="BDGS-T10-PR-full-cal-month">October 2023</div>
+                        <div>
+                            <button class="BDGS-T10-PR-btn-cta" style="padding: 8px 16px; font-size:12px;">+ New Appt</button>
+                        </div>
+                    </div>
+                    <div class="BDGS-T10-PR-calendar-wrapper" style="height: 90%;">
+                        <div class="BDGS-T10-PR-calendar-days-header" style="margin-bottom: 15px;">
+                            <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+                        </div>
+                        <div class="BDGS-T10-PR-calendar-grid BDGS-T10-PR-full-cal-grid" id="BDGS-T10-PR-full-cal-grid" style="height: 100%; align-content: start;">
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="BDGS-T10-PR-view-messages" class="BDGS-T10-PR-view-section">
+                <div class="BDGS-T10-PR-messages-container">
+                    <div class="BDGS-T10-PR-msg-list">
+                        <div class="BDGS-T10-PR-glass-card" style="padding: 15px;">
+                            <input type="text" placeholder="Search messages..." style="width: 100%; padding: 10px; border-radius: 10px; border:none; background: rgba(255,255,255,0.5);">
+                        </div>
+                        
+                        <div class="BDGS-T10-PR-msg-item active" onclick="setActiveChat(this, 'Dr. Sarah Smith')">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" style="width: 40px; height: 40px; border-radius: 10px;">
+                            <div>
+                                <div style="font-weight: 700; font-size: 14px;">Dr. Sarah Smith</div>
+                                <div style="font-size: 12px; opacity: 0.7;">Checkup confirmed.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="BDGS-T10-PR-msg-item" onclick="setActiveChat(this, 'Dr. James Wilson')">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" style="width: 40px; height: 40px; border-radius: 10px;">
+                            <div>
+                                <div style="font-weight: 700; font-size: 14px;">Dr. James Wilson</div>
+                                <div style="font-size: 12px; opacity: 0.7;">Please bring the X-ray.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="BDGS-T10-PR-msg-chat">
+                        <div id="BDGS-T10-PR-chat-history" style="flex: 1; overflow-y: auto; padding-right: 10px; scroll-behavior: smooth;">
+                            <div style="text-align: center; font-size: 11px; opacity: 0.5; margin-bottom: 20px;">Today, 10:23 AM</div>
+                            <div class="BDGS-T10-PR-chat-bubble them">Hello Alex, just confirming our appointment for tomorrow.</div>
+                            <div class="BDGS-T10-PR-chat-bubble me">Hi Dr. Smith! Yes, I'll be there.</div>
+                            <div class="BDGS-T10-PR-chat-bubble them">Great. Remember to fast for 8 hours prior for the blood work.</div>
+                            <div class="BDGS-T10-PR-chat-bubble me">Understood. See you then!</div>
+                        </div>
+                        <div style="margin-top: 15px; display: flex; gap: 10px;">
+                            <input id="BDGS-T10-PR-chat-input" type="text" placeholder="Type a message..." style="flex: 1; padding: 14px; border-radius: 14px; border:none; background: white;">
+                            <button id="BDGS-T10-PR-chat-send-btn" class="BDGS-T10-PR-icon-btn" style="background: var(--BDGS-T10-PR-primary); color: white;"><i class="fa fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="BDGS-T10-PR-view-analytics" class="BDGS-T10-PR-view-section">
+                <div class="BDGS-T10-PR-dashboard-grid">
+                    <div class="BDGS-T10-PR-glass-card">
+                        <div class="BDGS-T10-PR-card-header"><div class="BDGS-T10-PR-card-title">Health Score</div></div>
+                        <div style="height: 200px; display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="width: 160px; height: 160px; border-radius: 50%; border: 15px solid rgba(255,255,255,0.3); border-top-color: var(--BDGS-T10-PR-success); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                                <span style="font-size: 38px; font-weight: 800; color: var(--BDGS-T10-PR-dark);">92</span>
+                                <span style="font-size: 12px; font-weight: 600; color: var(--BDGS-T10-PR-success);">EXCELLENT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="BDGS-T10-PR-glass-card">
+                         <div class="BDGS-T10-PR-card-header"><div class="BDGS-T10-PR-card-title">Steps Activity</div></div>
+                         <div style="display: flex; align-items: flex-end; justify-content: space-between; height: 180px; padding-bottom: 10px;">
+                             <div style="width: 12%; height: 40%; background: rgba(37, 99, 235, 0.3); border-radius: 8px;"></div>
+                             <div style="width: 12%; height: 60%; background: rgba(37, 99, 235, 0.4); border-radius: 8px;"></div>
+                             <div style="width: 12%; height: 30%; background: rgba(37, 99, 235, 0.3); border-radius: 8px;"></div>
+                             <div style="width: 12%; height: 80%; background: var(--BDGS-T10-PR-primary); border-radius: 8px; position: relative;"><span style="position: absolute; top: -20px; left: 0; width: 100%; text-align: center; font-size: 10px; font-weight: 700;">Today</span></div>
+                             <div style="width: 12%; height: 50%; background: rgba(37, 99, 235, 0.4); border-radius: 8px;"></div>
+                             <div style="width: 12%; height: 70%; background: rgba(37, 99, 235, 0.5); border-radius: 8px;"></div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="BDGS-T10-PR-view-records" class="BDGS-T10-PR-view-section">
+                <div class="BDGS-T10-PR-glass-card">
+                    <div class="BDGS-T10-PR-card-header">
+                        <div class="BDGS-T10-PR-card-title">Medical Documents</div>
+                        <button class="BDGS-T10-PR-btn-cta" style="padding: 8px 16px; font-size: 12px;"><i class="fa fa-upload"></i> Upload</button>
+                    </div>
+                    <table class="BDGS-T10-PR-records-table">
+                        <thead>
+                            <tr>
+                                <th>File Name</th>
+                                <th>Date</th>
+                                <th>Doctor</th>
+                                <th>Type</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="display: flex; align-items: center; gap: 10px;">
+                                    <div class="BDGS-T10-PR-file-icon"><i class="fa fa-file-pdf-o"></i></div>
+                                    <span style="font-weight: 600;">Blood_Work_Results.pdf</span>
+                                </td>
+                                <td>Oct 12, 2023</td>
+                                <td>Dr. Sarah Smith</td>
+                                <td><span style="background: rgba(37, 99, 235, 0.1); color: var(--BDGS-T10-PR-primary); padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700;">LAB</span></td>
+                                <td><i class="fa fa-download" style="cursor: pointer; opacity: 0.6;"></i></td>
+                            </tr>
+                            <tr>
+                                <td style="display: flex; align-items: center; gap: 10px;">
+                                    <div class="BDGS-T10-PR-file-icon"><i class="fa fa-file-image-o"></i></div>
+                                    <span style="font-weight: 600;">Chest_XRAY_View1.jpg</span>
+                                </td>
+                                <td>Sep 28, 2023</td>
+                                <td>Dr. James Wilson</td>
+                                <td><span style="background: rgba(124, 58, 237, 0.1); color: var(--BDGS-T10-PR-purple); padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700;">IMAGING</span></td>
+                                <td><i class="fa fa-download" style="cursor: pointer; opacity: 0.6;"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // ========================
+        // VIEW NAVIGATION LOGIC
+        // ========================
+        const titles = {
+            dashboard: { title: "Good Morning, Alex! ☀️", desc: "Here is your daily health overview." },
+            schedule: { title: "My Schedule 📅", desc: "Manage your upcoming appointments." },
+            messages: { title: "Messages 💬", desc: "Connect with your healthcare providers." },
+            analytics: { title: "Health Analytics 📊", desc: "Track your progress over time." },
+            records: { title: "Medical Records 📂", desc: "Access your history and documents." }
+        };
+
+        function switchView(viewName) {
+            // Update Nav Active State
+            $('.BDGS-T10-PR-nav-link').removeClass('active');
+            $(`.BDGS-T10-PR-nav-link[data-target="${viewName}"]`).addClass('active');
+
+            // Hide all views
+            $('.BDGS-T10-PR-view-section').removeClass('active').hide();
+            
+            // Show target view
+            $(`#BDGS-T10-PR-view-${viewName}`).show().addClass('active');
+
+            // Update Header
+            $('#BDGS-T10-PR-page-title').text(titles[viewName].title);
+            $('#BDGS-T10-PR-page-desc').text(titles[viewName].desc);
+        }
+
+        // ========================
+        // REAL CALENDAR LOGIC
+        // ========================
+        function renderCalendar() {
+            const date = new Date();
+            const currentMonth = date.getMonth();
+            const currentYear = date.getFullYear();
+            const today = date.getDate();
+
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            
+            // Sample Appointments Data
+            const appointments = [
+                { day: 12, title: "Cardiologist", time: "10:00 AM", type: "checkup" },
+                { day: 15, title: "Blood Test", time: "08:00 AM", type: "lab" },
+                { day: 24, title: "Neurologist", time: "02:30 PM", type: "checkup" }
+            ];
+
+            // Set Headers
+            $('#BDGS-T10-PR-mini-cal-month, #BDGS-T10-PR-full-cal-month').text(`${monthNames[currentMonth]} ${currentYear}`);
+
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+            let miniHtml = '';
+            let fullHtml = '';
+            
+            // Empty slots for days before start of month
+            for (let i = 0; i < firstDay; i++) {
+                miniHtml += `<div class="BDGS-T10-PR-cal-day empty"></div>`;
+                fullHtml += `<div class="BDGS-T10-PR-cal-day empty"></div>`;
+            }
+
+            // Actual days
+            for (let i = 1; i <= daysInMonth; i++) {
+                const appt = appointments.find(a => a.day === i);
+                
+                // --- Mini Calendar Logic (Just Dots) ---
+                let miniClasses = 'BDGS-T10-PR-cal-day';
+                if (i === today) miniClasses += ' today';
+                if (appt) miniClasses += ' has-event';
+                miniHtml += `<div class="${miniClasses}">${i}</div>`;
+
+                // --- Full Calendar Logic (Show Content) ---
+                let fullClasses = 'BDGS-T10-PR-cal-day';
+                if (i === today) fullClasses += ' today';
+                
+                let fullContent = `<span style="font-weight:700;">${i}</span>`;
+                
+                if (appt) {
+                    let bg = appt.type === 'lab' ? 'rgba(124, 58, 237, 0.1)' : 'rgba(37, 99, 235, 0.1)';
+                    let color = appt.type === 'lab' ? 'var(--BDGS-T10-PR-purple)' : 'var(--BDGS-T10-PR-primary)';
+                    
+                    fullContent += `
+                        <div style="margin-top: 5px; background: ${bg}; color: ${color}; padding: 4px; border-radius: 6px; font-size: 10px; width: 100%; text-align: left;">
+                            <div style="font-weight: 700;">${appt.time}</div>
+                            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${appt.title}</div>
+                        </div>
+                    `;
+                }
+                
+                fullHtml += `<div class="${fullClasses}">${fullContent}</div>`;
+            }
+
+            $('#BDGS-T10-PR-mini-cal-grid').html(miniHtml);
+            $('#BDGS-T10-PR-full-cal-grid').html(fullHtml);
+        }
+
+        // ========================
+        // CHAT INTERACTION LOGIC
+        // ========================
+        const doctorResponses = [
+            "I see. How long have you been feeling this way?",
+            "That sounds concerning. Let's schedule a quick video call.",
+            "Please continue taking the prescribed medication and let me know if it persists.",
+            "I'll update your records with this information immediately.",
+            "Could you describe the pain intensity on a scale of 1 to 10?",
+            "Don't worry, that is a common side effect. It should pass in 24 hours."
+        ];
+
+        function scrollToBottom() {
+            const chatHistory = $('#BDGS-T10-PR-chat-history');
+            chatHistory.scrollTop(chatHistory[0].scrollHeight);
+        }
+
+        function appendMessage(text, sender) {
+            const bubbleClass = sender === 'me' ? 'me' : 'them';
+            // Added simple animation
+            const html = `<div class="BDGS-T10-PR-chat-bubble ${bubbleClass}" style="opacity: 0; animation: fadeInUp 0.3s forwards;">${text}</div>`;
+            $('#BDGS-T10-PR-chat-history').append(html);
+            scrollToBottom();
+        }
+
+        function handleSend() {
+            const input = $('#BDGS-T10-PR-chat-input');
+            const text = input.val().trim();
+
+            if (text) {
+                // 1. User Message
+                appendMessage(text, 'me');
+                input.val('');
+
+                // 2. Simulate Doctor Response
+                setTimeout(() => {
+                    const randomResponse = doctorResponses[Math.floor(Math.random() * doctorResponses.length)];
+                    appendMessage(randomResponse, 'them');
+                }, 1500 + Math.random() * 1000); // Random delay 1.5s - 2.5s
+            }
+        }
+
+        function setActiveChat(element, doctorName) {
+            $('.BDGS-T10-PR-msg-item').removeClass('active');
+            $(element).addClass('active');
+            // For demo purposes, we don't clear chat, but we could:
+            // $('#BDGS-T10-PR-chat-history').html('<div style="text-align: center; font-size: 11px; opacity: 0.5; margin-bottom: 20px;">Today</div>');
+        }
+
+        // Initialize
+        $(document).ready(function() {
+            renderCalendar();
+
+            // Chat Event Listeners
+            $('#BDGS-T10-PR-chat-send-btn').click(handleSend);
+            $('#BDGS-T10-PR-chat-input').keypress(function(e) {
+                if (e.which == 13) handleSend(); // Enter key
+            });
+        });
+
+        // ========================
+        // EXISTING INTERACTIONS
+        // ========================
+        function startAI() {
+            Swal.fire({
+                title: 'AI Assessment',
+                text: 'Initializing symptom checker...',
+                icon: 'info',
+                timer: 2000,
+                timerProgressBar: true,
+                showConfirmButton: false,
+                backdrop: `rgba(15, 23, 42, 0.4)`
+            }).then(() => {
+                Swal.fire({
+                    title: 'System Ready',
+                    text: 'Please describe your symptoms.',
+                    icon: 'success',
+                    confirmButtonColor: '#2563EB'
+                });
+            });
+        }
+
+        function logout() {
+            Swal.fire({
+                title: 'Logging Out',
+                text: 'See you next time, Alex!',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#2563EB',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, logout'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'index.html'; 
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

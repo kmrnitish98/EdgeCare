@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- =========================================
+       SEO & METADATA
+       ========================================= -->
+    <title>Book Appointment – EdgeCare VIP</title>
+    <meta name="description" content="Schedule a consultation with world-class specialists at EdgeCare VIP.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 4.7 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           1. VIP THEME VARIABLES
+           ========================================= */
+        :root {
+            --BDGS-T10-PR-primary:   #2563EB;
+            --BDGS-T10-PR-primary-dark: #1E40AF;
+            --BDGS-T10-PR-accent:    #06B6D4;
+            --BDGS-T10-PR-purple:    #7C3AED;
+            --BDGS-T10-PR-dark:      #0F172A;
+            --BDGS-T10-PR-text:      #334155;
+            
+            /* Glass Effects */
+            --BDGS-T10-PR-glass:      rgba(255, 255, 255, 0.65);
+            --BDGS-T10-PR-glass-str: rgba(255, 255, 255, 0.85);
+            --BDGS-T10-PR-border:    rgba(255, 255, 255, 0.6);
+            
+            /* Shadows */
+            --BDGS-T10-PR-shadow:    0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            --BDGS-T10-PR-glow:      0 0 50px rgba(37, 99, 235, 0.15);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--BDGS-T10-PR-text);
+            overflow-x: hidden;
+            padding-top: 80px;
+            background: #F0F9FF;
+        }
+
+        /* =========================================
+           2. BACKGROUND & NAVBAR
+           ========================================= */
+        .BDGS-T10-PR-bg-mesh {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -2; background: #ffffff; overflow: hidden;
+        }
+        .BDGS-T10-PR-orb {
+            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.7;
+            animation: meshFloat 20s infinite alternate ease-in-out;
+        }
+        .BDGS-T10-PR-orb-1 { width: 800px; height: 800px; background: radial-gradient(circle, rgba(124, 58, 237, 0.25), transparent 70%); top: -20%; left: -10%; }
+        .BDGS-T10-PR-orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .BDGS-T10-PR-orb-3 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%); top: 40%; left: 40%; animation-duration: 25s; }
+
+        @keyframes meshFloat {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-30px, -20px) rotate(-5deg); }
+        }
+
+        .BDGS-T10-PR-bg-icons {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1; pointer-events: none; overflow: hidden;
+        }
+        .BDGS-T10-PR-icon-bubble {
+            position: absolute; color: rgba(37, 99, 235, 0.08); font-size: 24px;
+            animation: floatIcon 20s infinite linear; display: flex; align-items: center; justify-content: center;
+            width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(2px);
+        }
+        .BDGS-T10-PR-icon-bubble:nth-child(1) { top: 80%; left: 10%; font-size: 30px; animation-duration: 18s; animation-delay: 0s; color: rgba(239, 68, 68, 0.15); }
+        .BDGS-T10-PR-icon-bubble:nth-child(2) { top: 90%; left: 30%; font-size: 40px; animation-duration: 25s; animation-delay: -5s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(3) { top: 85%; left: 70%; font-size: 28px; animation-duration: 22s; animation-delay: -10s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(4) { top: 75%; left: 90%; font-size: 35px; animation-duration: 20s; animation-delay: -2s; color: rgba(16, 185, 129, 0.15); }
+        .BDGS-T10-PR-icon-bubble:nth-child(5) { top: 95%; left: 50%; font-size: 32px; animation-duration: 28s; animation-delay: -15s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(6) { top: 60%; left: 5%; font-size: 20px; animation-duration: 30s; animation-delay: -7s; }
+        @keyframes floatIcon {
+            0% { transform: translateY(100px) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* --- NAVBAR --- */
+        .BDGS-T10-PR-navbar {
+            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 12px 0;
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--BDGS-T10-PR-border);
+            transition: all 0.3s ease;
+        }
+
+        .BDGS-T10-PR-logo {
+            display: flex; align-items: center; gap: 10px; text-decoration: none !important;
+        }
+        .BDGS-T10-PR-logo i {
+            font-size: 28px;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .BDGS-T10-PR-logo-text {
+            font-size: 22px; font-weight: 800;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .BDGS-T10-PR-nav-link {
+            font-weight: 600; color: var(--BDGS-T10-PR-text); padding: 8px 18px; font-size: 14px;
+            border-radius: 12px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative;
+            text-decoration: none !important; display: inline-block; margin: 0 2px;
+        }
+        .BDGS-T10-PR-nav-link:hover {
+            color: var(--BDGS-T10-PR-primary); background: rgba(37, 99, 235, 0.08);
+            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+        .BDGS-T10-PR-nav-link:active { transform: translateY(0); background: rgba(37, 99, 235, 0.12); }
+
+        .BDGS-T10-PR-mobile-toggle {
+            background: transparent; border: none; font-size: 24px; color: var(--BDGS-T10-PR-dark); cursor: pointer; padding: 5px;
+        }
+        .BDGS-T10-PR-mobile-menu {
+            position: absolute; top: 100%; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px;
+            display: none; flex-direction: column; gap: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); transform-origin: top;
+            animation: slideDownMenu 0.3s ease-out forwards;
+        }
+        .BDGS-T10-PR-mobile-menu.active { display: flex; }
+        .BDGS-T10-PR-mobile-menu a { padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); color: var(--BDGS-T10-PR-dark); font-weight: 600; font-size: 16px; }
+        @keyframes slideDownMenu { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: scaleY(1); } }
+
+        .BDGS-T10-PR-btn {
+            border: none; padding: 10px 24px; border-radius: 10px; font-weight: 600; font-size: 13px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;
+        }
+        .BDGS-T10-PR-btn-primary {
+            background: var(--BDGS-T10-PR-dark); color: white;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        }
+        .BDGS-T10-PR-btn-primary:hover {
+            transform: translateY(-3px); box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.4); color: white;
+        }
+
+        /* --- RESPONSIVE HEADER CLASSES (Custom Fixes for 768px-991px) --- */
+        /* By default (Desktop >= 992px), these are visible */
+        .desktop-nav-elements { display: block; }
+        .mobile-toggle-wrapper { display: none; }
+
+        /* For Tablets and Mobile (< 992px) */
+        @media (max-width: 991px) {
+            .desktop-nav-elements { display: none !important; }
+            .mobile-toggle-wrapper { display: block !important; }
+            
+            /* Ensure logo doesn't get squashed */
+            .BDGS-T10-PR-logo-text { font-size: 18px; }
+        }
+
+        /* =========================================
+           3. ADVANCED BOOKING STYLES
+           ========================================= */
+        .BDGS-T10-PR-booking-wrapper {
+            padding: 40px 0;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+        }
+
+        .BDGS-T10-PR-booking-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 32px;
+            box-shadow: var(--BDGS-T10-PR-shadow), 0 0 0 1px rgba(255,255,255,0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        @media (min-width: 992px) {
+            .BDGS-T10-PR-booking-card { flex-direction: row; min-height: 650px; }
+        }
+
+        /* --- Sidebar: Summary --- */
+        .BDGS-T10-PR-booking-sidebar {
+            background: linear-gradient(145deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            color: white;
+            padding: 50px 40px;
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+        
+        .BDGS-T10-PR-booking-sidebar::before {
+            content: ""; position: absolute; top:0; left:0; right:0; bottom:0;
+            background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3C/g%3E%3C/svg%3E");
+            z-index: 1; pointer-events: none;
+        }
+
+        @media (min-width: 992px) { .BDGS-T10-PR-booking-sidebar { width: 38%; } }
+
+        .BDGS-T10-PR-sidebar-bg-circle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            animation: pulseSlow 6s infinite alternate;
+        }
+        @keyframes pulseSlow { from { transform: scale(1); opacity: 0.5; } to { transform: scale(1.1); opacity: 0.8; } }
+
+        .BDGS-T10-PR-summary-content { position: relative; z-index: 2; }
+        
+        .BDGS-T10-PR-summary-item {
+            margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.15); transition: transform 0.3s ease;
+        }
+        .BDGS-T10-PR-summary-item:hover { transform: translateX(5px); }
+        .BDGS-T10-PR-summary-item:last-child { border-bottom: none; }
+        
+        .BDGS-T10-PR-summary-label {
+            font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.7);
+            letter-spacing: 1.2px; margin-bottom: 8px; display: block; font-weight: 600;
+        }
+        .BDGS-T10-PR-summary-val {
+            font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 12px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Estimated Cost Box */
+        .BDGS-T10-PR-cost-box {
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px; border-radius: 20px; backdrop-filter: blur(10px);
+            position: relative; z-index: 2; margin-top: auto; transition: transform 0.3s;
+        }
+        .BDGS-T10-PR-cost-box:hover { transform: translateY(-3px); background: rgba(255,255,255,0.15); }
+
+        /* --- Right Side: The Form --- */
+        .BDGS-T10-PR-booking-form {
+            padding: 50px; flex: 1; background: #fff; position: relative; overflow-y: auto;
+        }
+
+        /* Step Indicator */
+        .BDGS-T10-PR-step-indicator {
+            display: flex; margin-bottom: 35px; gap: 12px;
+        }
+        .BDGS-T10-PR-step-dot {
+            height: 6px; flex: 1; background: #E2E8F0; border-radius: 100px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;
+        }
+        .BDGS-T10-PR-step-dot.active { background: var(--BDGS-T10-PR-primary); }
+        .BDGS-T10-PR-step-dot.active::after {
+            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+        .BDGS-T10-PR-form-title {
+            font-size: 28px; font-weight: 800; color: var(--BDGS-T10-PR-dark); margin-bottom: 30px; letter-spacing: -0.5px;
+        }
+
+        .BDGS-T10-PR-form-group { margin-bottom: 25px; position: relative; }
+        
+        .BDGS-T10-PR-label {
+            display: block; font-size: 14px; font-weight: 700; color: var(--BDGS-T10-PR-text); margin-bottom: 10px;
+        }
+
+        /* Inputs */
+        .BDGS-T10-PR-input {
+            width: 100%; padding: 16px 20px; border-radius: 16px; border: 2px solid #F1F5F9;
+            background: #F8FAFC; color: var(--BDGS-T10-PR-dark); font-size: 15px; font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); outline: none;
+        }
+        .BDGS-T10-PR-input:focus {
+            border-color: var(--BDGS-T10-PR-primary); background: #fff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); transform: translateY(-2px);
+        }
+        .BDGS-T10-PR-input::placeholder { color: #94A3B8; }
+
+        /* Custom Radio Cards for Doctor */
+        .BDGS-T10-PR-doc-select-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+        }
+        .BDGS-T10-PR-radio-card { position: relative; display: block; }
+        .BDGS-T10-PR-radio-card input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+        
+        .BDGS-T10-PR-radio-label {
+            display: flex; align-items: center; gap: 15px; padding: 15px;
+            border: 2px solid #F1F5F9; border-radius: 20px; cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); background: #fff; position: relative;
+        }
+        
+        .BDGS-T10-PR-radio-label:hover { border-color: #CBD5E1; transform: translateY(-2px); }
+
+        .BDGS-T10-PR-radio-card input:checked ~ .BDGS-T10-PR-radio-label {
+            border-color: var(--BDGS-T10-PR-primary); background: #EFF6FF;
+            transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.2);
+        }
+        
+        .BDGS-T10-PR-radio-card input:checked ~ .BDGS-T10-PR-radio-label::after {
+            content: '\f00c'; font-family: 'FontAwesome'; position: absolute;
+            top: 10px; right: 10px; font-size: 12px; color: var(--BDGS-T10-PR-primary);
+        }
+
+        .BDGS-T10-PR-doc-avatar {
+            width: 48px; height: 48px; border-radius: 14px; object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Time Slots - Pill style */
+        .BDGS-T10-PR-time-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px;
+        }
+        .BDGS-T10-PR-time-label {
+            display: block; text-align: center; padding: 12px 10px;
+            border: 1px solid #E2E8F0; border-radius: 14px; font-size: 14px; font-weight: 600;
+            color: #64748B; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); background: #fff;
+        }
+        .BDGS-T10-PR-time-label:hover { border-color: var(--BDGS-T10-PR-primary); color: var(--BDGS-T10-PR-primary); }
+        
+        .BDGS-T10-PR-radio-card input:checked ~ .BDGS-T10-PR-time-label {
+            background: var(--BDGS-T10-PR-dark); color: #fff; border-color: var(--BDGS-T10-PR-dark);
+            transform: scale(1.05); box-shadow: 0 5px 15px rgba(15, 23, 42, 0.2);
+        }
+
+        /* Submit Button */
+        .BDGS-T10-PR-btn-submit {
+            width: 100%; background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            color: #fff; border: none; padding: 18px; border-radius: 16px; font-size: 16px; font-weight: 700;
+            letter-spacing: 0.5px; cursor: pointer; transition: all 0.3s ease; margin-top: 30px;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4); position: relative; overflow: hidden;
+        }
+        .BDGS-T10-PR-btn-submit:hover {
+            transform: translateY(-3px); box-shadow: 0 20px 40px -5px rgba(124, 58, 237, 0.5);
+        }
+        .BDGS-T10-PR-btn-submit::after {
+            content: ''; position: absolute; top:0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+        .BDGS-T10-PR-btn-submit:hover::after { left: 100%; }
+
+        /* Entry Animation */
+        .slide-in { animation: slideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; transform: translateX(20px); }
+        @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+
+        /* FOOTER ENHANCEMENTS */
+        .BDGS-T10-PR-footer-link {
+            color: #94A3B8; display: block; margin-bottom: 12px; transition: 0.3s; text-decoration: none !important;
+        }
+        .BDGS-T10-PR-footer-link:hover { color: var(--BDGS-T10-PR-primary); transform: translateX(5px); }
+        .BDGS-T10-PR-social-icon {
+            width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center; color: #fff;
+            margin-right: 10px; transition: 0.3s; text-decoration: none !important;
+        }
+        .BDGS-T10-PR-social-icon:hover { background: var(--BDGS-T10-PR-primary); color: #fff; transform: translateY(-3px); }
+        .BDGS-T10-PR-footer-input {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 15px; border-radius: 8px; color: #fff; width: 100%; margin-bottom: 10px;
+        }
+        .BDGS-T10-PR-footer-input:focus { outline: none; border-color: var(--BDGS-T10-PR-primary); }
+
+        /* SELECT2 CUSTOM STYLING (For Dropdowns) */
+        .select2-container .select2-selection--single {
+            height: auto !important; padding: 14px 20px; border-radius: 16px;
+            border: 2px solid #F1F5F9; background: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s;
+        }
+        .select2-container .select2-selection--single .select2-selection__rendered {
+            padding: 0; color: var(--BDGS-T10-PR-dark); font-weight: 500; font-size: 15px; line-height: normal;
+        }
+        .select2-container .select2-selection--single .select2-selection__arrow { height: 100%; right: 15px; }
+        .select2-container--default.select2-container--open .select2-selection--single {
+            border-color: var(--BDGS-T10-PR-primary); background: #fff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+        .select2-dropdown {
+            border: 1px solid #E2E8F0; border-radius: 16px; background: #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); overflow: hidden; margin-top: 8px;
+        }
+        .select2-results__option { padding: 12px 20px; font-size: 14px; color: var(--BDGS-T10-PR-text); }
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #EFF6FF; color: var(--BDGS-T10-PR-primary); font-weight: 600;
+        }
+        .select2-container--default .select2-results__option[aria-selected=true] {
+            background-color: var(--BDGS-T10-PR-primary); color: #fff;
+        }
+        .select2-search--dropdown { padding: 10px; }
+        .select2-search__field {
+            border-radius: 10px !important; border: 1px solid #E2E8F0 !important; padding: 8px 12px !important; outline: none;
+        }
+        .select2-search__field:focus { border-color: var(--BDGS-T10-PR-primary) !important; }
+        .select2-container--default .select2-selection--single:focus { outline: none; }
+
+        /* HEADER DROPDOWN SPECIFIC STYLES (Overrides for Navbar Select) */
+        .BDGS-T10-PR-navbar .select2-container .select2-selection--single {
+            background-color: transparent !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 10px !important;
+            height: 40px !important;
+            display: flex !important;
+            align-items: center !important;
+            padding: 0 15px !important;
+        }
+        .BDGS-T10-PR-navbar .select2-container .select2-selection--single:hover {
+            border-color: var(--BDGS-T10-PR-primary) !important;
+            background-color: rgba(37, 99, 235, 0.05) !important;
+        }
+        .BDGS-T10-PR-navbar .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 38px !important; right: 8px !important;
+        }
+        .BDGS-T10-PR-navbar .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: var(--BDGS-T10-PR-text) !important; font-weight: 600 !important; font-size: 14px !important;
+        }
+        /* Navbar Dropdown Panel */
+        .BDGS-T10-PR-navbar .select2-dropdown {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.6) !important;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1) !important;
+            padding: 8px !important; margin-top: 5px !important;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 991px) {
+            .BDGS-T10-PR-booking-card { flex-direction: column; height: auto; }
+            .BDGS-T10-PR-booking-sidebar { width: 100%; padding: 40px 30px; }
+            .BDGS-T10-PR-booking-form { padding: 40px 30px; }
+            .BDGS-T10-PR-cost-box { margin-top: 30px; }
+        }
+        @media (max-width: 768px) {
+            .BDGS-T10-PR-booking-wrapper { padding: 20px 10px; }
+            .BDGS-T10-PR-booking-form { padding: 30px 20px; }
+            .BDGS-T10-PR-booking-sidebar { padding: 30px 20px; }
+            .BDGS-T10-PR-doc-select-grid { grid-template-columns: 1fr; }
+            .BDGS-T10-PR-form-title { font-size: 24px; }
+        }
+        @media (max-width: 480px) {
+            .BDGS-T10-PR-time-grid { grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); gap: 8px; }
+            .BDGS-T10-PR-time-label { padding: 10px 5px; font-size: 13px; }
+            .BDGS-T10-PR-btn-submit { padding: 15px; font-size: 15px; }
+        }
+        
+        .no-docs-msg {
+            display: none;
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 20px;
+            color: #64748B;
+            background: #F8FAFC;
+            border-radius: 12px;
+            border: 1px dashed #CBD5E1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. BACKGROUND -->
+    <div class="BDGS-T10-PR-bg-mesh">
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-1"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-2"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-3"></div>
+    </div>
+    
+    <div class="BDGS-T10-PR-bg-icons">
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-heart"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-user-md"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-stethoscope"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-medkit"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-ambulance"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-hospital-o"></i></div>
+    </div>
+
+    <!-- 2. NAVBAR (UPDATED FOR 768px+ RESPONSE) -->
+    <header>
+        <nav class="BDGS-T10-PR-navbar">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center;">
+                        <a href="index.html" class="BDGS-T10-PR-logo">
+                            <i class=""><img src="../assets/img/edited-photo.png" alt="EdgeCare VIP Logo" width="45px"></i>
+                            <span class="BDGS-T10-PR-logo-text">EdgeCare</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Nav: Hidden on tablet/mobile (< 992px) -->
+                    <div class="desktop-nav-elements">
+                        <a href="index.html" class="BDGS-T10-PR-nav-link" style="color: var(--BDGS-T10-PR-text);">Home</a>
+                        <a href="find_doc.html" class="BDGS-T10-PR-nav-link">Specialists</a>
+                        <!-- Active State for Appointment Page -->
+                        <a href="appointment.html" class="BDGS-T10-PR-nav-link active" style="color: var(--BDGS-T10-PR-primary); background: rgba(37, 99, 235, 0.08);">Appointment</a>
+                        <a href="Blog.html" class="BDGS-T10-PR-nav-link">Health Blog</a>
+                        <a href="aboute.html" class="BDGS-T10-PR-nav-link">About</a>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <!-- Auth: Hidden on tablet/mobile (< 992px) -->
+                        <div class="desktop-nav-elements">
+                            <select class="BDGS-T10-PR-auth-select" style="width: 170px;">
+                                <option></option>
+                                <option value="Login.html" data-icon="fa-sign-in">Login</option>
+                                <option value="Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                                <option value="Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                            </select>
+                        </div>
+
+                        <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary">Join Now</button>
+                        
+                        <!-- Toggle: Visible on tablet/mobile (< 992px) -->
+                        <div class="mobile-toggle-wrapper">
+                            <button class="BDGS-T10-PR-mobile-toggle" style="margin-left: 10px;">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Dropdown -->
+                <div class="BDGS-T10-PR-mobile-menu">
+                    <a href="index.html">Home</a>
+                    <a href="find_doc.html">Specialists</a>
+                    <a href="appointment.html" style="color: var(--BDGS-T10-PR-primary);">Appointment</a>
+                    <a href="Blog.html">Health Blogs</a>
+                    <a href="aboute.html">About</a>
+                    <div style="margin-top: 10px;">
+                            <select class="BDGS-T10-PR-auth-select" style="width: 100%;">
+                                <option></option> 
+                                <option value="Login.html" data-icon="fa-sign-in">Login</option>
+                                <option value="Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                                <option value="Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                            </select>
+                    </div>
+                    <a href="join.html" style="color: var(--BDGS-T10-PR-primary);">Join Now</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 3. MAIN BOOKING SECTION -->
+    <div class="BDGS-T10-PR-booking-wrapper">
+        <div class="container">
+            <div class="BDGS-T10-PR-booking-card">
+                
+                <!-- Sidebar: Summary -->
+                <div class="BDGS-T10-PR-booking-sidebar">
+                    <div class="BDGS-T10-PR-sidebar-bg-circle" style="width: 300px; height: 300px; top: -100px; right: -100px;"></div>
+                    <div class="BDGS-T10-PR-sidebar-bg-circle" style="width: 200px; height: 200px; bottom: -50px; left: -50px; animation-delay: -2s;"></div>
+                    
+                    <div class="BDGS-T10-PR-summary-content">
+                        <h3 style="color: #fff; margin-top: 0; font-weight: 800; font-size: 28px; margin-bottom: 10px;">Appointment<br>Summary</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 15px; margin-bottom: 40px; line-height: 1.5;">Review your details below before confirming your visit.</p>
+                        
+                        <div>
+                            <div class="BDGS-T10-PR-summary-item">
+                                <span class="BDGS-T10-PR-summary-label">Clinic Location</span>
+                                <div class="BDGS-T10-PR-summary-val"><i class="fa fa-hospital-o"></i> EdgeCare Central</div>
+                            </div>
+                            <div class="BDGS-T10-PR-summary-item">
+                                <span class="BDGS-T10-PR-summary-label">Consultation Type</span>
+                                <div class="BDGS-T10-PR-summary-val"><i class="fa fa-video-camera"></i> Video Call</div>
+                            </div>
+                            <div class="BDGS-T10-PR-summary-item" id="summary-doctor">
+                                <span class="BDGS-T10-PR-summary-label">Selected Doctor</span>
+                                <div class="BDGS-T10-PR-summary-val" style="opacity: 0.7;">Select a doctor...</div>
+                            </div>
+                            <div class="BDGS-T10-PR-summary-item" id="summary-time">
+                                <span class="BDGS-T10-PR-summary-label">Date & Time</span>
+                                <div class="BDGS-T10-PR-summary-val" style="opacity: 0.7;">Select a slot...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="BDGS-T10-PR-cost-box">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9);">Estimated Total</span>
+                            <span style="font-size: 24px; font-weight: 800; color: #fff;">$120.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Area -->
+                <div class="BDGS-T10-PR-booking-form slide-in">
+                    
+                    <div class="BDGS-T10-PR-step-indicator">
+                        <div class="BDGS-T10-PR-step-dot active"></div>
+                        <div class="BDGS-T10-PR-step-dot active"></div>
+                        <div class="BDGS-T10-PR-step-dot"></div>
+                    </div>
+
+                    <h2 class="BDGS-T10-PR-form-title">Schedule Visit</h2>
+
+                    <form id="bookingForm">
+                        <!-- 1. Select Specialty & Doctor -->
+                        <div class="BDGS-T10-PR-form-group">
+                            <label class="BDGS-T10-PR-label">Specialty</label>
+                            <select class="BDGS-T10-PR-input js-select2" id="specialtySelect">
+                                <option></option>
+                                <option value="Cardiology">Cardiology</option>
+                                <option value="Neurology">Neurology</option>
+                                <option value="Dermatology">Dermatology</option>
+                                <option value="General Medicine">General Medicine</option>
+                                <option value="Pediatrics">Pediatrics</option>
+                                <option value="Orthopedics">Orthopedics</option>
+                                <option value="Ophthalmology">Ophthalmology</option>
+                            </select>
+                        </div>
+
+                        <div class="BDGS-T10-PR-form-group">
+                            <label class="BDGS-T10-PR-label">Choose Doctor</label>
+                            <div class="BDGS-T10-PR-doc-select-grid" id="doctorGrid">
+                                
+                                <!-- Neurology Docs -->
+                                <label class="BDGS-T10-PR-radio-card doctor-card" data-specialty="Neurology">
+                                    <input type="radio" name="doctor" value="Dr. James Wilson" onchange="updateSummary(this)">
+                                    <div class="BDGS-T10-PR-radio-label">
+                                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" class="BDGS-T10-PR-doc-avatar" alt="Dr. James Wilson">
+                                        <div>
+                                            <div style="font-weight: 700; font-size: 14px; color: var(--BDGS-T10-PR-dark);">Dr. James Wilson</div>
+                                            <div style="font-size: 12px; color: #64748B; font-weight: 500;">Neurology</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="BDGS-T10-PR-radio-card doctor-card" data-specialty="Neurology">
+                                    <input type="radio" name="doctor" value="Dr. Emily Rose" onchange="updateSummary(this)">
+                                    <div class="BDGS-T10-PR-radio-label">
+                                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=100" class="BDGS-T10-PR-doc-avatar" alt="Dr. Emily Rose">
+                                        <div>
+                                            <div style="font-weight: 700; font-size: 14px; color: var(--BDGS-T10-PR-dark);">Dr. Emily Rose</div>
+                                            <div style="font-size: 12px; color: #64748B; font-weight: 500;">Neurology</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Orthopedics Docs -->
+                                <label class="BDGS-T10-PR-radio-card doctor-card" data-specialty="Orthopedics">
+                                    <input type="radio" name="doctor" value="Dr. Olivia Martinez" onchange="updateSummary(this)">
+                                    <div class="BDGS-T10-PR-radio-label">
+                                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=100" class="BDGS-T10-PR-doc-avatar" alt="Dr. Olivia Martinez">
+                                        <div>
+                                            <div style="font-weight: 700; font-size: 14px; color: var(--BDGS-T10-PR-dark);">Dr. Olivia Martinez</div>
+                                            <div style="font-size: 12px; color: #64748B; font-weight: 500;">Orthopedics</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Cardiology Docs -->
+                                <label class="BDGS-T10-PR-radio-card doctor-card" data-specialty="Cardiology">
+                                    <input type="radio" name="doctor" value="Dr. Sarah Smith" onchange="updateSummary(this)">
+                                    <div class="BDGS-T10-PR-radio-label">
+                                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=100" class="BDGS-T10-PR-doc-avatar" alt="Dr. Sarah Smith">
+                                        <div>
+                                            <div style="font-weight: 700; font-size: 14px; color: var(--BDGS-T10-PR-dark);">Dr. Sarah Smith</div>
+                                            <div style="font-size: 12px; color: #64748B; font-weight: 500;">Cardiology</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="BDGS-T10-PR-radio-card doctor-card" data-specialty="Cardiology">
+                                    <input type="radio" name="doctor" value="Dr. Michael Chang" onchange="updateSummary(this)">
+                                    <div class="BDGS-T10-PR-radio-label">
+                                        <img src="https://images.unsplash.com/photo-1612531386530-97286d97c2d2?auto=format&fit=crop&q=80&w=100" class="BDGS-T10-PR-doc-avatar" alt="Dr. Michael Chang">
+                                        <div>
+                                            <div style="font-weight: 700; font-size: 14px; color: var(--BDGS-T10-PR-dark);">Dr. Michael Chang</div>
+                                            <div style="font-size: 12px; color: #64748B; font-weight: 500;">Cardiology</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Dermatology Docs -->
+                                <label class="BDGS-T10-PR-radio-card doctor-card" data-specialty="Dermatology">
+                                    <input type="radio" name="doctor" value="Dr. Lisa Ray" onchange="updateSummary(this)">
+                                    <div class="BDGS-T10-PR-radio-label">
+                                        <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&q=80&w=100" class="BDGS-T10-PR-doc-avatar" alt="Dr. Lisa Ray">
+                                        <div>
+                                            <div style="font-weight: 700; font-size: 14px; color: var(--BDGS-T10-PR-dark);">Dr. Lisa Ray</div>
+                                            <div style="font-size: 12px; color: #64748B; font-weight: 500;">Dermatology</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Pediatrics Docs -->
+                                <label class="BDGS-T10-PR-radio-card doctor-card" data-specialty="Pediatrics">
+                                    <input type="radio" name="doctor" value="Dr. Alan Grant" onchange="updateSummary(this)">
+                                    <div class="BDGS-T10-PR-radio-label">
+                                        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=100" class="BDGS-T10-PR-doc-avatar" alt="Dr. Alan Grant">
+                                        <div>
+                                            <div style="font-weight: 700; font-size: 14px; color: var(--BDGS-T10-PR-dark);">Dr. Alan Grant</div>
+                                            <div style="font-size: 12px; color: #64748B; font-weight: 500;">Pediatrics</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- General Medicine -->
+                                <label class="BDGS-T10-PR-radio-card doctor-card" data-specialty="General Medicine">
+                                    <input type="radio" name="doctor" value="Dr. Robert Fox" onchange="updateSummary(this)">
+                                    <div class="BDGS-T10-PR-radio-label">
+                                        <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fGRvY3RvcnN8ZW58MHx8MHx8fDA%3D" class="BDGS-T10-PR-doc-avatar" alt="Dr. Robert Fox">
+                                        <div>
+                                            <div style="font-weight: 700; font-size: 14px; color: var(--BDGS-T10-PR-dark);">Dr. Robert Fox</div>
+                                            <div style="font-size: 12px; color: #64748B; font-weight: 500;">Gen. Medicine</div>
+                                        </div>
+                                    </div>
+                                </label>
+                                
+                                <!-- Ophthalmology -->
+                                <label class="BDGS-T10-PR-radio-card doctor-card" data-specialty="Ophthalmology">
+                                    <input type="radio" name="doctor" value="Dr. Karen Lee" onchange="updateSummary(this)">
+                                    <div class="BDGS-T10-PR-radio-label">
+                                        <img src="https://plus.unsplash.com/premium_photo-1661764878654-3d0fc2eefcca?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTN8fGRvY3RvcnN8ZW58MHx8MHx8fDA%3D" class="BDGS-T10-PR-doc-avatar" alt="Dr. Karen Lee">
+                                        <div>
+                                            <div style="font-weight: 700; font-size: 14px; color: var(--BDGS-T10-PR-dark);">Dr. Karen Lee</div>
+                                            <div style="font-size: 12px; color: #64748B; font-weight: 500;">Ophthalmology</div>
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="BDGS-T10-PR-radio-card doctor-card" data-specialty="Ophthalmology">
+                                    <input type="radio" name="doctor" value="Dr. Karen Lee" onchange="updateSummary(this)">
+                                    <div class="BDGS-T10-PR-radio-label">
+                                        <img src="https://images.unsplash.com/photo-1662837775286-7e6258c7c595?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTJ8fGRvY3RvcnN8ZW58MHx8MHx8fDA%3D" class="BDGS-T10-PR-doc-avatar" alt="Dr. Karen Lee">
+                                        <div>
+                                            <div style="font-weight: 700; font-size: 14px; color: var(--BDGS-T10-PR-dark);">Dr. Lucci Lee</div>
+                                            <div style="font-size: 12px; color: #64748B; font-weight: 500;">Ophthalmology</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <div class="no-docs-msg" id="noDocsMessage">
+                                    <i class="fa fa-info-circle"></i> No specialists available for this category today.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Date & Time -->
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="BDGS-T10-PR-form-group">
+                                    <label class="BDGS-T10-PR-label">Date</label>
+                                    <input type="date" class="BDGS-T10-PR-input" id="appointmentDate">
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="BDGS-T10-PR-form-group">
+                                    <label class="BDGS-T10-PR-label">Available Slots</label>
+                                    <div class="BDGS-T10-PR-time-grid">
+                                        <label class="BDGS-T10-PR-radio-card">
+                                            <input type="radio" name="time" value="09:00 AM" onchange="updateTime(this)">
+                                            <span class="BDGS-T10-PR-time-label">09:00 AM</span>
+                                        </label>
+                                        <label class="BDGS-T10-PR-radio-card">
+                                            <input type="radio" name="time" value="10:30 AM" onchange="updateTime(this)">
+                                            <span class="BDGS-T10-PR-time-label">10:30 AM</span>
+                                        </label>
+                                        <label class="BDGS-T10-PR-radio-card">
+                                            <input type="radio" name="time" value="02:00 PM" onchange="updateTime(this)">
+                                            <span class="BDGS-T10-PR-time-label">02:00 PM</span>
+                                        </label>
+                                        <label class="BDGS-T10-PR-radio-card">
+                                            <input type="radio" name="time" value="04:15 PM" onchange="updateTime(this)">
+                                            <span class="BDGS-T10-PR-time-label">04:15 PM</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Patient Info -->
+                        <div class="BDGS-T10-PR-form-group" style="margin-top: 10px;">
+                            <label class="BDGS-T10-PR-label">Reason for Visit</label>
+                            <textarea class="BDGS-T10-PR-input" rows="3" placeholder="Briefly describe your symptoms..."></textarea>
+                        </div>
+
+                        <!-- Button trigger for SweetAlert -->
+                        <button type="button" class="BDGS-T10-PR-btn-submit" onclick="confirmBooking()">
+                            Confirm Appointment <i class="fa fa-arrow-right" style="margin-left: 8px;"></i>
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER (Semantic Footer) -->
+    <footer style="background: #0F172A; color: white; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="row">
+                <!-- Brand Column -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 40px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <i style="font-size: 24px; color: var(--BDGS-T10-PR-primary);"><img src="../assets/img/edited-photo.png" alt="EdgeCare VIP Logo" height="45px"></i>
+                        <span style="font-size: 24px; font-weight: 800;">EdgeCare VIP</span>
+                    </div>
+                    <p style="color: #94A3B8; line-height: 1.6; margin-bottom: 25px;">
+                        Revolutionizing healthcare access with cutting-edge technology and a patient-first approach. Your health, our priority.
+                    </p>
+                    <div style="display: flex; gap: 5px;">
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Company</h5>
+                    <a href="aboute.html" class="BDGS-T10-PR-footer-link">About Us</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Careers</a>
+                    <a href="review.html" class="BDGS-T10-PR-footer-link">Review</a>
+                    <a href="Blog.html" class="BDGS-T10-PR-footer-link">Blog</a>
+                    <a href="contact.html" class="BDGS-T10-PR-footer-link">Contact</a>
+                </div>
+
+                <!-- Services -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Services</h5>
+                    <a href="find_doc.html" class="BDGS-T10-PR-footer-link">Find Doctors</a>
+                    <a href="Coupon.html" class="BDGS-T10-PR-footer-link">Coupon</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Job Post</a>
+                    <a href="How_it.html" class="BDGS-T10-PR-footer-link">How it work</a>
+                    <a href="Faq.html" class="BDGS-T10-PR-footer-link">FAQ</a>
+                    <a href="Get_match.html" class="BDGS-T10-PR-footer-link">Get Match</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Stay Updated</h5>
+                    <p style="color: #94A3B8; font-size: 14px; margin-bottom: 15px;">Subscribe to our newsletter for the latest health tips and updates.</p>
+                    <form>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Enter your email" class="BDGS-T10-PR-footer-input">
+                            <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="padding: 12px 20px; border-radius: 8px;">Go</button>
+                        </div>
+                    </form>
+                    
+                    <!-- App Download Icons -->
+                    <div style="margin-top: 25px;">
+                        <h5 style="color: #fff; margin-bottom: 15px; font-size: 14px;">Get the App</h5>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-apple" style="font-size: 22px;"></i>
+                            </a>
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-android" style="font-size: 20px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="color: #64748B; margin: 0; font-size: 14px;">&copy; 2026 EdgeCare. All rights reserved.</p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <a href="#" style="color: #64748B; font-size: 14px;">Privacy Policy</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Terms of Service</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        // Initialize Plugins
+        $(document).ready(function() {
+            
+            // 1. SET TODAY'S DATE AS MINIMUM
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById("appointmentDate").setAttribute('min', today);
+
+            // 2. FORM SELECT2 (Specialty Selection)
+            $('.js-select2').select2({
+                minimumResultsForSearch: 5, 
+                width: '100%',
+                placeholder: "Select Specialty",
+                dropdownParent: $('.BDGS-T10-PR-booking-form') 
+            });
+
+            // 3. NAVBAR AUTH DROPDOWN SELECT2
+            $('.BDGS-T10-PR-auth-select').select2({
+                minimumResultsForSearch: Infinity, 
+                placeholder: "My Account",
+                allowClear: false,
+                templateSelection: function(data) {
+                      if (!data.id) { 
+                          return $('<span style="color:#334155;"><i class="fa fa-user-circle-o" style="margin-right:8px; color:var(--BDGS-T10-PR-primary);"></i> My Account</span>');
+                      }
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '" style="margin-right:8px; color:var(--BDGS-T10-PR-primary);"></i> ' + data.text + '</span>');
+                },
+                templateResult: function(data) {
+                      if (!data.id) { return data.text; }
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '"></i> ' + data.text + '</span>');
+                }
+            });
+
+            // Handle Navbar Redirect
+            $('.BDGS-T10-PR-auth-select').on('select2:select', function (e) {
+                var url = e.params.data.id;
+                if(url) {
+                    window.location.href = url;
+                }
+            });
+
+            // ===============================================
+            // FILTER LOGIC: SPECIALTY -> DOCTORS
+            // ===============================================
+            $('.js-select2').on('select2:select', function (e) {
+                var selectedSpecialty = e.params.data.id;
+                
+                // 1. Reset current selection
+                $('input[name="doctor"]').prop('checked', false);
+                resetSummaryDoctor();
+                
+                // 2. Hide all cards initially
+                var $allCards = $('.doctor-card');
+                $allCards.hide();
+                $('#noDocsMessage').hide();
+
+                // 3. Show matching cards
+                if (selectedSpecialty) {
+                    var $matchingCards = $('.doctor-card[data-specialty="' + selectedSpecialty + '"]');
+                    if($matchingCards.length > 0) {
+                        $matchingCards.fadeIn(300);
+                    } else {
+                        $('#noDocsMessage').fadeIn(300);
+                    }
+                } else {
+                    $allCards.fadeIn(300); // Show all if nothing selected
+                }
+            });
+
+            // Handle date change to update summary
+            $('#appointmentDate').on('change', function() {
+                updateFullTimeSummary();
+            });
+        });
+
+        // ===============================================
+        // SUMMARY UPDATE FUNCTIONS
+        // ===============================================
+        
+        // Update Doctor Name in Sidebar
+        function updateSummary(radio) {
+            const summaryDoc = document.getElementById('summary-doctor').querySelector('.BDGS-T10-PR-summary-val');
+            summaryDoc.innerHTML = `<i class="fa fa-user-md" style="color:var(--BDGS-T10-PR-accent)"></i> ${radio.value}`;
+            summaryDoc.style.opacity = '1';
+        }
+
+        function resetSummaryDoctor() {
+            const summaryDoc = document.getElementById('summary-doctor').querySelector('.BDGS-T10-PR-summary-val');
+            summaryDoc.innerHTML = `Select a doctor...`;
+            summaryDoc.style.opacity = '0.7';
+        }
+
+        // Update Time Selection (Triggered by Radio Button)
+        function updateTime(radio) {
+            updateFullTimeSummary(radio.value);
+        }
+
+        // Helper to combine Date input + Time radio into sidebar
+        function updateFullTimeSummary(timeValue) {
+            const dateInput = document.getElementById('appointmentDate').value;
+            
+            // Get checked time if not passed explicitly
+            if(!timeValue) {
+                const checkedTime = document.querySelector('input[name="time"]:checked');
+                timeValue = checkedTime ? checkedTime.value : null;
+            }
+
+            const summaryTime = document.getElementById('summary-time').querySelector('.BDGS-T10-PR-summary-val');
+            
+            if (dateInput && timeValue) {
+                // Format Date nicely
+                const dateObj = new Date(dateInput);
+                const options = { month: 'short', day: 'numeric' };
+                const formattedDate = dateObj.toLocaleDateString('en-US', options);
+
+                summaryTime.innerHTML = `<i class="fa fa-clock-o" style="color:var(--BDGS-T10-PR-accent)"></i> ${formattedDate}, ${timeValue}`;
+                summaryTime.style.opacity = '1';
+            } else if (dateInput) {
+                summaryTime.innerHTML = `<i class="fa fa-calendar-o"></i> ${dateInput} (Select time)`;
+                summaryTime.style.opacity = '1';
+            } else if (timeValue) {
+                summaryTime.innerHTML = `<i class="fa fa-clock-o"></i> Today, ${timeValue}`;
+                summaryTime.style.opacity = '1';
+            }
+        }
+
+        // ===============================================
+        // FORM SUBMISSION & VALIDATION
+        // ===============================================
+        function confirmBooking() {
+            // Get values
+            const specialty = $('#specialtySelect').val();
+            const doctor = $('input[name="doctor"]:checked').val();
+            const date = $('#appointmentDate').val();
+            const time = $('input[name="time"]:checked').val();
+
+            // Simple Validation
+            if (!specialty) {
+                Swal.fire({ icon: 'error', title: 'Oops...', text: 'Please select a Specialty first.' });
+                return;
+            }
+            if (!doctor) {
+                Swal.fire({ icon: 'warning', title: 'Missing Doctor', text: 'Please choose a doctor from the list.' });
+                return;
+            }
+            if (!date) {
+                Swal.fire({ icon: 'warning', title: 'Missing Date', text: 'Please select an appointment date.' });
+                return;
+            }
+            if (!time) {
+                Swal.fire({ icon: 'warning', title: 'Missing Time', text: 'Please select a time slot.' });
+                return;
+            }
+
+            // Success Message
+            Swal.fire({
+                title: 'Booking Confirmed!',
+                html: `Appointment with <b>${doctor}</b><br>on <b>${date}</b> at <b>${time}</b>.`,
+                icon: 'success',
+                confirmButtonColor: '#2563EB',
+                confirmButtonText: 'View My Appointments',
+                background: '#fff',
+                borderRadius: '20px'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect logic would go here
+                    // window.location.href = 'Dashboard.html';
+                    window.location.href = 'patient_pro.html';
+                }
+            });
+        }
+
+        // Mobile Toggle Logic
+        const mobileToggle = document.querySelector('.BDGS-T10-PR-mobile-toggle');
+        const mobileMenu = document.querySelector('.BDGS-T10-PR-mobile-menu');
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

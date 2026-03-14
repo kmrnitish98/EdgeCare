@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- =========================================
+        SEO & METADATA
+        ========================================= -->
+    <title>General Medicine – EdgeCare VIP</title>
+    <meta name="description" content="Comprehensive primary care at EdgeCare VIP. Expert physicians, routine checkups, chronic disease management, and preventative health services.">
+    <meta name="keywords" content="general medicine, primary care, family doctor, physician, health checkup, wellness, internal medicine, EdgeCare">
+    <meta name="author" content="EdgeCare VIP">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.edgecare-vip.com/general_medicine.html">
+
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.edgecare-vip.com/general_medicine.html">
+    <meta property="og:title" content="EdgeCare VIP General Medicine">
+    <meta property="og:description" content="Your partner in everyday health and wellness.">
+    <meta property="og:image" content="https://www.edgecare-vip.com/assets/img/og-general.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EdgeCare VIP General Medicine">
+    <meta name="twitter:description" content="Your partner in everyday health and wellness.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 4.7 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        /* =========================================
+           1. VIP THEME VARIABLES (PREFIX: BDGS-T10-PR)
+           ========================================= */
+        :root {
+            --BDGS-T10-PR-primary:   #2563EB; /* Royal Blue */
+            --BDGS-T10-PR-accent:    #10B981; /* Emerald Green (Updated for General Med) */
+            --BDGS-T10-PR-purple:    #7C3AED; /* Deep Purple */
+            --BDGS-T10-PR-dark:      #0F172A; /* Slate 900 */
+            --BDGS-T10-PR-text:      #334155; /* Slate 700 */
+            
+            /* Glass Effects */
+            --BDGS-T10-PR-glass:      rgba(255, 255, 255, 0.65);
+            --BDGS-T10-PR-glass-str: rgba(255, 255, 255, 0.85);
+            --BDGS-T10-PR-border:    rgba(255, 255, 255, 0.4);
+            
+            /* Shadows */
+            --BDGS-T10-PR-shadow:    0 20px 40px -10px rgba(0,0,0,0.1);
+            --BDGS-T10-PR-glow:      0 0 50px rgba(37, 99, 235, 0.15);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--BDGS-T10-PR-text);
+            overflow-x: hidden;
+            padding-top: 80px;
+            background: #F0F9FF; /* Fallback */
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        /* =========================================
+           2. VIVID AURORA BACKGROUND
+           ========================================= */
+        .BDGS-T10-PR-bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -2; /* Behind everything */
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.7;
+            animation: meshFloat 20s infinite alternate ease-in-out;
+        }
+
+        /* Large Purple Orb */
+        .BDGS-T10-PR-orb-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25), transparent 70%);
+            top: -20%;
+            left: -10%;
+        }
+
+        /* Bright Emerald Orb (Updated) */
+        .BDGS-T10-PR-orb-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.25), transparent 70%);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        /* Royal Blue Accent */
+        .BDGS-T10-PR-orb-3 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%);
+            top: 40%;
+            left: 40%;
+            animation-duration: 25s;
+        }
+
+        @keyframes meshFloat {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(10deg); }
+            100% { transform: translate(-30px, -20px) rotate(-5deg); }
+        }
+
+        /* =========================================
+           2.1 ANIMATED ICON BUBBLES
+           ========================================= */
+        .BDGS-T10-PR-bg-icons {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1; /* Above mesh, behind content */
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-icon-bubble {
+            position: absolute;
+            color: rgba(37, 99, 235, 0.08); /* Very subtle opacity */
+            font-size: 24px;
+            animation: floatIcon 20s infinite linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px; 
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(2px);
+        }
+
+        /* Icon Variants - Updated for General Medicine Context */
+        .BDGS-T10-PR-icon-bubble:nth-child(1) { top: 80%; left: 10%; font-size: 30px; animation-duration: 18s; animation-delay: 0s; color: rgba(16, 185, 129, 0.15); /* Green tint */ }
+        .BDGS-T10-PR-icon-bubble:nth-child(2) { top: 90%; left: 30%; font-size: 40px; animation-duration: 25s; animation-delay: -5s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(3) { top: 85%; left: 70%; font-size: 28px; animation-duration: 22s; animation-delay: -10s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(4) { top: 75%; left: 90%; font-size: 35px; animation-duration: 20s; animation-delay: -2s; color: rgba(37, 99, 235, 0.15); /* Blue tint */ }
+        .BDGS-T10-PR-icon-bubble:nth-child(5) { top: 95%; left: 50%; font-size: 32px; animation-duration: 28s; animation-delay: -15s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(6) { top: 60%; left: 5%; font-size: 20px; animation-duration: 30s; animation-delay: -7s; }
+
+        @keyframes floatIcon {
+            0% { transform: translateY(100px) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* =========================================
+           3. UI COMPONENTS
+           ========================================= */
+        
+        /* Entrance Animations */
+        .bdgs-animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .bdgs-delay-1 { animation-delay: 0.1s; }
+        .bdgs-delay-2 { animation-delay: 0.2s; }
+        .bdgs-delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navbar */
+        .BDGS-T10-PR-navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 0; /* Reduced padding */
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--BDGS-T10-PR-border);
+            transition: all 0.3s ease;
+        }
+
+        .BDGS-T10-PR-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none !important;
+        }
+
+        .BDGS-T10-PR-logo i {
+            font-size: 28px;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .BDGS-T10-PR-logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ENHANCED NAVIGATION LINKS */
+        .BDGS-T10-PR-nav-link {
+            font-weight: 600;
+            color: var(--BDGS-T10-PR-text);
+            padding: 8px 18px; /* Slightly wider padding for pill shape */
+            font-size: 14px;
+            border-radius: 12px; /* Smooth rounded corners */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Premium smooth ease */
+            position: relative;
+            text-decoration: none !important; /* Force remove underline */
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        .BDGS-T10-PR-nav-link:hover {
+            color: var(--BDGS-T10-PR-primary);
+            background: rgba(37, 99, 235, 0.08); /* Subtle blue tint */
+            transform: translateY(-2px); /* Gentle float up */
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1); /* Soft glow shadow */
+        }
+        
+        .BDGS-T10-PR-nav-link:active {
+            transform: translateY(0);
+            background: rgba(37, 99, 235, 0.12);
+        }
+
+        /* Mobile Menu */
+        .BDGS-T10-PR-mobile-toggle {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: var(--BDGS-T10-PR-dark);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .BDGS-T10-PR-mobile-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform-origin: top;
+            animation: slideDownMenu 0.3s ease-out forwards;
+        }
+        
+        .BDGS-T10-PR-mobile-menu.active {
+            display: flex;
+        }
+        
+        .BDGS-T10-PR-mobile-menu a {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        @keyframes slideDownMenu {
+            from { opacity: 0; transform: scaleY(0); }
+            to { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* Buttons */
+        .BDGS-T10-PR-btn {
+            border: none;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-btn-primary {
+            background: var(--BDGS-T10-PR-dark);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        }
+        .BDGS-T10-PR-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.4);
+            color: white;
+        }
+        
+        .BDGS-T10-PR-btn-grad {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        .BDGS-T10-PR-btn-grad:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px -5px rgba(124, 58, 237, 0.5);
+            color: white;
+        }
+
+        /* Hero Text Styles (Shared) */
+        .BDGS-T10-PR-hero-title-v2 {
+            font-size: 56px;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+            color: var(--BDGS-T10-PR-dark);
+        }
+        
+        .BDGS-T10-PR-gradient-text {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary) 0%, var(--BDGS-T10-PR-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Doctor Cards Styles (Retained) */
+        .BDGS-T10-PR-card-advanced {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .BDGS-T10-PR-card-advanced:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(37, 99, 235, 0.15);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .BDGS-T10-PR-card-top {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .BDGS-T10-PR-img-frame {
+            width: 85px;
+            height: 85px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-right: 15px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            flex-shrink: 0;
+        }
+
+        .BDGS-T10-PR-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .BDGS-T10-PR-card-advanced:hover .BDGS-T10-PR-img-frame img {
+            transform: scale(1.1);
+        }
+
+        .BDGS-T10-PR-status-indicator {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 14px;
+            height: 14px;
+            background: #10B981;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .BDGS-T10-PR-doc-info h4 {
+            margin: 5px 0;
+            font-size: 18px;
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 700;
+        }
+
+        .BDGS-T10-PR-doc-info span {
+            color: var(--BDGS-T10-PR-primary);
+            font-size: 13px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .BDGS-T10-PR-rating-pill {
+            background: #FEF3C7;
+            color: #D97706;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .BDGS-T10-PR-stats-row {
+            display: flex;
+            justify-content: space-between;
+            background: #F8FAFC;
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #F1F5F9;
+        }
+
+        .BDGS-T10-PR-stat-col strong {
+            display: block;
+            font-size: 16px;
+            color: var(--BDGS-T10-PR-dark);
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .BDGS-T10-PR-stat-col span {
+            font-size: 10px;
+            color: #64748B;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .BDGS-T10-PR-card-btns {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .BDGS-T10-PR-btn-book {
+            flex: 1;
+            background: var(--BDGS-T10-PR-dark);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(15, 23, 42, 0.2);
+            text-align: center;
+            text-decoration: none !important;
+            display: inline-block;
+        }
+
+        .BDGS-T10-PR-card-advanced:hover .BDGS-T10-PR-btn-book {
+            background: var(--BDGS-T10-PR-primary);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            color: white;
+        }
+
+        .BDGS-T10-PR-btn-icon {
+            width: 45px;
+            background: #EFF6FF;
+            color: var(--BDGS-T10-PR-primary);
+            border: none;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            cursor: pointer;
+            padding:12px;
+        }
+
+        .BDGS-T10-PR-btn-icon:hover {
+            background: #DBEAFE;
+            transform: scale(1.05);
+        }
+
+        /* Footer Styles (Retained) */
+        .BDGS-T10-PR-footer-link {
+            color: #94A3B8;
+            display: block;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-footer-link:hover {
+            color: var(--BDGS-T10-PR-primary);
+            transform: translateX(5px);
+        }
+        .BDGS-T10-PR-social-icon {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            color: #fff;
+            margin-right: 10px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-social-icon:hover {
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .BDGS-T10-PR-footer-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #fff;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .BDGS-T10-PR-footer-input:focus {
+            outline: none;
+            border-color: var(--BDGS-T10-PR-primary);
+        }
+
+        /* Select2 Custom Styles */
+        .select2-container--default .select2-selection--single {
+            background-color: transparent !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 10px !important;
+            height: 40px !important;
+            display: flex !important;
+            align-items: center !important;
+            outline: none !important;
+            transition: all 0.3s ease;
+        }
+        
+        .select2-container--default .select2-selection--single:hover {
+            border-color: var(--BDGS-T10-PR-primary) !important;
+            background-color: rgba(37, 99, 235, 0.05) !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: var(--BDGS-T10-PR-text) !important;
+            font-weight: 600 !important;
+            font-size: 14px !important;
+            padding-left: 15px !important;
+            padding-right: 25px !important;
+            line-height: normal !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 38px !important;
+            right: 8px !important;
+        }
+        
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            border-color: #64748B transparent transparent transparent !important;
+        }
+
+        .select2-dropdown {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.6) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1) !important;
+            padding: 8px !important;
+            margin-top: 10px !important;
+            z-index: 9999 !important;
+        }
+
+        .select2-results__option {
+            padding: 10px 15px !important;
+            font-size: 14px !important;
+            border-radius: 10px !important;
+            color: var(--BDGS-T10-PR-text) !important;
+            transition: 0.2s !important;
+            font-weight: 500 !important;
+            margin-bottom: 2px !important;
+        }
+
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #EFF6FF !important;
+            color: var(--BDGS-T10-PR-primary) !important;
+        }
+        
+        .select2-container--default .select2-results__option[aria-selected=true] {
+            background-color: #F1F5F9 !important;
+            color: var(--BDGS-T10-PR-dark) !important;
+        }
+
+        .select2-search--dropdown {
+            display: none !important;
+        }
+        
+        .select2-results__option i {
+            margin-right: 8px;
+            color: var(--BDGS-T10-PR-accent);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* --- GENERAL MEDICINE PAGE SPECIFIC STYLES --- */
+        .bdgs-service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .bdgs-service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.1);
+            border-color: var(--BDGS-T10-PR-primary);
+        }
+        .bdgs-service-icon {
+            width: 60px; height: 60px;
+            background: #ECFDF5; /* Green Light BG */
+            color: var(--BDGS-T10-PR-accent);
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .bdgs-service-card:hover .bdgs-service-icon {
+            background: var(--BDGS-T10-PR-accent);
+            color: white;
+            border-radius: 50%;
+        }
+
+        /* --- RESPONSIVE FIXES FOR PAGE --- */
+        .BDGS-T10-PR-hero-anim {
+            position: relative; 
+            height: 400px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+        
+        .BDGS-T10-PR-float-card-anim-1 {
+            position: absolute; 
+            top: 10%; 
+            right: 10%; 
+            background: white; 
+            padding: 15px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            animation: floatIcon 4s infinite ease-in-out;
+            z-index: 5;
+        }
+
+        .BDGS-T10-PR-float-card-anim-2 {
+            position: absolute; 
+            bottom: 10%; 
+            left: 0%; 
+            background: white; 
+            padding: 15px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            animation: floatIcon 4s infinite ease-in-out 1s;
+            z-index: 5;
+        }
+        
+        @media (max-width: 991px) {
+            .BDGS-T10-PR-hero-title-v2 { font-size: 40px; }
+            .BDGS-T10-PR-3d-scene { height: auto; margin-top: 40px; perspective: none; }
+            .BDGS-T10-PR-app-mockup { transform: none !important; width: 100%; height: auto; padding-bottom: 60px; }
+            
+            /* Responsive adjustments for animation */
+            .BDGS-T10-PR-hero-anim { height: 320px; margin-top: 40px; }
+            .BDGS-T10-PR-float-card-anim-1 { right: 0; }
+            .BDGS-T10-PR-float-card-anim-2 { left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. BACKGROUND -->
+    <div class="BDGS-T10-PR-bg-mesh">
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-1"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-2"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-3"></div>
+    </div>
+
+    <div class="BDGS-T10-PR-bg-icons">
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-stethoscope"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-medkit"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-heartbeat"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-thermometer-full"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-user-md"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-plus-square"></i></div>
+    </div>
+
+    <!-- 2. NAVBAR (EXACTLY SAME AS HOMEPAGE) -->
+    <header>
+        <nav class="BDGS-T10-PR-navbar">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center;">
+                        <a href="../index.html" class="BDGS-T10-PR-logo">
+                            <i class=""><img src="../../assets/img/edited-photo.png" alt="EdgeCare VIP Logo" height="45px"></i>
+                            <span class="BDGS-T10-PR-logo-text">EdgeCare</span>
+                        </a>
+                    </div>
+                    
+                    <div class="hidden-xs">
+                        <a href="../index.html" class="BDGS-T10-PR-nav-link" style="color: var(--BDGS-T10-PR-text);">Home</a>
+                        <a href="../find_doc.html" class="BDGS-T10-PR-nav-link" style="color: var(--BDGS-T10-PR-primary); background: rgba(37, 99, 235, 0.08);">Specialists</a>
+                        <a href="../appointment.html" class="BDGS-T10-PR-nav-link">Appointment</a>
+                        <a href="../Blog.html" class="BDGS-T10-PR-nav-link">Blog</a>
+                        <a href="../aboute.html" class="BDGS-T10-PR-nav-link">About</a>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div class="hidden-xs">
+                            <select class="BDGS-T10-PR-auth-select" style="width: 170px;">
+                                <option></option>
+                                <option value="../Login.html" data-icon="fa-sign-in">Login</option>
+                                <option value="../Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                                <option value="../Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                            </select>
+                        </div>
+
+                       <a href="../join.html"> <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary">Join</button></a>
+                        <button class="BDGS-T10-PR-mobile-toggle visible-xs" style="margin-left: 10px;">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="BDGS-T10-PR-mobile-menu">
+                    <a href="../index.html" style="color: var(--BDGS-T10-PR-primary);">Home</a>
+                    <a href="../find_doc.html">Specialists</a>
+                    <a href="../appointment.html">Appointment</a>
+                    <a href="../Blog.html">Health Blogs</a>
+                    <a href="../aboute.html">About</a>
+                    <div style="margin-top: 10px;">
+                            <select class="BDGS-T10-PR-auth-select" style="width: 100%;">
+                                <option></option> 
+                                <option value="../Login.html" data-icon="fa-sign-in">Login</option>
+                                <option value="../Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                                <option value="../Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                            </select>
+                    </div>
+                    <a href="../join.html" style="color: var(--BDGS-T10-PR-primary);">Join Now</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 3. GENERAL MEDICINE SPECIFIC HERO -->
+    <section class="BDGS-T10-PR-hero-v2 bdgs-animate-fade-up" style="padding: 60px 0;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px); background-size: 40px 40px; z-index: 0; pointer-events: none; mask-image: linear-gradient(to bottom, black 0%, transparent 80%); -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 80%);"></div>
+        
+        <div class="container">
+            <div class="row" style="display: flex; align-items: center; flex-wrap: wrap;">
+                
+                <div class="col-md-6 BDGS-T10-PR-hero-content">
+                    <div style="display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; background: rgba(16, 185, 129, 0.1); border-radius: 50px; color: #10B981; font-weight: 700; font-size: 12px; margin-bottom: 20px;">
+                        <span style="display: block; width: 6px; height: 6px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981;"></span>
+                        Department of General Medicine
+                    </div>
+                    
+                    <h1 class="BDGS-T10-PR-hero-title-v2">
+                        Comprehensive Care <br>
+                        <span style="background: linear-gradient(135deg, #10B981 0%, #2563EB 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">For Everyday Health.</span>
+                    </h1>
+                    
+                    <p style="font-size: 18px; color: #64748B; margin-bottom: 25px; max-width: 95%; line-height: 1.5;"> 
+                        From routine checkups to chronic disease management, our expert physicians provide the primary care you need for a healthier, happier life.
+                    </p>
+
+                    <div style="display: flex; gap: 15px; margin-bottom: 30px;">
+                        <a href="appointment.html" class="BDGS-T10-PR-btn BDGS-T10-PR-btn-grad" style="padding: 14px 30px;">Book Checkup</a>
+                        <button class="BDGS-T10-PR-btn" style="background: white; border: 1px solid #CBD5E1; color: var(--BDGS-T10-PR-text);">View Services</button>
+                    </div>
+                </div>
+
+                <!-- Right: Stethoscope/Health Animation Concept -->
+                <div class="col-md-6 bdgs-animate-fade-up bdgs-delay-2">
+                    <div class="BDGS-T10-PR-hero-anim">
+                        <!-- Center Abstract Shape -->
+                        <div style="width: 200px; height: 200px; background: radial-gradient(circle, rgba(16, 185, 129, 0.1), transparent 70%); border-radius: 50%; animation: pulseIcon 2s infinite;"></div>
+                        <i class="fa fa-stethoscope" style="font-size: 150px; color: #10B981; opacity: 0.9; position: absolute; filter: drop-shadow(0 10px 20px rgba(16, 185, 129, 0.3)); transform: rotate(-15deg);"></i>
+                        
+                        <!-- Floating Stats -->
+                        <div class="BDGS-T10-PR-float-card-anim-1">
+                            <div style="width: 40px; height: 40px; background: #ECFDF5; color: #10B981; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="fa fa-check-square-o"></i></div>
+                            <div>
+                                <strong style="display: block; font-size: 16px; color: #0F172A;">Checkups</strong>
+                                <span style="font-size: 12px; color: #64748B;">Available Daily</span>
+                            </div>
+                        </div>
+
+                        <div class="BDGS-T10-PR-float-card-anim-2">
+                            <div style="width: 40px; height: 40px; background: #EFF6FF; color: #2563EB; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="fa fa-user-md"></i></div>
+                            <div>
+                                <strong style="display: block; font-size: 16px; color: #0F172A;">Expert</strong>
+                                <span style="font-size: 12px; color: #64748B;">Family Physicians</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. GENERAL MEDICINE SERVICES -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span style="color: #10B981; font-weight: 700; letter-spacing: 1px; font-size: 12px; text-transform: uppercase;">Primary Healthcare</span>
+                <h2 style="margin-top: 10px;">Our Services</h2>
+                <p style="color: #64748B;">Holistic care for you and your family at every stage of life.</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <div class="bdgs-service-card">
+                        <div class="bdgs-service-icon"><i class="fa fa-stethoscope"></i></div>
+                        <h4 style="margin-bottom: 10px;">Routine Checkups</h4>
+                        <p style="color: #64748B; font-size: 14px; line-height: 1.6;">Comprehensive annual physicals to monitor your health, screen for conditions, and prevent future illness.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <div class="bdgs-service-card">
+                        <div class="bdgs-service-icon"><i class="fa fa-heartbeat"></i></div>
+                        <h4 style="margin-bottom: 10px;">Chronic Care</h4>
+                        <p style="color: #64748B; font-size: 14px; line-height: 1.6;">Ongoing management for chronic conditions such as diabetes, hypertension, asthma, and high cholesterol.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <div class="bdgs-service-card">
+                        <div class="bdgs-service-icon"><i class="fa fa-medkit"></i></div>
+                        <h4 style="margin-bottom: 10px;">Acute Illness</h4>
+                        <p style="color: #64748B; font-size: 14px; line-height: 1.6;">Prompt treatment for sudden ailments like flu, infections, minor injuries, fevers, and allergies.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <div class="bdgs-service-card">
+                        <div class="bdgs-service-icon"><i class="fa fa-shield"></i></div>
+                        <h4 style="margin-bottom: 10px;">Vaccinations</h4>
+                        <p style="color: #64748B; font-size: 14px; line-height: 1.6;">Complete immunization services for children and adults, including flu shots and travel vaccines.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <div class="bdgs-service-card">
+                        <div class="bdgs-service-icon"><i class="fa fa-flask"></i></div>
+                        <h4 style="margin-bottom: 10px;">Preventative Screening</h4>
+                        <p style="color: #64748B; font-size: 14px; line-height: 1.6;">Early detection screenings for cancer, heart disease, and metabolic disorders to ensure longevity.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <div class="bdgs-service-card">
+                        <div class="bdgs-service-icon"><i class="fa fa-wheelchair"></i></div>
+                        <h4 style="margin-bottom: 10px;">Geriatric Care</h4>
+                        <p style="color: #64748B; font-size: 14px; line-height: 1.6;">Specialized care plans for seniors focusing on mobility, memory, and medication management.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. MEET OUR PHYSICIANS -->
+    <section style="padding: 40px 0 80px; background: #fff;">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
+                <div>
+                    <h2 style="margin: 0 0 10px;">Our Physicians</h2>
+                    <p style="color: #64748B; margin: 0;">Compassionate doctors dedicated to your family's well-being.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Doctor 1 -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <div class="BDGS-T10-PR-card-advanced">
+                        <div class="BDGS-T10-PR-card-top">
+                            <div class="BDGS-T10-PR-img-frame">
+                                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200" alt="Dr. James Wilson">
+                                <div class="BDGS-T10-PR-status-indicator" title="Online Now"></div>
+                            </div>
+                            <div class="BDGS-T10-PR-doc-info">
+                                <div class="BDGS-T10-PR-rating-pill"><i class="fa fa-star"></i> 4.9</div>
+                                <h4>Dr. James Wilson <i class="fa fa-check-circle" style="color:var(--BDGS-T10-PR-primary); font-size:14px;"></i></h4>
+                                <span style="color: #10B981;">Family Medicine</span>
+                            </div>
+                        </div>
+                        
+                        <div class="BDGS-T10-PR-stats-row">
+                            <div class="BDGS-T10-PR-stat-col">
+                                <strong>20+</strong>
+                                <span>Years</span>
+                            </div>
+                            <div class="BDGS-T10-PR-stat-col">
+                                <strong>15k+</strong>
+                                <span>Patients</span>
+                            </div>
+                            <div class="BDGS-T10-PR-stat-col">
+                                <strong>4.9</strong>
+                                <span>Rating</span>
+                            </div>
+                        </div>
+
+                        <div class="BDGS-T10-PR-card-btns">
+                            <a href="../appointment.html" class="BDGS-T10-PR-btn-book">Book Visit</a>
+                            <a href="../member_pro.html"><button class="BDGS-T10-PR-btn-icon"><i class="fa fa-comment-o"></i></button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doctor 2 -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <div class="BDGS-T10-PR-card-advanced">
+                        <div class="BDGS-T10-PR-card-top">
+                            <div class="BDGS-T10-PR-img-frame">
+                                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=200" alt="Dr. Linda Kim">
+                                <div class="BDGS-T10-PR-status-indicator" style="background: #CBD5E1;" title="Offline"></div>
+                            </div>
+                            <div class="BDGS-T10-PR-doc-info">
+                                <div class="BDGS-T10-PR-rating-pill"><i class="fa fa-star"></i> 5.0</div>
+                                <h4>Dr. Linda Kim <i class="fa fa-check-circle" style="color:var(--BDGS-T10-PR-primary); font-size:14px;"></i></h4>
+                                <span style="color: #10B981;">Internal Medicine</span>
+                            </div>
+                        </div>
+                        
+                        <div class="BDGS-T10-PR-stats-row">
+                            <div class="BDGS-T10-PR-stat-col">
+                                <strong>12+</strong>
+                                <span>Years</span>
+                            </div>
+                            <div class="BDGS-T10-PR-stat-col">
+                                <strong>8k+</strong>
+                                <span>Patients</span>
+                            </div>
+                            <div class="BDGS-T10-PR-stat-col">
+                                <strong>5.0</strong>
+                                <span>Rating</span>
+                            </div>
+                        </div>
+
+                        <div class="BDGS-T10-PR-card-btns">
+                            <a href="../appointment.html" class="BDGS-T10-PR-btn-book">Book Visit</a>
+                            <a href="../member_pro.html"><button class="BDGS-T10-PR-btn-icon"><i class="fa fa-comment-o"></i></button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doctor 3 -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <div class="BDGS-T10-PR-card-advanced">
+                        <div class="BDGS-T10-PR-card-top">
+                            <div class="BDGS-T10-PR-img-frame">
+                                <img src="https://images.unsplash.com/photo-1537368910025-bc005fbede68?auto=format&fit=crop&q=80&w=200" alt="Dr. Marcus Johnson">
+                                <div class="BDGS-T10-PR-status-indicator" title="Online Now"></div>
+                            </div>
+                            <div class="BDGS-T10-PR-doc-info">
+                                <div class="BDGS-T10-PR-rating-pill"><i class="fa fa-star"></i> 4.8</div>
+                                <h4>Dr. Marcus Johnson <i class="fa fa-check-circle" style="color:var(--BDGS-T10-PR-primary); font-size:14px;"></i></h4>
+                                <span style="color: #10B981;">Geriatric Specialist</span>
+                            </div>
+                        </div>
+                        
+                        <div class="BDGS-T10-PR-stats-row">
+                            <div class="BDGS-T10-PR-stat-col">
+                                <strong>15+</strong>
+                                <span>Years</span>
+                            </div>
+                            <div class="BDGS-T10-PR-stat-col">
+                                <strong>6k+</strong>
+                                <span>Patients</span>
+                            </div>
+                            <div class="BDGS-T10-PR-stat-col">
+                                <strong>4.8</strong>
+                                <span>Rating</span>
+                            </div>
+                        </div>
+
+                        <div class="BDGS-T10-PR-card-btns">
+                            <a href="../appointment.html" class="BDGS-T10-PR-btn-book">Book Visit</a>
+                            <a href="../member_pro.html"><button class="BDGS-T10-PR-btn-icon"><i class="fa fa-comment-o"></i></button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- 6. FOOTER (EXACTLY SAME AS HOMEPAGE) -->
+    <footer style="background: #0F172A; color: white; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="row">
+                <!-- Brand Column -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 40px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <i  style="font-size: 24px; color: var(--BDGS-T10-PR-primary);"><img src="../../assets/img/edited-photo.png" alt="EdgeCare VIP Logo" height="45px"></i>
+                        <span style="font-size: 24px; font-weight: 800;">EdgeCare</span>
+                    </div>
+                    <p style="color: #94A3B8; line-height: 1.6; margin-bottom: 25px;">
+                        Revolutionizing healthcare access with cutting-edge technology and a patient-first approach. Your health, our priority.
+                    </p>
+                    <div style="display: flex; gap: 5px;">
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Company</h5>
+                    <a href="aboute.html" class="BDGS-T10-PR-footer-link">About Us</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Careers</a>
+                    <a href="review.html" class="BDGS-T10-PR-footer-link">Review</a>
+                    <a href="Blog.html" class="BDGS-T10-PR-footer-link">Blog</a>
+                    <a href="contact.html" class="BDGS-T10-PR-footer-link">Contact</a>
+                </div>
+
+                <!-- Services -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Services</h5>
+                    <a href="find_doc.html" class="BDGS-T10-PR-footer-link">Find Doctors</a>
+                    <a href="Coupon.html" class="BDGS-T10-PR-footer-link">Coupon</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Job Post</a>
+                    <a href="How_it.html" class="BDGS-T10-PR-footer-link">How it work</a>
+                    <a href="Faq.html" class="BDGS-T10-PR-footer-link">FAQ</a>
+                    <a href="Get_match.html" class="BDGS-T10-PR-footer-link">Get Match</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Stay Updated</h5>
+                    <p style="color: #94A3B8; font-size: 14px; margin-bottom: 15px;">Subscribe to our newsletter for the latest health tips and updates.</p>
+                    <form>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Enter your email" class="BDGS-T10-PR-footer-input">
+                            <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="padding: 12px 20px; border-radius: 8px;">Go</button>
+                        </div>
+                    </form>
+
+                    <!-- ADDED: App Download Icons -->
+                    <div style="margin-top: 25px;">
+                        <h5 style="color: #fff; margin-bottom: 15px; font-size: 14px;">Get the App</h5>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-apple" style="font-size: 22px;"></i>
+                            </a>
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-android" style="font-size: 20px;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="color: #64748B; margin: 0; font-size: 14px;">&copy; 2026 EdgeCare. All rights reserved.</p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <a href="#" style="color: #64748B; font-size: 14px;">Privacy Policy</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Terms of Service</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // INITIALIZE SELECT2 WITH CUSTOM FORMATTING
+            $('.BDGS-T10-PR-auth-select').select2({
+                minimumResultsForSearch: Infinity, // Hides the search box
+                placeholder: "My Account",
+                allowClear: false,
+                templateSelection: function(data) {
+                      // Custom formatting for the selected item view (placeholder look)
+                      if (!data.id) { 
+                          return $('<span style="color:#334155;"><i class="fa fa-user-circle-o" style="margin-right:8px; color:#10B981;"></i> My Account</span>');
+                      }
+                      // Use the icon from the option data attribute
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '" style="margin-right:8px; color:#10B981;"></i> ' + data.text + '</span>');
+                },
+                templateResult: function(data) {
+                      if (!data.id) { return data.text; }
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '"></i> ' + data.text + '</span>');
+                }
+            });
+
+            // Handle Page Redirect on Select
+            $('.BDGS-T10-PR-auth-select').on('select2:select', function (e) {
+                var url = e.params.data.id;
+                if(url) {
+                    window.location.href = url;
+                }
+            });
+
+            // Mobile Toggle Logic
+            const mobileToggle = document.querySelector('.BDGS-T10-PR-mobile-toggle');
+            const mobileMenu = document.querySelector('.BDGS-T10-PR-mobile-menu');
+
+            if(mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
+                });
+            }
+
+            // Auto-close menu on resize if > 768px
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    if (mobileMenu && mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

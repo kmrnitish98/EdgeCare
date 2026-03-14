@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Find Top Specialists & Doctors – Search Results | EdgeCare VIP</title>
+    <meta name="description" content="Search and book appointments with world-class specialists. Filter by cardiology, neurology, dermatology, and more. Instant video consultations and in-clinic visits available at EdgeCare VIP.">
+    <meta name="keywords" content="find doctor, medical specialist search, cardiologist appointment, neurologist, book doctor online, EdgeCare VIP, telemedicine search, doctor ratings">
+    <meta name="author" content="EdgeCare VIP">
+    <meta name="robots" content="noindex, follow"> 
+    <link rel="canonical" href="https://www.edgecare-vip.com/search">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.edgecare-vip.com/search">
+    <meta property="og:title" content="Find Top Specialists – EdgeCare VIP">
+    <meta property="og:description" content="Connect with elite doctors instantly. View ratings, fees, and availability.">
+    <meta property="og:image" content="https://www.edgecare-vip.com/assets/img/og-search.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Find Top Specialists – EdgeCare VIP">
+    <meta name="twitter:description" content="Connect with elite doctors instantly. View ratings, fees, and availability.">
+    <meta name="twitter:image" content="https://www.edgecare-vip.com/assets/img/twitter-search.jpg">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+    <style>
+        /* =========================================
+           1. VIP THEME VARIABLES (PREFIX: BDGS-T10-PR)
+           ========================================= */
+        :root {
+            --BDGS-T10-PR-primary:   #2563EB; /* Royal Blue */
+            --BDGS-T10-PR-accent:    #06B6D4; /* Cyan */
+            --BDGS-T10-PR-purple:    #7C3AED; /* Deep Purple */
+            --BDGS-T10-PR-dark:      #0F172A; /* Slate 900 */
+            --BDGS-T10-PR-text:      #334155; /* Slate 700 */
+            
+            /* Glass Effects */
+            --BDGS-T10-PR-glass:       rgba(255, 255, 255, 0.65);
+            --BDGS-T10-PR-glass-str: rgba(255, 255, 255, 0.85);
+            --BDGS-T10-PR-border:    rgba(255, 255, 255, 0.4);
+            
+            /* Shadows */
+            --BDGS-T10-PR-shadow:    0 20px 40px -10px rgba(0,0,0,0.1);
+            --BDGS-T10-PR-glow:      0 0 50px rgba(37, 99, 235, 0.15);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--BDGS-T10-PR-text);
+            overflow-x: hidden;
+            padding-top: 80px;
+            background: #F0F9FF;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        /* =========================================
+           2. VIVID AURORA BACKGROUND
+           ========================================= */
+        .BDGS-T10-PR-bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -2; /* Behind everything */
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.7;
+            animation: meshFloat 20s infinite alternate ease-in-out;
+        }
+
+        .BDGS-T10-PR-orb-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25), transparent 70%);
+            top: -20%;
+            left: -10%;
+        }
+
+        .BDGS-T10-PR-orb-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        .BDGS-T10-PR-orb-3 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%);
+            top: 40%;
+            left: 40%;
+            animation-duration: 25s;
+        }
+
+        @keyframes meshFloat {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(10deg); }
+            100% { transform: translate(-30px, -20px) rotate(-5deg); }
+        }
+
+        /* =========================================
+           2.1 ANIMATED ICON BUBBLES
+           ========================================= */
+        .BDGS-T10-PR-bg-icons {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-icon-bubble {
+            position: absolute;
+            color: rgba(37, 99, 235, 0.08);
+            font-size: 24px;
+            animation: floatIcon 20s infinite linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px; 
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(2px);
+        }
+
+        .BDGS-T10-PR-icon-bubble:nth-child(1) { top: 80%; left: 10%; font-size: 30px; animation-duration: 18s; color: rgba(239, 68, 68, 0.15); }
+        .BDGS-T10-PR-icon-bubble:nth-child(2) { top: 90%; left: 30%; font-size: 40px; animation-duration: 25s; animation-delay: -5s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(3) { top: 85%; left: 70%; font-size: 28px; animation-duration: 22s; animation-delay: -10s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(4) { top: 75%; left: 90%; font-size: 35px; animation-duration: 20s; animation-delay: -2s; color: rgba(16, 185, 129, 0.15); }
+        .BDGS-T10-PR-icon-bubble:nth-child(5) { top: 95%; left: 50%; font-size: 32px; animation-duration: 28s; animation-delay: -15s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(6) { top: 60%; left: 5%; font-size: 20px; animation-duration: 30s; animation-delay: -7s; }
+
+        @keyframes floatIcon {
+            0% { transform: translateY(100px) rotate(0deg) scale(0.8); opacity: 0; }
+            100% { transform: translateY(-120vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* =========================================
+           3. UI COMPONENTS
+           ========================================= */
+        
+        /* Navbar */
+        /* =========================================
+           UPDATED RESPONSIVE NAVBAR CSS
+           ========================================= */
+        .BDGS-T10-PR-navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 0;
+            background: rgba(255, 255, 255, 0.85); /* Slightly more opaque for readability */
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--BDGS-T10-PR-border);
+            transition: all 0.3s ease;
+        }
+
+        /* Flex Container for proper alignment */
+        .BDGS-T10-Nav-Container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Logo Styles */
+        .BDGS-T10-PR-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none !important;
+            z-index: 1001; /* Ensure logo stays above menu */
+        }
+        .BDGS-T10-PR-logo img {
+            height: 40px;
+            width: auto;
+        }
+        .BDGS-T10-PR-logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* DESKTOP MENU WRAPPER */
+        .BDGS-T10-Desktop-Wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Navigation Links */
+        .BDGS-T10-PR-nav-link {
+            font-weight: 600;
+            color: var(--BDGS-T10-PR-text);
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none !important;
+            display: inline-block;
+        }
+        .BDGS-T10-PR-nav-link:hover, .BDGS-T10-PR-nav-link.active {
+            color: var(--BDGS-T10-PR-primary);
+            background: rgba(37, 99, 235, 0.08);
+            transform: translateY(-1px);
+        }
+
+        /* MOBILE MENU TOGGLE */
+        .BDGS-T10-PR-mobile-toggle {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: var(--BDGS-T10-PR-dark);
+            cursor: pointer;
+            padding: 5px;
+            display: none; /* Hidden on large screens */
+            z-index: 1001;
+        }
+
+        /* MOBILE MENU DRAWER */
+        .BDGS-T10-PR-mobile-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 20px;
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform-origin: top;
+            animation: slideDownMenu 0.3s ease-out forwards;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        @media (min-width: 992px) {
+            .BDGS-T10-PR-mobile-menu {
+                display: none !important;
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+        .BDGS-T10-PR-mobile-menu.active {
+            display: flex;
+        }
+
+        .BDGS-T10-PR-mobile-menu a {
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .BDGS-T10-PR-mobile-menu a:hover {
+            background: #f8fafc;
+            color: var(--BDGS-T10-PR-primary);
+            padding-left: 20px; /* Slide effect */
+        }
+
+        /* RESPONSIVE LOGIC (Break at 991px for Tablets) */
+        @media (max-width: 991px) {
+            .BDGS-T10-Desktop-Wrapper {
+                display: none !important; /* Hide Desktop Menu on Tablet/Mobile */
+            }
+            .BDGS-T10-PR-mobile-toggle {
+                display: block !important; /* Show Hamburger */
+            }
+        }
+
+        @keyframes slideDownMenu {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Buttons */
+        .BDGS-T10-PR-btn {
+            border: none;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-btn-primary {
+            background: var(--BDGS-T10-PR-dark);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        }
+        .BDGS-T10-PR-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.4);
+            color: white;
+        }
+        
+        /* Footer Links */
+        .BDGS-T10-PR-footer-link {
+            color: #94A3B8;
+            display: block;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-footer-link:hover {
+            color: var(--BDGS-T10-PR-primary);
+            transform: translateX(5px);
+        }
+        .BDGS-T10-PR-social-icon {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            color: #fff;
+            margin-right: 10px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-social-icon:hover {
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .BDGS-T10-PR-footer-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #fff;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .BDGS-T10-PR-footer-input:focus {
+            outline: none;
+            border-color: var(--BDGS-T10-PR-primary);
+        }
+
+        /* =========================================
+           5. SEARCH HEADER SPECIFIC STYLES
+           ========================================= */
+        
+        .BDGS-T10-SR-header-wrap {
+            padding: 20px 0 50px; /* Increased top padding since Hero is removed */
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .BDGS-T10-SR-glass-banner {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+        }
+
+        .BDGS-T10-SR-title-gradient {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-dark) 0%, var(--BDGS-T10-PR-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .BDGS-T10-SR-breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255,255,255,0.5);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #64748B;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+        }
+        
+        .BDGS-T10-SR-search-input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 50px; /* Pill Shape */
+            padding: 6px 6px 6px 6px;
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            transition: all 0.3s ease;
+        }
+        .BDGS-T10-SR-search-input-group:focus-within {
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+            transform: translateY(-2px);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .BDGS-T10-SR-search-icon {
+            color: var(--BDGS-T10-PR-primary); font-size: 18px; margin-right: 10px;
+        }
+        .BDGS-T10-SR-input {
+            border: none;
+            width: 100%;
+            padding: 12px 0;
+            outline: none;
+            font-size: 16px;
+            color: var(--BDGS-T10-PR-dark);
+            background: transparent;
+            font-weight: 500;
+        }
+        .BDGS-T10-SR-btn-search {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            color: #fff;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        .BDGS-T10-SR-btn-search:hover { 
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Quick Tags */
+        .BDGS-T10-SR-tags-wrapper {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .BDGS-T10-SR-tag-label {
+            font-size: 12px; font-weight: 700; color: #94A3B8; text-transform: uppercase;
+        }
+        .BDGS-T10-SR-tag {
+            background: rgba(255,255,255,0.6);
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--BDGS-T10-PR-text);
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .BDGS-T10-SR-tag:hover {
+            background: #fff;
+            color: var(--BDGS-T10-PR-primary);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        /* RESPONSIVE SEARCH BANNER */
+        @media (max-width: 991px) {
+            .BDGS-T10-SR-glass-banner { padding: 30px 20px; }
+            
+            .BDGS-T10-SR-title-gradient { font-size: 28px; }
+        }
+
+        /* Filter Sidebar */
+        .BDGS-T10-SR-filter-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.04);
+            margin-bottom: 30px;
+        }
+        .BDGS-T10-SR-filter-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Mobile Toggle for Filters */
+        .BDGS-T10-Filter-Toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--BDGS-T10-PR-primary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .BDGS-T10-SR-filter-content {
+            /* Default visible on desktop */
+            display: block; 
+        }
+
+        /* Filter Responsive behavior */
+        @media (max-width: 991px) {
+            .BDGS-T10-Filter-Toggle { display: block; }
+            .BDGS-T10-SR-filter-content { display: none; margin-top: 15px; }
+            .BDGS-T10-SR-filter-content.show { display: block; }
+        }
+
+        .BDGS-T10-SR-filter-group { margin-bottom: 25px; border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; }
+        .BDGS-T10-SR-filter-group:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .BDGS-T10-SR-filter-label {
+            font-size: 13px;
+            color: #94A3B8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* Custom Checkbox */
+        .BDGS-T10-SR-checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #475569;
+            transition: 0.2s;
+        }
+        .BDGS-T10-SR-checkbox-item:hover { color: var(--BDGS-T10-PR-primary); }
+        .BDGS-T10-SR-checkbox-item input {
+            margin-right: 10px;
+            accent-color: var(--BDGS-T10-PR-primary);
+            width: 16px; height: 16px;
+        }
+
+        /* =========================================
+           4. RESULTS GRID STYLES (FIXED)
+           ========================================= */
+
+        /* 4.1 ROW CONTAINER FIX FOR EQUAL HEIGHT */
+       /* =========================================
+           4. RESULTS GRID STYLES (FIXED)
+           ========================================= */
+
+        /* 4.1 ROW CONTAINER FIX FOR EQUAL HEIGHT */
+        #doctor-results-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* Fix for negative margins in BS3 if needed, otherwise optional */
+            margin-right: -15px; 
+            margin-left: -15px;
+        }
+        
+        /* --- NEW FIX: ADDS VERTICAL GAP BETWEEN CARDS --- */
+        #doctor-results-container > div {
+            margin-bottom: 30px; /* This creates the gap between rows */
+        }
+        
+        /* Fix for Bootstrap 3 Clearfix pseudo-elements interfering with Flexbox */
+        #doctor-results-container:before,
+        #doctor-results-container:after {
+            display: none;
+        }
+
+        /* 4.2 CARD STYLES */
+        .BDGS-T10-PR-card-advanced {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 10px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            overflow: hidden;
+            
+            /* HEIGHT 100% FOR DESKTOP/TABLET GRID */
+            height: 100%; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 4.3 MOBILE RESET */
+        @media (max-width: 767px) {
+            #doctor-results-container {
+                display: block; /* Revert flexbox to normal block stacking on mobile */
+            }
+            .BDGS-T10-PR-card-advanced {
+                height: auto; 
+                min-height: auto;
+                /* We don't need margin-bottom here anymore because 
+                   the #doctor-results-container > div rule above handles it now */
+            }
+        }
+
+        .BDGS-T10-PR-card-advanced:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(37, 99, 235, 0.15);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .BDGS-T10-PR-card-top { display: flex; align-items: flex-start; margin-bottom: 20px; }
+        .BDGS-T10-PR-img-frame {
+            width: 85px; height: 85px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-right: 15px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+        .BDGS-T10-PR-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .BDGS-T10-PR-status-indicator {
+            position: absolute; bottom: 0; right: 0;
+            width: 14px; height: 14px;
+            background: #10B981;
+            border: 2px solid #fff; border-radius: 50%; z-index: 2;
+        }
+        .BDGS-T10-PR-doc-info h4 { margin: 5px 0; font-size: 18px; color: var(--BDGS-T10-PR-dark); font-weight: 700; }
+        .BDGS-T10-PR-doc-info span { color: var(--BDGS-T10-PR-primary); font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px; }
+        .BDGS-T10-PR-rating-pill {
+            background: #FEF3C7; color: #D97706; padding: 4px 10px; border-radius: 50px;
+            font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;
+        }
+        .BDGS-T10-PR-stats-row {
+            display: flex; justify-content: space-between;
+            background: #F8FAFC; border-radius: 16px; padding: 15px;
+            margin-bottom: 20px; text-align: center; border: 1px solid #F1F5F9;
+        }
+        .BDGS-T10-PR-stat-col strong { display: block; font-size: 16px; color: var(--BDGS-T10-PR-dark); line-height: 1.2; font-weight: 800; }
+        .BDGS-T10-PR-stat-col span { font-size: 10px; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        .BDGS-T10-PR-card-btns { margin-top: auto; display: flex; gap: 10px; }
+        .BDGS-T10-PR-btn-book {
+            flex: 1; background: var(--BDGS-T10-PR-dark); color: #fff;
+            border: none; padding: 12px; border-radius: 12px;
+            font-weight: 600; font-size: 13px; transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(15, 23, 42, 0.2);
+        }
+        .BDGS-T10-PR-card-advanced:hover .BDGS-T10-PR-btn-book {
+            background: var(--BDGS-T10-PR-primary);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        .BDGS-T10-PR-btn-icon {
+            width: 45px; background: #EFF6FF; color: var(--BDGS-T10-PR-primary);
+            border: none; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s; cursor: pointer;
+            padding:15px;
+        }
+        .BDGS-T10-PR-btn-icon:hover { background: #DBEAFE; transform: scale(1.05); }
+
+        /* LIST VIEW GRID OVERRIDES */
+        /* This class will be toggled on the parent container */
+        .BDGS-T10-List-View .col-md-4, 
+        .BDGS-T10-List-View .col-sm-6 {
+            width: 100%; /* Make full width */
+        }
+
+        .BDGS-T10-List-View .BDGS-T10-PR-card-advanced {
+            flex-direction: row; /* Horizontal Layout */
+            align-items: center;
+            padding: 20px 25px;
+            height: auto;
+            margin-bottom:40px;
+        }
+        
+        .BDGS-T10-List-View .BDGS-T10-PR-card-top {
+            margin-bottom: 0;
+            width: 40%;
+            align-items: center;
+        }
+        
+        .BDGS-T10-List-View .BDGS-T10-PR-img-frame {
+            width: 70px; height: 70px; /* Slightly smaller image in list */
+            margin-right: 20px;
+        }
+        
+        .BDGS-T10-List-View .BDGS-T10-PR-stats-row {
+            margin-bottom: 0;
+            margin: 0 30px;
+            flex: 1;
+            padding: 10px 20px;
+        }
+        
+        .BDGS-T10-List-View .BDGS-T10-PR-card-btns {
+            margin-top: 0;
+            width: 180px;
+        }
+        
+        /* Mobile adjustment for List View */
+        @media (max-width: 991px) {
+            .BDGS-T10-List-View .BDGS-T10-PR-card-advanced {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .BDGS-T10-List-View .BDGS-T10-PR-card-top { width: 100%; }
+            .BDGS-T10-List-View .BDGS-T10-PR-stats-row { width: 100%; margin: 15px 0; }
+            .BDGS-T10-List-View .BDGS-T10-PR-card-btns { width: 100%; }
+        }
+
+        /* View Toggle Buttons */
+        .BDGS-T10-View-Toggle-Btn {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.1);
+            color: #64748B;
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .BDGS-T10-View-Toggle-Btn.active {
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            border-color: var(--BDGS-T10-PR-primary);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+        }
+
+
+        /* Pagination */
+        .BDGS-T10-SR-pagination {
+            display: flex; justify-content: center; gap: 10px; margin-top: 40px;
+        }
+        .BDGS-T10-SR-page-link {
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 12px;
+            background: #fff;
+            color: var(--BDGS-T10-PR-text);
+            font-weight: 600;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-SR-page-link:hover, .BDGS-T10-SR-page-link.active {
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        /* =========================================
+           5. CUSTOM SELECT2 & SWEETALERT STYLES
+           ========================================= */
+        
+        /* Select2 Custom Styles */
+        .select2-container--default .select2-selection--single {
+            background-color: transparent !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 10px !important;
+            height: 40px !important;
+            display: flex !important;
+            align-items: center !important;
+            outline: none !important;
+            transition: all 0.3s ease;
+        }
+        
+        .select2-container--default .select2-selection--single:hover {
+            border-color: var(--BDGS-T10-PR-primary) !important;
+            background-color: rgba(37, 99, 235, 0.05) !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: var(--BDGS-T10-PR-text) !important;
+            font-weight: 600 !important;
+            font-size: 14px !important;
+            padding-left: 15px !important;
+            padding-right: 25px !important;
+            line-height: normal !important;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 38px !important;
+            right: 8px !important;
+        }
+        
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            border-color: #64748B transparent transparent transparent !important;
+        }
+
+        .select2-dropdown {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.6) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1) !important;
+            padding: 8px !important;
+            margin-top: 10px !important;
+            z-index: 9999 !important;
+        }
+
+        .select2-results__option {
+            padding: 10px 15px !important;
+            font-size: 14px !important;
+            border-radius: 10px !important;
+            color: var(--BDGS-T10-PR-text) !important;
+            transition: 0.2s !important;
+            font-weight: 500 !important;
+            margin-bottom: 2px !important;
+        }
+
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #EFF6FF !important; /* Blue tint for selection */
+            color: var(--BDGS-T10-PR-primary) !important;
+        }
+        
+        .select2-container--default .select2-results__option[aria-selected=true] {
+            background-color: #F1F5F9 !important;
+            color: var(--BDGS-T10-PR-dark) !important;
+        }
+
+        .select2-search--dropdown {
+            display: none !important;
+        }
+        
+        .select2-results__option i {
+            margin-right: 8px;
+            color: var(--BDGS-T10-PR-primary);
+            width: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 991px) {
+            .BDGS-T10-SR-header-wrap { padding: 40px 0; }
+            .BDGS-T10-SR-title-gradient { font-size: 28px; }
+            
+            .BDGS-T10-SR-filter-card { margin-top: 20px; margin-bottom: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="BDGS-T10-PR-bg-mesh">
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-1"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-2"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-3"></div>
+    </div>
+
+    <div class="BDGS-T10-PR-bg-icons">
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-heart"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-user-md"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-stethoscope"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-medkit"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-ambulance"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-hospital-o"></i></div>
+    </div>
+
+    <header>
+        <nav class="BDGS-T10-PR-navbar">
+            <div class="container">
+                <div class="BDGS-T10-Nav-Container">
+                    
+                    <a href="#" class="BDGS-T10-PR-logo">
+                        <img src="../assets/img/edited-photo.png" alt="EdgeCare VIP Logo">
+                        <span class="BDGS-T10-PR-logo-text">EdgeCare</span>
+                    </a>
+
+                    <div class="BDGS-T10-Desktop-Wrapper">
+                        <div class="BDGS-T10-Links">
+                            <a href="index.html" class="BDGS-T10-PR-nav-link">Home</a>
+                            <a href="#" class="BDGS-T10-PR-nav-link active">Specialists</a>
+                            <a href="appointment.html" class="BDGS-T10-PR-nav-link">Appointment</a>
+                            <a href="Blog.html" class="BDGS-T10-PR-nav-link">Blog</a>
+                            <a href="aboute.html" class="BDGS-T10-PR-nav-link">About</a>
+                        </div>
+
+                        <div style="width: 170px;">
+                            <select class="BDGS-T10-PR-auth-select" style="width: 100%;">
+                                <option></option>
+                                <option value="Login.html" data-icon="fa-sign-in">Login</option>
+                                <option value="Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                                <option value="Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                            </select>
+                        </div>
+                        <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary">Join</button>
+                    </div>
+
+                    <button class="BDGS-T10-PR-mobile-toggle">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                
+                <div class="BDGS-T10-PR-mobile-menu">
+                    <a href="index.html">Home</a>
+                    <a href="#" style="color: var(--BDGS-T10-PR-primary);">Specialists</a>
+                    <a href="appointment.html">Appointment</a>
+                    <a href="Blog.html">Health Blogs</a>
+                    <a href="aboute.html">About</a>
+                    
+                    <div style="padding: 10px 0;">
+                        <select class="BDGS-T10-PR-auth-select" style="width: 100%;">
+                            <option></option> 
+                            <option value="Login.html" data-icon="fa-sign-in">Login</option>
+                            <option value="Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                            <option value="Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                        </select>
+                    </div>
+                    
+                    <a href="join.html" style="background: var(--BDGS-T10-PR-primary); color: white; text-align: center; border-radius: 8px; justify-content: center;">Join Now</a>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="BDGS-T10-SR-header-wrap" id="search-section">
+            <div class="container">
+                <div class="BDGS-T10-SR-glass-banner">
+                    <div class="row" style="display: flex; align-items: center; flex-wrap: wrap;">
+                        
+                        <div class="col-md-6">
+                            <div class="BDGS-T10-SR-breadcrumb">
+                                <a href="Home.html" style="color: inherit; text-decoration: none;">Home</a> 
+                                <span style="margin: 0 5px; opacity: 0.5;">/</span> 
+                                <span>Find Specialists</span>
+                            </div>
+                            
+                            <h2 class="BDGS-T10-SR-title-gradient">Search Specialist</h2>
+                            
+                            <p style="color: #64748B; font-size: 16px; margin-bottom: 25px; line-height: 1.6;">
+                                Connect with 120+ top-rated doctors available for <span style="color: var(--BDGS-T10-PR-primary); font-weight: 600;">Video Consult</span> or <span style="color: var(--BDGS-T10-PR-purple); font-weight: 600;">In-Clinic</span> visits.
+                            </p>
+
+                            <div class="BDGS-T10-SR-tags-wrapper hidden-xs">
+                                <span class="BDGS-T10-SR-tag-label">Popular:</span>
+                                <span class="BDGS-T10-SR-tag">Cardiology</span>
+                                <span class="BDGS-T10-SR-tag">Dermatology</span>
+                                <span class="BDGS-T10-SR-tag">Pediatrics</span>
+                                <span class="BDGS-T10-SR-tag">Covid-19</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div style="background: rgba(255,255,255,0.5); padding: 10px; border-radius: 60px; backdrop-filter: blur(10px);">
+                                <div class="BDGS-T10-SR-search-input-group">
+                                    <i class="fa fa-search BDGS-T10-SR-search-icon"></i>
+                                    <input type="text" id="search-input" class="BDGS-T10-SR-input" placeholder="Search doctor, condition, or specialty...">
+                                    <button id="search-btn" class="BDGS-T10-SR-btn-search">Search</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="padding-bottom: 60px;">
+            <div class="row">
+                
+                <div class="col-md-3">
+                    <div class="BDGS-T10-SR-filter-card">
+                        <div class="BDGS-T10-SR-filter-title">
+                            Filters 
+                            <button class="BDGS-T10-Filter-Toggle" id="mobileFilterToggle">Show/Hide</button>
+                            <a href="#" id="reset-filters" style="font-size: 12px; color: var(--BDGS-T10-PR-primary); text-decoration: none;" class="hidden-sm hidden-xs">Reset</a>
+                        </div>
+
+                        <div class="BDGS-T10-SR-filter-content" id="filterContent">
+                            
+                            <div class="BDGS-T10-SR-filter-group">
+                                <span class="BDGS-T10-SR-filter-label">Specialty</span>
+                                <label class="BDGS-T10-SR-checkbox-item">
+                                    <input type="checkbox" value="Cardiologist" class="filter-specialty"> Cardiology
+                                </label>
+                                <label class="BDGS-T10-SR-checkbox-item">
+                                    <input type="checkbox" value="Neurologist" class="filter-specialty"> Neurology
+                                </label>
+                                <label class="BDGS-T10-SR-checkbox-item">
+                                    <input type="checkbox" value="Dermatologist" class="filter-specialty"> Dermatology
+                                </label>
+                                <label class="BDGS-T10-SR-checkbox-item">
+                                    <input type="checkbox" value="Orthopedic" class="filter-specialty"> Orthopedics
+                                </label>
+                                <label class="BDGS-T10-SR-checkbox-item">
+                                    <input type="checkbox" value="Pediatrician" class="filter-specialty"> Pediatrics
+                                </label>
+                            </div>
+
+                            <div class="BDGS-T10-SR-filter-group">
+                                <span class="BDGS-T10-SR-filter-label">Availability</span>
+                                <label class="BDGS-T10-SR-checkbox-item">
+                                    <input type="checkbox" value="Available Today" class="filter-availability"> Available Today
+                                </label>
+                                <label class="BDGS-T10-SR-checkbox-item">
+                                    <input type="checkbox" value="Available Tomorrow" class="filter-availability"> Available Tomorrow
+                                </label>
+                            </div>
+
+                            <div class="BDGS-T10-SR-filter-group">
+                                <span class="BDGS-T10-SR-filter-label">Gender</span>
+                                <label class="BDGS-T10-SR-checkbox-item">
+                                    <input type="checkbox" value="Male" class="filter-gender"> Male
+                                </label>
+                                <label class="BDGS-T10-SR-checkbox-item">
+                                    <input type="checkbox" value="Female" class="filter-gender"> Female
+                                </label>
+                            </div>
+
+                            <div class="BDGS-T10-SR-filter-group">
+                                <span class="BDGS-T10-SR-filter-label">Type</span>
+                                <label class="BDGS-T10-SR-checkbox-item">
+                                    <input type="checkbox" value="Video Consult" class="filter-type"> Video Consult
+                                </label>
+                                <label class="BDGS-T10-SR-checkbox-item">
+                                    <input type="checkbox" value="In-Clinic Visit" class="filter-type"> In-Clinic Visit
+                                </label>
+                            </div>
+
+                            <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="width: 100%;" id="btnApplyFilters">Apply Filters</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 10px;">
+                        <div style="font-size: 14px; font-weight: 600; color: #64748B;">Showing <span id="showing-count">1-15</span> of <span id="total-count">15</span> Results</div>
+                        
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div class="hidden-xs" style="display: flex; gap: 5px;">
+                                <button class="BDGS-T10-View-Toggle-Btn active" id="view-grid" title="Grid View">
+                                    <i class="fa fa-th-large"></i>
+                                </button>
+                                <button class="BDGS-T10-View-Toggle-Btn" id="view-list" title="List View">
+                                    <i class="fa fa-list"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="hidden-xs" style="width: 1px; height: 25px; background: rgba(0,0,0,0.1);"></div>
+
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="font-size: 14px; color: #64748B;">Sort:</span>
+                                <select class="BDGS-T10-SR-sort-select" id="sort-select" style="width: 180px;">
+                                    <option value="recommended">Recommended</option>
+                                    <option value="rating_high"><i class="fa-solid fa-arrow-up"></i> Rated</option>
+                                    <option value="exp_high"> <i class="fa-solid fa-sort"></i> Experience</option>
+                                    <option value="fee_low"><i class="fa-solid fa-arrow-down"></i> Fee:</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="doctor-results-container">
+                        </div>
+
+                    <div id="no-results-message" class="text-center" style="display: none; padding: 50px;">
+                         <i class="fa fa-search" style="font-size: 50px; color: #cbd5e1; margin-bottom: 20px;"></i>
+                         <h3 style="color: var(--BDGS-T10-PR-dark);">No doctors found</h3>
+                         <p style="color: #64748B;">Try adjusting your search terms or filters.</p>
+                    </div>
+
+                    <div class="BDGS-T10-SR-pagination">
+                        <a href="#" class="BDGS-T10-SR-page-link"><i class="fa fa-angle-left"></i></a>
+                        <a href="#" class="BDGS-T10-SR-page-link active">1</a>
+                        <a href="#" class="BDGS-T10-SR-page-link">2</a>
+                        <a href="#" class="BDGS-T10-SR-page-link">3</a>
+                        <a href="#" class="BDGS-T10-SR-page-link"><i class="fa fa-angle-right"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #0F172A; color: white; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 40px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <i style="font-size: 24px; color: var(--BDGS-T10-PR-primary);" ><img src="../assets/img/edited-photo.png" alt="brandLogo" width="45px"></i>
+                        <span style="font-size: 24px; font-weight: 800;">EdgeCare</span>
+                    </div>
+                    <p style="color: #94A3B8; line-height: 1.6; margin-bottom: 25px;">
+                        Revolutionizing healthcare access with cutting-edge technology and a patient-first approach. Your health, our priority.
+                    </p>
+                    <div style="display: flex; gap: 5px;">
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Company</h5>
+                    <a href="aboute.html" class="BDGS-T10-PR-footer-link">About Us</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Careers</a>
+                    <a href="review.html" class="BDGS-T10-PR-footer-link">Review</a>
+                    <a href="Blog.html" class="BDGS-T10-PR-footer-link">Blog</a>
+                    <a href="contact.html" class="BDGS-T10-PR-footer-link">Contact</a>
+                </div>
+
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Services</h5>
+                    <a href="find_doc.html" class="BDGS-T10-PR-footer-link">Find Doctors</a>
+                    <a href="Coupon.html" class="BDGS-T10-PR-footer-link">Coupon</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Job Post</a>
+                    <a href="How_it.html" class="BDGS-T10-PR-footer-link">How it work</a>
+                    <a href="Faq.html" class="BDGS-T10-PR-footer-link">FAQ</a>
+                    <a href="Get_match.html" class="BDGS-T10-PR-footer-link">Get Match</a>
+                </div>
+
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Stay Updated</h5>
+                    <p style="color: #94A3B8; font-size: 14px; margin-bottom: 15px;">Subscribe to our newsletter for the latest health tips and updates.</p>
+                    <form>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Enter your email" class="BDGS-T10-PR-footer-input">
+                            <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="padding: 12px 20px; border-radius: 8px;">Go</button>
+                        </div>
+                    </form>
+
+                    <div style="margin-top: 25px;">
+                        <h5 style="color: #fff; margin-bottom: 15px; font-size: 14px;">Get the App</h5>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-apple" style="font-size: 22px;"></i>
+                            </a>
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-android" style="font-size: 20px;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="color: #64748B; margin: 0; font-size: 14px;">&copy; 2026 EdgeCare. All rights reserved.</p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <a href="#" style="color: #64748B; font-size: 14px;">Privacy Policy</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Terms of Service</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        // Mobile Toggle Logic
+        // Mobile Toggle Logic
+        const mobileToggle = document.querySelector('.BDGS-T10-PR-mobile-toggle');
+        const mobileMenu = document.querySelector('.BDGS-T10-PR-mobile-menu');
+
+        if (mobileToggle && mobileMenu) {
+            mobileToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                
+                // Optional: Change icon from bars to times (X)
+                const icon = mobileToggle.querySelector('i');
+                if(mobileMenu.classList.contains('active')){
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        // Initialize Select2 & SweetAlert Interactions
+        $(document).ready(function() {
+            // INITIALIZE SELECT2 WITH CUSTOM FORMATTING FOR AUTH DROPDOWN
+            $('.BDGS-T10-PR-auth-select').select2({
+                minimumResultsForSearch: Infinity, // Hides the search box
+                placeholder: "My Account",
+                allowClear: false,
+                templateSelection: function(data) {
+                      // Custom formatting for the selected item view (placeholder look)
+                      if (!data.id) { 
+                          return $('<span style="color:#334155;"><i class="fa fa-user-circle-o" style="margin-right:8px; color:var(--BDGS-T10-PR-primary);"></i> My Account</span>');
+                      }
+                      // Use the icon from the option data attribute
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '" style="margin-right:8px; color:var(--BDGS-T10-PR-primary);"></i> ' + data.text + '</span>');
+                },
+                templateResult: function(data) {
+                      if (!data.id) { return data.text; }
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '"></i> ' + data.text + '</span>');
+                }
+            });
+
+            // Handle Page Redirect on Select for Auth Dropdown
+            $('.BDGS-T10-PR-auth-select').on('select2:select', function (e) {
+                var url = e.params.data.id;
+                if(url) {
+                    window.location.href = url;
+                }
+            });
+
+            // Select2 Initialization with Theme Settings for Sort
+            $('.BDGS-T10-SR-sort-select').select2({
+                minimumResultsForSearch: Infinity, // Disable Search Box
+                width: '100%' // Responsive Width
+            });
+
+            // Mobile Filter Toggle Logic
+            $('#mobileFilterToggle').on('click', function() {
+                $('#filterContent').toggleClass('show');
+            });
+
+            // --- Grid/List View Toggle Logic ---
+            $('#view-grid').on('click', function() {
+                $('.BDGS-T10-View-Toggle-Btn').removeClass('active');
+                $(this).addClass('active');
+                $('#doctor-results-container').removeClass('BDGS-T10-List-View');
+            });
+
+            $('#view-list').on('click', function() {
+                $('.BDGS-T10-View-Toggle-Btn').removeClass('active');
+                $(this).addClass('active');
+                $('#doctor-results-container').addClass('BDGS-T10-List-View');
+            });
+
+
+            // ==========================================
+            // SEARCH & RESULT RENDERING LOGIC
+            // ==========================================
+            
+            // 1. Mock Database (Expanded to 15 entries)
+            const doctorsDB = [
+                {
+                    id: 1,
+                    name: "Dr. James Wilson",
+                    specialty: "Neurologist",
+                    specialtyColor: "", 
+                    rating: 4.9,
+                    years: 12,
+                    patients: "2.5k",
+                    fee: 150,
+                    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200",
+                    status: "online", 
+                    statusColor: "#10B981",
+                    gender: "Male",
+                    type: ["Video Consult", "In-Clinic Visit"],
+                    availability: ["Today", "Tomorrow"]
+                },
+                {
+                    id: 2,
+                    name: "Dr. Olivia Martinez",
+                    specialty: "Cardiologist",
+                    specialtyColor: "#EC4899",
+                    rating: 5.0,
+                    years: 14,
+                    patients: "5k+",
+                    fee: 200,
+                    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200",
+                    status: "offline",
+                    statusColor: "#CBD5E1",
+                    gender: "Female",
+                    type: ["In-Clinic Visit"],
+                    availability: ["Tomorrow"]
+                },
+                {
+                    id: 3,
+                    name: "Dr. William Scott",
+                    specialty: "Dermatologist",
+                    specialtyColor: "#F59E0B",
+                    rating: 4.7,
+                    years: 7,
+                    patients: "1.5k",
+                    fee: 120,
+                    image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200",
+                    status: "online",
+                    statusColor: "#10B981",
+                    gender: "Male",
+                    type: ["Video Consult"],
+                    availability: ["Today"]
+                },
+                {
+                    id: 4,
+                    name: "Dr. Emily Chen",
+                    specialty: "Pediatrician",
+                    specialtyColor: "#8B5CF6",
+                    rating: 4.8,
+                    years: 9,
+                    patients: "3k+",
+                    fee: 130,
+                    image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=200",
+                    status: "online",
+                    statusColor: "#10B981",
+                    gender: "Female",
+                    type: ["Video Consult", "In-Clinic Visit"],
+                    availability: ["Today", "Tomorrow"]
+                },
+                {
+                    id: 5,
+                    name: "Dr. Michael Ross",
+                    specialty: "Orthopedic",
+                    specialtyColor: "#EF4444",
+                    rating: 4.6,
+                    years: 11,
+                    patients: "2k+",
+                    fee: 180,
+                    image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=200",
+                    status: "offline",
+                    statusColor: "#CBD5E1",
+                    gender: "Male",
+                    type: ["In-Clinic Visit"],
+                    availability: ["Tomorrow"]
+                },
+                {
+                    id: 6,
+                    name: "Dr. Sarah Lee",
+                    specialty: "Psychiatrist",
+                    specialtyColor: "#06B6D4",
+                    rating: 5.0,
+                    years: 15,
+                    patients: "4k+",
+                    fee: 160,
+                    image: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&q=80&w=200",
+                    status: "online",
+                    statusColor: "#10B981",
+                    gender: "Female",
+                    type: ["Video Consult"],
+                    availability: ["Today", "Tomorrow"]
+                },
+                {
+                    id: 7,
+                    name: "City Care Clinic",
+                    specialty: "General Clinic",
+                    specialtyColor: "#2563EB",
+                    rating: 4.5,
+                    years: 20,
+                    patients: "10k+",
+                    fee: 50,
+                    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=200",
+                    status: "online",
+                    statusColor: "#10B981",
+                    gender: "Male", // Placeholder for Clinic
+                    type: ["In-Clinic Visit"],
+                    availability: ["Today"]
+                },
+                {
+                    id: 8,
+                    name: "Dr. Elizabeth Taylor",
+                    specialty: "Dermatologist",
+                    specialtyColor: "#F59E0B",
+                    rating: 4.9,
+                    years: 8,
+                    patients: "1.8k",
+                    fee: 140,
+                    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200&h=200",
+                    status: "online",
+                    statusColor: "#10B981",
+                    gender: "Female",
+                    type: ["Video Consult", "In-Clinic Visit"],
+                    availability: ["Today", "Tomorrow"]
+                },
+                {
+                    id: 9,
+                    name: "Dr. James Anderson",
+                    specialty: "Orthopedic",
+                    specialtyColor: "#EF4444",
+                    rating: 4.7,
+                    years: 13,
+                    patients: "2.2k",
+                    fee: 190,
+                    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200&h=200",
+                    status: "offline",
+                    statusColor: "#CBD5E1",
+                    gender: "Male",
+                    type: ["In-Clinic Visit"],
+                    availability: ["Tomorrow"]
+                },
+                {
+                    id: 10,
+                    name: "Dr. Sophia Martinez",
+                    specialty: "Pediatrician",
+                    specialtyColor: "#8B5CF6",
+                    rating: 5.0,
+                    years: 10,
+                    patients: "3.5k",
+                    fee: 135,
+                    image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=200&h=200",
+                    status: "online",
+                    statusColor: "#10B981",
+                    gender: "Female",
+                    type: ["Video Consult"],
+                    availability: ["Today", "Tomorrow"]
+                },
+                {
+                    id: 11,
+                    name: "Dr. Daniel Thomas",
+                    specialty: "Neurologist",
+                    specialtyColor: "",
+                    rating: 4.8,
+                    years: 16,
+                    patients: "2.8k",
+                    fee: 220,
+                    image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=200&h=200",
+                    status: "offline",
+                    statusColor: "#CBD5E1",
+                    gender: "Male",
+                    type: ["In-Clinic Visit"],
+                    availability: ["Tomorrow"]
+                },
+                {
+                    id: 12,
+                    name: "Dr. Linda Garcia",
+                    specialty: "Cardiologist",
+                    specialtyColor: "#EC4899",
+                    rating: 4.9,
+                    years: 18,
+                    patients: "6k+",
+                    fee: 250,
+                    image: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&q=80&w=200&h=200",
+                    status: "online",
+                    statusColor: "#10B981",
+                    gender: "Female",
+                    type: ["Video Consult", "In-Clinic Visit"],
+                    availability: ["Today"]
+                },
+                {
+                    id: 13,
+                    name: "Dr. Christopher Lee",
+                    specialty: "Dentist",
+                    specialtyColor: "#06B6D4",
+                    rating: 4.6,
+                    years: 6,
+                    patients: "1.2k",
+                    fee: 100,
+                    image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200&h=200",
+                    status: "online",
+                    statusColor: "#10B981",
+                    gender: "Male",
+                    type: ["In-Clinic Visit"],
+                    availability: ["Today", "Tomorrow"]
+                },
+                {
+                    id: 14,
+                    name: "Dr. Patricia Wilson",
+                    specialty: "Ophthalmologist",
+                    specialtyColor: "#2563EB",
+                    rating: 4.7,
+                    years: 9,
+                    patients: "2.1k",
+                    fee: 110,
+                    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200&h=200",
+                    status: "offline",
+                    statusColor: "#CBD5E1",
+                    gender: "Female",
+                    type: ["In-Clinic Visit"],
+                    availability: ["Tomorrow"]
+                },
+                {
+                    id: 15,
+                    name: "Dr. Anthony Brown",
+                    specialty: "General Physician",
+                    specialtyColor: "#7C3AED",
+                    rating: 4.5,
+                    years: 5,
+                    patients: "1.0k",
+                    fee: 80,
+                    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200&h=200",
+                    status: "online",
+                    statusColor: "#10B981",
+                    gender: "Male",
+                    type: ["Video Consult"],
+                    availability: ["Today"]
+                }
+            ];
+
+            // 2. Initial Data Load
+            let currentData = [...doctorsDB];
+            renderDoctors(currentData);
+            
+            // Check URL Params for initial search
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Home page se aa raha param: ?q=Neurology
+            const query = urlParams.get('q');
+
+            if (query) {
+                // Search input me value set karo
+                $('#search-input').val(query);
+
+                // Specialty checkbox auto-check
+                $('.filter-specialty').each(function () {
+                    if ($(this).val().toLowerCase() === query.toLowerCase()) {
+                        $(this).prop('checked', true);
+                    }
+                });
+
+                // Filter trigger
+                filterData();
+            }
+            
+
+            // 3. Render Function
+            function renderDoctors(data) {
+                const $container = $('#doctor-results-container');
+                $container.empty();
+
+                if (data.length > 0) {
+                    $('#no-results-message').hide();
+                    
+                    data.forEach(doc => {
+                        const statusStyle = `background: ${doc.statusColor};`;
+                        const specialtyStyle = doc.specialtyColor ? `color: ${doc.specialtyColor};` : '';
+
+                        const cardHtml = `
+                        <div class="col-md-4 col-sm-6">
+                            <div class="BDGS-T10-PR-card-advanced">
+                                <div class="BDGS-T10-PR-card-top">
+                                    <a href="member_pro.html" style="text-decoration:none;">
+                                        <div class="BDGS-T10-PR-img-frame">
+                                            <img src="${doc.image}" alt="${doc.name}">
+                                            <div class="BDGS-T10-PR-status-indicator" style="${statusStyle}" title="${doc.status}"></div>
+                                        </div>
+                                    </a>
+                                    <div class="BDGS-T10-PR-doc-info">
+                                        <div class="BDGS-T10-PR-rating-pill"><i class="fa fa-star"></i> ${doc.rating}</div>
+                                        <h4>
+                                            <a href="member_pro.html" style="color: inherit; text-decoration: none;">
+                                                ${doc.name} <i class="fa fa-check-circle" style="color:var(--BDGS-T10-PR-primary); font-size:14px;"></i>
+                                            </a>
+                                        </h4>
+                                        <span style="${specialtyStyle}">${doc.specialty}</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="BDGS-T10-PR-stats-row">
+                                    <div class="BDGS-T10-PR-stat-col"><strong>${doc.years}+</strong><span>Years</span></div>
+                                    <div class="BDGS-T10-PR-stat-col"><strong>${doc.patients}</strong><span>Patients</span></div>
+                                    <div class="BDGS-T10-PR-stat-col"><strong>$${doc.fee}</strong><span>Fee</span></div>
+                                </div>
+                                <div class="BDGS-T10-PR-card-btns">
+                                    <button class="BDGS-T10-PR-btn-book">Book Now</button>
+                                    <a href="member_pro.html">
+                                        <button class="BDGS-T10-PR-btn-icon"><i class="fa fa-comment-o"></i></button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                        $container.append(cardHtml);
+                    });
+                } else {
+                    $('#no-results-message').show();
+                }
+                
+                // Update Counts
+                $('#total-count').text(data.length);
+                $('#showing-count').text(data.length > 0 ? `1-${data.length}` : '0');
+            }
+             function filterData() {
+
+                const rawSearch = $('#search-input').val().toLowerCase().trim();
+
+                // Get checked filters
+                const specialties = $('.filter-specialty:checked').map(function () {
+                    return this.value.toLowerCase();
+                }).get();
+
+                const availability = $('.filter-availability:checked').map(function () {
+                    return this.value;
+                }).get();
+
+                const genders = $('.filter-gender:checked').map(function () {
+                    return this.value;
+                }).get();
+
+                const types = $('.filter-type:checked').map(function () {
+                    return this.value;
+                }).get();
+
+                const sortOption = $('#sort-select').val();
+
+                let filtered = doctorsDB.filter(doc => {
+
+                    /* ---------------- SEARCH MATCH ---------------- */
+                    let matchesSearch = true;
+
+                    if (rawSearch) {
+                    const docName = doc.name.toLowerCase();
+                    const docSpecialty = doc.specialty.toLowerCase();
+
+                    matchesSearch =
+                        docName.includes(rawSearch) ||
+                        docSpecialty.includes(rawSearch);
+
+                    // Alias check
+                    Object.keys(specialtyAliases).forEach(key => {
+                        if (rawSearch.includes(key)) {
+                        specialtyAliases[key].forEach(alias => {
+                            if (docSpecialty.includes(alias)) {
+                            matchesSearch = true;
+                            }
+                        });
+                        }
+                    });
+                    }
+
+                    /* ---------------- FILTER MATCHES ---------------- */
+                    const matchesSpecialty =
+                    specialties.length === 0 || specialties.includes(doc.specialty.toLowerCase());
+
+                    const matchesAvailability =
+                    availability.length === 0 ||
+                    availability.some(a => doc.availability.includes(a.replace('Available ', '')));
+
+                    const matchesGender =
+                    genders.length === 0 || genders.includes(doc.gender);
+
+                    const matchesType =
+                    types.length === 0 || types.some(t => doc.type.includes(t));
+
+                    return (
+                    matchesSearch &&
+                    matchesSpecialty &&
+                    matchesAvailability &&
+                    matchesGender &&
+                    matchesType
+                    );
+                });
+
+                /* ---------------- SORTING ---------------- */
+                if (sortOption === 'rating_high') {
+                    filtered.sort((a, b) => b.rating - a.rating);
+                } else if (sortOption === 'exp_high') {
+                    filtered.sort((a, b) => b.years - a.years);
+                } else if (sortOption === 'fee_low') {
+                    filtered.sort((a, b) => a.fee - b.fee);
+                }
+
+                renderDoctors(filtered);
+                }
+                const specialtyAliases = {
+                cardiology: ['cardiologist', 'cardio', 'heart'],
+                neurology: ['neurologist', 'neuro', 'brain'],
+                pediatrics: ['pediatrician', 'child', 'kids'],
+                dermatology: ['dermatologist', 'skin'],
+                orthopedics: ['orthopedic', 'bone', 'joint']
+                };
+
+
+            // 5. Event Listeners for Filters
+            $('#btnApplyFilters').on('click', function() {
+                filterData();
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Filters applied successfully'
+                })
+            });
+
+            // Live search
+            $('#search-input').on('keyup', function() {
+                filterData();
+            });
+            $('#search-btn').on('click', function() {
+                filterData();
+            });
+
+            // Sorting change
+            $('#sort-select').on('change', function() {
+                filterData();
+            });
+
+            // Reset
+            $('#reset-filters').on('click', function(e) {
+                e.preventDefault();
+                $('input[type="checkbox"]').prop('checked', false);
+                $('#search-input').val('');
+                $('#sort-select').val('recommended').trigger('change');
+                filterData();
+            });
+
+            // Tag Click
+            $('.BDGS-T10-SR-tag').on('click', function() {
+                var tagName = $(this).text();
+                $('#search-input').val(tagName);
+                filterData();
+            });
+
+            // --- SweetAlert Events (Re-attached after dynamic rendering) ---
+            $('#doctor-results-container').on('click', '.BDGS-T10-PR-btn-book', function(e) {
+                e.preventDefault();
+                var doctorName = $(this).closest('.BDGS-T10-PR-card-advanced').find('h4').clone().children().remove().end().text().trim();
+
+                Swal.fire({
+                    title: 'Confirm Booking?',
+                    text: "You are about to book an appointment with " + doctorName,
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#2563EB',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Book it!',
+                    background: '#fff',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            'Booked!',
+                            'Your appointment request has been sent.',
+                            'success'
+                        )
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EdgeCare VIP – Exclusive Offers</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 4.7 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <style>
+        /* =========================================
+           1. CORE THEME VARIABLES (REUSED)
+           ========================================= */
+        :root {
+            --BDGS-T10-PR-primary:   #2563EB; /* Royal Blue */
+            --BDGS-T10-PR-accent:    #06B6D4; /* Cyan */
+            --BDGS-T10-PR-purple:    #7C3AED; /* Deep Purple */
+            --BDGS-T10-PR-dark:      #0F172A; /* Slate 900 */
+            --BDGS-T10-PR-text:      #334155; /* Slate 700 */
+            
+            --BDGS-T10-PR-glass:       rgba(255, 255, 255, 0.65);
+            --BDGS-T10-PR-glass-str: rgba(255, 255, 255, 0.85);
+            --BDGS-T10-PR-border:    rgba(255, 255, 255, 0.4);
+            
+            /* Coupon Specific */
+            --BDGS-T10-PR-gold:      #F59E0B;
+            --BDGS-T10-PR-gold-grad: linear-gradient(135deg, #F59E0B, #D97706);
+            --BDGS-T10-PR-success:   #10B981;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--BDGS-T10-PR-text);
+            overflow-x: hidden;
+            padding-top: 80px;
+            background: #F0F9FF;
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* =========================================
+           2. BACKGROUND & ANIMATIONS
+           ========================================= */
+        .BDGS-T10-PR-bg-mesh {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -2; background: #ffffff; overflow: hidden;
+        }
+        .BDGS-T10-PR-orb {
+            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.7;
+            animation: meshFloat 20s infinite alternate ease-in-out;
+        }
+        .BDGS-T10-PR-orb-1 { width: 800px; height: 800px; background: radial-gradient(circle, rgba(124, 58, 237, 0.25), transparent 70%); top: -20%; left: -10%; }
+        .BDGS-T10-PR-orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .BDGS-T10-PR-orb-3 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%); top: 40%; left: 40%; animation-duration: 25s; }
+
+        @keyframes meshFloat {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(10deg); }
+            100% { transform: translate(-30px, -20px) rotate(-5deg); }
+        }
+
+        /* =========================================
+           3. NAVBAR (UPDATED FROM HOME PAGE)
+           ========================================= */
+        .BDGS-T10-PR-navbar {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 12px 0;
+            background: rgba(255, 255, 255, 0.7); /* Matched Home Page opacity */
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--BDGS-T10-PR-border);
+            transition: all 0.3s ease;
+        }
+        .BDGS-T10-PR-logo {
+            display: flex; align-items: center; gap: 10px; text-decoration: none !important;
+        }
+        .BDGS-T10-PR-logo i, .BDGS-T10-PR-logo img {
+            font-size: 28px;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .BDGS-T10-PR-logo-text {
+            font-size: 22px; font-weight: 800;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .BDGS-T10-PR-nav-link {
+            font-weight: 600; color: var(--BDGS-T10-PR-text); padding: 8px 18px;
+            font-size: 14px; border-radius: 12px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none !important; display: inline-block; margin: 0 2px;
+        }
+        .BDGS-T10-PR-nav-link:hover {
+            color: var(--BDGS-T10-PR-primary); background: rgba(37, 99, 235, 0.08);
+            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+        .BDGS-T10-PR-btn {
+            border: none; padding: 10px 24px; border-radius: 10px;
+            font-weight: 600; font-size: 13px; transition: 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .BDGS-T10-PR-btn-primary {
+            background: var(--BDGS-T10-PR-dark); color: white;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        }
+        .BDGS-T10-PR-btn-primary:hover {
+            transform: translateY(-3px); color: white;
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.4);
+        }
+        
+        /* Mobile Menu Styles */
+        .BDGS-T10-PR-mobile-toggle {
+            background: transparent; border: none; font-size: 24px; color: var(--BDGS-T10-PR-dark);
+            cursor: pointer; padding: 5px;
+        }
+        .BDGS-T10-PR-mobile-menu {
+            position: absolute; top: 100%; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px;
+            display: none; flex-direction: column; gap: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform-origin: top; animation: slideDownMenu 0.3s ease-out forwards;
+        }
+        .BDGS-T10-PR-mobile-menu.active { display: flex; }
+        .BDGS-T10-PR-mobile-menu a {
+            padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+            color: var(--BDGS-T10-PR-dark); font-weight: 600; font-size: 16px; text-decoration: none;
+        }
+        @keyframes slideDownMenu {
+            from { opacity: 0; transform: scaleY(0); }
+            to { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* =========================================
+           4. COUPON PAGE SPECIFIC STYLES
+           ========================================= */
+        
+        /* 4.1 Hero Section */
+        .BDGS-T10-PR-coupon-hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+        }
+        .BDGS-T10-PR-hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px; background: rgba(16, 185, 129, 0.1);
+            color: #059669; border-radius: 50px; font-weight: 700;
+            font-size: 12px; text-transform: uppercase; margin-bottom: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .BDGS-T10-PR-hero-title {
+            font-size: 52px; line-height: 1.1; margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-dark), var(--BDGS-T10-PR-primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        
+        /* 4.2 Sticky Filter Bar */
+        .BDGS-T10-PR-filter-container {
+            position: -webkit-sticky; position: sticky; top: 80px; z-index: 900;
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0;
+            transition: 0.3s;
+        }
+        .BDGS-T10-PR-filter-scroll {
+            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px;
+            -ms-overflow-style: none; scrollbar-width: none;
+        }
+        .BDGS-T10-PR-filter-scroll::-webkit-scrollbar { display: none; }
+        
+        .BDGS-T10-PR-filter-pill {
+            padding: 10px 20px; border-radius: 50px; font-size: 14px; font-weight: 600;
+            background: white; border: 1px solid rgba(0,0,0,0.1); color: #64748B;
+            cursor: pointer; transition: 0.3s; white-space: nowrap;
+        }
+        .BDGS-T10-PR-filter-pill.active, .BDGS-T10-PR-filter-pill:hover {
+            background: var(--BDGS-T10-PR-primary); color: white; border-color: var(--BDGS-T10-PR-primary);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        /* 4.3 Coupon Card (Complex Glassmorphism) */
+        .BDGS-T10-PR-coupon-col {
+            margin-bottom: 30px;
+            display: flex;
+        }
+        .BDGS-T10-PR-coupon-card {
+            background: #fff;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; flex-direction: column;
+            width: 100%;
+        }
+        .BDGS-T10-PR-coupon-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
+        }
+
+        /* The "Punch Out" Effect */
+        .BDGS-T10-PR-coupon-card::before, .BDGS-T10-PR-coupon-card::after {
+            content: ''; position: absolute; top: 130px; width: 20px; height: 20px;
+            background: #F0F9FF; /* Matches body bg */
+            border-radius: 50%; z-index: 2;
+        }
+        .BDGS-T10-PR-coupon-card::before { left: -10px; }
+        .BDGS-T10-PR-coupon-card::after { right: -10px; }
+
+        .BDGS-T10-PR-coupon-top {
+            background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+            padding: 25px; text-align: center;
+            border-bottom: 2px dashed rgba(37, 99, 235, 0.2);
+            position: relative;
+        }
+        .BDGS-T10-PR-offer-badge {
+            font-size: 32px; font-weight: 800; color: var(--BDGS-T10-PR-primary);
+            display: block; line-height: 1; margin-bottom: 5px;
+        }
+        .BDGS-T10-PR-offer-sub {
+            font-size: 13px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 1px;
+        }
+        
+        .BDGS-T10-PR-coupon-body {
+            padding: 25px; flex: 1; display: flex; flex-direction: column;
+            background: rgba(255,255,255,0.8); backdrop-filter: blur(10px);
+        }
+        .BDGS-T10-PR-service-tag {
+            display: inline-block; font-size: 11px; font-weight: 700;
+            color: white; padding: 4px 10px; border-radius: 4px;
+            background: var(--BDGS-T10-PR-dark); margin-bottom: 12px; align-self: flex-start;
+        }
+        .BDGS-T10-PR-service-tag.purple { background: var(--BDGS-T10-PR-purple); }
+        .BDGS-T10-PR-service-tag.cyan { background: var(--BDGS-T10-PR-accent); }
+        
+        .BDGS-T10-PR-coupon-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--BDGS-T10-PR-dark); }
+        .BDGS-T10-PR-coupon-desc { font-size: 14px; color: #64748B; margin-bottom: 15px; line-height: 1.5; }
+        
+        .BDGS-T10-PR-coupon-footer {
+            margin-top: auto;
+        }
+        .BDGS-T10-PR-code-box {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #F8FAFC; border: 1px dashed #CBD5E1;
+            padding: 8px 12px; border-radius: 8px; margin-bottom: 15px;
+            cursor: pointer; transition: 0.2s;
+        }
+        .BDGS-T10-PR-code-box:hover { background: #fff; border-color: var(--BDGS-T10-PR-primary); }
+        .BDGS-T10-PR-code-text { font-family: 'Courier New', monospace; font-weight: 700; font-size: 16px; color: var(--BDGS-T10-PR-dark); letter-spacing: 1px; }
+        .BDGS-T10-PR-copy-icon { color: var(--BDGS-T10-PR-primary); font-size: 14px; }
+        
+        .BDGS-T10-PR-btn-apply {
+            width: 100%; background: var(--BDGS-T10-PR-primary); color: white;
+            border: none; padding: 12px; border-radius: 10px; font-weight: 600;
+            transition: 0.3s;
+        }
+        .BDGS-T10-PR-btn-apply:hover { background: var(--BDGS-T10-PR-dark); }
+
+        /* 4.4 VIP Highlight Section */
+        .BDGS-T10-PR-vip-section {
+            background: var(--BDGS-T10-PR-dark);
+            margin: 60px 0; border-radius: 30px; padding: 0;
+            position: relative; overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.3);
+        }
+        .BDGS-T10-PR-vip-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, #334155, #0F172A);
+            z-index: 1;
+        }
+        .BDGS-T10-PR-vip-content {
+            position: relative; z-index: 5; padding: 60px; color: white;
+        }
+        .BDGS-T10-PR-vip-gold-text {
+            background: var(--BDGS-T10-PR-gold-grad);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+        }
+        .BDGS-T10-PR-vip-btn {
+            background: var(--BDGS-T10-PR-gold-grad); color: white;
+            padding: 15px 35px; border-radius: 50px; border: none; font-weight: 700;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3); transition: 0.3s;
+        }
+        .BDGS-T10-PR-vip-btn:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4); }
+
+        /* 4.5 How It Works */
+        .BDGS-T10-PR-step-circle {
+            width: 60px; height: 60px; background: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; color: var(--BDGS-T10-PR-primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin: 0 auto 20px;
+            position: relative; z-index: 2;
+        }
+        .BDGS-T10-PR-step-line {
+            position: absolute; top: 30px; left: 50%; width: 100%; height: 2px;
+            background: #E2E8F0; z-index: 0;
+        }
+        
+        /* 4.6 Trust Strip */
+        .BDGS-T10-PR-trust-strip {
+            background: white; border-top: 1px solid rgba(0,0,0,0.05);
+            padding: 30px 0; margin-top: 60px;
+        }
+        .BDGS-T10-PR-trust-item {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            color: #64748B; font-weight: 600;
+        }
+
+        /* 4.7 FAQ */
+        .BDGS-T10-PR-faq-box {
+            background: white; border-radius: 12px; margin-bottom: 10px;
+            border: 1px solid rgba(0,0,0,0.05); overflow: hidden;
+        }
+        .BDGS-T10-PR-faq-header {
+            padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            font-weight: 600; color: var(--BDGS-T10-PR-dark); transition: 0.3s;
+        }
+        .BDGS-T10-PR-faq-header:hover { background: #F8FAFC; }
+        .BDGS-T10-PR-faq-content {
+            padding: 0 20px 20px; display: none; color: #64748B; line-height: 1.6;
+        }
+        .BDGS-T10-PR-faq-icon { transition: 0.3s; }
+        .BDGS-T10-PR-faq-header.active .BDGS-T10-PR-faq-icon { transform: rotate(180deg); color: var(--BDGS-T10-PR-primary); }
+        
+        /* Footer Specifics */
+        .BDGS-T10-PR-social-icon {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            color: #fff;
+            margin-right: 10px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-social-icon:hover {
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .BDGS-T10-PR-footer-link {
+            color: #94A3B8;
+            display: block;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-footer-link:hover {
+            color: var(--BDGS-T10-PR-primary);
+            transform: translateX(5px);
+        }
+        .BDGS-T10-PR-footer-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #fff;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .BDGS-T10-PR-footer-input:focus {
+            outline: none;
+            border-color: var(--BDGS-T10-PR-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .BDGS-T10-PR-hero-title { font-size: 36px; }
+            .BDGS-T10-PR-step-line { display: none; }
+            .BDGS-T10-PR-vip-content { padding: 40px 20px; text-align: center; }
+            .BDGS-T10-PR-trust-item { margin-bottom: 20px; justify-content: flex-start; }
+            .BDGS-T10-PR-vip-img { display: none; }
+        }
+
+        /* Copied Tooltip Animation */
+        @keyframes tooltipFade {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .BDGS-T10-PR-tooltip {
+            position: absolute; background: var(--BDGS-T10-PR-dark); color: white;
+            padding: 5px 10px; border-radius: 6px; font-size: 11px;
+            top: -30px; right: 0; opacity: 0; transition: 0.3s; pointer-events: none;
+        }
+        .BDGS-T10-PR-tooltip.active { opacity: 1; top: -40px; }
+    </style>
+</head>
+<body>
+
+    <!-- BACKGROUND EFFECTS -->
+    <div class="BDGS-T10-PR-bg-mesh">
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-1"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-2"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-3"></div>
+    </div>
+
+    <!-- NAVBAR (MATCHING HOME PAGE) -->
+    <nav class="BDGS-T10-PR-navbar">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center;">
+                    <a href="#" class="BDGS-T10-PR-logo">
+                        <i class="fa fa-heartbeat"></i>
+                        <span class="BDGS-T10-PR-logo-text">EdgeCare</span>
+                    </a>
+                </div>
+                
+                <div class="hidden-xs hidden-sm">
+                    <a href="#" class="BDGS-T10-PR-nav-link">Home</a>
+                    <a href="find_doc.html" class="BDGS-T10-PR-nav-link" style="color: var(--BDGS-T10-PR-primary); background: rgba(37, 99, 235, 0.08);">Offers</a>
+                    <a href="find_doc.html" class="BDGS-T10-PR-nav-link">Specialists</a>
+                    <a href="#" class="BDGS-T10-PR-nav-link">Appointment</a>
+                    <a href="Blog.html" class="BDGS-T10-PR-nav-link">Blog</a>
+                    <a href="aboute.html" class="BDGS-T10-PR-nav-link">About</a>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <a href="Login.html" class="BDGS-T10-PR-btn hidden-xs" style="background: transparent; border: 1px solid #ccc; text-decoration: none;">Log In</a>
+                    <a href="join.html"><button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary">Join Now</button></a>
+                    <!-- Mobile Toggle -->
+                    <button class="BDGS-T10-PR-mobile-toggle visible-xs visible-sm" style="margin-left: 10px;">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Dropdown -->
+            <div class="BDGS-T10-PR-mobile-menu">
+                <a href="#" style="color: var(--BDGS-T10-PR-primary);">Home</a>
+                <a href="find_doc.html">Specialists</a>
+                <a href="#">Appointment</a>
+                <a href="Blog.html">Health Blogs</a>
+                <a href="aboute.html">About</a>
+                <a href="Login.html">Log In</a>
+                <a href="join.html" style="color: var(--BDGS-T10-PR-primary);">Join Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <section class="BDGS-T10-PR-coupon-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="BDGS-T10-PR-hero-badge">
+                        <i class="fa fa-check-circle"></i> Verified • Limited Time • VIP Only
+                    </div>
+                    <h1 class="BDGS-T10-PR-hero-title">
+                        Exclusive Health Coupons <br>
+                        Save More on Premium Care
+                    </h1>
+                    <p style="font-size: 18px; color: #64748B; margin-bottom: 30px;">
+                        Access board-certified specialists and top-tier medical facilities at unbeatable prices.
+                        Unlock your savings today.
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 15px;">
+                        <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" onclick="scrollToCoupons()">Browse Coupons</button>
+                        <button class="BDGS-T10-PR-btn" style="background: white; color: var(--BDGS-T10-PR-text); box-shadow: 0 5px 15px rgba(0,0,0,0.05);" onclick="scrollToHow()">How It Works</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. STICKY FILTER BAR -->
+    <div class="BDGS-T10-PR-filter-container">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="BDGS-T10-PR-filter-scroll">
+                    <button class="BDGS-T10-PR-filter-pill active" onclick="filterCoupons('all', this)">All Offers</button>
+                    <button class="BDGS-T10-PR-filter-pill" onclick="filterCoupons('consult', this)">Consultations</button>
+                    <button class="BDGS-T10-PR-filter-pill" onclick="filterCoupons('lab', this)">Lab Tests</button>
+                    <button class="BDGS-T10-PR-filter-pill" onclick="filterCoupons('surgery', this)">Surgeries</button>
+                    <button class="BDGS-T10-PR-filter-pill" onclick="filterCoupons('dental', this)">Dental</button>
+                </div>
+                <div class="hidden-xs" style="position: relative;">
+                    <i class="fa fa-search" style="position: absolute; left: 15px; top: 12px; color: #94A3B8;"></i>
+                    <input type="text" placeholder="Find coupon..." style="padding: 10px 15px 10px 35px; border-radius: 50px; border: 1px solid #E2E8F0; outline: none; width: 200px; font-size: 13px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. COUPON GRID -->
+    <section id="couponGrid" style="padding: 40px 0;">
+        <div class="container">
+            <div class="row display-flex">
+                
+                <!-- Coupon 1: Consultation -->
+                <div class="col-md-4 col-sm-6 BDGS-T10-PR-coupon-col" data-category="consult">
+                    <div class="BDGS-T10-PR-coupon-card">
+                        <div class="BDGS-T10-PR-coupon-top">
+                            <span class="BDGS-T10-PR-offer-badge">50% OFF</span>
+                            <span class="BDGS-T10-PR-offer-sub">First Consultation</span>
+                        </div>
+                        <div class="BDGS-T10-PR-coupon-body">
+                            <span class="BDGS-T10-PR-service-tag"><i class="fa fa-user-md"></i> General</span>
+                            <h4 class="BDGS-T10-PR-coupon-title">New Patient Special</h4>
+                            <p class="BDGS-T10-PR-coupon-desc">Get flat 50% off on your first video consultation with any general physician.</p>
+                            
+                            <div class="BDGS-T10-PR-coupon-footer">
+                                <div style="font-size: 12px; color: #94A3B8; margin-bottom: 10px;"><i class="fa fa-clock-o"></i> Expires in 2 days</div>
+                                <div class="BDGS-T10-PR-code-box" onclick="copyCode('FIRST50', this)">
+                                    <span class="BDGS-T10-PR-code-text">FIRST50</span>
+                                    <i class="fa fa-clone BDGS-T10-PR-copy-icon"></i>
+                                    <div class="BDGS-T10-PR-tooltip">Copied!</div>
+                                </div>
+                                <a href="Coupon_detail.html"><button class="BDGS-T10-PR-btn-apply">Book Now</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coupon 2: Lab Test -->
+                <div class="col-md-4 col-sm-6 BDGS-T10-PR-coupon-col" data-category="lab">
+                    <div class="BDGS-T10-PR-coupon-card">
+                        <div class="BDGS-T10-PR-coupon-top" style="background: linear-gradient(135deg, #ECFDF5, #D1FAE5);">
+                            <span class="BDGS-T10-PR-offer-badge" style="color: #059669;">$50 OFF</span>
+                            <span class="BDGS-T10-PR-offer-sub" style="color: #047857;">Full Body Checkup</span>
+                        </div>
+                        <div class="BDGS-T10-PR-coupon-body">
+                            <span class="BDGS-T10-PR-service-tag cyan"><i class="fa fa-flask"></i> Lab Test</span>
+                            <h4 class="BDGS-T10-PR-coupon-title">Total Wellness Package</h4>
+                            <p class="BDGS-T10-PR-coupon-desc">Comprehensive blood work analysis including 60+ parameters. Home collection included.</p>
+                            
+                            <div class="BDGS-T10-PR-coupon-footer">
+                                <div style="font-size: 12px; color: #94A3B8; margin-bottom: 10px;"><i class="fa fa-clock-o"></i> Valid till month end</div>
+                                <div class="BDGS-T10-PR-code-box" onclick="copyCode('WELL50', this)">
+                                    <span class="BDGS-T10-PR-code-text">WELL50</span>
+                                    <i class="fa fa-clone BDGS-T10-PR-copy-icon"></i>
+                                    <div class="BDGS-T10-PR-tooltip">Copied!</div>
+                                </div>
+                                <a href="Coupon_detail.html"><button class="BDGS-T10-PR-btn-apply">Book Now</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coupon 3: Surgery -->
+                <div class="col-md-4 col-sm-6 BDGS-T10-PR-coupon-col" data-category="surgery">
+                    <div class="BDGS-T10-PR-coupon-card">
+                        <div class="BDGS-T10-PR-coupon-top" style="background: linear-gradient(135deg, #F5F3FF, #EDE9FE);">
+                            <span class="BDGS-T10-PR-offer-badge" style="color: #7C3AED;">10% BACK</span>
+                            <span class="BDGS-T10-PR-offer-sub" style="color: #6D28D9;">Surgery Cashback</span>
+                        </div>
+                        <div class="BDGS-T10-PR-coupon-body">
+                            <span class="BDGS-T10-PR-service-tag purple"><i class="fa fa-hospital-o"></i> Surgery</span>
+                            <h4 class="BDGS-T10-PR-coupon-title">Elective Surgery Support</h4>
+                            <p class="BDGS-T10-PR-coupon-desc">Get 10% cashback (up to $500) on LASIK, cosmetic, and other elective procedures.</p>
+                            
+                            <div class="BDGS-T10-PR-coupon-footer">
+                                <div style="font-size: 12px; color: #94A3B8; margin-bottom: 10px;"><i class="fa fa-clock-o"></i> Limited slots</div>
+                                <div class="BDGS-T10-PR-code-box" onclick="copyCode('SURGE10', this)">
+                                    <span class="BDGS-T10-PR-code-text">SURGE10</span>
+                                    <i class="fa fa-clone BDGS-T10-PR-copy-icon"></i>
+                                    <div class="BDGS-T10-PR-tooltip">Copied!</div>
+                                </div>
+                                <a href="Coupon_detail.html"><button class="BDGS-T10-PR-btn-apply">Enquire Now</button></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coupon 4: Dental -->
+                <div class="col-md-4 col-sm-6 BDGS-T10-PR-coupon-col" data-category="dental">
+                    <div class="BDGS-T10-PR-coupon-card">
+                        <div class="BDGS-T10-PR-coupon-top">
+                            <span class="BDGS-T10-PR-offer-badge">FREE</span>
+                            <span class="BDGS-T10-PR-offer-sub">Cleaning Session</span>
+                        </div>
+                        <div class="BDGS-T10-PR-coupon-body">
+                            <span class="BDGS-T10-PR-service-tag"><i class="fa fa-smile-o"></i> Dental</span>
+                            <h4 class="BDGS-T10-PR-coupon-title">Smile Bright Offer</h4>
+                            <p class="BDGS-T10-PR-coupon-desc">Complimentary scaling and polishing with any dental implant booking.</p>
+                            
+                            <div class="BDGS-T10-PR-coupon-footer">
+                                <div style="font-size: 12px; color: #94A3B8; margin-bottom: 10px;"><i class="fa fa-clock-o"></i> Expires soon</div>
+                                <div class="BDGS-T10-PR-code-box" onclick="copyCode('SMILE00', this)">
+                                    <span class="BDGS-T10-PR-code-text">SMILE00</span>
+                                    <i class="fa fa-clone BDGS-T10-PR-copy-icon"></i>
+                                    <div class="BDGS-T10-PR-tooltip">Copied!</div>
+                                </div>
+                                
+                                <a href="Coupon_detail.html"><button class="BDGS-T10-PR-btn-apply">Find Dentist</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coupon 5: Consult -->
+                <div class="col-md-4 col-sm-6 BDGS-T10-PR-coupon-col" data-category="consult">
+                    <div class="BDGS-T10-PR-coupon-card">
+                        <div class="BDGS-T10-PR-coupon-top" style="background: linear-gradient(135deg, #FFF7ED, #FFEDD5);">
+                            <span class="BDGS-T10-PR-offer-badge" style="color: #EA580C;">FLAT $20</span>
+                            <span class="BDGS-T10-PR-offer-sub" style="color: #C2410C;">Pediatric Consult</span>
+                        </div>
+                        <div class="BDGS-T10-PR-coupon-body">
+                            <span class="BDGS-T10-PR-service-tag cyan"><i class="fa fa-child"></i> Kids</span>
+                            <h4 class="BDGS-T10-PR-coupon-title">Happy Kids Health</h4>
+                            <p class="BDGS-T10-PR-coupon-desc">Instant discount on pediatric consultations for seasonal flu and checkups.</p>
+                            
+                            <div class="BDGS-T10-PR-coupon-footer">
+                                <div style="font-size: 12px; color: #94A3B8; margin-bottom: 10px;"><i class="fa fa-clock-o"></i> Valid 24hrs</div>
+                                <div class="BDGS-T10-PR-code-box" onclick="copyCode('KIDS20', this)">
+                                    <span class="BDGS-T10-PR-code-text">KIDS20</span>
+                                    <i class="fa fa-clone BDGS-T10-PR-copy-icon"></i>
+                                    <div class="BDGS-T10-PR-tooltip">Copied!</div>
+                                </div>
+                                <a href="Coupon_detail.html"><button class="BDGS-T10-PR-btn-apply">Consult Now</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. VIP HIGHLIGHT CARD -->
+    <div class="container">
+        <section class="BDGS-T10-PR-vip-section">
+            <div class="BDGS-T10-PR-vip-bg"></div>
+            <div class="row" style="position: relative; z-index: 5;">
+                <div class="col-md-7">
+                    <div class="BDGS-T10-PR-vip-content">
+                        <div style="display: inline-block; background: rgba(245, 158, 11, 0.2); color: #F59E0B; padding: 5px 12px; border-radius: 4px; font-weight: 700; font-size: 12px; margin-bottom: 15px; border: 1px solid rgba(245, 158, 11, 0.4);">
+                            <i class="fa fa-crown"></i> VIP EXCLUSIVE
+                        </div>
+                        <h2 style="color: white; font-size: 42px; margin-bottom: 15px;">Unlock the <span class="BDGS-T10-PR-vip-gold-text">Gold Tier</span></h2>
+                        <p style="color: #CBD5E1; font-size: 16px; margin-bottom: 30px; max-width: 500px;">
+                            Members get an extra 15% off on all coupons, priority booking, and free ambulance services.
+                        </p>
+                        <div style="display: flex; gap: 20px; align-items: center;">
+                            <button class="BDGS-T10-PR-vip-btn">Unlock VIP Deal</button>
+                            <span style="color: #94A3B8; font-size: 13px;">Only $9/month</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 hidden-xs hidden-sm" style="position: relative;">
+                    <!-- Abstract 3D shape decoration -->
+                    <i class="fa fa-shield" style="font-size: 300px; color: rgba(255,255,255,0.03); position: absolute; right: -50px; top: 20px; transform: rotate(-15deg);"></i>
+                    <i class="fa fa-star" style="font-size: 150px; color: rgba(245, 158, 11, 0.1); position: absolute; left: 20px; bottom: 20px;"></i>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 5. HOW IT WORKS -->
+    <section id="howItWorks" style="padding: 60px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2>How to Redeem</h2>
+                <p style="color: #64748B;">Three simple steps to massive savings.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 text-center" style="position: relative; margin-bottom: 30px;">
+                    <div class="BDGS-T10-PR-step-line"></div>
+                    <div class="BDGS-T10-PR-step-circle">
+                        <i class="fa fa-mouse-pointer"></i>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">1. Choose Offer</h4>
+                    <p style="color: #64748B; font-size: 14px; padding: 0 20px;">Browse our verified coupons and select the service you need.</p>
+                </div>
+                <div class="col-md-4 col-sm-4 text-center" style="position: relative; margin-bottom: 30px;">
+                    <div class="BDGS-T10-PR-step-line"></div>
+                    <div class="BDGS-T10-PR-step-circle">
+                        <i class="fa fa-copy"></i>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">2. Copy Code</h4>
+                    <p style="color: #64748B; font-size: 14px; padding: 0 20px;">Click the coupon code box to instantly copy it to your clipboard.</p>
+                </div>
+                <div class="col-md-4 col-sm-4 text-center" style="position: relative; margin-bottom: 30px;">
+                    <div class="BDGS-T10-PR-step-circle">
+                        <i class="fa fa-check-square-o"></i>
+                    </div>
+                    <h4 style="margin-bottom: 10px;">3. Book & Save</h4>
+                    <p style="color: #64748B; font-size: 14px; padding: 0 20px;">Apply the code at checkout or show it at the clinic desk.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FAQ SECTION -->
+    <section style="background: white; padding: 60px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Frequently Asked Questions</h3>
+                    <p style="color: #64748B; margin-bottom: 30px;">Can't find what you're looking for? <a href="#" style="color: var(--BDGS-T10-PR-primary);">Contact Support</a>.</p>
+                </div>
+                <div class="col-md-8">
+                    <!-- FAQ 1 -->
+                    <div class="BDGS-T10-PR-faq-box">
+                        <div class="BDGS-T10-PR-faq-header" onclick="toggleFaq(this)">
+                            <span>How do I apply these coupons?</span>
+                            <i class="fa fa-chevron-down BDGS-T10-PR-faq-icon"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-content">
+                            <p>For online bookings via the EdgeCare app, enter the code in the "Promo Code" field at checkout. For in-clinic visits, present the coupon code at the reception desk before billing.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="BDGS-T10-PR-faq-box">
+                        <div class="BDGS-T10-PR-faq-header" onclick="toggleFaq(this)">
+                            <span>Can I combine multiple offers?</span>
+                            <i class="fa fa-chevron-down BDGS-T10-PR-faq-icon"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-content">
+                            <p>Generally, only one coupon code can be applied per transaction unless specified otherwise in the "Terms & Conditions" of the specific offer.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="BDGS-T10-PR-faq-box">
+                        <div class="BDGS-T10-PR-faq-header" onclick="toggleFaq(this)">
+                            <span>Are these offers valid for all doctors?</span>
+                            <i class="fa fa-chevron-down BDGS-T10-PR-faq-icon"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-content">
+                            <p>Some offers are specialist-specific or hospital-specific. Please check the coupon description details before booking.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. TRUST STRIP -->
+    <div class="BDGS-T10-PR-trust-strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="BDGS-T10-PR-trust-item"><i class="fa fa-user-md" style="color: var(--BDGS-T10-PR-primary);"></i> Verified Doctors</div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="BDGS-T10-PR-trust-item"><i class="fa fa-lock" style="color: var(--BDGS-T10-PR-primary);"></i> Secure Payments</div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="BDGS-T10-PR-trust-item"><i class="fa fa-ban" style="color: var(--BDGS-T10-PR-primary);"></i> No Hidden Fees</div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="BDGS-T10-PR-trust-item"><i class="fa fa-users" style="color: var(--BDGS-T10-PR-primary);"></i> 10k+ Happy Patients</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER (MATCHING HOME PAGE) -->
+    <footer style="background: #0F172A; color: white; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="row">
+                <!-- Brand Column -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 40px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <i class="fa fa-heartbeat" style="font-size: 24px; color: var(--BDGS-T10-PR-primary);"></i>
+                        <span style="font-size: 24px; font-weight: 800;">EdgeCare VIP</span>
+                    </div>
+                    <p style="color: #94A3B8; line-height: 1.6; margin-bottom: 25px;">
+                        Revolutionizing healthcare access with cutting-edge technology and a patient-first approach. Your health, our priority.
+                    </p>
+                    <div style="display: flex; gap: 5px;">
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Company</h5>
+                    <a href="aboute.html" class="BDGS-T10-PR-footer-link">About Us</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Careers</a>
+                    <a href="review.html" class="BDGS-T10-PR-footer-link">Review</a>
+                    <a href="Blog.html" class="BDGS-T10-PR-footer-link">Blog</a>
+                    <a href="contact.html" class="BDGS-T10-PR-footer-link">Contact</a>
+                </div>
+
+                <!-- Services -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Services</h5>
+                    <a href="find_doc.html" class="BDGS-T10-PR-footer-link">Find Doctors</a>
+                    <a href="Coupon.html" class="BDGS-T10-PR-footer-link">Coupon</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Job Post</a>
+                    <a href="How_it.html" class="BDGS-T10-PR-footer-link">How it works</a>
+                    <a href="Faq.html" class="BDGS-T10-PR-footer-link">FAQ</a>
+                    <a href="Get_match.html" class="BDGS-T10-PR-footer-link">Get Match</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Stay Updated</h5>
+                    <p style="color: #94A3B8; font-size: 14px; margin-bottom: 15px;">Subscribe to our newsletter for the latest health tips and updates.</p>
+                    <form>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Enter your email" class="BDGS-T10-PR-footer-input">
+                            <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="padding: 12px 20px; border-radius: 8px;">Go</button>
+                        </div>
+                    </form>
+
+                    <!-- App Download Icons -->
+                    <div style="margin-top: 25px;">
+                        <h5 style="color: #fff; margin-bottom: 15px; font-size: 14px;">Get the App</h5>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-apple" style="font-size: 22px;"></i>
+                            </a>
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-android" style="font-size: 20px;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="color: #64748B; margin: 0; font-size: 14px;">&copy; 2026 EdgeCare. All rights reserved.</p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <a href="#" style="color: #64748B; font-size: 14px; text-decoration: none;">Privacy Policy</a>
+                    <a href="#" style="color: #64748B; font-size: 14px; text-decoration: none;">Terms of Service</a>
+                    <a href="#" style="color: #64748B; font-size: 14px; text-decoration: none;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING HELP ACTION -->
+    <div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; align-items: center; gap: 10px;">
+        <div style="background: white; padding: 10px 15px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); font-size: 13px; font-weight: 600; color: var(--BDGS-T10-PR-dark); border: 1px solid #E2E8F0;" class="hidden-xs">
+            Need help applying coupons?
+        </div>
+        <button style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple)); border: none; color: white; font-size: 20px; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);">
+            <i class="fa fa-comments"></i>
+        </button>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        // Scroll Helpers
+        function scrollToCoupons() {
+            document.getElementById('couponGrid').scrollIntoView({ behavior: 'smooth' });
+        }
+        function scrollToHow() {
+            document.getElementById('howItWorks').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Copy Code Functionality
+        function copyCode(code, element) {
+            navigator.clipboard.writeText(code).then(function() {
+                // Visual feedback on the element itself (Good UX)
+                const textSpan = element.querySelector('.BDGS-T10-PR-code-text');
+                const tooltip = element.querySelector('.BDGS-T10-PR-tooltip');
+                
+                // Keep the visual element feedback (green border)
+                element.style.borderColor = 'var(--BDGS-T10-PR-success)';
+                element.style.background = '#ECFDF5';
+                
+                setTimeout(() => {
+                    element.style.borderColor = '';
+                    element.style.background = '';
+                }, 2000);
+
+                // SweetAlert Popup
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Copied!',
+                    text: 'Coupon code ' + code + ' copied to clipboard.',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    backdrop: `rgba(0,0,0,0.4)`
+                });
+
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        // Filter Functionality
+        function filterCoupons(category, btnElement) {
+            // Update Active Pill
+            document.querySelectorAll('.BDGS-T10-PR-filter-pill').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Filter Grid
+            const items = document.querySelectorAll('.BDGS-T10-PR-coupon-col');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // FAQ Toggle
+        function toggleFaq(header) {
+            header.classList.toggle('active');
+            const content = header.nextElementSibling;
+            if (content.style.display === "block") {
+                $(content).slideUp(200);
+            } else {
+                $(content).slideDown(200);
+            }
+        }
+        
+        // Mobile Toggle Logic
+        const mobileToggle = document.querySelector('.BDGS-T10-PR-mobile-toggle');
+        const mobileMenu = document.querySelector('.BDGS-T10-PR-mobile-menu');
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

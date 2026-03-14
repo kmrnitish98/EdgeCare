@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- =========================================
+       SEO & METADATA
+       ========================================= -->
+    <title>EdgeCare VIP – Get Matched with Top Specialists</title>
+    <meta name="description" content="Find your perfect doctor match instantly with EdgeCare VIP's AI-powered specialist finder. Secure, fast, and personalized medical care connections.">
+    <meta name="keywords" content="find doctor, medical match, specialist finder, AI health, cardiology, neurology, dermatology, immediate appointment">
+    <meta name="author" content="EdgeCare VIP">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.edgecare-vip.com/get-matched.html">
+
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.edgecare-vip.com/get-matched.html">
+    <meta property="og:title" content="EdgeCare VIP – Find Your Perfect Specialist">
+    <meta property="og:description" content="Skip the wait. Our AI analyzes your symptoms to connect you with the best specialist instantly.">
+    <meta property="og:image" content="https://www.edgecare-vip.com/assets/img/og-match.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EdgeCare VIP – AI Doctor Matching">
+    <meta name="twitter:description" content="Get matched with top-rated doctors in minutes. 24/7 support and secure records.">
+    <meta name="twitter:image" content="https://www.edgecare-vip.com/assets/img/twitter-match.jpg">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 4.7 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <style>
+        /* =========================================
+           1. VIP THEME VARIABLES (PREFIX: BDGS-T10-PR)
+           ========================================= */
+        :root {
+            --BDGS-T10-PR-primary:   #2563EB; /* Royal Blue */
+            --BDGS-T10-PR-accent:    #06B6D4; /* Cyan */
+            --BDGS-T10-PR-purple:    #7C3AED; /* Deep Purple */
+            --BDGS-T10-PR-dark:      #0F172A; /* Slate 900 */
+            --BDGS-T10-PR-text:      #334155; /* Slate 700 */
+            
+            /* Glass Effects */
+            --BDGS-T10-PR-glass:     rgba(255, 255, 255, 0.65);
+            --BDGS-T10-PR-glass-str: rgba(255, 255, 255, 0.85);
+            --BDGS-T10-PR-border:    rgba(255, 255, 255, 0.4);
+            
+            /* Shadows */
+            --BDGS-T10-PR-shadow:    0 20px 40px -10px rgba(0,0,0,0.1);
+            --BDGS-T10-PR-glow:      0 0 50px rgba(37, 99, 235, 0.15);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--BDGS-T10-PR-text);
+            overflow-x: hidden;
+            padding-top: 80px;
+            background: #F0F9FF; /* Fallback */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        /* =========================================
+           2. VIVID AURORA BACKGROUND
+           ========================================= */
+        .BDGS-T10-PR-bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -2; /* Behind everything */
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.7;
+            animation: meshFloat 20s infinite alternate ease-in-out;
+        }
+
+        /* Large Purple Orb */
+        .BDGS-T10-PR-orb-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25), transparent 70%);
+            top: -20%;
+            left: -10%;
+        }
+
+        /* Bright Cyan Orb */
+        .BDGS-T10-PR-orb-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        /* Royal Blue Accent */
+        .BDGS-T10-PR-orb-3 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%);
+            top: 40%;
+            left: 40%;
+            animation-duration: 25s;
+        }
+
+        @keyframes meshFloat {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(10deg); }
+            100% { transform: translate(-30px, -20px) rotate(-5deg); }
+        }
+
+        /* =========================================
+           2.1 ANIMATED ICON BUBBLES
+           ========================================= */
+        .BDGS-T10-PR-bg-icons {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1; /* Above mesh, behind content */
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-icon-bubble {
+            position: absolute;
+            color: rgba(37, 99, 235, 0.08); /* Very subtle opacity */
+            font-size: 24px;
+            animation: floatIcon 20s infinite linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px; 
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(2px);
+        }
+
+        /* Icon Variants */
+        .BDGS-T10-PR-icon-bubble:nth-child(1) { top: 80%; left: 10%; font-size: 30px; animation-duration: 18s; animation-delay: 0s; color: rgba(239, 68, 68, 0.15); /* Red tint for heart */ }
+        .BDGS-T10-PR-icon-bubble:nth-child(2) { top: 90%; left: 30%; font-size: 40px; animation-duration: 25s; animation-delay: -5s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(3) { top: 85%; left: 70%; font-size: 28px; animation-duration: 22s; animation-delay: -10s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(4) { top: 75%; left: 90%; font-size: 35px; animation-duration: 20s; animation-delay: -2s; color: rgba(16, 185, 129, 0.15); /* Green tint */ }
+        .BDGS-T10-PR-icon-bubble:nth-child(5) { top: 95%; left: 50%; font-size: 32px; animation-duration: 28s; animation-delay: -15s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(6) { top: 60%; left: 5%; font-size: 20px; animation-duration: 30s; animation-delay: -7s; }
+
+        @keyframes floatIcon {
+            0% { transform: translateY(100px) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* =========================================
+           3. UI COMPONENTS
+           ========================================= */
+        
+        /* Entrance Animations */
+        .bdgs-animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .bdgs-delay-1 { animation-delay: 0.1s; }
+        .bdgs-delay-2 { animation-delay: 0.2s; }
+        .bdgs-delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navbar Styles from Header File */
+        .BDGS-T10-PR-navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .BDGS-T10-PR-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none !important;
+        }
+
+        .BDGS-T10-PR-logo i img {
+            display: block;
+        }
+
+        .BDGS-T10-PR-logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .BDGS-T10-PR-nav-link {
+            font-weight: 600;
+            color: var(--BDGS-T10-PR-text);
+            padding: 8px 18px;
+            font-size: 14px;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            text-decoration: none !important;
+            display: inline-block;
+            margin: 0 2px;
+        }
+        .BDGS-T10-PR-nav-link:hover, .BDGS-T10-PR-nav-link.active {
+            color: var(--BDGS-T10-PR-primary);
+            background: rgba(37, 99, 235, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Mobile Menu */
+        .BDGS-T10-PR-mobile-toggle {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: var(--BDGS-T10-PR-dark);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .BDGS-T10-PR-mobile-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform-origin: top;
+            animation: slideDownMenu 0.3s ease-out forwards;
+            z-index: 1001; /* Ensure high z-index */
+        }
+        
+        .BDGS-T10-PR-mobile-menu.active {
+            display: flex;
+        }
+        
+        .BDGS-T10-PR-mobile-menu a {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        
+        @keyframes slideDownMenu {
+            from { opacity: 0; transform: scaleY(0); }
+            to { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* Custom Breakpoint Logic for Navigation (Fix for 768px vs 770px) */
+        @media (max-width: 768px) {
+            .BDGS-T10-PR-desktop-menu { display: none !important; }
+            .BDGS-T10-PR-mobile-toggle { display: block !important; }
+            .BDGS-T10-PR-login-btn { display: none !important; }
+        }
+        @media (min-width: 769px) {
+            .BDGS-T10-PR-desktop-menu { display: block !important; }
+            .BDGS-T10-PR-mobile-toggle { display: none !important; }
+            .BDGS-T10-PR-login-btn { display: inline-block !important; }
+            .BDGS-T10-PR-mobile-menu { display: none !important; } /* Force hide menu on desktop resize */
+        }
+
+        /* Buttons */
+        .BDGS-T10-PR-btn {
+            border: none;
+            padding: 10px 24px; /* Reduced padding */
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px; /* Smaller font */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .BDGS-T10-PR-btn-primary {
+            background: var(--BDGS-T10-PR-dark);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        }
+        .BDGS-T10-PR-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.4);
+            color: white;
+        }
+        
+        /* Premium Gradient Button */
+        .BDGS-T10-PR-btn-grad {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        .BDGS-T10-PR-btn-grad::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.6s;
+            z-index: -1;
+        }
+        .BDGS-T10-PR-btn-grad:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px -5px rgba(124, 58, 237, 0.5);
+            color: white;
+        }
+        .BDGS-T10-PR-btn-grad:hover::after {
+            left: 100%;
+        }
+
+        /* =========================================
+           3. FORM SPECIFIC STYLES
+           ========================================= */
+        
+        .BDGS-T10-PR-form-section {
+            padding: 40px 0;
+            min-height: calc(100vh - 160px); /* Adjust based on header/footer */
+            display: flex;
+            align-items: center;
+        }
+
+        /* Left Side Content */
+        .BDGS-T10-PR-form-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .BDGS-T10-PR-gradient-text {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary) 0%, var(--BDGS-T10-PR-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .BDGS-T10-PR-check-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        .BDGS-T10-PR-check-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: #64748B;
+        }
+        .BDGS-T10-PR-check-list i {
+            color: var(--BDGS-T10-PR-primary);
+            background: rgba(37, 99, 235, 0.1);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 12px;
+        }
+
+        /* Glass Form Card */
+        .BDGS-T10-PR-form-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom Input Styles */
+        .BDGS-T10-PR-form-group {
+            margin-bottom: 20px;
+        }
+        .BDGS-T10-PR-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--BDGS-T10-PR-dark);
+            margin-bottom: 8px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .BDGS-T10-PR-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 16px; /* Optimized for mobile to prevent zoom */
+            background: #F8FAFC;
+            transition: all 0.3s;
+            color: var(--BDGS-T10-PR-dark);
+        }
+        
+        .BDGS-T10-PR-input:focus {
+            outline: none;
+            border-color: var(--BDGS-T10-PR-primary);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .BDGS-T10-PR-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2364748B' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+        }
+
+        /* Trust Badge */
+        .BDGS-T10-PR-trust-badge {
+            margin-top: 40px; 
+            padding: 20px; 
+            background: rgba(255,255,255,0.6); 
+            border-radius: 20px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 15px; 
+            border: 1px solid white;
+            transition: 0.3s;
+        }
+
+        /* Option Cards (Radio replacement) */
+        .BDGS-T10-PR-option-grid {
+            display: flex;
+            gap: 10px;
+        }
+        .BDGS-T10-PR-option-label {
+            flex: 1;
+            cursor: pointer;
+            margin: 0;
+        }
+        .BDGS-T10-PR-option-input {
+            display: none;
+        }
+        .BDGS-T10-PR-option-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            background: #fff;
+            transition: 0.2s;
+            text-align: center;
+        }
+        .BDGS-T10-PR-option-card i {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #94A3B8;
+        }
+        .BDGS-T10-PR-option-input:checked + .BDGS-T10-PR-option-card {
+            border-color: var(--BDGS-T10-PR-primary);
+            background: #EFF6FF;
+            color: var(--BDGS-T10-PR-primary);
+        }
+        .BDGS-T10-PR-option-input:checked + .BDGS-T10-PR-option-card i {
+            color: var(--BDGS-T10-PR-primary);
+        }
+
+        /* FOOTER STYLES */
+        footer {
+            margin-top: auto;
+            background: #0F172A;
+            color: white;
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .BDGS-T10-PR-footer-link {
+            color: #94A3B8;
+            display: block;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-footer-link:hover {
+            color: var(--BDGS-T10-PR-primary);
+            transform: translateX(5px);
+        }
+        .BDGS-T10-PR-social-icon {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            color: #fff;
+            margin-right: 10px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-social-icon:hover {
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .BDGS-T10-PR-footer-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #fff;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .BDGS-T10-PR-footer-input:focus {
+            outline: none;
+            border-color: var(--BDGS-T10-PR-primary);
+        }
+
+        /* RESPONSIVE IMPROVEMENTS */
+        @media (max-width: 991px) {
+            .BDGS-T10-PR-form-section { 
+                flex-direction: column; 
+                padding-top: 40px; 
+                display: block; /* Ensure normal flow on mobile */
+                min-height: auto; 
+            }
+            .BDGS-T10-PR-form-text { 
+                margin-bottom: 40px; 
+                text-align: center; 
+            }
+            .BDGS-T10-PR-check-list { 
+                display: inline-block; 
+                text-align: left; 
+            }
+        }
+
+        @media (max-width: 767px) {
+            /* Mobile Typography */
+            .BDGS-T10-PR-form-text h1 { 
+                font-size: 32px; 
+            }
+            
+            /* Form Card Adjustments */
+            .BDGS-T10-PR-form-card { 
+                padding: 25px 20px; 
+                margin-top: 20px;
+                border-radius: 20px;
+            }
+            
+            /* Compact Option Grid */
+            .BDGS-T10-PR-option-grid { 
+                gap: 5px; 
+            }
+            .BDGS-T10-PR-option-card { 
+                padding: 10px 5px; 
+            }
+            .BDGS-T10-PR-option-card i { 
+                font-size: 16px; 
+                margin-bottom: 3px;
+            }
+            .BDGS-T10-PR-option-card span { 
+                font-size: 11px !important; 
+                white-space: nowrap;
+            }
+            
+            /* General spacing */
+            section { 
+                padding: 40px 0 !important; 
+            }
+
+            /* Success stories image protection */
+            .BDGS-T10-PR-form-card img {
+                flex-shrink: 0;
+            }
+            
+            /* Trust Badge Mobile */
+            .BDGS-T10-PR-trust-badge {
+                width: 100%;
+                justify-content: center;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. VIVID AURORA BACKGROUND -->
+    <div class="BDGS-T10-PR-bg-mesh">
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-1"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-2"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-3"></div>
+    </div>
+
+    <!-- 1.1 ANIMATED BACKGROUND ICONS (BUBBLES) -->
+    <div class="BDGS-T10-PR-bg-icons">
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-heart"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-user-md"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-stethoscope"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-medkit"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-ambulance"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-hospital-o"></i></div>
+    </div>
+
+    <!-- 2. NAVBAR -->
+    <header>
+        <nav class="BDGS-T10-PR-navbar">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    
+                    <!-- Logo Section -->
+                    <div style="display: flex; align-items: center;">
+                        <a href="#" class="BDGS-T10-PR-logo">
+                            <i class=""><img src="../assets/img/edited-photo.png" alt="EdgeCare VIP Logo" height="45px"></i>
+                            <span class="BDGS-T10-PR-logo-text">EdgeCare</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Menu (Custom Class Used) -->
+                    <div class="BDGS-T10-PR-desktop-menu">
+                        <a href="index.html" class="BDGS-T10-PR-nav-link">Home</a>
+                        <a href="find_doc.html" class="BDGS-T10-PR-nav-link">Specialists</a>
+                        <a href="appointment.html" class="BDGS-T10-PR-nav-link">Appointment</a>
+                        <a href="Blog.html" class="BDGS-T10-PR-nav-link">Health Blog</a>
+                        <a href="aboute.html" class="BDGS-T10-PR-nav-link">About</a>
+                    </div>
+
+                    <!-- Right Side Actions -->
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <a href="Login.html" class="BDGS-T10-PR-btn BDGS-T10-PR-login-btn" style="background: transparent; border: 1px solid #ccc; text-decoration:none; color: var(--BDGS-T10-PR-dark);">Log In</a>
+                        <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary">Join Now</button>
+                        
+                        <!-- Mobile Toggle (Custom Class Used) -->
+                        <button type="button" class="BDGS-T10-PR-mobile-toggle" style="margin-left: 10px;">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Dropdown -->
+                <div class="BDGS-T10-PR-mobile-menu">
+                    <a href="index.html">Home</a>
+                    <a href="find_doc.html">Specialists</a>
+                    <a href="appointment.html">Appointment</a>
+                    <a href="Blog.html">Health Blogs</a>
+                    <a href="aboute.html">About</a>
+                    <a href="Login.html">Log In</a>
+                    <a href="join.html" style="color: var(--BDGS-T10-PR-primary);">Join Now</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 3. MAIN FORM SECTION -->
+    <section class="BDGS-T10-PR-form-section bdgs-animate-fade-up">
+        <div class="container">
+            <div class="row">
+                <!-- Left Content -->
+                <div class="col-md-5 BDGS-T10-PR-form-text">
+                    <h1>
+                        Find Your <br>
+                        <span class="BDGS-T10-PR-gradient-text">Perfect Match.</span>
+                    </h1>
+                    <p style="font-size: 18px; color: #64748B; margin-bottom: 25px; line-height: 1.6;">
+                        Skip the wait. Tell us about your needs, and our AI will instantly connect you with the highest-rated specialist for your condition.
+                    </p>
+                    
+                    <ul class="BDGS-T10-PR-check-list">
+                        <li><i class="fa fa-check"></i> <span>AI-Powered Doctor Matching</span></li>
+                        <li><i class="fa fa-check"></i> <span>Instant Availability Check</span></li>
+                        <li><i class="fa fa-check"></i> <span>Secure Medical Records</span></li>
+                        <li><i class="fa fa-check"></i> <span>24/7 Virtual Support</span></li>
+                    </ul>
+
+                    <!-- Decorative Trust Badge -->
+                    <div class="BDGS-T10-PR-trust-badge">
+                        <div style="font-size: 24px; color: #F59E0B;">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </div>
+                        <div style="line-height: 1.2;">
+                            <strong style="display: block; color: var(--BDGS-T10-PR-dark);">Trusted by 1M+</strong>
+                            <span style="font-size: 13px; color: #64748B;">Patients Worldwide</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Form -->
+                <div class="col-md-6 col-md-offset-1">
+                    <div class="BDGS-T10-PR-form-card bdgs-animate-fade-up bdgs-delay-2">
+                        <form>
+                            <h3 style="margin-bottom: 25px;">Patient Details</h3>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="BDGS-T10-PR-form-group">
+                                        <label class="BDGS-T10-PR-label">Full Name</label>
+                                        <input type="text" class="BDGS-T10-PR-input" placeholder="e.g. Alex Doe">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="BDGS-T10-PR-form-group">
+                                        <label class="BDGS-T10-PR-label">Phone Number</label>
+                                        <input type="tel" class="BDGS-T10-PR-input" placeholder="+1 (555) 000-0000">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="BDGS-T10-PR-form-group">
+                                <label class="BDGS-T10-PR-label">Appointment Type</label>
+                                <div class="BDGS-T10-PR-option-grid">
+                                    <label class="BDGS-T10-PR-option-label">
+                                        <input type="radio" name="appt_type" class="BDGS-T10-PR-option-input" checked>
+                                        <div class="BDGS-T10-PR-option-card">
+                                            <i class="fa fa-video-camera"></i>
+                                            <span style="font-size: 13px; font-weight: 600;">Video Call</span>
+                                        </div>
+                                    </label>
+                                    <label class="BDGS-T10-PR-option-label">
+                                        <input type="radio" name="appt_type" class="BDGS-T10-PR-option-input">
+                                        <div class="BDGS-T10-PR-option-card">
+                                            <i class="fa fa-building-o"></i>
+                                            <span style="font-size: 13px; font-weight: 600;">In-Clinic</span>
+                                        </div>
+                                    </label>
+                                    <label class="BDGS-T10-PR-option-label">
+                                        <input type="radio" name="appt_type" class="BDGS-T10-PR-option-input">
+                                        <div class="BDGS-T10-PR-option-card">
+                                            <i class="fa fa-home"></i>
+                                            <span style="font-size: 13px; font-weight: 600;">Home Visit</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="BDGS-T10-PR-form-group">
+                                        <label class="BDGS-T10-PR-label">Department</label>
+                                        <select class="BDGS-T10-PR-input BDGS-T10-PR-select">
+                                            <option>General Physician</option>
+                                            <option>Cardiology</option>
+                                            <option>Neurology</option>
+                                            <option>Dermatology</option>
+                                            <option>Pediatrics</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="BDGS-T10-PR-form-group">
+                                        <label class="BDGS-T10-PR-label">Preferred Date</label>
+                                        <input type="date" class="BDGS-T10-PR-input">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="BDGS-T10-PR-form-group">
+                                <label class="BDGS-T10-PR-label">Symptoms / Notes</label>
+                                <textarea class="BDGS-T10-PR-input" rows="3" placeholder="Briefly describe your symptoms..."></textarea>
+                            </div>
+
+                            <button type="submit" class="BDGS-T10-PR-btn BDGS-T10-PR-btn-grad" style="width: 100%; padding: 15px; font-size: 16px;">
+                                Find My Match <i class="fa fa-arrow-right" style="margin-left: 8px;"></i>
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: HOW IT WORKS SECTION -->
+    <section style="padding: 60px 0; background: rgba(255,255,255,0.5);">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <h2 style="margin-bottom: 10px;">How Matching Works</h2>
+                <p style="color: #64748B;">Our advanced AI connects you with the right care in minutes.</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 col-sm-4 text-center" style="margin-bottom: 30px;">
+                    <div style="width: 80px; height: 80px; background: #EFF6FF; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: var(--BDGS-T10-PR-primary); font-size: 32px; margin-bottom: 20px;">
+                        <i class="fa fa-file-text-o"></i>
+                    </div>
+                    <h4 style="font-weight: 700;">1. Submit Details</h4>
+                    <p style="color: #64748B; padding: 0 20px;">Fill out the form with your symptoms and preferences. Our system encrypts your data instantly.</p>
+                </div>
+                <div class="col-md-4 col-sm-4 text-center" style="margin-bottom: 30px;">
+                    <div style="width: 80px; height: 80px; background: #F3E8FF; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: var(--BDGS-T10-PR-purple); font-size: 32px; margin-bottom: 20px;">
+                        <i class="fa fa-cogs"></i>
+                    </div>
+                    <h4 style="font-weight: 700;">2. AI Analysis</h4>
+                    <p style="color: #64748B; padding: 0 20px;">Our algorithm cross-references your needs with thousands of specialists to find the perfect match.</p>
+                </div>
+                <div class="col-md-4 col-sm-4 text-center" style="margin-bottom: 30px;">
+                    <div style="width: 80px; height: 80px; background: #ECFDF5; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #10B981; font-size: 32px; margin-bottom: 20px;">
+                        <i class="fa fa-handshake-o"></i>
+                    </div>
+                    <h4 style="font-weight: 700;">3. Connect</h4>
+                    <p style="color: #64748B; padding: 0 20px;">Review your matched doctor's profile and confirm your appointment instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: SUCCESS STORIES -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+             <div class="text-center" style="margin-bottom: 50px;">
+                <h2 style="margin-bottom: 10px;">Success Stories</h2>
+                <p style="color: #64748B;">Real patients, real results.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="BDGS-T10-PR-form-card" style="padding: 30px; margin-bottom: 20px;">
+                         <div style="display: flex; gap: 15px; align-items: start;">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=64&h=64" style="border-radius: 50%; width: 60px; height: 60px; object-fit: cover;">
+                            <div>
+                                <p style="font-style: italic; color: #334155; margin-bottom: 15px;">"I was in severe pain and didn't know which specialist to see. EdgeCare matched me with Dr. Emily in 5 minutes. Truly a lifesaver!"</p>
+                                <h5 style="margin: 0; font-weight: 700;">Sarah Jenkins</h5>
+                                <span style="font-size: 12px; color: #64748B;">Matched for Cardiology</span>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="BDGS-T10-PR-form-card" style="padding: 30px; margin-bottom: 20px;">
+                         <div style="display: flex; gap: 15px; align-items: start;">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=64&h=64" style="border-radius: 50%; width: 60px; height: 60px; object-fit: cover;">
+                            <div>
+                                <p style="font-style: italic; color: #334155; margin-bottom: 15px;">"The video consultation feature is seamless. I got my prescription without leaving my house. Highly recommend the matching service."</p>
+                                <h5 style="margin: 0; font-weight: 700;">Michael Chen</h5>
+                                <span style="font-size: 12px; color: #64748B;">Matched for General Health</span>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <!-- Brand Column -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 40px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <i class=""><img src="../assets/img/edited-photo.png" alt="EdgeCare VIP Logo" height="45px"></i>
+                        <span style="font-size: 24px; font-weight: 800;">EdgeCare</span>
+                    </div>
+                    <p style="color: #94A3B8; line-height: 1.6; margin-bottom: 25px;">
+                        Revolutionizing healthcare access with cutting-edge technology and a patient-first approach. Your health, our priority.
+                    </p>
+                    <div style="display: flex; gap: 5px;">
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Company</h5>
+                    <a href="aboute.html" class="BDGS-T10-PR-footer-link">About Us</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Careers</a>
+                    <a href="review.html" class="BDGS-T10-PR-footer-link">Review</a>
+                    <a href="Blog.html" class="BDGS-T10-PR-footer-link">Blog</a>
+                    <a href="contact.html" class="BDGS-T10-PR-footer-link">Contact</a>
+                </div>
+
+                <!-- Services -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Services</h5>
+                    <a href="find_doc.html" class="BDGS-T10-PR-footer-link">Find Doctors</a>
+                    <a href="Coupon.html" class="BDGS-T10-PR-footer-link">Coupon</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Job Post</a>
+                    <a href="How_it.html" class="BDGS-T10-PR-footer-link">How it work</a>
+                    <a href="Faq.html" class="BDGS-T10-PR-footer-link">FAQ</a>
+                    <a href="Get_match.html" class="BDGS-T10-PR-footer-link">Get Match</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Stay Updated</h5>
+                    <p style="color: #94A3B8; font-size: 14px; margin-bottom: 15px;">Subscribe to our newsletter for the latest health tips and updates.</p>
+                    <form onsubmit="event.preventDefault();">
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Enter your email" class="BDGS-T10-PR-footer-input">
+                            <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="padding: 12px 20px; border-radius: 8px;">Go</button>
+                        </div>
+                    </form>
+
+                    <!-- App Download Icons -->
+                    <div style="margin-top: 25px;">
+                        <h5 style="color: #fff; margin-bottom: 15px; font-size: 14px;">Get the App</h5>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-apple" style="font-size: 22px;"></i>
+                            </a>
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-android" style="font-size: 20px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="color: #64748B; margin: 0; font-size: 14px;">&copy; 2026 EdgeCare. All rights reserved.</p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <a href="#" style="color: #64748B; font-size: 14px; text-decoration:none;">Privacy Policy</a>
+                    <a href="#" style="color: #64748B; font-size: 14px; text-decoration:none;">Terms of Service</a>
+                    <a href="#" style="color: #64748B; font-size: 14px; text-decoration:none;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const menu = $('.BDGS-T10-PR-mobile-menu');
+            const toggleBtn = $('.BDGS-T10-PR-mobile-toggle');
+
+            // Toggle Menu logic
+            toggleBtn.off('click').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation(); // Stop bubbling to document
+                menu.toggleClass('active');
+                
+                // Switch icon
+                const icon = $(this).find('i');
+                if (menu.hasClass('active')) {
+                    icon.removeClass('fa-bars').addClass('fa-times');
+                } else {
+                    icon.removeClass('fa-times').addClass('fa-bars');
+                }
+            });
+
+            // Close when clicking outside (excluding button)
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('.BDGS-T10-PR-mobile-menu').length && 
+                    !$(e.target).closest('.BDGS-T10-PR-mobile-toggle').length) {
+                    if (menu.hasClass('active')) {
+                        menu.removeClass('active');
+                        toggleBtn.find('i').removeClass('fa-times').addClass('fa-bars');
+                    }
+                }
+            });
+
+            // Close when a menu link is clicked
+            menu.find('a').on('click', function() {
+                menu.removeClass('active');
+                toggleBtn.find('i').removeClass('fa-times').addClass('fa-bars');
+            });
+
+            // Form Input Visual Feedback (Converted to jQuery for consistency)
+            $('.BDGS-T10-PR-input').on('focus', function() {
+                $(this).closest('.BDGS-T10-PR-form-group').find('.BDGS-T10-PR-label').css('color', 'var(--BDGS-T10-PR-primary)');
+            }).on('blur', function() {
+                $(this).closest('.BDGS-T10-PR-form-group').find('.BDGS-T10-PR-label').css('color', 'var(--BDGS-T10-PR-dark)');
+            });
+        });
+    </script>
+</body>
+</html>

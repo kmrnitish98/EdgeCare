@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Careers at EdgeCare VIP – Premium Healthcare Jobs</title>
+    <meta name="description" content="Join EdgeCare VIP. We are hiring world-class specialists, engineers, and support staff to shape the future of premium healthcare technology.">
+    <meta name="keywords" content="medical jobs, healthcare careers, doctor vacancies, nursing jobs, remote tech jobs, edgecare vip careers, hospital recruitment">
+    <meta name="author" content="EdgeCare VIP">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.edgecare-vip.com/careers">
+    <meta property="og:title" content="Careers at EdgeCare VIP – Shape the Future of Healthcare">
+    <meta property="og:description" content="Join a world-class team of specialists and innovators. View our open positions today.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="We Are Hiring | EdgeCare VIP">
+    <meta name="twitter:description" content="Join the leader in premium healthcare technology.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        /* =========================================
+           1. VIP THEME VARIABLES (Template Core)
+           ========================================= */
+        :root {
+            --BDGS-T10-PR-primary:   #2563EB; /* Royal Blue */
+            --BDGS-T10-PR-accent:    #06B6D4; /* Cyan */
+            --BDGS-T10-PR-purple:    #7C3AED; /* Deep Purple */
+            --BDGS-T10-PR-dark:      #0F172A; /* Slate 900 */
+            --BDGS-T10-PR-text:      #334155; /* Slate 700 */
+            
+            /* Glass Effects */
+            --BDGS-T10-PR-glass:       rgba(255, 255, 255, 0.65);
+            --BDGS-T10-PR-border:    rgba(255, 255, 255, 0.4);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--BDGS-T10-PR-text);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            padding-top: 80px; /* Space for fixed navbar */
+            background: #F0F9FF;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* =========================================
+           2. BACKGROUND ANIMATION (Template Core)
+           ========================================= */
+        .BDGS-T10-PR-bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -2;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.7;
+            animation: meshFloat 20s infinite alternate ease-in-out;
+        }
+
+        .BDGS-T10-PR-orb-1 { width: 800px; height: 800px; background: radial-gradient(circle, rgba(124, 58, 237, 0.25), transparent 70%); top: -20%; left: -10%; }
+        .BDGS-T10-PR-orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .BDGS-T10-PR-orb-3 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%); top: 40%; left: 40%; animation-duration: 25s; }
+
+        @keyframes meshFloat {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(10deg); }
+            100% { transform: translate(-30px, -20px) rotate(-5deg); }
+        }
+
+        /* =========================================
+           3. NAVBAR STYLES (UPDATED FROM JOB DETAILS)
+           ========================================= */
+        .BDGS-T10-PR-navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--BDGS-T10-PR-border);
+            transition: all 0.3s ease;
+        }
+
+        .BDGS-T10-PR-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none !important;
+        }
+
+        .BDGS-T10-PR-logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .BDGS-T10-PR-nav-link {
+            font-weight: 600;
+            color: var(--BDGS-T10-PR-text);
+            padding: 8px 18px;
+            font-size: 14px;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none !important;
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        .BDGS-T10-PR-nav-link:hover, .BDGS-T10-PR-nav-link.active {
+            color: var(--BDGS-T10-PR-primary);
+            background: rgba(37, 99, 235, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+
+        .BDGS-T10-PR-btn {
+            border: none;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .BDGS-T10-PR-btn-primary {
+            background: var(--BDGS-T10-PR-dark);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        }
+
+        .BDGS-T10-PR-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.4);
+            color: white;
+        }
+
+        /* Mobile Menu */
+        .BDGS-T10-PR-mobile-toggle {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: var(--BDGS-T10-PR-dark);
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        
+        .BDGS-T10-PR-mobile-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform-origin: top; 
+            animation: slideDownMenu 0.3s ease-out forwards;
+            max-height: 85vh; 
+            overflow-y: auto;
+        }
+        
+        .BDGS-T10-PR-mobile-menu.active {
+            display: flex;
+        }
+        
+        .BDGS-T10-PR-mobile-menu a {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        @keyframes slideDownMenu {
+            from { opacity: 0; transform: scaleY(0); }
+            to { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* =========================================
+           4. CAREER PAGE SPECIFIC STYLES
+           ========================================= */
+        
+        /* Hero with Background Image */
+        .BDGS-T10-PR-job-hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=2000') no-repeat center center;
+            background-size: cover;
+        }
+        
+        .BDGS-T10-PR-job-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(240, 249, 255, 0.9); /* Higher opacity for text contrast */
+            backdrop-filter: blur(3px); 
+            z-index: 0;
+        }
+
+        .BDGS-T10-PR-job-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .BDGS-T10-PR-job-title {
+            font-size: 56px; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; line-height: 1.1;
+        }
+        .BDGS-T10-PR-job-subtitle {
+            font-size: 18px; color: #64748B; max-width: 650px; margin: 0 auto 50px; line-height: 1.6;
+        }
+
+        /* Advanced Search Container */
+        .BDGS-T10-PR-search-container {
+            background: #fff;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px -10px rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        .BDGS-T10-PR-search-input {
+            flex: 1; border: none; padding: 15px 20px; font-size: 15px; outline: none; border-right: 1px solid #F1F5F9; background: transparent;
+        }
+        .BDGS-T10-PR-search-btn {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            color: white; border: none; padding: 15px 40px; border-radius: 14px; font-weight: 700;
+            transition: 0.3s;
+        }
+        .BDGS-T10-PR-search-btn:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); }
+
+        /* Select2 Customization */
+        .select2-container {
+            width: 180px !important;
+            text-align: left;
+        }
+        .select2-container .select2-selection--single {
+            height: 50px !important;
+            border: none !important;
+            display: flex;
+            align-items: center;
+            background: transparent !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #64748B !important;
+            font-size: 15px;
+            font-weight: 500;
+            padding-left: 15px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 50px !important;
+            right: 10px !important;
+        }
+        .select2-dropdown {
+            border: 1px solid #F1F5F9 !important;
+            border-radius: 12px !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+            padding: 10px;
+            margin-top: 10px;
+            z-index: 9999;
+        }
+        .select2-results__option {
+            padding: 8px 15px !important;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #334155;
+        }
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #EFF6FF !important;
+            color: var(--BDGS-T10-PR-primary) !important;
+        }
+
+        /* Job Filter Tags */
+        .BDGS-T10-PR-tags-row {
+            display: flex; justify-content: center; gap: 10px; margin-top: 30px; flex-wrap: wrap;
+        }
+        .BDGS-T10-PR-tag {
+            padding: 10px 20px; background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 50px; font-size: 13px; font-weight: 600; color: #64748B; cursor: pointer;
+            transition: 0.3s;
+        }
+        .BDGS-T10-PR-tag:hover, .BDGS-T10-PR-tag.active {
+            background: #EFF6FF; color: var(--BDGS-T10-PR-primary); border-color: var(--BDGS-T10-PR-primary);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Stats Section */
+        .BDGS-T10-PR-stats-section {
+            padding: 40px 0; background: #fff; margin: 40px 0; border-top: 1px solid #F1F5F9; border-bottom: 1px solid #F1F5F9;
+        }
+        .BDGS-T10-PR-stat-item {
+            text-align: center; padding: 20px 10px;
+        }
+        .BDGS-T10-PR-stat-num {
+            font-size: 42px; font-weight: 800; background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; margin-bottom: 5px;
+        }
+        .BDGS-T10-PR-stat-label {
+            font-size: 13px; color: #64748B; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* Life at EdgeCare (Grid) */
+        .BDGS-T10-PR-life-grid {
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            grid-template-rows: repeat(2, 200px); 
+            gap: 15px; 
+            margin-top: 40px;
+        }
+        .BDGS-T10-PR-life-item {
+            border-radius: 20px; overflow: hidden; position: relative;
+        }
+        .BDGS-T10-PR-life-item img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;
+        }
+        .BDGS-T10-PR-life-item:hover img { transform: scale(1.1); }
+        .BDGS-T10-PR-life-item.large { grid-column: span 2; grid-row: span 2; }
+        .BDGS-T10-PR-life-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); color: white;
+            opacity: 0; transition: 0.3s;
+        }
+        .BDGS-T10-PR-life-item:hover .BDGS-T10-PR-life-overlay { opacity: 1; }
+
+        /* Job Cards Grid */
+        .BDGS-T10-PR-job-grid { padding: 60px 0; }
+        .BDGS-T10-PR-job-card {
+            background: #ffffff; border-radius: 24px; padding: 30px; margin-bottom: 30px;
+            border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;
+            overflow: hidden; display: block; text-decoration: none !important;
+            cursor: pointer; height: 100%; /* Ensure equal height in flex row */
+        }
+        .BDGS-T10-PR-job-card:hover {
+            transform: translateY(-8px); box-shadow: 0 25px 60px rgba(37, 99, 235, 0.12);
+            border-color: rgba(37, 99, 235, 0.15);
+        }
+        .BDGS-T10-PR-job-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background: linear-gradient(to bottom, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            opacity: 0; transition: 0.3s;
+        }
+        .BDGS-T10-PR-job-card:hover::before { opacity: 1; }
+
+        .BDGS-T10-PR-job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+        .BDGS-T10-PR-company-logo {
+            width: 50px; height: 50px; background: #F8FAFC; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+            color: var(--BDGS-T10-PR-primary); border: 1px solid #F1F5F9;
+        }
+        .BDGS-T10-PR-time-tag {
+            background: #F1F5F9; padding: 5px 12px; border-radius: 8px; font-size: 11px;
+            font-weight: 700; color: #64748B; text-transform: uppercase;
+        }
+
+        .BDGS-T10-PR-job-role { font-size: 20px; font-weight: 700; color: var(--BDGS-T10-PR-dark); margin-bottom: 8px; line-height: 1.3; }
+        .BDGS-T10-PR-job-loc { font-size: 14px; color: #94A3B8; margin-bottom: 20px; display: flex; align-items: center; gap: 6px; }
+        
+        .BDGS-T10-PR-pill-list { display: flex; gap: 8px; margin-bottom: 25px; flex-wrap: wrap; }
+        .BDGS-T10-PR-pill { padding: 6px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; }
+        .BDGS-T10-PR-pill.blue { background: #EFF6FF; color: #2563EB; }
+        .BDGS-T10-PR-pill.purple { background: #F3E8FF; color: #7C3AED; }
+        .BDGS-T10-PR-pill.green { background: #ECFDF5; color: #10B981; }
+
+        .BDGS-T10-PR-job-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 20px; flex-wrap: wrap; gap: 10px; }
+        .BDGS-T10-PR-salary { font-weight: 800; color: var(--BDGS-T10-PR-dark); font-size: 16px; }
+        .BDGS-T10-PR-apply-link {
+            font-weight: 600; color: var(--BDGS-T10-PR-primary); font-size: 14px; display: flex; align-items: center; gap: 5px; transition: 0.3s;
+        }
+        .BDGS-T10-PR-job-card:hover .BDGS-T10-PR-apply-link { gap: 10px; }
+
+        /* Benefits Section */
+        .BDGS-T10-PR-benefit-card {
+            background: rgba(255,255,255,0.7); backdrop-filter: blur(10px);
+            padding: 30px 20px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.5);
+            transition: 0.3s; height: 100%; min-height: 250px;
+        }
+        .BDGS-T10-PR-benefit-card:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .BDGS-T10-PR-ben-icon {
+            font-size: 32px; margin-bottom: 20px; background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* =========================================
+           5. FOOTER STYLES (Template Core)
+           ========================================= */
+        .BDGS-T10-PR-footer-link {
+            color: #94A3B8;
+            display: block;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-footer-link:hover {
+            color: var(--BDGS-T10-PR-primary);
+            transform: translateX(5px);
+        }
+        .BDGS-T10-PR-social-icon {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            color: #fff;
+            margin-right: 10px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-social-icon:hover {
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .BDGS-T10-PR-footer-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #fff;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .BDGS-T10-PR-footer-input:focus {
+            outline: none;
+            border-color: var(--BDGS-T10-PR-primary);
+        }
+
+        /* =========================================
+           6. RESPONSIVE ADJUSTMENTS
+           ========================================= */
+        
+        /* Tablet & Small Desktop (768px to 1024px) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .BDGS-T10-PR-logo-text { font-size: 20px; }
+            
+            /* Change grid to 2 columns on tablet */
+            .BDGS-T10-PR-life-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+            
+            .BDGS-T10-PR-search-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Mobile Specific (Phones < 768px) */
+        @media(max-width: 767px) {
+             .BDGS-T10-PR-job-title { font-size: 36px; } 
+             .BDGS-T10-PR-job-subtitle { font-size: 16px; margin-bottom: 30px; }
+             
+             /* Search Container Stacking */
+             .BDGS-T10-PR-search-container { 
+                 flex-direction: column; padding: 20px; align-items: stretch;
+             }
+             .BDGS-T10-PR-search-input { 
+                 border-right: none; border-bottom: 1px solid #F1F5F9; padding: 15px 0; width: 100%;
+             }
+             .select2-container { width: 100% !important; margin-bottom: 10px; border-bottom: 1px solid #F1F5F9; }
+             .BDGS-T10-PR-search-btn { width: 100%; margin-top: 10px; }
+             
+             /* Stats Adjustment */
+             .BDGS-T10-PR-stat-num { font-size: 32px; } 
+             
+             /* Life Grid Stack */
+             .BDGS-T10-PR-life-grid { grid-template-columns: 1fr; grid-template-rows: auto; } 
+             .BDGS-T10-PR-life-item { height: 250px; }
+             .BDGS-T10-PR-life-item.large { grid-column: span 1; grid-row: span 1; height: 250px; } 
+             
+             /* Job Cards */
+             .BDGS-T10-PR-job-footer { flex-direction: column; align-items: flex-start; gap: 15px; }
+             .BDGS-T10-PR-apply-link { width: 100%; justify-content: center; background: #EFF6FF; padding: 12px; border-radius: 8px; margin-top: 5px; }
+             .BDGS-T10-PR-job-card { padding: 20px; }
+             
+             /* Hero Padding */
+             .BDGS-T10-PR-job-hero { padding: 100px 0 50px; }
+             
+             /* Footer Alignment */
+             footer { text-align: left; }
+        }
+
+        /* Very Small Screens */
+        @media(max-width: 480px) {
+            .BDGS-T10-PR-job-title { font-size: 32px; }
+            .col-xs-6 { width: 100%; margin-bottom: 20px; } /* Stack stats on tiny screens */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="BDGS-T10-PR-bg-mesh">
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-1"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-2"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-3"></div>
+    </div>
+
+    <header>
+        <nav class="BDGS-T10-PR-navbar">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center;">
+                        <a href="#" class="BDGS-T10-PR-logo">
+                            <i class=""><img src="../assets/img/edited-photo.png" alt="EdgeCare VIP Logo" height="45px" width="45px"></i>
+                            <span class="BDGS-T10-PR-logo-text">EdgeCare</span>
+                        </a>
+                    </div>
+                    
+                    <div class="hidden-xs hidden-sm">
+                        <a href="index.html" class="BDGS-T10-PR-nav-link">Home</a>
+                        <a href="find_doc.html" class="BDGS-T10-PR-nav-link">Specialists</a>
+                        <a href="job_post.html" class="BDGS-T10-PR-nav-link" style="color: var(--BDGS-T10-PR-primary); background: rgba(37, 99, 235, 0.08);">Careers</a>
+                        <a href="Blog.html" class="BDGS-T10-PR-nav-link">Health Blog</a>
+                        <a href="aboute.html" class="BDGS-T10-PR-nav-link">About</a>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <a href="Login.html" class="BDGS-T10-PR-btn hidden-xs" style="background: transparent; border: 1px solid #ccc;">Log In</a>
+                        <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary">Join Now</button>
+                        
+                        <button class="BDGS-T10-PR-mobile-toggle visible-xs visible-sm" style="margin-left: 10px;">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="BDGS-T10-PR-mobile-menu">
+                    <a href="index.html">Home</a>
+                    <a href="find_doc.html">Specialists</a>
+                    <a href="job_post.html" style="color: var(--BDGS-T10-PR-primary);">Careers</a>
+                    <a href="Blog.html">Health Blogs</a>
+                    <a href="aboute.html">About</a>
+                    <a href="Login.html">Log In</a>
+                    <a href="join.html" style="color: var(--BDGS-T10-PR-primary);">Join Now</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="BDGS-T10-PR-job-hero">
+            <div class="container">
+                <div style="display: inline-block; padding: 6px 15px; background: rgba(37, 99, 235, 0.1); backdrop-filter: blur(5px); color: #2563EB; border-radius: 50px; font-size: 12px; font-weight: 700; margin-bottom: 20px;">
+                    WE ARE HIRING
+                </div>
+                <h1 class="BDGS-T10-PR-job-title">Shape the Future of <span style="background: linear-gradient(135deg, #2563EB, #7C3AED); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Healthcare</span></h1>
+                <p class="BDGS-T10-PR-job-subtitle">Join a world-class team of specialists, researchers, and innovators. We are building the next generation of patient care technology.</p>
+
+                <div class="BDGS-T10-PR-search-container">
+                    <i class="fa fa-search hidden-xs" style="color: #94A3B8; margin-left: 15px;"></i>
+                    <input type="text" class="BDGS-T10-PR-search-input" placeholder="Job title, keywords or company">
+                    
+                    <select class="BDGS-T10-PR-search-select select2-init">
+                        <option>All Locations</option>
+                        <option>New York, NY</option>
+                        <option>London, UK</option>
+                        <option>Remote</option>
+                        <option>Berlin, DE</option>
+                    </select>
+                    
+                    <select class="BDGS-T10-PR-search-select select2-init">
+                        <option>All Departments</option>
+                        <option>Cardiology</option>
+                        <option>Neurology</option>
+                        <option>Nursing</option>
+                        <option>Engineering</option>
+                        <option>Product</option>
+                    </select>
+                    
+                    <button class="BDGS-T10-PR-search-btn" id="searchBtn">Find Jobs</button>
+                </div>
+
+                <div class="BDGS-T10-PR-tags-row">
+                    <span class="BDGS-T10-PR-tag active">View All</span>
+                    <span class="BDGS-T10-PR-tag">Medical</span>
+                    <span class="BDGS-T10-PR-tag">Engineering</span>
+                    <span class="BDGS-T10-PR-tag">Operations</span>
+                    <span class="BDGS-T10-PR-tag">Research</span>
+                    <span class="BDGS-T10-PR-tag">Design</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="BDGS-T10-PR-stats-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="BDGS-T10-PR-stat-item">
+                            <span class="BDGS-T10-PR-stat-num count-up" data-target="500" data-suffix="+">0</span>
+                            <span class="BDGS-T10-PR-stat-label">Employees</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="BDGS-T10-PR-stat-item">
+                            <span class="BDGS-T10-PR-stat-num count-up" data-target="12" data-suffix="">0</span>
+                            <span class="BDGS-T10-PR-stat-label">Global Offices</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="BDGS-T10-PR-stat-item">
+                            <span class="BDGS-T10-PR-stat-num count-up" data-target="4.8" data-suffix="" data-decimals="1">0</span>
+                            <span class="BDGS-T10-PR-stat-label">Glassdoor Rating</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="BDGS-T10-PR-stat-item">
+                            <span class="BDGS-T10-PR-stat-num count-up" data-target="50" data-suffix="k+">0</span>
+                            <span class="BDGS-T10-PR-stat-label">Lives Impacted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="BDGS-T10-PR-job-grid">
+            <div class="container">
+                <h3 style="margin-bottom: 30px; font-size: 24px;">Latest Openings <span style="font-weight: 400; color: #94A3B8; font-size: 16px;">(12 Jobs Found)</span></h3>
+                
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="BDGS-T10-PR-job-card apply-trigger">
+                            <div class="BDGS-T10-PR-job-header">
+                                <div class="BDGS-T10-PR-company-logo"><i class="fa fa-heartbeat"></i></div>
+                                <span class="BDGS-T10-PR-time-tag">Posted 2d ago</span>
+                            </div>
+                            <h4 class="BDGS-T10-PR-job-role">Senior Cardiologist</h4>
+                            <div class="BDGS-T10-PR-job-loc"><i class="fa fa-map-marker"></i> New York, NY (Hybrid)</div>
+                            <div class="BDGS-T10-PR-pill-list">
+                                <span class="BDGS-T10-PR-pill blue">Full Time</span>
+                                <span class="BDGS-T10-PR-pill purple">Senior Level</span>
+                                <span class="BDGS-T10-PR-pill green">Urgent</span>
+                            </div>
+                            <div class="BDGS-T10-PR-job-footer">
+                                <div class="BDGS-T10-PR-salary">$250k - $350k <span style="font-size:12px; font-weight:400; color:#94A3B8;">/ year</span></div>
+                                <div class="BDGS-T10-PR-apply-link">Apply Now <i class="fa fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="BDGS-T10-PR-job-card apply-trigger">
+                            <div class="BDGS-T10-PR-job-header">
+                                <div class="BDGS-T10-PR-company-logo"><i class="fa fa-user-md"></i></div>
+                                <span class="BDGS-T10-PR-time-tag">Posted 5d ago</span>
+                            </div>
+                            <h4 class="BDGS-T10-PR-job-role">Head of Neurology</h4>
+                            <div class="BDGS-T10-PR-job-loc"><i class="fa fa-map-marker"></i> London, UK (On-site)</div>
+                            <div class="BDGS-T10-PR-pill-list">
+                                <span class="BDGS-T10-PR-pill blue">Full Time</span>
+                                <span class="BDGS-T10-PR-pill purple">Director</span>
+                            </div>
+                            <div class="BDGS-T10-PR-job-footer">
+                                <div class="BDGS-T10-PR-salary">$280k - $400k <span style="font-size:12px; font-weight:400; color:#94A3B8;">/ year</span></div>
+                                <div class="BDGS-T10-PR-apply-link">Apply Now <i class="fa fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="BDGS-T10-PR-job-card apply-trigger">
+                            <div class="BDGS-T10-PR-job-header">
+                                <div class="BDGS-T10-PR-company-logo"><i class="fa fa-laptop"></i></div>
+                                <span class="BDGS-T10-PR-time-tag">New</span>
+                            </div>
+                            <h4 class="BDGS-T10-PR-job-role">Telehealth Software Engineer</h4>
+                            <div class="BDGS-T10-PR-job-loc"><i class="fa fa-globe"></i> Remote (US/EU)</div>
+                            <div class="BDGS-T10-PR-pill-list">
+                                <span class="BDGS-T10-PR-pill blue">Full Time</span>
+                                <span class="BDGS-T10-PR-pill green">Engineering</span>
+                            </div>
+                            <div class="BDGS-T10-PR-job-footer">
+                                <div class="BDGS-T10-PR-salary">$120k - $180k <span style="font-size:12px; font-weight:400; color:#94A3B8;">/ year</span></div>
+                                <div class="BDGS-T10-PR-apply-link">Apply Now <i class="fa fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="BDGS-T10-PR-job-card apply-trigger">
+                            <div class="BDGS-T10-PR-job-header">
+                                <div class="BDGS-T10-PR-company-logo"><i class="fa fa-medkit"></i></div>
+                                <span class="BDGS-T10-PR-time-tag">Posted 1w ago</span>
+                            </div>
+                            <h4 class="BDGS-T10-PR-job-role">Clinical Research Coordinator</h4>
+                            <div class="BDGS-T10-PR-job-loc"><i class="fa fa-map-marker"></i> Boston, MA</div>
+                            <div class="BDGS-T10-PR-pill-list">
+                                <span class="BDGS-T10-PR-pill blue">Contract</span>
+                                <span class="BDGS-T10-PR-pill purple">Research</span>
+                            </div>
+                            <div class="BDGS-T10-PR-job-footer">
+                                <div class="BDGS-T10-PR-salary">$80k - $110k <span style="font-size:12px; font-weight:400; color:#94A3B8;">/ year</span></div>
+                                <div class="BDGS-T10-PR-apply-link">Apply Now <i class="fa fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="BDGS-T10-PR-job-card apply-trigger">
+                            <div class="BDGS-T10-PR-job-header">
+                                <div class="BDGS-T10-PR-company-logo"><i class="fa fa-paint-brush"></i></div>
+                                <span class="BDGS-T10-PR-time-tag">Posted 2d ago</span>
+                            </div>
+                            <h4 class="BDGS-T10-PR-job-role">Product Designer (UX/UI)</h4>
+                            <div class="BDGS-T10-PR-job-loc"><i class="fa fa-map-marker"></i> Berlin, DE (Hybrid)</div>
+                            <div class="BDGS-T10-PR-pill-list">
+                                <span class="BDGS-T10-PR-pill blue">Full Time</span>
+                                <span class="BDGS-T10-PR-pill purple">Design</span>
+                            </div>
+                            <div class="BDGS-T10-PR-job-footer">
+                                <div class="BDGS-T10-PR-salary">$70k - $95k <span style="font-size:12px; font-weight:400; color:#94A3B8;">/ year</span></div>
+                                <div class="BDGS-T10-PR-apply-link">Apply Now <i class="fa fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="BDGS-T10-PR-job-card apply-trigger">
+                            <div class="BDGS-T10-PR-job-header">
+                                <div class="BDGS-T10-PR-company-logo"><i class="fa fa-ambulance"></i></div>
+                                <span class="BDGS-T10-PR-time-tag">New</span>
+                            </div>
+                            <h4 class="BDGS-T10-PR-job-role">Emergency Response Lead</h4>
+                            <div class="BDGS-T10-PR-job-loc"><i class="fa fa-map-marker"></i> Chicago, IL</div>
+                            <div class="BDGS-T10-PR-pill-list">
+                                <span class="BDGS-T10-PR-pill blue">Full Time</span>
+                                <span class="BDGS-T10-PR-pill green">Operations</span>
+                            </div>
+                            <div class="BDGS-T10-PR-job-footer">
+                                <div class="BDGS-T10-PR-salary">$90k - $130k <span style="font-size:12px; font-weight:400; color:#94A3B8;">/ year</span></div>
+                                <div class="BDGS-T10-PR-apply-link">Apply Now <i class="fa fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="BDGS-T10-PR-btn" style="background: white; border: 1px solid #E2E8F0; color: #64748B;">Load More Jobs</button>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 60px 0; background: #fff;">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2>Life at EdgeCare</h2>
+                    <p style="color: #64748B;">A culture of innovation, empathy, and excellence.</p>
+                </div>
+                
+                <div class="BDGS-T10-PR-life-grid">
+                    <div class="BDGS-T10-PR-life-item large">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600" alt="Team meeting">
+                        <div class="BDGS-T10-PR-life-overlay">
+                            <h4 style="margin:0;">Collaborative Workspaces</h4>
+                        </div>
+                    </div>
+                    <div class="BDGS-T10-PR-life-item">
+                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=300" alt="Doctor smiling">
+                    </div>
+                    <div class="BDGS-T10-PR-life-item">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=300" alt="Lab research">
+                    </div>
+                    <div class="BDGS-T10-PR-life-item">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=300" alt="Coding">
+                    </div>
+                    <div class="BDGS-T10-PR-life-item">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=300" alt="Team high five">
+                        <div class="BDGS-T10-PR-life-overlay">
+                            <h4 style="margin:0; font-size:14px;">Celebrate Wins</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 80px 0;">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 50px;">
+                    <h2>Perks & Benefits</h2>
+                    <p style="color: #64748B;">We take care of you, so you can take care of others.</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom: 30px;">
+                        <div class="BDGS-T10-PR-benefit-card">
+                            <div class="BDGS-T10-PR-ben-icon"><i class="fa fa-user-md"></i></div>
+                            <h4 style="font-size: 18px; margin-bottom: 10px;">Top Specialists</h4>
+                            <p style="font-size: 14px; color: #64748B;">Work alongside the best minds in modern medicine and technology.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom: 30px;">
+                        <div class="BDGS-T10-PR-benefit-card">
+                            <div class="BDGS-T10-PR-ben-icon"><i class="fa fa-heart"></i></div>
+                            <h4 style="font-size: 18px; margin-bottom: 10px;">Full Insurance</h4>
+                            <p style="font-size: 14px; color: #64748B;">Comprehensive health, dental, and vision coverage for you and family.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom: 30px;">
+                        <div class="BDGS-T10-PR-benefit-card">
+                            <div class="BDGS-T10-PR-ben-icon"><i class="fa fa-plane"></i></div>
+                            <h4 style="font-size: 18px; margin-bottom: 10px;">Flexible Leave</h4>
+                            <p style="font-size: 14px; color: #64748B;">Generous paid time off, sabbatical options, and remote work flexibility.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom: 30px;">
+                        <div class="BDGS-T10-PR-benefit-card">
+                            <div class="BDGS-T10-PR-ben-icon"><i class="fa fa-graduation-cap"></i></div>
+                            <h4 style="font-size: 18px; margin-bottom: 10px;">Growth</h4>
+                            <p style="font-size: 14px; color: #64748B;">Continuous learning budgets, conference sponsorships, and career paths.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #0F172A; color: white; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 40px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <i style="font-size: 24px; color: var(--BDGS-T10-PR-primary);"><img src="../assets/img/edited-photo.png" alt="EdgeCare VIP Logo" height="45px"></i>
+                        <span style="font-size: 24px; font-weight: 800;">EdgeCare</span>
+                    </div>
+                    <p style="color: #94A3B8; line-height: 1.6; margin-bottom: 25px;">
+                        Revolutionizing healthcare access with cutting-edge technology and a patient-first approach. Your health, our priority.
+                    </p>
+                    <div style="display: flex; gap: 5px;">
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Company</h5>
+                    <a href="aboute.html" class="BDGS-T10-PR-footer-link">About Us</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Careers</a>
+                    <a href="review.html" class="BDGS-T10-PR-footer-link">Review</a>
+                    <a href="Blog.html" class="BDGS-T10-PR-footer-link">Blog</a>
+                    <a href="contact.html" class="BDGS-T10-PR-footer-link">Contact</a>
+                </div>
+
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Services</h5>
+                    <a href="find_doc.html" class="BDGS-T10-PR-footer-link">Find Doctors</a>
+                    <a href="Coupon.html" class="BDGS-T10-PR-footer-link">Coupon</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Job Post</a>
+                    <a href="How_it.html" class="BDGS-T10-PR-footer-link">How it work</a>
+                    <a href="Faq.html" class="BDGS-T10-PR-footer-link">FAQ</a>
+                    <a href="Get_match.html" class="BDGS-T10-PR-footer-link">Get Match</a>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Stay Updated</h5>
+                    <p style="color: #94A3B8; font-size: 14px; margin-bottom: 15px;">Subscribe to our newsletter for the latest health tips and updates.</p>
+                    <form id="newsletterForm">
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Enter your email" class="BDGS-T10-PR-footer-input" required>
+                            <button type="submit" class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="padding: 12px 20px; border-radius: 8px;">Go</button>
+                        </div>
+                    </form>
+
+                    <div style="margin-top: 25px;">
+                        <h5 style="color: #fff; margin-bottom: 15px; font-size: 14px;">Get the App</h5>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-apple" style="font-size: 22px;"></i>
+                            </a>
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-android" style="font-size: 20px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                <p style="color: #64748B; margin: 0; font-size: 14px;">&copy; 2026 EdgeCare. All rights reserved.</p>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#" style="color: #64748B; font-size: 14px; text-decoration:none;">Privacy Policy</a>
+                    <a href="#" style="color: #64748B; font-size: 14px; text-decoration:none;">Terms of Service</a>
+                    <a href="#" style="color: #64748B; font-size: 14px; text-decoration:none;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function() {
+            
+            // 1. Initialize Select2
+            $('.select2-init').select2({
+                minimumResultsForSearch: Infinity, // Hide search box inside dropdown
+                width: 'resolve'
+            });
+
+            // 2. Mobile Menu Logic
+            $('.BDGS-T10-PR-mobile-toggle').on('click', function() {
+                $('.BDGS-T10-PR-mobile-menu').toggleClass('active');
+            });
+
+            // 3. SweetAlert2 Trigger for Job Cards
+            $('.apply-trigger').on('click', function() {
+                // Get job title from the card
+                var jobTitle = $(this).find('.BDGS-T10-PR-job-role').text();
+                
+                Swal.fire({
+                    title: 'Apply for ' + jobTitle + '?',
+                    text: "You will be redirected to the application form.",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#2563EB',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, start application!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            'Redirecting...',
+                            'Taking you to the secure portal.',
+                            'success'
+                        )
+                    }
+                })
+            });
+
+            // 3.1 SweetAlert for Search Button
+            $('#searchBtn').on('click', function() {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Searching...',
+                    text: 'We are finding the best matches for you!',
+                    timer: 1500,
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                });
+            });
+
+            // 3.2 SweetAlert for Join/Newsletter
+            $('.nav-join-btn, #newsletterForm').on('click submit', function(e) {
+                if(e.type === 'submit') e.preventDefault();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Welcome Aboard!',
+                    text: 'Thank you for joining the EdgeCare community.',
+                    confirmButtonColor: '#2563EB'
+                });
+            });
+
+            // 4. jQuery Counter Animation
+            // Function to check if element is in viewport
+            function isScrolledIntoView(elem) {
+                var docViewTop = $(window).scrollTop();
+                var docViewBottom = docViewTop + $(window).height();
+                var elemTop = $(elem).offset().top;
+                var elemBottom = elemTop + $(elem).height();
+                return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+            }
+
+            var hasCounted = false;
+
+            $(window).scroll(function() {
+                if (isScrolledIntoView('.BDGS-T10-PR-stats-section') && !hasCounted) {
+                    hasCounted = true;
+                    $('.count-up').each(function() {
+                        var $this = $(this);
+                        var target = parseFloat($this.attr('data-target'));
+                        var suffix = $this.attr('data-suffix');
+                        var decimals = $this.attr('data-decimals') ? parseInt($this.attr('data-decimals')) : 0;
+
+                        $({ countNum: 0 }).animate({ countNum: target }, {
+                            duration: 2000,
+                            easing: 'swing',
+                            step: function() {
+                                // Update visual text
+                                if (decimals > 0) {
+                                    $this.text(this.countNum.toFixed(decimals) + suffix);
+                                } else {
+                                    $this.text(Math.floor(this.countNum) + suffix);
+                                }
+                            },
+                            complete: function() {
+                                // Ensure final value is exact
+                                if (decimals > 0) {
+                                    $this.text(this.countNum.toFixed(decimals) + suffix);
+                                } else {
+                                    $this.text(this.countNum + suffix);
+                                }
+                            }
+                        });
+                    });
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

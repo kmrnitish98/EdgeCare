@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- =========================================
+       SEO & METADATA
+       ========================================= -->
+    <title>EdgeCare VIP – Premium Healthcare & Doctor Appointments</title>
+    <meta name="description" content="Book appointments with world-class specialists, consult doctors online 24/7, and manage your health records with EdgeCare VIP. Next-gen premium healthcare access.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 4.7 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        /* =========================================
+           1. VIP THEME VARIABLES (PREFIX: BDGS-T10-PR)
+           ========================================= */
+        :root {
+            --BDGS-T10-PR-primary:   #2563EB; /* Royal Blue */
+            --BDGS-T10-PR-accent:    #06B6D4; /* Cyan */
+            --BDGS-T10-PR-purple:    #7C3AED; /* Deep Purple */
+            --BDGS-T10-PR-dark:      #0F172A; /* Slate 900 */
+            --BDGS-T10-PR-text:      #334155; /* Slate 700 */
+            
+            /* Glass Effects */
+            --BDGS-T10-PR-glass:       rgba(255, 255, 255, 0.65);
+            --BDGS-T10-PR-glass-str: rgba(255, 255, 255, 0.85);
+            --BDGS-T10-PR-border:    rgba(255, 255, 255, 0.4);
+            
+            /* Shadows */
+            --BDGS-T10-PR-shadow:    0 20px 40px -10px rgba(0,0,0,0.1);
+            --BDGS-T10-PR-glow:      0 0 50px rgba(37, 99, 235, 0.15);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--BDGS-T10-PR-text);
+            overflow-x: hidden;
+            padding-top: 80px;
+            background: #F0F9FF; /* Fallback */
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        /* =========================================
+           2. VIVID AURORA BACKGROUND
+           ========================================= */
+        .BDGS-T10-PR-bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -2; /* Behind everything */
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.7;
+            animation: meshFloat 20s infinite alternate ease-in-out;
+        }
+
+        /* Large Purple Orb */
+        .BDGS-T10-PR-orb-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25), transparent 70%);
+            top: -20%;
+            left: -10%;
+        }
+
+        /* Bright Cyan Orb */
+        .BDGS-T10-PR-orb-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        /* Royal Blue Accent */
+        .BDGS-T10-PR-orb-3 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%);
+            top: 40%;
+            left: 40%;
+            animation-duration: 25s;
+        }
+
+        @keyframes meshFloat {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(10deg); }
+            100% { transform: translate(-30px, -20px) rotate(-5deg); }
+        }
+
+        /* =========================================
+           2.1 ANIMATED ICON BUBBLES
+           ========================================= */
+        .BDGS-T10-PR-bg-icons {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1; /* Above mesh, behind content */
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-icon-bubble {
+            position: absolute;
+            color: rgba(37, 99, 235, 0.08); /* Very subtle opacity */
+            font-size: 24px;
+            animation: floatIcon 20s infinite linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px; 
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(2px);
+        }
+
+        /* Icon Variants */
+        .BDGS-T10-PR-icon-bubble:nth-child(1) { top: 80%; left: 10%; font-size: 30px; animation-duration: 18s; animation-delay: 0s; color: rgba(239, 68, 68, 0.15); /* Red tint for heart */ }
+        .BDGS-T10-PR-icon-bubble:nth-child(2) { top: 90%; left: 30%; font-size: 40px; animation-duration: 25s; animation-delay: -5s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(3) { top: 85%; left: 70%; font-size: 28px; animation-duration: 22s; animation-delay: -10s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(4) { top: 75%; left: 90%; font-size: 35px; animation-duration: 20s; animation-delay: -2s; color: rgba(16, 185, 129, 0.15); /* Green tint */ }
+        .BDGS-T10-PR-icon-bubble:nth-child(5) { top: 95%; left: 50%; font-size: 32px; animation-duration: 28s; animation-delay: -15s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(6) { top: 60%; left: 5%; font-size: 20px; animation-duration: 30s; animation-delay: -7s; }
+
+        @keyframes floatIcon {
+            0% { transform: translateY(100px) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* =========================================
+           3. UI COMPONENTS
+           ========================================= */
+        
+        /* Entrance Animations */
+        .bdgs-animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .bdgs-delay-1 { animation-delay: 0.1s; }
+        .bdgs-delay-2 { animation-delay: 0.2s; }
+        .bdgs-delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navbar */
+        .BDGS-T10-PR-navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 0; /* Reduced padding */
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--BDGS-T10-PR-border);
+            transition: all 0.3s ease;
+        }
+
+        .BDGS-T10-PR-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none !important;
+        }
+
+        .BDGS-T10-PR-logo i {
+            font-size: 28px;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .BDGS-T10-PR-logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ENHANCED NAVIGATION LINKS */
+        .BDGS-T10-PR-nav-link {
+            font-weight: 600;
+            color: var(--BDGS-T10-PR-text);
+            padding: 8px 18px; /* Slightly wider padding for pill shape */
+            font-size: 14px;
+            border-radius: 12px; /* Smooth rounded corners */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Premium smooth ease */
+            position: relative;
+            text-decoration: none !important; /* Force remove underline */
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        .BDGS-T10-PR-nav-link:hover {
+            color: var(--BDGS-T10-PR-primary);
+            background: rgba(37, 99, 235, 0.08); /* Subtle blue tint */
+            transform: translateY(-2px); /* Gentle float up */
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1); /* Soft glow shadow */
+        }
+        
+        .BDGS-T10-PR-nav-link:active {
+            transform: translateY(0);
+            background: rgba(37, 99, 235, 0.12);
+        }
+
+        /* Mobile Menu */
+        .BDGS-T10-PR-mobile-toggle {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: var(--BDGS-T10-PR-dark);
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .BDGS-T10-PR-mobile-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform-origin: top;
+            animation: slideDownMenu 0.3s ease-out forwards;
+        }
+        
+        .BDGS-T10-PR-mobile-menu.active {
+            display: flex;
+        }
+        
+        .BDGS-T10-PR-mobile-menu a {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Fix Select2 in Mobile Menu */
+        .BDGS-T10-PR-mobile-menu .select2-container {
+            width: 100% !important;
+            margin-bottom: 5px;
+        }
+        
+        @keyframes slideDownMenu {
+            from { opacity: 0; transform: scaleY(0); }
+            to { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* Buttons */
+        .BDGS-T10-PR-btn {
+            border: none;
+            padding: 10px 24px; /* Reduced padding */
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px; /* Smaller font */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-btn-primary {
+            background: var(--BDGS-T10-PR-dark);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        }
+        .BDGS-T10-PR-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.4);
+            color: white;
+        }
+        
+        /* Premium Gradient Button with Shine */
+        .BDGS-T10-PR-btn-grad {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        .BDGS-T10-PR-btn-grad::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.6s;
+            z-index: -1;
+        }
+        .BDGS-T10-PR-btn-grad:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px -5px rgba(124, 58, 237, 0.5);
+            color: white;
+        }
+        .BDGS-T10-PR-btn-grad:hover::after {
+            left: 100%;
+        }
+
+        /* Levitating Glass Card */
+        .BDGS-T10-PR-card {
+            background: var(--BDGS-T10-PR-glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--BDGS-T10-PR-border);
+            border-radius: 24px;
+            padding: 25px; /* Reduced padding */
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            height: 100%;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .BDGS-T10-PR-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            background: var(--BDGS-T10-PR-glass-str);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255,255,255,0.8);
+            z-index: 10;
+        }
+
+        /* =========================================
+           4. NEW ADVANCED HERO SECTION
+           ========================================= */
+        .BDGS-T10-PR-hero-v2 {
+            padding: 30px 0 20px; /* SIGNIFICANTLY REDUCED PADDING */
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Grid Overlay for Tech Feel */
+        .BDGS-T10-PR-grid-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+            mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
+        }
+
+        .BDGS-T10-PR-hero-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 20px; /* Slight adjustment */
+        }
+
+        .BDGS-T10-PR-hero-title-v2 {
+            font-size: 45px; /* Reduced from 72px */
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+            color: var(--BDGS-T10-PR-dark);
+        }
+        
+        .BDGS-T10-PR-gradient-text {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary) 0%, var(--BDGS-T10-PR-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 3D PERSPECTIVE INTERFACE */
+        .BDGS-T10-PR-3d-scene {
+            perspective: 1500px; /* Deep 3D space */
+            height: 420px; /* REDUCED HEIGHT further */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .BDGS-T10-PR-app-mockup {
+            width: 300px; /* Reduced width */
+            height: 460px; /* REDUCED HEIGHT */
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 35px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            transform: rotateY(-20deg) rotateX(10deg);
+            transform-style: preserve-3d;
+            box-shadow: -30px 40px 80px -10px rgba(15, 23, 42, 0.2);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            padding: 15px;
+        }
+
+        .BDGS-T10-PR-app-mockup:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 30px 60px -10px rgba(15, 23, 42, 0.15);
+        }
+
+        /* Mockup Internal UI */
+        .BDGS-T10-PR-app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            transform: translateZ(20px); /* 3D pop */
+        }
+        .BDGS-T10-PR-app-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 10px 12px; /* Smaller padding */
+            margin-bottom: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transform: translateZ(10px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .BDGS-T10-PR-app-btn-float {
+            position: absolute;
+            bottom: 20px;
+            left: 15px;
+            right: 15px;
+            background: var(--BDGS-T10-PR-primary);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px;
+            transform: translateZ(30px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Floating Particles around Phone */
+        .BDGS-T10-PR-float-badge {
+            position: absolute;
+            padding: 8px 14px;
+            background: #fff;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            font-weight: 600;
+            font-size: 12px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transform: translateZ(50px); /* Pop out even more */
+            animation: floatBadge 4s infinite ease-in-out;
+        }
+
+        .BDGS-T10-PR-float-badge.left { top: 40px; left: -30px; animation-delay: 0s; }
+        .BDGS-T10-PR-float-badge.right { bottom: 80px; right: -20px; animation-delay: 2s; }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateZ(50px) translateY(0); }
+            50% { transform: translateZ(50px) translateY(-10px); }
+        }
+
+        /* =========================================
+           5. SPECIALTY ICONS
+           ========================================= */
+        .BDGS-T10-PR-icon-box {
+            text-align: center;
+            padding: 25px 10px; /* Reduced padding */
+            background: #fff;
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .BDGS-T10-PR-icon-box a{
+            text-decoration: none;
+        }
+        .BDGS-T10-PR-icon-box:hover {
+            transform: translateY(-10px); /* Less movement */
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+            border-color: transparent;
+        }
+
+        .BDGS-T10-PR-icon-bg {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+            color: var(--BDGS-T10-PR-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin: 0 auto 10px;
+            transition: 0.4s;
+        }
+
+        .BDGS-T10-PR-icon-box:hover .BDGS-T10-PR-icon-bg {
+            background: var(--BDGS-T10-PR-primary);
+            color: white;
+            border-radius: 50%;
+            transform: rotate(360deg);
+        }
+
+        /* =========================================
+           6. PREMIUM DOCTOR CARDS
+           ========================================= */
+        .BDGS-T10-PR-doc-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .BDGS-T10-PR-rating {
+            background: #FEF3C7;
+            color: #D97706;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* =========================================
+           7. NEW SECTION STYLES
+           ========================================= */
+        
+        /* Trusted Marquee */
+        .bdgs-marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            opacity: 0.6;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .bdgs-marquee-content {
+            display: inline-block;
+            animation: marquee 40s linear infinite;
+        }
+        .bdgs-partner-item {
+            display: inline-flex;
+            align-items: center;
+            margin: 0 40px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #64748B;
+            gap: 10px;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* How It Works Premium */
+        .BDGS-T10-PR-step-col {
+            padding: 15px;
+            position: relative;
+        }
+        .BDGS-T10-PR-step-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 45px 25px 30px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 30px; /* Space for the floating bubble */
+        }
+        .BDGS-T10-PR-step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
+            border-color: rgba(37, 99, 235, 0.1);
+        }
+        .BDGS-T10-PR-step-num {
+            width: 65px; height: 65px;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            color: #fff;
+            font-weight: 800;
+            font-size: 24px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            position: absolute;
+            top: -32px; left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            border: 5px solid #fff; /* Thick ring to separate from line */
+            z-index: 2;
+        }
+        
+        .BDGS-T10-PR-process-wrapper {
+            position: relative;
+            padding-top: 20px;
+        }
+        
+        /* Dashed Connector Line */
+        .BDGS-T10-PR-connector {
+            position: absolute;
+            top: 50px; /* Aligns with center of bubbles (30px margin + 32px half height approx) */
+            left: 16.66%;
+            width: 66.66%;
+            height: 2px;
+            background-image: linear-gradient(to right, #CBD5E1 50%, rgba(255,255,255,0) 0%);
+            background-position: bottom;
+            background-size: 15px 2px;
+            background-repeat: repeat-x;
+            z-index: 0;
+        }
+
+        .BDGS-T10-PR-walk-track {
+            position: absolute;
+            top: 50px; /* Matches connector line height */
+            left: 16.66%;
+            width: 66.66%;
+            height: 0;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .BDGS-T10-PR-walker {
+            position: absolute;
+            top: -55px; /* Sits on top of the bubbles */
+            left: 0;
+            width: 60px;
+            height: 60px;
+            animation: walkSequence 12s linear infinite; 
+            transform-origin: center bottom;
+            z-index: 10;
+        }
+        .BDGS-T10-PR-walker img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        @keyframes walkSequence {
+            /* Start at Step 1 */
+            0% { left: 0%; opacity: 0; transform: translateX(-50%) scale(1); }
+            5% { left: 0%; opacity: 1; transform: translateX(-50%) scale(1); }
+            
+            /* Walk to Step 2 */
+            30% { left: 50%; transform: translateX(-50%) scale(1); }
+            
+            /* Pause & Grow at Step 2 */
+            35% { left: 50%; transform: translateX(-50%) scale(1.2); }
+            40% { left: 50%; transform: translateX(-50%) scale(1); }
+            
+            /* Walk to Step 3 */
+            65% { left: 100%; transform: translateX(-50%) scale(1); }
+            
+            /* Pause & Grow at Step 3 */
+            70% { left: 100%; transform: translateX(-50%) scale(1.2); }
+            75% { left: 100%; transform: translateX(-50%) scale(1); opacity: 1; }
+            
+            /* Reset Loop */
+            90% { opacity: 0; }
+            100% { left: 0%; opacity: 0; transform: translateX(-50%) scale(1); }
+        }
+        
+        @media (max-width: 991px) {
+            .BDGS-T10-PR-connector { display: none; }
+            .BDGS-T10-PR-step-card { margin-top: 40px; margin-bottom: 20px; }
+        }
+
+        /* Why Choose Us */
+        .BDGS-T10-PR-feature-card {
+            padding: 40px 30px;
+            background: var(--BDGS-T10-PR-glass);
+            border-radius: 24px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.6);
+            height: 100%;
+            backdrop-filter: blur(10px);
+        }
+        .BDGS-T10-PR-feature-card:hover {
+            transform: translateY(-10px);
+            background: #fff;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+        }
+        .BDGS-T10-PR-feat-icon {
+            width: 70px; height: 70px;
+            background: #EFF6FF;
+            color: var(--BDGS-T10-PR-primary);
+            border-radius: 20px;
+            font-size: 28px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 25px;
+            transition: 0.4s;
+        }
+        .BDGS-T10-PR-feature-card:hover .BDGS-T10-PR-feat-icon {
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            border-radius: 50%;
+            transform: rotateY(180deg);
+        }
+
+        /* App CTA */
+        .BDGS-T10-PR-cta-box {
+            /* Updated to Gradient Background */
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            border-radius: 30px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            box-shadow: 0 30px 60px -10px rgba(37, 99, 235, 0.4); /* Colored shadow to match */
+            text-align: left;
+        }
+        .BDGS-T10-PR-cta-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1); /* Slightly more visible on vibrant bg */
+        }
+
+        /* NEW: Premium App Store Buttons */
+        .BDGS-T10-PR-store-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-align: left;
+            min-width: 170px;
+            backdrop-filter: blur(5px);
+        }
+        .BDGS-T10-PR-store-btn:hover {
+            background: #fff;
+            color: #0F172A; /* Dark navy text on hover */
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border-color: #fff;
+        }
+        .BDGS-T10-PR-store-btn i {
+            font-size: 32px;
+            transition: transform 0.3s;
+        }
+        .BDGS-T10-PR-store-btn:hover i {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .BDGS-T10-PR-btn-text span {
+            display: block;
+            font-size: 11px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        .BDGS-T10-PR-btn-text strong {
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* NEW: Chat Animation Section */
+        .BDGS-T10-PR-chat-demo {
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            padding: 25px;
+            max-width: 380px;
+            margin: 0 auto;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.5s ease;
+        }
+        .BDGS-T10-PR-chat-header {
+            display: flex;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 20px;
+        }
+        .BDGS-T10-PR-chat-status-dot {
+            width: 8px; height: 8px; background: #10B981; border-radius: 50%; margin-left: auto;
+        }
+        .BDGS-T10-PR-chat-bubble {
+            padding: 12px 16px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+            position: relative;
+            opacity: 0;
+            max-width: 85%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            animation: chatPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        .BDGS-T10-PR-chat-bubble.bot {
+            background: #F8FAFC;
+            color: #334155;
+            border-bottom-left-radius: 4px;
+            align-self: flex-start;
+            border: 1px solid #E2E8F0;
+        }
+        .BDGS-T10-PR-chat-bubble.user {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            color: white;
+            border-bottom-right-radius: 4px;
+            align-self: flex-end;
+            animation-delay: 1.2s;
+        }
+        .BDGS-T10-PR-chat-bubble.bot-2 {
+            background: #F8FAFC;
+            color: #334155;
+            border-bottom-left-radius: 4px;
+            align-self: flex-start;
+            border: 1px solid #E2E8F0;
+            animation-delay: 2.5s;
+        }
+        .BDGS-T10-PR-typing {
+            font-size: 24px;
+            color: #94A3B8;
+            margin-left: 10px;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards 3.5s;
+        }
+        
+        /* Animated Gradient Header */
+        .BDGS-T10-PR-chat-header-gradient {
+            background: linear-gradient(-45deg, #2563EB, #7C3AED, #06B6D4);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: white;
+            border-bottom: none !important; /* Override default border */
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* * =========================================
+         * NEW: INTERACTIVE CHAT STYLES (HIDDEN INITIALLY)
+         * =========================================
+         */
+        #chat-interface-real {
+            display: none;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            max-width: 380px;
+            margin: 0 auto;
+            border: 1px solid rgba(0,0,0,0.05);
+            height: 450px;
+            flex-direction: column;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .BDGS-T10-PR-chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: #ffffff;
+        }
+        
+        .BDGS-T10-PR-chat-footer {
+            padding: 15px;
+            border-top: 1px solid #F1F5F9;
+            background: #F8FAFC;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .BDGS-T10-PR-chat-input {
+            flex: 1;
+            border: 1px solid #E2E8F0;
+            padding: 12px 15px;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .BDGS-T10-PR-chat-input:focus {
+            border-color: var(--BDGS-T10-PR-primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .BDGS-T10-PR-chat-send {
+            width: 40px; height: 40px;
+            background: var(--BDGS-T10-PR-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .BDGS-T10-PR-chat-send:hover {
+            transform: scale(1.1);
+            background: var(--BDGS-T10-PR-dark);
+        }
+        
+        /* Interactive Chat Bubbles (No animation delay) */
+        .chat-msg-row {
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-msg-row.bot { align-items: flex-start; }
+        .chat-msg-row.user { align-items: flex-end; }
+        
+        .real-chat-bubble {
+            padding: 10px 16px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.5;
+            max-width: 85%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            animation: chatPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        
+        .real-chat-bubble.bot {
+            background: #F1F5F9;
+            color: #334155;
+            border-bottom-left-radius: 4px;
+            border: 1px solid #E2E8F0;
+        }
+        
+        .real-chat-bubble.user {
+            background: var(--BDGS-T10-PR-primary);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .typing-indicator span {
+            display: inline-block;
+            width: 5px; height: 5px;
+            background: #94A3B8;
+            border-radius: 50%;
+            margin: 0 1px;
+            animation: typingDot 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes typingDot {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        @keyframes chatPop {
+            0% { opacity: 0; transform: translateY(20px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 991px) {
+            .BDGS-T10-PR-hero-title-v2 { font-size: 40px; }
+            .BDGS-T10-PR-3d-scene { height: auto; margin-top: 40px; perspective: none; }
+            .BDGS-T10-PR-app-mockup { transform: none !important; width: 100%; height: auto; padding-bottom: 60px; }
+            .BDGS-T10-PR-float-badge { display: none; }
+            .BDGS-T10-PR-step-item::after { display: none; }
+            .BDGS-T10-PR-cta-box { text-align: center; padding: 40px 20px; }
+            .BDGS-T10-PR-chat-section-row { flex-direction: column-reverse; }
+            .BDGS-T10-PR-chat-demo, #chat-interface-real { margin-bottom: 30px; }
+        }
+        
+        /* FOOTER ENHANCEMENTS */
+        .BDGS-T10-PR-footer-link {
+            color: #94A3B8;
+            display: block;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-footer-link:hover {
+            color: var(--BDGS-T10-PR-primary);
+            transform: translateX(5px);
+        }
+        .BDGS-T10-PR-social-icon {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            color: #fff;
+            margin-right: 10px;
+            transition: 0.3s;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-social-icon:hover {
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .BDGS-T10-PR-footer-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #fff;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .BDGS-T10-PR-footer-input:focus {
+            outline: none;
+            border-color: var(--BDGS-T10-PR-primary);
+        }
+
+        /* NEW: Advanced Premium Doctor Card */
+        .BDGS-T10-PR-card-advanced {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .BDGS-T10-PR-card-advanced:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(37, 99, 235, 0.15);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .BDGS-T10-PR-card-top {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .BDGS-T10-PR-img-frame {
+            width: 85px;
+            height: 85px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-right: 15px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            flex-shrink: 0;
+        }
+
+        .BDGS-T10-PR-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .BDGS-T10-PR-card-advanced:hover .BDGS-T10-PR-img-frame img {
+            transform: scale(1.1);
+        }
+
+        .BDGS-T10-PR-status-indicator {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 14px;
+            height: 14px;
+            background: #10B981;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .BDGS-T10-PR-doc-info {
+            flex: 1;
+        }
+
+        .BDGS-T10-PR-doc-info h4 {
+            margin: 5px 0;
+            font-size: 18px;
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 700;
+        }
+
+        .BDGS-T10-PR-doc-info span {
+            color: var(--BDGS-T10-PR-primary);
+            font-size: 13px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .BDGS-T10-PR-rating-pill {
+            background: #FEF3C7;
+            color: #D97706;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Stats Grid inside Card */
+        .BDGS-T10-PR-stats-row {
+            display: flex;
+            justify-content: space-between;
+            background: #F8FAFC;
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #F1F5F9;
+        }
+
+        .BDGS-T10-PR-stat-col strong {
+            display: block;
+            font-size: 16px;
+            color: var(--BDGS-T10-PR-dark);
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .BDGS-T10-PR-stat-col span {
+            font-size: 10px;
+            color: #64748B;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* Actions */
+        .BDGS-T10-PR-card-btns {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        /* FIXED: Updated Button Style for A Tags */
+        .BDGS-T10-PR-btn-book {
+            flex: 1;
+            background: var(--BDGS-T10-PR-dark);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(15, 23, 42, 0.2);
+            text-align: center; /* Centering text for link */
+            text-decoration: none !important; /* Removing underline */
+            display: inline-block;
+        }
+
+        .BDGS-T10-PR-card-advanced:hover .BDGS-T10-PR-btn-book {
+            background: var(--BDGS-T10-PR-primary);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            color: white;
+        }
+
+        .BDGS-T10-PR-btn-icon {
+            width: 45px;
+            background: #EFF6FF;
+            color: var(--BDGS-T10-PR-primary);
+            border: none;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            cursor: pointer;
+            padding:15px;
+        }
+
+        .BDGS-T10-PR-btn-icon:hover {
+            background: #DBEAFE;
+            transform: scale(1.05);
+        }
+        
+        /* Modal Overlay Styles (Kept for future use if needed) */
+        .BDGS-T10-PR-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .BDGS-T10-PR-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .BDGS-T10-PR-modal-card {
+            background: #fff;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .BDGS-T10-PR-modal-overlay.active .BDGS-T10-PR-modal-card {
+            transform: translateY(0);
+        }
+        
+        .BDGS-T10-PR-close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            color: #94A3B8;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .BDGS-T10-PR-close-modal:hover { color: var(--BDGS-T10-PR-dark); }
+        
+        .BDGS-T10-PR-input-group {
+            margin-bottom: 20px;
+        }
+        
+        .BDGS-T10-PR-modal-input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: 0.3s;
+            background: #F8FAFC;
+        }
+        
+        .BDGS-T10-PR-modal-input:focus {
+            border-color: var(--BDGS-T10-PR-primary);
+            background: #fff;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        /* NEW: Fixed Bottom Cards */
+        .BDGS-T10-PR-float-left {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 999;
+        }
+        .BDGS-T10-PR-float-right {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+        }
+
+        /* FIX: Make the anchor tag inside the card top a flex container */
+        .BDGS-T10-PR-card-top > a {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            text-decoration: none !important; /* Remove underline */
+            color: inherit; /* Keep original text colors */
+            transition: opacity 0.3s;
+        }
+
+        .BDGS-T10-PR-card-top > a:hover {
+            opacity: 0.9; /* Slight fade effect on hover */
+        }
+        
+        /* Left Appointment Card */
+        .BDGS-T10-PR-float-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 10px 10px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.8);
+            width: 220px;
+            animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s backwards;
+        }
+        .BDGS-T10-PR-btn-sm {
+            width: 100%;
+            background: var(--BDGS-T10-PR-dark);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .BDGS-T10-PR-btn-sm:hover { 
+            background: var(--BDGS-T10-PR-primary); 
+            transform: translateY(-2px);
+        }
+
+        /* Right Join Card (Gradient) */
+        .BDGS-T10-PR-float-card-grad {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.3);
+            width: 260px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.2s backwards;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .BDGS-T10-PR-float-card-grad::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .BDGS-T10-PR-btn-join {
+            width: 100%;
+            background: #fff;
+            color: var(--BDGS-T10-PR-primary);
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .BDGS-T10-PR-btn-join:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Hide on very small mobile screens to prevent obstruction */
+        @media (max-width: 769px) {
+            .BDGS-T10-PR-float-left, .BDGS-T10-PR-float-right { display: none; }
+        }
+
+        /* FIX: Force hide mobile menu on larger screens */
+        @media (min-width: 992px) {
+            .BDGS-T10-PR-mobile-menu {
+                display: none !important;
+            }
+        }
+
+        /* =========================================
+           8. NEW: SELECT2 CUSTOM STYLES
+           ========================================= */
+        /* Container styling to match glass theme */
+        .select2-container--default .select2-selection--single {
+            background-color: transparent !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 10px !important;
+            height: 40px !important;
+            display: flex !important;
+            align-items: center !important;
+            outline: none !important;
+            transition: all 0.3s ease;
+        }
+        
+        .select2-container--default .select2-selection--single:hover {
+            border-color: var(--BDGS-T10-PR-primary) !important;
+            background-color: rgba(37, 99, 235, 0.05) !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: var(--BDGS-T10-PR-text) !important;
+            font-weight: 600 !important;
+            font-size: 14px !important;
+            padding-left: 15px !important;
+            padding-right: 25px !important;
+            line-height: normal !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 38px !important;
+            right: 8px !important;
+        }
+        
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            border-color: #64748B transparent transparent transparent !important;
+        }
+
+        /* Dropdown styling */
+        .select2-dropdown {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.6) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1) !important;
+            padding: 8px !important;
+            margin-top: 10px !important;
+            z-index: 9999 !important;
+        }
+
+        /* Options styling */
+        .select2-results__option {
+            padding: 10px 15px !important;
+            font-size: 14px !important;
+            border-radius: 10px !important;
+            color: var(--BDGS-T10-PR-text) !important;
+            transition: 0.2s !important;
+            font-weight: 500 !important;
+            margin-bottom: 2px !important;
+        }
+
+        /* Hover & Selected states */
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #EFF6FF !important;
+            color: var(--BDGS-T10-PR-primary) !important;
+        }
+        
+        .select2-container--default .select2-results__option[aria-selected=true] {
+            background-color: #F1F5F9 !important;
+            color: var(--BDGS-T10-PR-dark) !important;
+        }
+
+        /* Hide the search box */
+        .select2-search--dropdown {
+            display: none !important;
+        }
+        
+        /* FontAwesome inside Select2 */
+        .select2-results__option i {
+            margin-right: 8px;
+            color: var(--BDGS-T10-PR-accent);
+            width: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. VIVID AURORA BACKGROUND -->
+    <div class="BDGS-T10-PR-bg-mesh">
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-1"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-2"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-3"></div>
+    </div>
+
+    <!-- 1.1 ANIMATED BACKGROUND ICONS (BUBBLES) -->
+    <div class="BDGS-T10-PR-bg-icons">
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-heart"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-user-md"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-stethoscope"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-medkit"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-ambulance"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-hospital-o"></i></div>
+    </div>
+
+    <!-- 2. NAVBAR WITH SEMANTIC HEADER TAG -->
+    <header>
+        <nav class="BDGS-T10-PR-navbar">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center;">
+                        <a href="#" class="BDGS-T10-PR-logo">
+                            <!-- Logo Image -->
+                            <i class=""><img src="../assets/img/edited-photo.png" alt="EdgeCare VIP Logo" height="45px"></i>
+                            <span class="BDGS-T10-PR-logo-text">EdgeCare</span>
+                        </a>
+                    </div>
+                    
+                    <!-- UPDATED: Adjusted visibility to hide on Tablets (sm) as well, showing Hamburger menu instead -->
+                    <div class="hidden-xs hidden-sm">
+                        <a href="#" class="BDGS-T10-PR-nav-link" style="color: var(--BDGS-T10-PR-primary); background: rgba(37, 99, 235, 0.08);">Home</a>
+                        <a href="find_doc.html" class="BDGS-T10-PR-nav-link">Specialists</a>
+                        <a href="appointment.html" class="BDGS-T10-PR-nav-link">Appointment</a>
+                        <a href="Blog.html" class="BDGS-T10-PR-nav-link">Health Blog</a>
+                        <a href="aboute.html" class="BDGS-T10-PR-nav-link">About</a>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        
+                        <!-- NEW: Select2 Dropdown replacing old button -->
+                        <!-- FIXED: Hiding on Tablets (sm) to prevent overcrowding -->
+                        <div class="hidden-xs hidden-sm">
+                            <select class="BDGS-T10-PR-auth-select" style="width: 170px;">
+                                <option></option> <!-- Placeholder -->
+                                <option value="Login.html" data-icon="fa-sign-in">Login</option>
+                                <option value="Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                                <option value="Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                            </select>
+                        </div>
+
+                        <!-- Hide Join Now on extra small devices to save space, rely on menu -->
+                        <a href="join.html"><button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary hidden-xs">Join</button></a>
+                        <!-- UPDATED: Made Visible on Small (Tablet) screens too -->
+                        <button class="BDGS-T10-PR-mobile-toggle visible-xs visible-sm" style="margin-left: 10px;">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Dropdown -->
+                <div class="BDGS-T10-PR-mobile-menu">
+                    <a href="#" style="color: var(--BDGS-T10-PR-primary);">Home</a>
+                    <a href="find_doc.html">Specialists</a>
+                    <a href="appointment.html">Appointment</a>
+                    <a href="Blog.html">Health Blogs</a>
+                    <a href="aboute.html">About</a>
+                    
+                    <!-- Added Mobile Links for Consistency -->
+                    <!-- REMOVED hidden-xs so this appears on Mobile/Tablet menu -->
+                    <div>
+                            <select class="BDGS-T10-PR-auth-select" style="width: 100%;">
+                                <option></option> <!-- Placeholder -->
+                                <option value="Login.html" data-icon="fa-sign-in">Login</option>
+                                <option value="Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                                <option value="Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                            </select>
+                        </div>
+
+                    <a href="join.html" style="color: var(--BDGS-T10-PR-primary);">Join</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 3. ADVANCED 3D HERO SECTION -->
+    <section class="BDGS-T10-PR-hero-v2 bdgs-animate-fade-up">
+        <div class="BDGS-T10-PR-grid-overlay"></div> <!-- Tech Grid Background -->
+        
+        <div class="container">
+            <div class="row" style="display: flex; align-items: center; flex-wrap: wrap;">
+                
+                <!-- Left: Advanced Text & Search -->
+                <div class="col-md-6 BDGS-T10-PR-hero-content">
+                    <div style="display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; background: rgba(37,99,235,0.1); border-radius: 50px; color: var(--BDGS-T10-PR-primary); font-weight: 700; font-size: 12px; margin-bottom: 20px;">
+                        <span style="display: block; width: 6px; height: 6px; background: var(--BDGS-T10-PR-primary); border-radius: 50%; box-shadow: 0 0 10px var(--BDGS-T10-PR-primary);"></span>
+                        Live Health Monitoring
+                    </div>
+                    
+                    <h1 class="BDGS-T10-PR-hero-title-v2">
+                        Next Gen <br>
+                        <span class="BDGS-T10-PR-gradient-text">Medical Care.</span>
+                    </h1>
+                    
+                    <p style="font-size: 18px; color: #64748B; margin-bottom: 25px; max-width: 95%; line-height: 1.5;"> 
+                        Connect with elite specialists through our AI-powered platform. Instant appointments, seamless records, and premium care.
+                    </p>
+
+                    <!-- Advanced Search Bar -->
+                    <div style="background: #fff; padding: 6px; border-radius: 100px; box-shadow: 0 15px 40px -10px rgba(37,99,235,0.15); display: flex; align-items: center; border: 1px solid rgba(0,0,0,0.05); margin-bottom: 25px; position: relative; z-index: 5;">
+                        <div style="width: 40px; height: 40px; background: #F8FAFC; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--BDGS-T10-PR-text); margin-left: 5px;">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <input type="text" placeholder="Search doctor, clinic..." style="border: none; flex: 1; padding: 0 15px; font-size: 15px; background: transparent; outline: none; height: 40px;" aria-label="Search Doctor">
+                        <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-grad" style="padding: 10px 30px; border-radius: 50px;">Find</button>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; gap: 20px;">
+                        <div style="display: flex; -webkit-box-align: center; align-items: center;">
+                            <!-- Alt tags empty for decorative user avatars -->
+                            <div style="display: flex;">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64" style="width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff; margin-left: 0;" alt="">
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64" style="width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff; margin-left: -12px;" alt="">
+                                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=64&h=64" style="width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff; margin-left: -12px;" alt="">
+                            </div>
+                            <div style="margin-left: 15px; line-height: 1.2;">
+                                <strong style="display: block; font-size: 14px; color: var(--BDGS-T10-PR-dark);">12k+ Patients</strong>
+                                <span style="font-size: 12px; color: #64748B;">Trust EdgeCare</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: 3D Floating Interface -->
+                <div class="col-md-6 bdgs-animate-fade-up bdgs-delay-2">
+                    <div class="BDGS-T10-PR-3d-scene">
+                        
+                        <!-- Floating 3D Phone Mockup -->
+                        <div class="BDGS-T10-PR-app-mockup">
+                            
+                            <!-- Floating Badge Left -->
+                            <div class="BDGS-T10-PR-float-badge left">
+                                <i class="fa fa-heartbeat" style="color: #EF4444;"></i> Heart Rate: Normal
+                            </div>
+
+                            <!-- Floating Badge Right -->
+                            <div class="BDGS-T10-PR-float-badge right">
+                                <i class="fa fa-check-circle" style="color: #10B981;"></i> Appt. Confirmed
+                            </div>
+
+                            <!-- Phone Header -->
+                            <div class="BDGS-T10-PR-app-header">
+                                <i class="fa fa-bars" style="color: #334155;"></i>
+                                <div style="width: 28px; height: 28px; background: #E0F2FE; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--BDGS-T10-PR-primary); font-size: 12px;"><i class="fa fa-user"></i></div>
+                            </div>
+
+                            <!-- Greeting -->
+                            <h4 style="margin-bottom: 5px; font-size: 16px;">Hello, Alex 👋</h4>
+                            <p style="font-size: 12px; color: #64748B; margin-bottom: 15px;">Find your specialist today.</p>
+
+                            <!-- Mini Cards in Mockup -->
+                            <div class="BDGS-T10-PR-app-card">
+                                <div style="width: 35px; height: 35px; background: #FEF3C7; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #D97706; font-size: 12px;">
+                                    <i class="fa fa-video-camera"></i>
+                                </div>
+                                <div>
+                                    <strong style="display: block; font-size: 12px;">Dr. Sarah J.</strong>
+                                    <span style="font-size: 10px; color: #94A3B8;">Video Consult • 10:00 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="BDGS-T10-PR-app-card">
+                                <div style="width: 35px; height: 35px; background: #ECFDF5; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #10B981; font-size: 12px;">
+                                    <i class="fa fa-flask"></i>
+                                </div>
+                                <div>
+                                    <strong style="display: block; font-size: 12px;">Lab Results</strong>
+                                    <span style="font-size: 10px; color: #94A3B8;">Blood Work • Ready</span>
+                                </div>
+                            </div>
+                            
+                            <div class="BDGS-T10-PR-app-card">
+                                <div style="width: 35px; height: 35px; background: #F3E8FF; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #9333EA; font-size: 12px;">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <div>
+                                    <strong style="display: block; font-size: 12px;">Upcoming</strong>
+                                    <span style="font-size: 10px; color: #94A3B8;">Dentist Checkup • Nov 12</span>
+                                </div>
+                            </div>
+
+                            <!-- Floating CTA in Phone -->
+                            <div class="BDGS-T10-PR-app-btn-float">
+                                Find New Doctor <i class="fa fa-arrow-right" style="margin-left: 5px;"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: PARTNER MARQUEE -->
+    <div class="bdgs-marquee-container">
+        <div class="bdgs-marquee-content">
+            <span class="bdgs-partner-item"><i class="fa fa-hospital-o"></i> MAYO CLINIC</span>
+            <span class="bdgs-partner-item"><i class="fa fa-user-md"></i> CLEVELAND</span>
+            <span class="bdgs-partner-item"><i class="fa fa-heartbeat"></i> JOHNS HOPKINS</span>
+            <span class="bdgs-partner-item"><i class="fa fa-plus-square"></i> SINAI HEALTH</span>
+            <span class="bdgs-partner-item"><i class="fa fa-medkit"></i> KAISER</span>
+            <span class="bdgs-partner-item"><i class="fa fa-hospital-o"></i> MAYO CLINIC</span>
+            <span class="bdgs-partner-item"><i class="fa fa-user-md"></i> CLEVELAND</span>
+            <span class="bdgs-partner-item"><i class="fa fa-heartbeat"></i> JOHNS HOPKINS</span>
+            <span class="bdgs-partner-item"><i class="fa fa-plus-square"></i> SINAI HEALTH</span>
+            <span class="bdgs-partner-item"><i class="fa fa-medkit"></i> KAISER</span>
+        </div>
+    </div>
+
+    <!-- 4. SPECIALTY GRID -->
+    <section style="padding: 40px 0;" class="bdgs-animate-fade-up bdgs-delay-3">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px;">
+                <div>
+                    <h2 style="margin: 0 0 10px;">Explore Specialties</h2>
+                    <p style="color: #64748B; margin: 0;">Comprehensive care for every need.</p>
+                </div>
+                <a href="Special.html" style="color: var(--BDGS-T10-PR-primary); font-weight: 600;">View All <i class="fa fa-arrow-right"></i></a>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2 col-xs-6" style="margin-bottom: 20px;">
+                    
+                    <div class="BDGS-T10-PR-icon-box">
+                        <a href="./page/Cardiology.html">
+                           <div class="BDGS-T10-PR-icon-bg"><i class="fa fa-heartbeat"></i></div>
+                           <h5 style="margin: 0; font-size: 15px;">Cardiology</h5>
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="col-md-2 col-xs-6" style="margin-bottom: 20px;">
+                    <div class="BDGS-T10-PR-icon-box">
+                        <a href="./page/Neurology.html">
+                            <div class="BDGS-T10-PR-icon-bg"><i class="fa fa-user-md"></i></div>
+                            <h5 style="margin: 0; font-size: 15px;">Neurology</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6" style="margin-bottom: 20px;">
+                    <div class="BDGS-T10-PR-icon-box">
+                        <a href="./page/Ophthalmology.html">
+                            <div class="BDGS-T10-PR-icon-bg"><i class="fa fa-eye"></i></div>
+                            <h5 style="margin: 0; font-size: 15px;">Ophthalmology</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6" style="margin-bottom: 20px;">
+                    <div class="BDGS-T10-PR-icon-box">
+                        <a href="./page/General.html">
+                            <div class="BDGS-T10-PR-icon-bg"><i class="fa fa-stethoscope"></i></div>
+                            <h5 style="margin: 0; font-size: 15px;">General</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6" style="margin-bottom: 20px;">
+                    <div class="BDGS-T10-PR-icon-box">
+                        <a href="./page/Emergency.html">
+                            <div class="BDGS-T10-PR-icon-bg"><i class="fa fa-ambulance"></i></div>
+                            <h5 style="margin: 0; font-size: 15px;">Emergency</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6" style="margin-bottom: 20px;">
+                    <div class="BDGS-T10-PR-icon-box">
+                        <a href="./page/Dermatology.html">
+                            <div class="BDGS-T10-PR-icon-bg"><i class="fa fa-user-md"></i></div>
+                            <h5 style="margin: 0; font-size: 15px;">Dermatology</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: WHY CHOOSE US -->
+    <section style="padding: 40px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>Why EdgeCare VIP?</h2>
+                <p style="color: #64748B;">Experience healthcare without boundaries.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4" style="margin-bottom: 30px;">
+                    <div class="BDGS-T10-PR-feature-card">
+                        <div class="BDGS-T10-PR-feat-icon"><i class="fa fa-shield"></i></div>
+                        <h4 style="margin-bottom: 15px;">100% Secure</h4>
+                        <p style="color: #64748B; font-size: 14px;">Your health data is encrypted and protected with enterprise-grade security protocols.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4" style="margin-bottom: 30px;">
+                    <div class="BDGS-T10-PR-feature-card">
+                        <div class="BDGS-T10-PR-feat-icon"><i class="fa fa-user-md"></i></div>
+                        <h4 style="margin-bottom: 15px;">Expert Doctors</h4>
+                        <p style="color: #64748B; font-size: 14px;">Consult with board-certified specialists from top hospitals worldwide.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4" style="margin-bottom: 30px;">
+                    <div class="BDGS-T10-PR-feature-card">
+                        <div class="BDGS-T10-PR-feat-icon"><i class="fa fa-clock-o"></i></div>
+                        <h4 style="margin-bottom: 15px;">24/7 Support</h4>
+                        <p style="color: #64748B; font-size: 14px;">Round-the-clock medical assistance and customer support whenever you need it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: CHAT ANIMATION & INTERACTIVE CHAT -->
+    <section style="padding: 60px 0; background: #fff;">
+        <div class="container">
+            <div class="row BDGS-T10-PR-chat-section-row" style="display: flex; align-items: center; flex-wrap: wrap;">
+                
+                <!-- Animation Side / Chat Interface Side -->
+                <div class="col-md-5 col-md-offset-1">
+                    
+                    <!-- 1. STATIC DEMO CARD (Default Visible) -->
+                    <div class="BDGS-T10-PR-chat-demo" id="chat-demo-static">
+                        <div class="BDGS-T10-PR-chat-header">
+                            <div style="width: 40px; height: 40px; background: #E0E7FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--BDGS-T10-PR-primary); margin-right: 12px;">
+                                <i class="fa fa-stethoscope"></i>
+                            </div>
+                            <div>
+                                <h5 style="margin: 0; font-size: 16px;">Dr. AI Assistant</h5>
+                                <span style="font-size: 12px; color: #10B981;">Online</span>
+                            </div>
+                            <div class="BDGS-T10-PR-chat-status-dot"></div>
+                        </div>
+                        
+                        <div class="BDGS-T10-PR-chat-bubble bot">
+                            Hello! 👋 How are you feeling today?
+                        </div>
+                        
+                        <div class="BDGS-T10-PR-chat-bubble user">
+                            Hi, I have a mild fever and headache. 🤒
+                        </div>
+                        
+                        <div class="BDGS-T10-PR-chat-bubble bot-2">
+                            I see. Based on your symptoms, I recommend booking a video consult. Finding a doctor...
+                        </div>
+                        
+                        <div class="BDGS-T10-PR-typing">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+
+                    <!-- 2. REAL INTERACTIVE CHAT (Hidden Initially) -->
+                    <div id="chat-interface-real" style="display: none;">
+                        <!-- UPDATED: Gradient Header with Female Profile -->
+                        <div class="BDGS-T10-PR-chat-header BDGS-T10-PR-chat-header-gradient" style="padding: 20px 20px 15px; margin-bottom: 0; border-radius: 24px 24px 0 0;">
+                            <div style="width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 12px; overflow: hidden; border: 2px solid rgba(255,255,255,0.5);">
+                                <!-- Female Profile Image -->
+                                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=100&h=100" alt="Dr. AI" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div>
+                                <h5 style="margin: 0; font-size: 16px; color: white;">Dr. Sarah (AI)</h5>
+                                <span style="font-size: 12px; color: rgba(255,255,255,0.9);">Online Now</span>
+                            </div>
+                            <!-- Status dot needs to be white or lighter now -->
+                            <div class="BDGS-T10-PR-chat-status-dot" style="background: #34D399; border: 2px solid white;"></div> 
+                        </div>
+
+                        <!-- Chat Messages Area -->
+                        <div class="BDGS-T10-PR-chat-body" id="chat-messages-container">
+                            <div class="chat-msg-row bot">
+                                <div class="real-chat-bubble bot">
+                                    Hi there! I'm Dr. Sarah, your virtual health assistant. How can I help you today?
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Input Footer -->
+                        <div class="BDGS-T10-PR-chat-footer">
+                            <input type="text" id="chat-input-field" class="BDGS-T10-PR-chat-input" placeholder="Type your message...">
+                            <button id="chat-send-btn" class="BDGS-T10-PR-chat-send"><i class="fa fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Text Content Side -->
+                <div class="col-md-5" style="padding-left: 40px;">
+                    <div style="display: inline-block; background: #F3E8FF; color: #7C3AED; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 20px;">
+                        NEW FEATURE
+                    </div>
+                    <h2 style="margin-bottom: 20px; font-size: 36px;">24/7 Smart Health Support</h2>
+                    <p style="color: #64748B; font-size: 16px; margin-bottom: 30px; line-height: 1.6;">
+                        Unsure about your symptoms? Chat with our AI Health Assistant anytime. It analyzes your condition instantly and connects you with the right specialist in seconds.
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 30px; color: #334155;">
+                        <li style="margin-bottom: 12px;"><i class="fa fa-check" style="color: var(--BDGS-T10-PR-primary); margin-right: 10px;"></i> Instant Symptom Checker</li>
+                        <li style="margin-bottom: 12px;"><i class="fa fa-check" style="color: var(--BDGS-T10-PR-primary); margin-right: 10px;"></i> Real-time Doctor Matching</li>
+                        <li style="margin-bottom: 12px;"><i class="fa fa-check" style="color: var(--BDGS-T10-PR-primary); margin-right: 10px;"></i> Secure & Private Conversations</li>
+                    </ul>
+                    
+                    <!-- TRIGGER BUTTON -->
+                    <button id="start-chat-btn" class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary">Try Chat Now</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. LEVITATING DOCTOR CARDS (UPDATED TO ADVANCED PREMIUM) -->
+    <section style="padding: 40px 0;">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2>Meet Our Top Experts</h2>
+            <p style="color: #64748B;">Book appointments with the world's best doctors.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                <div class="BDGS-T10-PR-card-advanced">
+                    <div class="BDGS-T10-PR-card-top">
+                        <a href="member_pro.html">
+                            <div class="BDGS-T10-PR-img-frame">
+                                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200" alt="Dr. James Wilson">
+                                <div class="BDGS-T10-PR-status-indicator" title="Online Now"></div>
+                            </div>
+                            <div class="BDGS-T10-PR-doc-info">
+                                <div class="BDGS-T10-PR-rating-pill"><i class="fa fa-star"></i> 4.9</div>
+                                <h4>Dr. James Wilson <i class="fa fa-check-circle" style="color:var(--BDGS-T10-PR-primary); font-size:14px;"></i></h4>
+                                <span>Neurologist</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="BDGS-T10-PR-stats-row">
+                        <div class="BDGS-T10-PR-stat-col">
+                            <strong>12+</strong>
+                            <span>Years</span>
+                        </div>
+                        <div class="BDGS-T10-PR-stat-col">
+                            <strong>2.5k</strong>
+                            <span>Patients</span>
+                        </div>
+                        <div class="BDGS-T10-PR-stat-col">
+                            <strong>4.9</strong>
+                            <span>Rating</span>
+                        </div>
+                    </div>
+
+                    <div class="BDGS-T10-PR-card-btns">
+                        <a href="appointment.html" class="BDGS-T10-PR-btn-book">Book Appointment</a>
+                        <a href="member_pro.html" style="text-decoration: none;">
+                            <button class="BDGS-T10-PR-btn-icon"><i class="fa fa-comment-o"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                <div class="BDGS-T10-PR-card-advanced">
+                    <div class="BDGS-T10-PR-card-top">
+                        <a href="member_pro.html">
+                            <div class="BDGS-T10-PR-img-frame">
+                                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200" alt="Dr. William Scott">
+                                <div class="BDGS-T10-PR-status-indicator" title="Online Now"></div>
+                            </div>
+                            <div class="BDGS-T10-PR-doc-info">
+                                <div class="BDGS-T10-PR-rating-pill"><i class="fa fa-star"></i> 4.7</div>
+                                <h4>Dr. William Scott <i class="fa fa-check-circle" style="color:var(--BDGS-T10-PR-primary); font-size:14px;"></i></h4>
+                                <span style="color: #F59E0B;">Dermatologist</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="BDGS-T10-PR-stats-row">
+                        <div class="BDGS-T10-PR-stat-col">
+                            <strong>7+</strong>
+                            <span>Years</span>
+                        </div>
+                        <div class="BDGS-T10-PR-stat-col">
+                            <strong>1.5k</strong>
+                            <span>Patients</span>
+                        </div>
+                        <div class="BDGS-T10-PR-stat-col">
+                            <strong>4.7</strong>
+                            <span>Rating</span>
+                        </div>
+                    </div>
+
+                    <div class="BDGS-T10-PR-card-btns">
+                        <a href="appointment.html" class="BDGS-T10-PR-btn-book">Book Appointment</a>
+                        <a href="member_pro.html" style="text-decoration: none;">
+                            <button class="BDGS-T10-PR-btn-icon"><i class="fa fa-comment-o"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                <div class="BDGS-T10-PR-card-advanced">
+                    <div class="BDGS-T10-PR-card-top">
+                        <a href="member_pro.html">
+                            <div class="BDGS-T10-PR-img-frame">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200" alt="Dr. Olivia Martinez">
+                                <div class="BDGS-T10-PR-status-indicator" style="background:#CBD5E1;" title="Offline"></div>
+                            </div>
+                            <div class="BDGS-T10-PR-doc-info">
+                                <div class="BDGS-T10-PR-rating-pill"><i class="fa fa-star"></i> 5.0</div>
+                                <h4>Dr. Olivia Martinez <i class="fa fa-check-circle" style="color:var(--BDGS-T10-PR-primary); font-size:14px;"></i></h4>
+                                <span style="color: #EC4899;">Surgeon</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="BDGS-T10-PR-stats-row">
+                        <div class="BDGS-T10-PR-stat-col">
+                            <strong>14+</strong>
+                            <span>Years</span>
+                        </div>
+                        <div class="BDGS-T10-PR-stat-col">
+                            <strong>5k+</strong>
+                            <span>Patients</span>
+                        </div>
+                        <div class="BDGS-T10-PR-stat-col">
+                            <strong>5.0</strong>
+                            <span>Rating</span>
+                        </div>
+                    </div>
+
+                    <div class="BDGS-T10-PR-card-btns">
+                        <a href="appointment.html" class="BDGS-T10-PR-btn-book">Book Appointment</a>
+                        <a href="member_pro.html" style="text-decoration: none;">
+                            <button class="BDGS-T10-PR-btn-icon"><i class="fa fa-comment-o"></i></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- NEW SECTION: HOW IT WORKS (PREMIUM UI) -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <span style="color: var(--BDGS-T10-PR-primary); font-weight: 700; letter-spacing: 1px; font-size: 12px; text-transform: uppercase;">Easy Process</span>
+                <h2 style="margin-top: 10px;">Your Journey to Better Health</h2>
+                <p style="color: #64748B;">Get the care you need in 3 simple steps.</p>
+            </div>
+            
+            <div class="BDGS-T10-PR-process-wrapper">
+                <!-- Connector Line (Desktop) -->
+                <div class="BDGS-T10-PR-connector hidden-xs"></div>
+
+                <!-- Walking Animation Track (Desktop) -->
+                <div class="BDGS-T10-PR-walk-track hidden-xs">
+                    <div class="BDGS-T10-PR-walker">
+                        <img src="../assets/img/doctor-400_256.gif" alt="Walking Doctor Animation">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Step 1 -->
+                    <div class="col-md-4 col-sm-4 BDGS-T10-PR-step-col">
+                        <div class="BDGS-T10-PR-step-card">
+                            <div class="BDGS-T10-PR-step-num">1</div>
+                            <h4 style="margin-bottom: 10px; font-weight: 700;">Search</h4>
+                            <p style="color: #64748B; font-size: 14px; margin-bottom: 0;">Browse top-rated specialists filtered by your specific needs and location.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="col-md-4 col-sm-4 BDGS-T10-PR-step-col">
+                        <div class="BDGS-T10-PR-step-card">
+                            <div class="BDGS-T10-PR-step-num">2</div>
+                            <h4 style="margin-bottom: 10px; font-weight: 700;">Book</h4>
+                            <p style="color: #64748B; font-size: 14px; margin-bottom: 0;">Choose a time slot for an in-clinic visit or an instant video consultation.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="col-md-4 col-sm-4 BDGS-T10-PR-step-col">
+                        <div class="BDGS-T10-PR-step-card">
+                            <div class="BDGS-T10-PR-step-num">3</div>
+                            <h4 style="margin-bottom: 10px; font-weight: 700;">Heal</h4>
+                            <p style="color: #64748B; font-size: 14px; margin-bottom: 0;">Receive expert care, digital prescriptions, and follow-up support.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: APP DOWNLOAD CTA -->
+    <section style="padding: 40px 0 80px;">
+        <div class="container">
+            <div class="BDGS-T10-PR-cta-box">
+                <!-- Decorative Circles -->
+                <div class="BDGS-T10-PR-cta-circle" style="width: 300px; height: 300px; top: -100px; right: -50px;"></div>
+                <div class="BDGS-T10-PR-cta-circle" style="width: 200px; height: 200px; bottom: -50px; left: -50px;"></div>
+                
+                <div class="row" style="display: flex; align-items: center; flex-wrap: wrap;">
+                    <div class="col-md-7">
+                        <h2 style="color: white; margin-bottom: 15px;">Download EdgeCare App</h2>
+                        <!-- Text color updated to white/opacity for better contrast on gradient -->
+                        <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin-bottom: 30px;">Manage appointments, get health tips, and consult doctors on the go. Available for iOS and Android.</p>
+                        
+                        <!-- Enhanced Buttons -->
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <button class="BDGS-T10-PR-store-btn">
+                                <i class="fa fa-apple"></i>
+                                <div class="BDGS-T10-PR-btn-text">
+                                    <span>Download on the</span>
+                                    <strong>App Store</strong>
+                                </div>
+                            </button>
+                            <button class="BDGS-T10-PR-store-btn">
+                                <i class="fa fa-android"></i>
+                                <div class="BDGS-T10-PR-btn-text">
+                                    <span>Get it on</span>
+                                    <strong>Google Play</strong>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-5 hidden-xs hidden-sm text-center">
+                        <i class="fa fa-mobile" style="font-size: 250px; color: rgba(255,255,255,0.2); transform: rotate(15deg);"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: #0F172A; color: white; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="row">
+                <!-- Brand Column -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 40px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <i  style="font-size: 24px; color: var(--BDGS-T10-PR-primary);"><img src="../assets/img/edited-photo.png" alt="EdgeCare VIP Logo" height="45px"></i>
+                        <span style="font-size: 24px; font-weight: 800;">EdgeCare</span>
+                    </div>
+                    <p style="color: #94A3B8; line-height: 1.6; margin-bottom: 25px;">
+                        Revolutionizing healthcare access with cutting-edge technology and a patient-first approach. Your health, our priority.
+                    </p>
+                    <div style="display: flex; gap: 5px;">
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Company</h5>
+                    <a href="aboute.html" class="BDGS-T10-PR-footer-link">About Us</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Careers</a>
+                    <a href="review.html" class="BDGS-T10-PR-footer-link">Review</a>
+                    <a href="Blog.html" class="BDGS-T10-PR-footer-link">Blog</a>
+                    <a href="contact.html" class="BDGS-T10-PR-footer-link">Contact</a>
+                </div>
+
+                <!-- Services -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Services</h5>
+                    <a href="find_doc.html" class="BDGS-T10-PR-footer-link">Find Doctors</a>
+                    <a href="Coupon.html" class="BDGS-T10-PR-footer-link">Coupon</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Job Post</a>
+                    <a href="How_it.html" class="BDGS-T10-PR-footer-link">How it work</a>
+                    <a href="Faq.html" class="BDGS-T10-PR-footer-link">FAQ</a>
+                    <a href="Get_match.html" class="BDGS-T10-PR-footer-link">Get Match</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Stay Updated</h5>
+                    <p style="color: #94A3B8; font-size: 14px; margin-bottom: 15px;">Subscribe to our newsletter for the latest health tips and updates.</p>
+                    <form>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Enter your email" class="BDGS-T10-PR-footer-input">
+                            <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="padding: 12px 20px; border-radius: 8px;">Go</button>
+                        </div>
+                    </form>
+
+                    <!-- ADDED: App Download Icons -->
+                    <div style="margin-top: 25px;">
+                        <h5 style="color: #fff; margin-bottom: 15px; font-size: 14px;">Get the App</h5>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-apple" style="font-size: 22px;"></i>
+                            </a>
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-android" style="font-size: 20px;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="color: #64748B; margin: 0; font-size: 14px;">&copy; 2026 EdgeCare. All rights reserved.</p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <a href="#" style="color: #64748B; font-size: 14px;">Privacy Policy</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Terms of Service</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FIXED BOTTOM LEFT CARD: Appointment -->
+    <div class="BDGS-T10-PR-float-left">
+        <div class="BDGS-T10-PR-float-card">
+            
+            <a href="appointment.html"><button class="BDGS-T10-PR-btn-sm">Book Appointment</button></a>
+        </div>
+    </div>
+
+    <!-- FIXED BOTTOM RIGHT CARD: Join Doctor -->
+    <div class="BDGS-T10-PR-float-right">
+        <div class="BDGS-T10-PR-float-card-grad">
+            <div style="display:flex; align-items:center; gap:15px; margin-bottom:15px; position:relative; z-index:2;">
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=150" style="width:50px; height:50px; border-radius:50%; border:3px solid rgba(255,255,255,0.3); object-fit:cover;" alt="EdgeCare Pro Avatar">
+                <div style="color:#fff;">
+                    <h5 style="margin:0; font-size:16px; color:#fff; font-weight:700;">EdgeCare Pro</h5>
+                    <span style="font-size:12px; opacity:0.8; display:block; margin-top:2px;">For Specialists</span>
+                </div>
+            </div>
+            <p style="color:rgba(255,255,255,0.9); font-size:13px; margin-bottom:15px; line-height:1.5; position:relative; z-index:2;">
+                Expand your practice with our premium AI-powered network.
+            </p>
+            <a href="join.html" class="BDGS-T10-PR-btn-join" style="position:relative; z-index:2;">
+                Join Network <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Hidden Modal (Kept for potential future use) -->
+    <div class="BDGS-T10-PR-modal-overlay" id="joinModal">
+        <div class="BDGS-T10-PR-modal-card">
+            <button class="BDGS-T10-PR-close-modal" id="closeModal"><i class="fa fa-times"></i></button>
+            <h3 style="margin-bottom: 5px; color: var(--BDGS-T10-PR-dark);">Join EdgeCare</h3>
+            <p style="color: #64748B; margin-bottom: 25px;">Create an account to get started.</p>
+            
+            <form>
+                <div class="BDGS-T10-PR-input-group">
+                    <input type="text" placeholder="Full Name" class="BDGS-T10-PR-modal-input">
+                </div>
+                <div class="BDGS-T10-PR-input-group">
+                    <input type="email" placeholder="Email Address" class="BDGS-T10-PR-modal-input">
+                </div>
+                <div class="BDGS-T10-PR-input-group">
+                    <input type="password" placeholder="Password" class="BDGS-T10-PR-modal-input">
+                </div>
+                <button type="submit" class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="width: 100%; padding: 14px;">Sign Up</button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 20px; color: #64748B; font-size: 14px;">
+                Already have an account? <a href="#" style="color: var(--BDGS-T10-PR-primary); font-weight: 600;">Log In</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- STRUCTURED DATA (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "name": "EdgeCare VIP",
+      "url": "https://www.edgecare-vip.com",
+      "logo": "https://www.edgecare-vip.com/assets/img/edited-photo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-800-555-5555",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://www.facebook.com/edgecarevip",
+        "https://twitter.com/edgecarevip",
+        "https://www.instagram.com/edgecarevip",
+        "https://www.linkedin.com/company/edgecarevip"
+      ]
+    }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Select2 JS (NEW) -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.BDGS-T10-PR-btn').on('click', function () {
+                var q = $('input[type="text"]').val().trim();
+                if(q !== ''){
+                    window.location.href = 'find_doc.html?q=' + encodeURIComponent(q);
+                }
+            });
+            // INITIALIZE SELECT2 WITH CUSTOM FORMATTING
+            $('.BDGS-T10-PR-auth-select').select2({
+                minimumResultsForSearch: Infinity, // Hides the search box
+                placeholder: "My Account",
+                allowClear: false,
+                width: '100%', // FORCE WIDTH FIX
+                templateSelection: function(data) {
+                      // Custom formatting for the selected item view (placeholder look)
+                      if (!data.id) { 
+                          return $('<span style="color:#334155;"><i class="fa fa-user-circle-o" style="margin-right:8px; color:#06B6D4;"></i> My Account</span>');
+                      }
+                      // Use the icon from the option data attribute
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '" style="margin-right:8px; color:#06B6D4;"></i> ' + data.text + '</span>');
+                },
+                templateResult: function(data) {
+                      if (!data.id) { return data.text; }
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '"></i> ' + data.text + '</span>');
+                }
+            });
+
+            // Handle Page Redirect on Select
+            $('.BDGS-T10-PR-auth-select').on('select2:select', function (e) {
+                var url = e.params.data.id;
+                if(url) {
+                    window.location.href = url;
+                }
+            });
+            
+            // =========================================
+            // CHATBOT INTERACTION LOGIC
+            // =========================================
+            
+            // Elements
+            const startChatBtn = $('#start-chat-btn');
+            const chatDemoCard = $('#chat-demo-static');
+            const chatRealCard = $('#chat-interface-real');
+            const chatInput = $('#chat-input-field');
+            const chatSendBtn = $('#chat-send-btn');
+            const chatContainer = $('#chat-messages-container');
+
+            // 1. Show Real Chat on Click
+            startChatBtn.on('click', function() {
+                chatDemoCard.fadeOut(300, function() {
+                    chatRealCard.css('display', 'flex').hide().fadeIn(400);
+                });
+                startChatBtn.fadeOut(200); // Hide button after starting
+            });
+
+            // 2. Chat Functionality
+            function addMessage(msg, isUser = false) {
+                const type = isUser ? 'user' : 'bot';
+                const html = `
+                    <div class="chat-msg-row ${type}">
+                        <div class="real-chat-bubble ${type}">
+                            ${msg}
+                        </div>
+                    </div>
+                `;
+                chatContainer.append(html);
+                scrollToBottom();
+            }
+
+            function addTypingIndicator() {
+                const html = `
+                    <div class="chat-msg-row bot" id="typing-indicator">
+                        <div class="real-chat-bubble bot typing-indicator" style="padding: 15px 20px;">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                `;
+                chatContainer.append(html);
+                scrollToBottom();
+            }
+
+            function removeTypingIndicator() {
+                $('#typing-indicator').remove();
+            }
+
+            function scrollToBottom() {
+                chatContainer.animate({ scrollTop: chatContainer.prop("scrollHeight") }, 300);
+            }
+
+            function botReply(userMsg) {
+                addTypingIndicator();
+                
+                // Enhanced Healthcare Logic (Client-side Simulation)
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    let reply = "I'm an AI assistant and still learning. While I can't provide a diagnosis, I can connect you with a specialist. Would you like to search for a doctor?";
+                    const lowerInput = userMsg.toLowerCase();
+
+                    // --- URGENT / EMERGENCY ---
+                    if (lowerInput.includes('emergency') || lowerInput.includes('heart attack') || lowerInput.includes('bleeding') || lowerInput.includes('breathing') || lowerInput.includes('chest pain')) {
+                        reply = "🚨 This sounds serious. Please call emergency services immediately or visit the nearest hospital emergency room. Do not wait for an online appointment.";
+                    }
+                    
+                    // --- GREETINGS ---
+                    else if (lowerInput.match(/\b(hi|hello|hey|greetings)\b/)) {
+                        reply = "Hello! I'm Dr. Sarah, your virtual health assistant. 🩺 How can I help you today? (e.g., 'I have a headache', 'Book appointment')";
+                    }
+
+                    // --- BOOKING / APPOINTMENTS ---
+                    else if (lowerInput.includes('book') || lowerInput.includes('appointment') || lowerInput.includes('schedule') || lowerInput.includes('slot')) {
+                        reply = "I can help you book an appointment. You can browse specialists by clicking the 'Specialists' tab above, or tell me your symptoms so I can recommend the right doctor.";
+                    }
+
+                    // --- SYMPTOM CHECKER ---
+                    // Fever
+                    else if (lowerInput.includes('fever') || lowerInput.includes('temperature') || lowerInput.includes('hot')) {
+                        reply = "For a fever, stay hydrated and rest. If it's very high (>103°F) or lasts more than 3 days, please consult a General Physician.";
+                    }
+                    // Headache / Migraine
+                    else if (lowerInput.includes('headache') || lowerInput.includes('migraine') || lowerInput.includes('dizzy')) {
+                        reply = "Headaches can be caused by stress, dehydration, or eye strain. Try drinking water and resting in a dark room. If it persists, a Neurologist can help.";
+                    }
+                    // Cold / Flu
+                    else if (lowerInput.includes('cold') || lowerInput.includes('cough') || lowerInput.includes('flu') || lowerInput.includes('sneeze') || lowerInput.includes('throat')) {
+                        reply = "It sounds like a viral infection. Rest, warm fluids, and steam inhalation can help. If you have difficulty breathing, please see a doctor immediately.";
+                    }
+                    // Stomach / Digestion
+                    else if (lowerInput.includes('stomach') || lowerInput.includes('belly') || lowerInput.includes('digest') || lowerInput.includes('pain') && lowerInput.includes('abdomen')) {
+                        reply = "Stomach issues can vary. Avoid spicy food and eat light meals. If pain persists, a Gastroenterologist would be the right specialist.";
+                    }
+                    // Skin
+                    else if (lowerInput.includes('skin') || lowerInput.includes('rash') || lowerInput.includes('itch') || lowerInput.includes('acne')) {
+                        reply = "For skin concerns, a Dermatologist is your best bet. Avoid scratching the area and keep it clean.";
+                    }
+                    // Bones / Joints
+                    else if (lowerInput.includes('bone') || lowerInput.includes('joint') || lowerInput.includes('knee') || lowerInput.includes('back') || lowerInput.includes('fracture')) {
+                        reply = "For joint or bone pain, an Orthopedic specialist can provide the best advice. Gentle stretching might help in the meantime, but don't overexert.";
+                    }
+                    // Dental
+                    else if (lowerInput.includes('tooth') || lowerInput.includes('teeth') || lowerInput.includes('gum') || lowerInput.includes('mouth')) {
+                        reply = "You should see a Dentist. Rinse with warm salt water for temporary relief if you have pain.";
+                    }
+                    // Eyes
+                    else if (lowerInput.includes('eye') || lowerInput.includes('vision') || lowerInput.includes('blur')) {
+                        reply = "Please consult an Ophthalmologist for any vision changes or eye pain. Rest your eyes from screens.";
+                    }
+
+                    // --- GENERAL HEALTH ---
+                    else if (lowerInput.includes('diet') || lowerInput.includes('food') || lowerInput.includes('eat') || lowerInput.includes('nutrition')) {
+                        reply = "A balanced diet with plenty of fruits, vegetables, and whole grains is recommended. Avoid processed sugars. A Nutritionist can provide a personalized plan.";
+                    }
+                    else if (lowerInput.includes('sleep') || lowerInput.includes('tired') || lowerInput.includes('insomnia')) {
+                        reply = "Adults generally need 7-9 hours of sleep. Try to maintain a regular sleep schedule, avoid caffeine after noon, and limit screen time before bed.";
+                    }
+                    else if (lowerInput.includes('mental') || lowerInput.includes('stress') || lowerInput.includes('anxiety') || lowerInput.includes('depress')) {
+                        reply = "Your mental health is important. If you're feeling overwhelmed, talking to a Psychologist or Psychiatrist can really help. You are not alone. 💙";
+                    }
+
+                    // --- GRATITUDE / END ---
+                    else if (lowerInput.includes('thank') || lowerInput.includes('bye')) {
+                        reply = "You're very welcome! Your health is our priority. Take care! 👋";
+                    }
+
+                    addMessage(reply, false);
+                }, 1200); // Slightly randomized delay feel
+            }
+
+            function handleSend() {
+                const msg = chatInput.val().trim();
+                if(msg) {
+                    addMessage(msg, true);
+                    chatInput.val('');
+                    botReply(msg);
+                }
+            }
+
+            chatSendBtn.on('click', handleSend);
+            
+            chatInput.on('keypress', function(e) {
+                if(e.which == 13) {
+                    handleSend();
+                }
+            });
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('joinModal');
+        const closeBtn = document.getElementById('closeModal');
+
+        const openModal = () => {
+            modal.classList.add('active');
+        };
+
+        if(closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+        }
+
+        if(modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        }
+
+        // Mobile Toggle Logic
+        const mobileToggle = document.querySelector('.BDGS-T10-PR-mobile-toggle');
+        const mobileMenu = document.querySelector('.BDGS-T10-PR-mobile-menu');
+
+        if(mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+
+        // FIX: Auto-close menu on resize if > 992px (Desktop)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 992) {
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

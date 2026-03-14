@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- =========================================
+       SEO & METADATA
+       ========================================= -->
+    <title>EdgeCare VIP – Medical Insights & Health News</title>
+    <meta name="description" content="Stay informed with the latest medical insights, expert health tips, and technology news from EdgeCare VIP. Explore articles on cardiology, wellness, and AI in healthcare.">
+    <meta name="keywords" content="medical blog, health news, doctor insights, wellness tips, EdgeCare VIP blog, medical technology, cardiology, pediatrics, telehealth">
+    <meta name="author" content="EdgeCare VIP">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.edgecare-vip.com/blog">
+
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.edgecare-vip.com/blog">
+    <meta property="og:title" content="EdgeCare VIP – Medical Insights & News">
+    <meta property="og:description" content="Your trusted source for expert medical advice and the latest health trends.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EdgeCare VIP Health Blog">
+    <meta name="twitter:description" content="Expert medical insights and health news delivered to you.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 4.7 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Select2 CSS (Added for Dropdown) -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        /* =========================================
+           1. VIP THEME VARIABLES (PREFIX: BDGS-T10-PR)
+           ========================================= */
+        :root {
+            --BDGS-T10-PR-primary:   #2563EB; /* Royal Blue */
+            --BDGS-T10-PR-accent:    #06B6D4; /* Cyan */
+            --BDGS-T10-PR-purple:    #7C3AED; /* Deep Purple */
+            --BDGS-T10-PR-dark:      #0F172A; /* Slate 900 */
+            --BDGS-T10-PR-text:      #334155; /* Slate 700 */
+            
+            /* Glass Effects */
+            --BDGS-T10-PR-glass:      rgba(255, 255, 255, 0.65);
+            --BDGS-T10-PR-glass-str: rgba(255, 255, 255, 0.85);
+            --BDGS-T10-PR-border:    rgba(255, 255, 255, 0.4);
+            
+            /* Shadows */
+            --BDGS-T10-PR-shadow:    0 20px 40px -10px rgba(0,0,0,0.1);
+            --BDGS-T10-PR-glow:      0 0 50px rgba(37, 99, 235, 0.15);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--BDGS-T10-PR-text);
+            overflow-x: hidden;
+            padding-top: 80px;
+            background: #F0F9FF;
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        /* =========================================
+           2. VIVID AURORA BACKGROUND
+           ========================================= */
+        .BDGS-T10-PR-bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -2;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .BDGS-T10-PR-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.7;
+            animation: meshFloat 20s infinite alternate ease-in-out;
+        }
+
+        .BDGS-T10-PR-orb-1 {
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25), transparent 70%);
+            top: -20%; left: -10%;
+        }
+
+        .BDGS-T10-PR-orb-2 {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%);
+            bottom: -10%; right: -10%;
+            animation-delay: -5s;
+        }
+
+        .BDGS-T10-PR-orb-3 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%);
+            top: 40%; left: 40%;
+            animation-duration: 25s;
+        }
+
+        @keyframes meshFloat {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(10deg); }
+            100% { transform: translate(-30px, -20px) rotate(-5deg); }
+        }
+
+        /* =========================================
+           2.1 ENTRANCE & FLOATING ANIMATIONS
+           ========================================= */
+        .bdgs-animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .bdgs-delay-1 { animation-delay: 0.2s; }
+        .bdgs-delay-2 { animation-delay: 0.4s; }
+        .bdgs-delay-3 { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating Badge Animation */
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* =========================================
+           3. UI COMPONENTS
+           ========================================= */
+        
+        /* Navbar */
+        .BDGS-T10-PR-navbar {
+            position: fixed;
+            top: 0; width: 100%;
+            z-index: 1000;
+            padding: 12px 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--BDGS-T10-PR-border);
+            transition: all 0.3s ease;
+        }
+
+        .BDGS-T10-PR-logo {
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none !important;
+        }
+        .BDGS-T10-PR-logo i {
+            font-size: 28px;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .BDGS-T10-PR-logo-text {
+            font-size: 22px; font-weight: 800;
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .BDGS-T10-PR-nav-link {
+            font-weight: 600; color: var(--BDGS-T10-PR-text);
+            padding: 8px 16px; transition: 0.3s; font-size: 14px;
+            text-decoration: none !important;
+            border-radius: 12px;
+        }
+        .BDGS-T10-PR-nav-link:hover, .BDGS-T10-PR-nav-link.active {
+            color: var(--BDGS-T10-PR-primary);
+            background: rgba(37, 99, 235, 0.08);
+        }
+
+        /* Buttons */
+        .BDGS-T10-PR-btn {
+            border: none; padding: 10px 24px; border-radius: 10px;
+            font-weight: 600; font-size: 13px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .BDGS-T10-PR-btn-primary {
+            background: var(--BDGS-T10-PR-dark); color: white;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        }
+        .BDGS-T10-PR-btn-primary:hover {
+            transform: translateY(-3px); box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.4); color: white;
+        }
+
+        /* Mobile Menu */
+        .BDGS-T10-PR-mobile-toggle {
+            background: transparent; border: none; font-size: 24px;
+            color: var(--BDGS-T10-PR-dark); cursor: pointer; padding: 5px;
+        }
+        .BDGS-T10-PR-mobile-menu {
+            position: absolute; top: 100%; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px; display: none; flex-direction: column; gap: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .BDGS-T10-PR-mobile-menu.active { display: flex; }
+        .BDGS-T10-PR-mobile-menu a {
+            padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+            color: var(--BDGS-T10-PR-dark); font-weight: 600; text-decoration: none;
+        }
+
+        /* SELECT2 CUSTOM STYLING (For Dropdowns) */
+        .select2-container .select2-selection--single {
+            height: auto !important; padding: 14px 20px; border-radius: 16px;
+            border: 2px solid #F1F5F9; background: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s;
+        }
+        .select2-container .select2-selection--single .select2-selection__rendered {
+            padding: 0; color: var(--BDGS-T10-PR-dark); font-weight: 500; font-size: 15px; line-height: normal;
+        }
+        .select2-container .select2-selection--single .select2-selection__arrow { height: 100%; right: 15px; }
+        .select2-container--default.select2-container--open .select2-selection--single {
+            border-color: var(--BDGS-T10-PR-primary); background: #fff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+        .select2-dropdown {
+            border: 1px solid #E2E8F0; border-radius: 16px; background: #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); overflow: hidden; margin-top: 8px;
+        }
+        .select2-results__option { padding: 12px 20px; font-size: 14px; color: var(--BDGS-T10-PR-text); }
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #EFF6FF; color: var(--BDGS-T10-PR-primary); font-weight: 600;
+        }
+        .select2-container--default .select2-results__option[aria-selected=true] {
+            background-color: var(--BDGS-T10-PR-primary); color: #fff;
+        }
+        .select2-search--dropdown { padding: 10px; }
+        .select2-search__field {
+            border-radius: 10px !important; border: 1px solid #E2E8F0 !important; padding: 8px 12px !important; outline: none;
+        }
+        .select2-search__field:focus { border-color: var(--BDGS-T10-PR-primary) !important; }
+        .select2-container--default .select2-selection--single:focus { outline: none; }
+
+        /* HEADER DROPDOWN SPECIFIC STYLES (Overrides for Navbar Select) */
+        .BDGS-T10-PR-navbar .select2-container .select2-selection--single {
+            background-color: transparent !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 10px !important;
+            height: 40px !important;
+            display: flex !important;
+            align-items: center !important;
+            padding: 0 15px !important;
+        }
+        .BDGS-T10-PR-navbar .select2-container .select2-selection--single:hover {
+            border-color: var(--BDGS-T10-PR-primary) !important;
+            background-color: rgba(37, 99, 235, 0.05) !important;
+        }
+        .BDGS-T10-PR-navbar .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 38px !important; right: 8px !important;
+        }
+        .BDGS-T10-PR-navbar .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: var(--BDGS-T10-PR-text) !important; font-weight: 600 !important; font-size: 14px !important;
+        }
+        /* Navbar Dropdown Panel */
+        .BDGS-T10-PR-navbar .select2-dropdown {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.6) !important;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1) !important;
+            padding: 8px !important; margin-top: 5px !important;
+        }
+
+        /* =========================================
+           4. BLOG SPECIFIC STYLES
+           ========================================= */
+        
+        /* Blog Hero */
+        .BDGS-T10-PR-blog-hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+        }
+        .BDGS-T10-PR-blog-title {
+            font-size: 56px;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+        .BDGS-T10-PR-gradient-text {
+            background: linear-gradient(135deg, var(--BDGS-T10-PR-primary) 0%, var(--BDGS-T10-PR-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Floating Hero Badges */
+        .BDGS-T10-PR-hero-float {
+            position: absolute;
+            background: #fff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--BDGS-T10-PR-dark);
+            display: flex; align-items: center; gap: 8px;
+            animation: floatBadge 6s ease-in-out infinite;
+            z-index: 0;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .BDGS-T10-PR-hero-float.left {
+            top: 20%; left: 15%;
+            animation-delay: 0s;
+        }
+        .BDGS-T10-PR-hero-float.right {
+            bottom: 30%; right: 15%;
+            animation-delay: 3s;
+        }
+        
+        /* Featured Article Card */
+        .BDGS-T10-PR-featured-card {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+            margin-bottom: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            transition: transform 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 1;
+        }
+        .BDGS-T10-PR-featured-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px -10px rgba(37, 99, 235, 0.15);
+        }
+        .BDGS-T10-PR-feat-img {
+            width: 50%;
+            min-height: 400px;
+            object-fit: cover;
+        }
+        .BDGS-T10-PR-feat-content {
+            width: 50%;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* Category Badge */
+        .BDGS-T10-PR-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+        .BDGS-T10-PR-badge-primary {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--BDGS-T10-PR-primary);
+        }
+        .BDGS-T10-PR-badge-purple {
+            background: #F3E8FF;
+            color: #7C3AED;
+        }
+        .BDGS-T10-PR-badge-green {
+            background: #ECFDF5;
+            color: #10B981;
+        }
+
+        /* Standard Blog Card */
+        .BDGS-T10-PR-blog-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+        }
+        .BDGS-T10-PR-blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .BDGS-T10-PR-blog-img-container {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        .BDGS-T10-PR-blog-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .BDGS-T10-PR-blog-card:hover .BDGS-T10-PR-blog-img {
+            transform: scale(1.05);
+        }
+        .BDGS-T10-PR-blog-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Meta Info */
+        .BDGS-T10-PR-meta {
+            font-size: 13px;
+            color: #94A3B8;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .BDGS-T10-PR-meta i { margin-right: 5px; }
+        
+        /* Typography */
+        .BDGS-T10-PR-post-title {
+            font-size: 20px;
+            margin: 0 0 15px;
+            line-height: 1.4;
+        }
+        .BDGS-T10-PR-post-title a {
+            color: var(--BDGS-T10-PR-dark);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .BDGS-T10-PR-post-title a:hover {
+            color: var(--BDGS-T10-PR-primary);
+        }
+        .BDGS-T10-PR-excerpt {
+            color: #64748B;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        /* Author Row */
+        .BDGS-T10-PR-author-row {
+            padding-top: 20px;
+            border-top: 1px solid #F1F5F9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .BDGS-T10-PR-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .BDGS-T10-PR-author img {
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .BDGS-T10-PR-author span {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--BDGS-T10-PR-dark);
+        }
+
+        /* Read More Link */
+        .BDGS-T10-PR-read-more {
+            color: var(--BDGS-T10-PR-primary);
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none !important;
+            display: flex; align-items: center; gap: 5px;
+            transition: 0.3s;
+        }
+        .BDGS-T10-PR-read-more:hover { gap: 8px; }
+
+        /* Sidebar Widgets */
+        .BDGS-T10-PR-widget {
+            background: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+        .BDGS-T10-PR-widget-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        
+        /* Sticky/Floating Widget */
+        .BDGS-T10-PR-widget-sticky {
+            position: sticky;
+            top: 100px; /* Adjust based on navbar height */
+        }
+
+        /* Search */
+        .BDGS-T10-PR-search-box {
+            position: relative;
+        }
+        .BDGS-T10-PR-search-input {
+            width: 100%;
+            padding: 12px 15px;
+            padding-right: 45px;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .BDGS-T10-PR-search-input:focus {
+            background: #fff;
+            border-color: var(--BDGS-T10-PR-primary);
+            outline: none;
+        }
+        .BDGS-T10-PR-search-btn {
+            position: absolute;
+            right: 5px; top: 5px;
+            border: none;
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Categories List */
+        .BDGS-T10-PR-cat-list {
+            list-style: none; padding: 0; margin: 0;
+        }
+        .BDGS-T10-PR-cat-list li {
+            margin-bottom: 12px;
+        }
+        .BDGS-T10-PR-cat-link {
+            display: flex; justify-content: space-between;
+            color: #64748B;
+            font-weight: 500;
+            text-decoration: none !important;
+            transition: 0.3s;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+        .BDGS-T10-PR-cat-link:hover {
+            background: #EFF6FF;
+            color: var(--BDGS-T10-PR-primary);
+            padding-left: 18px;
+        }
+        .BDGS-T10-PR-count {
+            background: #F1F5F9;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        /* Mini Post Widget */
+        .BDGS-T10-PR-mini-post {
+            display: flex; gap: 15px;
+            margin-bottom: 20px;
+        }
+        .BDGS-T10-PR-mini-img {
+            width: 70px; height: 70px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .BDGS-T10-PR-mini-info h6 {
+            margin: 0 0 5px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+        .BDGS-T10-PR-mini-info h6 a {
+            color: var(--BDGS-T10-PR-dark); text-decoration: none;
+        }
+        .BDGS-T10-PR-mini-info span {
+            font-size: 12px; color: #94A3B8;
+        }
+
+        /* Pagination */
+        .BDGS-T10-PR-pagination {
+            display: flex; gap: 10px; margin-top: 40px;
+        }
+        .BDGS-T10-PR-page-link {
+            width: 45px; height: 45px;
+            display: flex; align-items: center; justify-content: center;
+            background: #fff;
+            border-radius: 12px;
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 700;
+            text-decoration: none !important;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .BDGS-T10-PR-page-link.active, .BDGS-T10-PR-page-link:hover {
+            background: var(--BDGS-T10-PR-primary);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Fixed Bottom Floating Card */
+        .BDGS-T10-PR-float-container {
+            position: fixed; bottom: 30px; right: 30px; z-index: 990;
+        }
+        .BDGS-T10-PR-float-widget {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 15px 20px;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.6);
+            display: flex; align-items: center; gap: 15px;
+            transform-origin: bottom right;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s backwards;
+            max-width: 300px;
+        }
+        .BDGS-T10-PR-float-icon {
+            width: 40px; height: 40px;
+            background: #E0F2FE;
+            color: var(--BDGS-T10-PR-primary);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* =========================================
+           6. RESPONSIVE MEDIA QUERIES
+           ========================================= */
+        
+        /* Tablets & Smaller Desktops */
+        @media (max-width: 991px) {
+            .BDGS-T10-PR-feat-img { width: 100%; height: 250px; min-height: auto; }
+            .BDGS-T10-PR-feat-content { width: 100%; padding: 30px; }
+            .BDGS-T10-PR-blog-title { font-size: 42px; }
+        }
+
+        /* Mobile Devices */
+        @media (max-width: 768px) {
+            .BDGS-T10-PR-hero-float, .BDGS-T10-PR-float-container { display: none; }
+            .BDGS-T10-PR-blog-hero { padding: 50px 0 30px; }
+            .BDGS-T10-PR-blog-title { font-size: 32px; }
+            .BDGS-T10-PR-feat-content { padding: 25px; }
+            .BDGS-T10-PR-featured-card { margin-bottom: 40px; }
+            .BDGS-T10-PR-widget { padding: 20px; }
+            
+            /* Ensure comfortable reading width */
+            p, .BDGS-T10-PR-excerpt { font-size: 15px; }
+        }
+
+        /* =========================================
+           7. FOOTER (Shared)
+           ========================================= */
+        .BDGS-T10-PR-footer-link {
+            color: #94A3B8; display: block; margin-bottom: 12px; transition: 0.3s; text-decoration: none !important;
+        }
+        .BDGS-T10-PR-footer-link:hover { color: var(--BDGS-T10-PR-primary); transform: translateX(5px); }
+        .BDGS-T10-PR-social-icon {
+            width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center; color: #fff;
+            margin-right: 10px; transition: 0.3s; text-decoration: none !important;
+        }
+        .BDGS-T10-PR-social-icon:hover { background: var(--BDGS-T10-PR-primary); transform: translateY(-3px); }
+        .BDGS-T10-PR-footer-input {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 15px; border-radius: 8px; color: #fff; width: 100%; margin-bottom: 10px;
+        }
+        .BDGS-T10-PR-footer-input:focus { outline: none; border-color: var(--BDGS-T10-PR-primary); }
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. VIVID AURORA BACKGROUND -->
+    <div class="BDGS-T10-PR-bg-mesh">
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-1"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-2"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-3"></div>
+    </div>
+
+    <!-- 2. NAVBAR (Updated to match other pages) -->
+    <nav class="BDGS-T10-PR-navbar">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center;">
+                    <a href="index.html" class="BDGS-T10-PR-logo">
+                        <i class=""><img src="../assets/img/edited-photo.png" alt="brandLogo" height="45px"></i>
+                        <span class="BDGS-T10-PR-logo-text">EdgeCare</span>
+                    </a>
+                </div>
+                
+                <div class="hidden-xs hidden-sm">
+                    <a href="index.html" class="BDGS-T10-PR-nav-link">Home</a>
+                    <a href="find_doc.html" class="BDGS-T10-PR-nav-link">Specialists</a>
+                    <a href="appointment.html" class="BDGS-T10-PR-nav-link">Appointment</a>
+                    <!-- Active State for Blog Page -->
+                    <a href="#" class="BDGS-T10-PR-nav-link active" style="color: var(--BDGS-T10-PR-primary); background: rgba(37, 99, 235, 0.08);">Blog</a>
+                    <a href="aboute.html" class="BDGS-T10-PR-nav-link">About</a>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div class="hidden-xs">
+                        <select class="BDGS-T10-PR-auth-select" style="width: 170px;">
+                            <option></option>
+                            <option value="Login.html" data-icon="fa-sign-in">Login</option>
+                            <option value="Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                            <option value="Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                        </select>
+                    </div>
+
+                    <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary">Join Now</button>
+                    <button class="BDGS-T10-PR-mobile-toggle visible-xs visible-sm" style="margin-left: 10px;">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Dropdown -->
+            <div class="BDGS-T10-PR-mobile-menu">
+                <a href="index.html">Home</a>
+                <a href="find_doc.html">Specialists</a>
+                <a href="appointment.html">Appointment</a>
+                <a href="#" style="color: var(--BDGS-T10-PR-primary);">Blog</a>
+                <a href="about.html">About</a>
+                <div style="margin-top: 10px;">
+                        <select class="BDGS-T10-PR-auth-select" style="width: 100%;">
+                            <option></option> 
+                            <option value="Login.html" data-icon="fa-sign-in">Login</option>
+                            <option value="Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                            <option value="Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                        </select>
+                </div>
+                <a href="join.html">Join Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3. BLOG HERO (With Floating Badges) -->
+    <section class="BDGS-T10-PR-blog-hero bdgs-animate-fade-up">
+        <div class="container" style="position: relative;">
+            
+            <!-- Floating Elements -->
+            <div class="BDGS-T10-PR-hero-float left hidden-xs">
+                <i class="fa fa-line-chart" style="color: #EF4444;"></i> Trending Topic
+            </div>
+            <div class="BDGS-T10-PR-hero-float right hidden-xs">
+                <i class="fa fa-check-circle" style="color: #10B981;"></i> Expert Verified
+            </div>
+
+            <span class="BDGS-T10-PR-badge BDGS-T10-PR-badge-primary">EdgeCare Editorial</span>
+            <h1 class="BDGS-T10-PR-blog-title">
+                Latest <span class="BDGS-T10-PR-gradient-text">Medical Insights</span>
+            </h1>
+            <p style="font-size: 18px; color: #64748B; max-width: 600px; margin: 0 auto;">
+                Expert advice, health tips, and the latest news from the world of modern medicine.
+            </p>
+        </div>
+    </section>
+
+    <!-- 4. FEATURED POST -->
+    <section class="bdgs-animate-fade-up bdgs-delay-1">
+        <div class="container">
+            <div class="BDGS-T10-PR-featured-card">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000" class="BDGS-T10-PR-feat-img" alt="Featured">
+                <div class="BDGS-T10-PR-feat-content">
+                    <div class="BDGS-T10-PR-badge BDGS-T10-PR-badge-purple">Medical Tech</div>
+                    <div class="BDGS-T10-PR-meta">
+                        <span><i class="fa fa-calendar"></i> Oct 24, 2025</span>
+                        <span><i class="fa fa-clock-o"></i> 5 min read</span>
+                    </div>
+                    <h2 style="font-size: 32px; margin-bottom: 20px;">The Future of AI in Personalized Healthcare</h2>
+                    <p style="color: #64748B; font-size: 16px; margin-bottom: 30px; line-height: 1.6;">
+                        Artificial Intelligence is revolutionizing how we approach diagnostics. Discover how AI-driven tools are helping doctors create hyper-personalized treatment plans for better patient outcomes.
+                    </p>
+                    <div class="BDGS-T10-PR-author">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Author">
+                        <div>
+                            <span style="display: block; line-height: 1.2;">Dr. James Wilson</span>
+                            <span style="font-size: 12px; color: #94A3B8; font-weight: 400;">Chief Neurologist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. MAIN CONTENT AREA -->
+    <section style="padding-bottom: 80px;" class="bdgs-animate-fade-up bdgs-delay-2">
+        <div class="container">
+            <div class="row">
+                
+                <!-- Articles Column -->
+                <div class="col-md-8">
+                    <div class="row">
+                        <!-- Post 1 -->
+                        <div class="col-md-6 col-sm-6">
+                            <article class="BDGS-T10-PR-blog-card">
+                                <div class="BDGS-T10-PR-blog-img-container">
+                                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=500" class="BDGS-T10-PR-blog-img" alt="Blog 1">
+                                </div>
+                                <div class="BDGS-T10-PR-blog-body">
+                                    <span class="BDGS-T10-PR-badge BDGS-T10-PR-badge-green">Wellness</span>
+                                    <h3 class="BDGS-T10-PR-post-title"><a href="#">5 Daily Habits for a Healthy Heart</a></h3>
+                                    <p class="BDGS-T10-PR-excerpt">Simple lifestyle changes that can significantly reduce your risk of cardiovascular disease.</p>
+                                    
+                                    <div class="BDGS-T10-PR-author-row">
+                                        <div class="BDGS-T10-PR-author">
+                                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=100" alt="Author">
+                                            <span>Dr. Olivia M.</span>
+                                        </div>
+                                        <a href="Blog_details.html" class="BDGS-T10-PR-read-more">Read <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Post 2 -->
+                        <div class="col-md-6 col-sm-6">
+                            <article class="BDGS-T10-PR-blog-card">
+                                <div class="BDGS-T10-PR-blog-img-container">
+                                    <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&q=80&w=500" class="BDGS-T10-PR-blog-img" alt="Blog 2">
+                                </div>
+                                <div class="BDGS-T10-PR-blog-body">
+                                    <span class="BDGS-T10-PR-badge BDGS-T10-PR-badge-primary">Pediatrics</span>
+                                    <h3 class="BDGS-T10-PR-post-title"><a href="#">Understanding Seasonal Allergies in Kids</a></h3>
+                                    <p class="BDGS-T10-PR-excerpt">How to identify, prevent, and manage seasonal allergies to keep your children happy outdoors.</p>
+                                    
+                                    <div class="BDGS-T10-PR-author-row">
+                                        <div class="BDGS-T10-PR-author">
+                                            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=100" alt="Author">
+                                            <span>Dr. William S.</span>
+                                        </div>
+                                        <a href="Blog_details.html" class="BDGS-T10-PR-read-more">Read <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Post 3 -->
+                        <div class="col-md-6 col-sm-6">
+                            <article class="BDGS-T10-PR-blog-card">
+                                <div class="BDGS-T10-PR-blog-img-container">
+                                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=500" class="BDGS-T10-PR-blog-img" alt="Blog 3">
+                                </div>
+                                <div class="BDGS-T10-PR-blog-body">
+                                    <span class="BDGS-T10-PR-badge BDGS-T10-PR-badge-purple">Telehealth</span>
+                                    <h3 class="BDGS-T10-PR-post-title"><a href="#">The Benefits of Virtual Consultations</a></h3>
+                                    <p class="BDGS-T10-PR-excerpt">Why more patients are choosing video calls for routine checkups and follow-ups.</p>
+                                    
+                                    <div class="BDGS-T10-PR-author-row">
+                                        <div class="BDGS-T10-PR-author">
+                                            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=100" alt="Author">
+                                            <span>Dr. Sarah J.</span>
+                                        </div>
+                                        <a href="Blog_details.html" class="BDGS-T10-PR-read-more">Read <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Post 4 -->
+                        <div class="col-md-6 col-sm-6">
+                            <article class="BDGS-T10-PR-blog-card">
+                                <div class="BDGS-T10-PR-blog-img-container">
+                                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=500" class="BDGS-T10-PR-blog-img" alt="Blog 4">
+                                </div>
+                                <div class="BDGS-T10-PR-blog-body">
+                                    <span class="BDGS-T10-PR-badge BDGS-T10-PR-badge-green">Nutrition</span>
+                                    <h3 class="BDGS-T10-PR-post-title"><a href="#">Superfoods: Hype vs. Reality</a></h3>
+                                    <p class="BDGS-T10-PR-excerpt">A nutritionist's guide to what you should actually be eating for optimal energy and focus.</p>
+                                    
+                                    <div class="BDGS-T10-PR-author-row">
+                                        <div class="BDGS-T10-PR-author">
+                                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=100" alt="Author">
+                                            <span>Dr. Olivia M.</span>
+                                        </div>
+                                        <a href="Blog_details.html" class="BDGS-T10-PR-read-more">Read <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="BDGS-T10-PR-pagination">
+                        <a href="#" class="BDGS-T10-PR-page-link active">1</a>
+                        <a href="#" class="BDGS-T10-PR-page-link">2</a>
+                        <a href="#" class="BDGS-T10-PR-page-link">3</a>
+                        <a href="#" class="BDGS-T10-PR-page-link"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Column -->
+                <div class="col-md-4">
+                    
+                    <!-- Search Widget -->
+                    <div class="BDGS-T10-PR-widget">
+                        <h4 class="BDGS-T10-PR-widget-title">Search</h4>
+                        <div class="BDGS-T10-PR-search-box">
+                            <input type="text" placeholder="Type keywords..." class="BDGS-T10-PR-search-input">
+                            <button class="BDGS-T10-PR-search-btn"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Categories Widget -->
+                    <div class="BDGS-T10-PR-widget">
+                        <h4 class="BDGS-T10-PR-widget-title">Categories</h4>
+                        <ul class="BDGS-T10-PR-cat-list">
+                            <li><a href="#" class="BDGS-T10-PR-cat-link">Cardiology <span class="BDGS-T10-PR-count">12</span></a></li>
+                            <li><a href="#" class="BDGS-T10-PR-cat-link">Mental Health <span class="BDGS-T10-PR-count">08</span></a></li>
+                            <li><a href="#" class="BDGS-T10-PR-cat-link">Technology <span class="BDGS-T10-PR-count">15</span></a></li>
+                            <li><a href="#" class="BDGS-T10-PR-cat-link">Nutrition <span class="BDGS-T10-PR-count">24</span></a></li>
+                            <li><a href="#" class="BDGS-T10-PR-cat-link">Pediatrics <span class="BDGS-T10-PR-count">06</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Trending Posts Widget -->
+                    <div class="BDGS-T10-PR-widget">
+                        <h4 class="BDGS-T10-PR-widget-title">Trending Now</h4>
+                        
+                        <div class="BDGS-T10-PR-mini-post">
+                            <img src="https://plus.unsplash.com/premium_photo-1764695108825-c545352a8260?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Um9ib3RpYyUyMFN1cmdlcnklMjBUb29sc3xlbnwwfHwwfHx8MA%3D%3D" class="BDGS-T10-PR-mini-img" alt="Trend">
+                            <div class="BDGS-T10-PR-mini-info">
+                                <h6><a href="#">New Robotic Surgery Tools</a></h6>
+                                <span>Nov 10 • Tech</span>
+                            </div>
+                        </div>
+
+                        <div class="BDGS-T10-PR-mini-post">
+                            <img src="https://plus.unsplash.com/premium_photo-1764687901142-5df311756aa0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Um9ib3RpYyUyMFN1cmdlcnklMjBUb29sc3xlbnwwfHwwfHx8MA%3D%3D" class="BDGS-T10-PR-mini-img" alt="Trend">
+                            <div class="BDGS-T10-PR-mini-info">
+                                <h6><a href="#">Managing Stress at Work</a></h6>
+                                <span>Nov 08 • Wellness</span>
+                            </div>
+                        </div>
+
+                        <div class="BDGS-T10-PR-mini-post">
+                            <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?auto=format&fit=crop&q=80&w=200" class="BDGS-T10-PR-mini-img" alt="Trend">
+                            <div class="BDGS-T10-PR-mini-info">
+                                <h6><a href="#">Flu Shot Myths Debunked</a></h6>
+                                <span>Nov 01 • Health</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sticky Newsletter Mini Widget -->
+                    <div class="BDGS-T10-PR-widget BDGS-T10-PR-widget-sticky" style="background: var(--BDGS-T10-PR-dark); color: white;">
+                        <h4 style="color: white; font-size: 18px; margin-bottom: 10px;">Weekly Health Tips</h4>
+                        <p style="color: #94A3B8; font-size: 14px; margin-bottom: 20px;">Get expert advice delivered to your inbox.</p>
+                        <input type="email" placeholder="Email Address" class="BDGS-T10-PR-footer-input" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                        <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="width: 100%;">Subscribe</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FIXED FLOATING BOTTOM CARD -->
+    <div class="BDGS-T10-PR-float-container hidden-xs">
+        <div class="BDGS-T10-PR-float-widget">
+            <div class="BDGS-T10-PR-float-icon">
+                <i class="fa fa-lightbulb-o"></i>
+            </div>
+            <div>
+                <strong style="display:block; font-size:13px; color:var(--BDGS-T10-PR-dark);">Daily Health Tip</strong>
+                <span style="font-size:12px; color:#64748B;">Drink water before meals.</span>
+            </div>
+            <button style="border:none; background:transparent; color:#94A3B8; margin-left:auto; font-size:12px;">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 6. FOOTER -->
+    <footer style="background: #0F172A; color: white; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="row">
+                <!-- Brand Column -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 40px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <i class=""><img src="../assets/img/edited-photo.png" alt="brandLogo" height="45px"></i>
+                        <span style="font-size: 24px; font-weight: 800;">EdgeCare VIP</span>
+                    </div>
+                    <p style="color: #94A3B8; line-height: 1.6; margin-bottom: 25px;">
+                        Revolutionizing healthcare access with cutting-edge technology and a patient-first approach. Your health, our priority.
+                    </p>
+                    <div style="display: flex; gap: 5px;">
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Company</h5>
+                    <a href="aboute.html" class="BDGS-T10-PR-footer-link">About Us</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Careers</a>
+                    <a href="review.html" class="BDGS-T10-PR-footer-link">Review</a>
+                    <a href="Blog.html" class="BDGS-T10-PR-footer-link">Blog</a>
+                    <a href="contact.html" class="BDGS-T10-PR-footer-link">Contact</a>
+                </div>
+
+                <!-- Services -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Services</h5>
+                    <a href="find_doc.html" class="BDGS-T10-PR-footer-link">Find Doctors</a>
+                    <a href="Coupon.html" class="BDGS-T10-PR-footer-link">Coupon</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Job Post</a>
+                    <a href="How_it.html" class="BDGS-T10-PR-footer-link">How it work</a>
+                    <a href="Faq.html" class="BDGS-T10-PR-footer-link">FAQ</a>
+                    <a href="Get_match.html" class="BDGS-T10-PR-footer-link">Get Match</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Stay Updated</h5>
+                    <p style="color: #94A3B8; font-size: 14px; margin-bottom: 15px;">Subscribe to our newsletter for the latest health tips and updates.</p>
+                    <form>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Enter your email" class="BDGS-T10-PR-footer-input">
+                            <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="padding: 12px 20px; border-radius: 8px;">Go</button>
+                        </div>
+                    </form>
+
+                    <!-- App Download Icons (ADDED BACK) -->
+                    <div style="margin-top: 25px;">
+                        <h5 style="color: #fff; margin-bottom: 15px; font-size: 14px;">Get the App</h5>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-apple" style="font-size: 22px;"></i>
+                            </a>
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-android" style="font-size: 20px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="color: #64748B; margin: 0; font-size: 14px;">&copy; 2026 EdgeCare. All rights reserved.</p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <a href="#" style="color: #64748B; font-size: 14px;">Privacy Policy</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Terms of Service</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JSON-LD Structured Data for Blog Listing -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "EdgeCare VIP Medical Blog",
+      "url": "https://www.edgecare-vip.com/blog",
+      "description": "Expert medical insights, health tips, and the latest news from the world of modern medicine.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "EdgeCare VIP",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.edgecare-vip.com/assets/img/edited-photo.png"
+        }
+      },
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "headline": "The Future of AI in Personalized Healthcare",
+          "url": "https://www.edgecare-vip.com/blog/future-of-ai",
+          "datePublished": "2025-10-24",
+          "author": { "@type": "Person", "name": "Dr. James Wilson" }
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "5 Daily Habits for a Healthy Heart",
+          "url": "https://www.edgecare-vip.com/blog/healthy-heart-habits",
+          "datePublished": "2025-10-20",
+          "author": { "@type": "Person", "name": "Dr. Olivia M." }
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Select2 JS (Added for Dropdown) -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        // Initialize Select2 for Auth Dropdown
+        $(document).ready(function() {
+            $('.BDGS-T10-PR-auth-select').select2({
+                minimumResultsForSearch: Infinity, 
+                placeholder: "My Account",
+                allowClear: false,
+                templateSelection: function(data) {
+                      if (!data.id) { 
+                          return $('<span style="color:#334155;"><i class="fa fa-user-circle-o" style="margin-right:8px; color:var(--BDGS-T10-PR-primary);"></i> My Account</span>');
+                      }
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '" style="margin-right:8px; color:var(--BDGS-T10-PR-primary);"></i> ' + data.text + '</span>');
+                },
+                templateResult: function(data) {
+                      if (!data.id) { return data.text; }
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '"></i> ' + data.text + '</span>');
+                }
+            });
+
+            // Handle Navbar Redirect
+            $('.BDGS-T10-PR-auth-select').on('select2:select', function (e) {
+                var url = e.params.data.id;
+                if(url) {
+                    window.location.href = url;
+                }
+            });
+        });
+
+        // Mobile Toggle Logic
+        const mobileToggle = document.querySelector('.BDGS-T10-PR-mobile-toggle');
+        const mobileMenu = document.querySelector('.BDGS-T10-PR-mobile-menu');
+
+        if(mobileToggle && mobileMenu) {
+            mobileToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

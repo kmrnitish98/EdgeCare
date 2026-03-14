@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Contact Us – EdgeCare VIP</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 4.7 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Select2 CSS (Added for Header Dropdown) -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           1. THEME VARIABLES (PREFIX: bdgs-t10-pr)
+           ========================================= */
+        :root {
+            --bdgs-t10-pr-primary:    #2563EB; /* Royal Blue */
+            --bdgs-t10-pr-secondary:  #7C3AED; /* Deep Purple */
+            --bdgs-t10-pr-accent:     #06B6D4; /* Cyan */
+            --bdgs-t10-pr-dark:       #0F172A; /* Slate 900 */
+            --bdgs-t10-pr-text:       #334155; /* Slate 700 */
+            --bdgs-t10-pr-bg:         #F0F9FF; /* Light Blue tint */
+            
+            /* Glass Effects */
+            --bdgs-t10-pr-glass:      rgba(255, 255, 255, 0.7);
+            --bdgs-t10-pr-glass-strong: rgba(255, 255, 255, 0.9);
+            --bdgs-t10-pr-border:     rgba(255, 255, 255, 0.6);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--bdgs-t10-pr-text);
+            background: var(--bdgs-t10-pr-bg);
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--bdgs-t10-pr-dark);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* =========================================
+           2. NEW HEADER STYLES (Copied from About Us)
+           Prefix: BDGS-T10-PR (Uppercase)
+           ========================================= */
+        
+        .BDGS-T10-PR-navbar {
+            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 12px 0;
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4); transition: all 0.3s ease;
+        }
+        .BDGS-T10-PR-logo { display: flex; align-items: center; gap: 10px; text-decoration: none !important; }
+        .BDGS-T10-PR-logo i {
+            font-size: 28px;
+            background: linear-gradient(135deg, var(--bdgs-t10-pr-primary), var(--bdgs-t10-pr-secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .BDGS-T10-PR-logo-text {
+            font-size: 22px; font-weight: 800;
+            background: linear-gradient(135deg, var(--bdgs-t10-pr-primary), var(--bdgs-t10-pr-secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .BDGS-T10-PR-nav-link {
+            font-weight: 600; color: var(--bdgs-t10-pr-text); padding: 8px 18px; font-size: 14px;
+            border-radius: 12px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; text-decoration: none !important; display: inline-block; margin: 0 2px;
+        }
+        .BDGS-T10-PR-nav-link:hover, .BDGS-T10-PR-nav-link.active {
+            color: var(--bdgs-t10-pr-primary); background: rgba(37, 99, 235, 0.08);
+            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+        
+        .BDGS-T10-PR-btn {
+            border: none; padding: 10px 24px; border-radius: 10px; font-weight: 600; font-size: 13px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;
+        }
+        .BDGS-T10-PR-btn-primary {
+            background: var(--bdgs-t10-pr-dark); color: white;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        }
+        .BDGS-T10-PR-btn-primary:hover {
+            transform: translateY(-3px); box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.4); color: white;
+        }
+        
+        .BDGS-T10-PR-mobile-toggle { background: transparent; border: none; font-size: 24px; color: var(--bdgs-t10-pr-dark); cursor: pointer; padding: 5px; }
+        
+        .BDGS-T10-PR-mobile-menu {
+            position: absolute; top: 100%; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px;
+            display: none; flex-direction: column; gap: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); transform-origin: top;
+            animation: slideDownMenu 0.3s ease-out forwards;
+        }
+        .BDGS-T10-PR-mobile-menu.active { display: flex; }
+        .BDGS-T10-PR-mobile-menu a { padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); color: var(--bdgs-t10-pr-dark); font-weight: 600; font-size: 16px; }
+        @keyframes slideDownMenu { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: scaleY(1); } }
+
+        /* HEADER DROPDOWN SPECIFIC STYLES (Select2 Overrides for Navbar) */
+        .BDGS-T10-PR-navbar .select2-container .select2-selection--single {
+            background-color: transparent !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 10px !important;
+            height: 40px !important;
+            display: flex !important;
+            align-items: center !important;
+            padding: 0 15px !important;
+        }
+        .BDGS-T10-PR-navbar .select2-container .select2-selection--single:hover {
+            border-color: var(--bdgs-t10-pr-primary) !important;
+            background-color: rgba(37, 99, 235, 0.05) !important;
+        }
+        .BDGS-T10-PR-navbar .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 38px !important; right: 8px !important;
+        }
+        .BDGS-T10-PR-navbar .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: var(--bdgs-t10-pr-text) !important; font-weight: 600 !important; font-size: 14px !important;
+        }
+        .BDGS-T10-PR-navbar .select2-dropdown {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.6) !important;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1) !important;
+            padding: 8px !important; margin-top: 5px !important;
+            border-radius: 12px !important;
+        }
+        
+        .select2-search--dropdown { padding: 10px; }
+        .select2-search__field {
+            border-radius: 10px !important; border: 1px solid #E2E8F0 !important; padding: 8px 12px !important; outline: none;
+        }
+        .select2-search__field:focus { border-color: var(--bdgs-t10-pr-primary) !important; }
+        .select2-results__option { padding: 8px 12px; font-size: 14px; }
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #EFF6FF !important; color: var(--bdgs-t10-pr-primary) !important;
+        }
+        .select2-container--default .select2-results__option[aria-selected=true] {
+            background-color: var(--bdgs-t10-pr-primary) !important; color: #fff !important;
+        }
+
+        /* =========================================
+           3. ANIMATED BACKGROUND (ORBS & ICONS)
+           ========================================= */
+        .bdgs-t10-pr-bg-mesh {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -2; background: #ffffff; overflow: hidden;
+        }
+
+        .bdgs-t10-pr-orb {
+            position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.6;
+            animation: t10Float 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bdgs-t10-pr-orb-1 { width: 800px; height: 800px; background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent 70%); top: -20%; right: -10%; }
+        .bdgs-t10-pr-orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent 70%); bottom: -10%; left: -10%; animation-delay: -5s; }
+
+        .bdgs-t10-pr-bg-icons {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none; overflow: hidden;
+        }
+        .bdgs-t10-pr-bg-icon {
+            position: absolute;
+            color: #38BDF8; 
+            opacity: 0.15; 
+            animation: t10IconFloat linear infinite;
+        }
+        .bdgs-t10-pr-bg-icon:nth-child(odd) { color: #0EA5E9; }
+        .bdgs-t10-pr-bg-icon:nth-child(even) { color: #7DD3FC; }
+
+        .ico-1 { top: 15%; left: 8%; font-size: 24px; animation-duration: 18s; animation-delay: 0s; }
+        .ico-2 { top: 25%; right: 12%; font-size: 32px; animation-duration: 25s; animation-delay: -5s; }
+        .ico-3 { bottom: 18%; left: 15%; font-size: 28px; animation-duration: 22s; animation-delay: -10s; }
+        .ico-4 { bottom: 35%; right: 8%; font-size: 22px; animation-duration: 15s; animation-delay: -2s; }
+        .ico-5 { top: 45%; left: 48%; font-size: 40px; animation-duration: 30s; animation-delay: -15s; }
+        .ico-6 { top: 8%; left: 35%; font-size: 20px; animation-duration: 20s; animation-delay: -8s; }
+        .ico-7 { bottom: 10%; right: 35%; font-size: 26px; animation-duration: 24s; animation-delay: -12s; }
+        .ico-8 { top: 65%; left: 85%; font-size: 25px; animation-duration: 28s; animation-delay: -4s; }
+        .ico-9 { top: 80%; left: 5%; font-size: 30px; animation-duration: 21s; animation-delay: -9s; }
+        .ico-10 { top: 10%; right: 40%; font-size: 22px; animation-duration: 19s; animation-delay: -1s; }
+        .ico-11 { bottom: 45%; left: 60%; font-size: 18px; animation-duration: 26s; animation-delay: -18s; }
+        .ico-12 { top: 30%; left: 20%; font-size: 28px; animation-duration: 23s; animation-delay: -6s; }
+
+        @keyframes t10Float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-30px, 30px) scale(1.1); }
+        }
+
+        @keyframes t10IconFloat {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); }
+            33% { transform: translateY(-15px) translateX(8px) rotate(5deg); }
+            66% { transform: translateY(-5px) translateX(-8px) rotate(-5deg); }
+            100% { transform: translateY(0) translateX(0) rotate(0deg); }
+        }
+
+        /* =========================================
+           4. PREMIUM HERO SECTION
+           ========================================= */
+        .bdgs-t10-pr-hero-premium {
+            padding: 40px 0 50px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .bdgs-t10-pr-hero-content {
+            padding-top: 20px;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .bdgs-t10-pr-status-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 50px;
+            color: #059669;
+            font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+            margin-bottom: 25px;
+        }
+        .bdgs-t10-pr-status-dot {
+            width: 8px; height: 8px; background: #10B981; border-radius: 50%;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+            animation: pulseGreen 2s infinite;
+        }
+        @keyframes pulseGreen {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .bdgs-t10-pr-hero-title {
+            font-size: 64px; line-height: 1.1; font-weight: 800; letter-spacing: -2px; color: var(--bdgs-t10-pr-dark);
+            margin-bottom: 20px;
+        }
+        .bdgs-t10-pr-gradient-text {
+            background: linear-gradient(135deg, var(--bdgs-t10-pr-primary) 0%, var(--bdgs-t10-pr-secondary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        
+        .bdgs-t10-pr-hero-desc {
+            font-size: 18px; color: #64748B; margin-bottom: 35px; max-width: 90%; line-height: 1.6;
+        }
+
+        .bdgs-t10-pr-hero-avatars {
+            display: flex; align-items: center; gap: 15px; margin-top: 10px;
+        }
+        .bdgs-t10-pr-avatar-group { display: flex; }
+        .bdgs-t10-pr-avatar-group img {
+            width: 45px; height: 45px; border-radius: 50%; border: 3px solid #fff;
+            margin-left: -15px; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .bdgs-t10-pr-avatar-group img:first-child { margin-left: 0; }
+        
+        .bdgs-t10-pr-hero-trust { font-size: 14px; font-weight: 600; color: var(--bdgs-t10-pr-dark); }
+        .bdgs-t10-pr-hero-trust span { color: #64748B; font-weight: 400; display: block; font-size: 12px; }
+
+        /* Right Side 3D Composition */
+        .bdgs-t10-pr-3d-wrapper {
+            position: relative;
+            height: 500px;
+            display: flex; align-items: center; justify-content: center;
+            perspective: 1000px;
+        }
+        
+        /* AI Chatbot Card */
+        .bdgs-t10-pr-chat-card {
+            width: 340px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            position: relative;
+            z-index: 5;
+            transform: rotateY(-10deg) rotateX(5deg);
+            transition: all 0.5s ease;
+        }
+        .bdgs-t10-pr-chat-card:hover {
+            transform: rotateY(0) rotateX(0) translateY(-10px);
+            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Profile Header */
+        .bdgs-t10-pr-chat-header {
+            display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .bdgs-t10-pr-ai-avatar-wrap { position: relative; }
+        .bdgs-t10-pr-ai-avatar {
+            width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+        }
+        .bdgs-t10-pr-blink-circle {
+            position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border-radius: 50%; border: 2px solid #2563EB; opacity: 0; animation: pulseRing 2s infinite;
+        }
+        @keyframes pulseRing {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+        .bdgs-t10-pr-status-dot-ai {
+            position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; background: #10B981; border: 2px solid #fff; border-radius: 50%;
+        }
+
+        /* Chat Bubbles */
+        .bdgs-t10-pr-chat-body { display: flex; flex-direction: column; gap: 15px; }
+        .bdgs-t10-pr-msg {
+            padding: 12px 16px; border-radius: 14px; font-size: 13px; line-height: 1.5; max-width: 85%; position: relative;
+        }
+        .bdgs-t10-pr-msg-ai { background: #F1F5F9; color: #334155; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .bdgs-t10-pr-msg-user {
+            background: linear-gradient(135deg, var(--bdgs-t10-pr-primary), var(--bdgs-t10-pr-secondary));
+            color: white; align-self: flex-end; border-bottom-right-radius: 4px; box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+        }
+        
+        .bdgs-t10-pr-typing {
+            display: flex; gap: 4px; padding: 10px 14px; background: #F1F5F9; border-radius: 14px; align-self: flex-start; width: fit-content; border-bottom-left-radius: 4px;
+        }
+        .bdgs-t10-pr-dot {
+            width: 6px; height: 6px; background: #94A3B8; border-radius: 50%; animation: typingBounce 1.4s infinite ease-in-out both;
+        }
+        .bdgs-t10-pr-dot:nth-child(1) { animation-delay: -0.32s; }
+        .bdgs-t10-pr-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typingBounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Floating Elements */
+        .bdgs-t10-pr-float-card {
+            position: absolute; padding: 15px 20px; background: #fff; border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px;
+            font-weight: 700; font-size: 13px; color: var(--bdgs-t10-pr-dark); z-index: 3;
+            animation: floatCard 6s ease-in-out infinite;
+        }
+        .bdgs-t10-pr-float-1 { top: 10%; right: -20px; animation-delay: 0s; }
+        .bdgs-t10-pr-float-2 { bottom: 20%; left: -30px; animation-delay: 2s; }
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Responsive Hero */
+        @media (max-width: 991px) {
+            .bdgs-t10-pr-hero-premium { padding-top: 40px; text-align: center; }
+            .bdgs-t10-pr-hero-title { font-size: 42px; }
+            .bdgs-t10-pr-hero-desc { margin: 0 auto 30px; }
+            .bdgs-t10-pr-hero-avatars { justify-content: center; margin-bottom: 40px; }
+            .bdgs-t10-pr-3d-wrapper { height: auto; margin-bottom: 40px; padding: 20px 0; }
+            .bdgs-t10-pr-chat-card { width: 100%; max-width: 340px; margin: 0 auto; transform: rotateY(0) rotateX(0); }
+            .bdgs-t10-pr-float-card { display: none; }
+        }
+        @media (max-width: 767px) {
+            .bdgs-t10-pr-hero-title { font-size: 32px; }
+            .bdgs-t10-pr-hero-desc { font-size: 16px; }
+            .bdgs-t10-pr-card { padding: 25px; }
+            .bdgs-t10-pr-form-wrap { padding: 25px; }
+            .bdgs-t10-pr-3d-wrapper { padding: 0; }
+            .bdgs-t10-pr-stat-box { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 20px; }
+            .bdgs-t10-pr-stat-box:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+            .bdgs-t10-pr-emergency { flex-direction: column; text-align: center; gap: 20px; }
+            .bdgs-t10-pr-emer-btn { width: 100%; justify-content: center; }
+        }
+
+        /* =========================================
+           5. MAIN CONTACT SECTION
+           ========================================= */
+        .bdgs-t10-pr-card {
+            background: #fff; border-radius: 24px; padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05);
+            transition: 0.3s; margin-bottom: 30px; height: 100%;
+        }
+        .bdgs-t10-pr-card:hover { transform: translateY(-5px); box-shadow: 0 20px 60px rgba(37, 99, 235, 0.1); border-color: rgba(37, 99, 235, 0.2); }
+
+        .bdgs-t10-pr-info-item { display: flex; align-items: flex-start; margin-bottom: 35px; }
+        .bdgs-t10-pr-info-icon {
+            width: 55px; height: 55px; background: linear-gradient(135deg, #EFF6FF, #DBEAFE); color: var(--bdgs-t10-pr-primary);
+            border-radius: 16px; display: flex; align-items: center; justify-content: center;
+            font-size: 22px; margin-right: 20px; flex-shrink: 0; transition: 0.4s;
+        }
+        .bdgs-t10-pr-info-item:hover .bdgs-t10-pr-info-icon { 
+            background: var(--bdgs-t10-pr-primary); color: white; transform: rotate(10deg); 
+        }
+        .bdgs-t10-pr-info-content h4 { margin: 0 0 5px; font-size: 18px; color: var(--bdgs-t10-pr-dark); }
+        .bdgs-t10-pr-info-content p { margin: 0; color: #64748B; font-size: 15px; }
+        .bdgs-t10-pr-info-content a { color: var(--bdgs-t10-pr-primary); text-decoration: none; font-weight: 600; }
+
+        /* Form */
+        .bdgs-t10-pr-form-wrap {
+            background: rgba(255,255,255,0.8); backdrop-filter: blur(20px);
+            border-radius: 30px; padding: 40px;
+            border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 30px 60px -10px rgba(37, 99, 235, 0.15);
+            position: relative; overflow: hidden;
+        }
+        .bdgs-t10-pr-form-wrap::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--bdgs-t10-pr-primary), var(--bdgs-t10-pr-secondary));
+        }
+        .bdgs-t10-pr-input-group { position: relative; margin-bottom: 25px; }
+        .bdgs-t10-pr-input {
+            width: 100%; padding: 15px 20px; border-radius: 12px;
+            border: 1px solid #E2E8F0; background: #fff;
+            font-size: 15px; transition: 0.3s;
+        }
+        .bdgs-t10-pr-input:focus {
+            outline: none; border-color: var(--bdgs-t10-pr-primary);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); transform: translateY(-2px);
+        }
+        .bdgs-t10-pr-submit {
+            width: 100%; padding: 15px; border-radius: 12px; border: none;
+            background: linear-gradient(135deg, var(--bdgs-t10-pr-primary), var(--bdgs-t10-pr-secondary));
+            color: #fff; font-weight: 700; font-size: 16px; cursor: pointer;
+            transition: 0.3s; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        .bdgs-t10-pr-submit:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3); }
+
+        /* Stats */
+        .bdgs-t10-pr-stats-sec {
+            background: var(--bdgs-t10-pr-dark); padding: 40px 0; color: white; margin-top: 30px;
+            border-radius: 30px; position: relative; overflow: hidden;
+        }
+        .bdgs-t10-pr-stats-pattern {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px; opacity: 0.3;
+        }
+        .bdgs-t10-pr-stat-box { text-align: center; position: relative; z-index: 2; border-right: 1px solid rgba(255,255,255,0.1); }
+        .bdgs-t10-pr-stat-box:last-child { border-right: none; }
+        .bdgs-t10-pr-stat-num { font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 5px; display: block; }
+        .bdgs-t10-pr-stat-label { font-size: 14px; color: #94A3B8; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Global Offices */
+        .bdgs-t10-pr-global-sec { padding: 50px 0; }
+        .bdgs-t10-pr-loc-card {
+            background: #fff; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05); transition: 0.3s;
+            height: 320px; border: 1px solid rgba(0,0,0,0.05); position: relative;
+        }
+        .bdgs-t10-pr-loc-card:hover { transform: translateY(-10px); box-shadow: 0 25px 60px rgba(37, 99, 235, 0.2); }
+        .bdgs-t10-pr-loc-img { height: 100%; width: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .bdgs-t10-pr-loc-card:hover .bdgs-t10-pr-loc-img { transform: scale(1.1); }
+        .bdgs-t10-pr-loc-body { 
+            padding: 30px; position: absolute; bottom: 0; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px); transform: translateY(100%); opacity: 0;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); border-top: 1px solid rgba(255,255,255,0.5);
+        }
+        .bdgs-t10-pr-loc-card:hover .bdgs-t10-pr-loc-body { transform: translateY(0); opacity: 1; }
+        .bdgs-t10-pr-loc-city { font-size: 20px; font-weight: 700; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+
+        /* Map & Departments */
+        .bdgs-t10-pr-map-card {
+            width: 100%; height: 450px; background: #fff; border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 8px solid #fff;
+        }
+        .bdgs-t10-pr-map-card iframe { width: 100%; height: 100%; border: 0; }
+        .bdgs-t10-pr-process-sec { padding: 50px 0; background: #fff; }
+        .bdgs-t10-pr-emergency {
+            background: linear-gradient(135deg, #EF4444, #B91C1C); color: white;
+            padding: 30px; border-radius: 20px; margin-bottom: 40px;
+            display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.3);
+        }
+        .bdgs-t10-pr-emer-btn {
+            background: white; color: #B91C1C; padding: 12px 30px; border-radius: 50px;
+            font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+            transition: 0.3s;
+        }
+        .bdgs-t10-pr-emer-btn:hover { background: #FEF2F2; transform: scale(1.05); color: #B91C1C; }
+        
+        .bdgs-t10-pr-dept-card {
+            border: 1px solid rgba(0,0,0,0.05); border-radius: 16px; padding: 25px;
+            transition: 0.3s; height: 100%; background: #fff;
+        }
+        .bdgs-t10-pr-dept-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: rgba(37, 99, 235, 0.2); }
+        .bdgs-t10-pr-dept-icon { font-size: 32px; margin-bottom: 15px; color: var(--bdgs-t10-pr-accent); }
+        .bdgs-t10-pr-dept-link { color: var(--bdgs-t10-pr-primary); font-weight: 600; display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; }
+
+        /* Animation */
+        .bdgs-animate-fade-up { opacity: 0; transform: translateY(30px); animation: fadeUp 0.8s forwards; }
+        .bdgs-delay-1 { animation-delay: 0.1s; }
+        .bdgs-delay-2 { animation-delay: 0.2s; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* Footer */
+        .bdgs-t10-pr-footer-link { color: #94A3B8; display: block; margin-bottom: 12px; transition: 0.3s; text-decoration: none !important; }
+        .bdgs-t10-pr-footer-link:hover { color: var(--bdgs-t10-pr-primary); transform: translateX(5px); }
+        .bdgs-t10-pr-social-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #fff; margin-right: 10px; transition: 0.3s; text-decoration: none !important; }
+        .bdgs-t10-pr-social-icon:hover { background: var(--bdgs-t10-pr-primary); color: #fff; transform: translateY(-3px); }
+        .bdgs-t10-pr-footer-input { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 15px; border-radius: 8px; color: #fff; width: 100%; margin-bottom: 10px; }
+        .bdgs-t10-pr-footer-input:focus { outline: none; border-color: var(--bdgs-t10-pr-primary); }
+
+        /* FLOATING CHAT WIDGET */
+        .bdgs-t10-pr-chat-widget-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: linear-gradient(135deg, var(--bdgs-t10-pr-primary), var(--bdgs-t10-pr-secondary));
+            border-radius: 50%; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 24px; cursor: pointer; z-index: 9999;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: floatBtnPulse 3s infinite;
+        }
+        .bdgs-t10-pr-chat-widget-btn:hover { transform: scale(1.1); }
+        .bdgs-t10-pr-chat-widget-btn.active i { transform: rotate(180deg); }
+        .bdgs-t10-pr-chat-widget-btn.active i::before { content: "\f00d"; }
+        @keyframes floatBtnPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+
+        .bdgs-t10-pr-chat-widget-box {
+            position: fixed; bottom: 100px; right: 30px; width: 350px; height: 450px;
+            background: #fff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            z-index: 9998; display: flex; flex-direction: column; overflow: hidden;
+            transform: translateY(20px) scale(0.9); opacity: 0; visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .bdgs-t10-pr-chat-widget-box.active { transform: translateY(0) scale(1); opacity: 1; visibility: visible; }
+        .bdgs-t10-pr-widget-header {
+            background: linear-gradient(135deg, var(--bdgs-t10-pr-primary), var(--bdgs-t10-pr-secondary));
+            padding: 20px; color: white; display: flex; align-items: center; gap: 15px;
+        }
+        .bdgs-t10-pr-widget-avatar { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); position: relative; }
+        .bdgs-t10-pr-widget-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .bdgs-t10-pr-widget-status { position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; background: #10B981; border: 2px solid var(--bdgs-t10-pr-primary); border-radius: 50%; }
+        .bdgs-t10-pr-widget-body { flex: 1; padding: 20px; overflow-y: auto; background: #F8FAFC; display: flex; flex-direction: column; gap: 15px; }
+        .bdgs-t10-pr-widget-input { padding: 15px; background: #fff; border-top: 1px solid #E2E8F0; display: flex; align-items: center; gap: 10px; }
+        .bdgs-t10-pr-widget-input input { flex: 1; border: none; outline: none; font-size: 14px; }
+        .bdgs-t10-pr-widget-send { color: var(--bdgs-t10-pr-primary); font-size: 18px; cursor: pointer; background: none; border: none; }
+        
+        @media (max-width: 480px) {
+            .bdgs-t10-pr-chat-widget-box { width: calc(100% - 60px); bottom: 100px; right: 30px; left: auto; height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. BACKGROUND MESH -->
+    <div class="bdgs-t10-pr-bg-mesh">
+        <div class="bdgs-t10-pr-orb bdgs-t10-pr-orb-1"></div>
+        <div class="bdgs-t10-pr-orb bdgs-t10-pr-orb-2"></div>
+    </div>
+
+    <!-- 1a. FLOATING ICON BACKGROUND -->
+    <div class="bdgs-t10-pr-bg-icons">
+        <i class="fa fa-stethoscope bdgs-t10-pr-bg-icon ico-1"></i>
+        <i class="fa fa-heartbeat bdgs-t10-pr-bg-icon ico-2"></i>
+        <i class="fa fa-user-md bdgs-t10-pr-bg-icon ico-3"></i>
+        <i class="fa fa-medkit bdgs-t10-pr-bg-icon ico-4"></i>
+        <i class="fa fa-hospital-o bdgs-t10-pr-bg-icon ico-5"></i>
+        <i class="fa fa-plus-square bdgs-t10-pr-bg-icon ico-6"></i>
+        <i class="fa fa-ambulance bdgs-t10-pr-bg-icon ico-7"></i>
+        <i class="fa fa-user-md bdgs-t10-pr-bg-icon ico-8"></i>
+        <i class="fa fa-stethoscope bdgs-t10-pr-bg-icon ico-9"></i>
+        <i class="fa fa-heart bdgs-t10-pr-bg-icon ico-10"></i>
+        <i class="fa fa-plus bdgs-t10-pr-bg-icon ico-11"></i>
+        <i class="fa fa-wheelchair bdgs-t10-pr-bg-icon ico-12"></i>
+    </div>
+
+    <!-- 2. NAVBAR (Updated to match other pages with My Account) -->
+    <nav class="BDGS-T10-PR-navbar">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center;">
+                    <a href="index.html" class="BDGS-T10-PR-logo">
+                        <i class=""><img src="../assets/img/edited-photo.png" alt="EdgeCare VIP Logo" width="45px"></i>
+                        <span class="BDGS-T10-PR-logo-text">EdgeCare</span>
+                    </a>
+                </div>
+                
+                <div class="hidden-xs hidden-sm">
+                    <a href="index.html" class="BDGS-T10-PR-nav-link">Home</a>
+                    <a href="find_doc.html" class="BDGS-T10-PR-nav-link">Specialists</a>
+                    <a href="appointment.html" class="BDGS-T10-PR-nav-link">Appointment</a>
+                    <a href="Blog.html" class="BDGS-T10-PR-nav-link">Blog</a>
+                    <a href="about.html" class="BDGS-T10-PR-nav-link">About</a>
+                    <!-- Active State for Contact Page -->
+                    
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div class="hidden-xs">
+                        <select class="BDGS-T10-PR-auth-select" style="width: 170px;">
+                            <option></option>
+                            <option value="Login.html" data-icon="fa-sign-in">Login</option>
+                            <option value="Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                            <option value="Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                        </select>
+                    </div>
+
+                    <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary">Join</button>
+                    <button class="BDGS-T10-PR-mobile-toggle visible-xs visible-sm" style="margin-left: 10px;">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Dropdown -->
+            <div class="BDGS-T10-PR-mobile-menu">
+                <a href="index.html">Home</a>
+                <a href="find_doc.html">Specialists</a>
+                <a href="appointment.html">Appointment</a>
+                <a href="Blog.html">Health Blogs</a>
+                <a href="about.html">About</a>
+                <a href="#" style="color: var(--bdgs-t10-pr-primary);">Contact</a>
+                <div style="margin-top: 10px;">
+                        <select class="BDGS-T10-PR-auth-select" style="width: 100%;">
+                            <option></option> 
+                            <option value="Login.html" data-icon="fa-sign-in">Login</option>
+                            <option value="Dashboard.html" data-icon="fa-th-large">User Dashboard</option>
+                            <option value="Doc_dashboard.html" data-icon="fa-user-md">Doctor Dashboard</option>
+                        </select>
+                </div>
+                <a href="join.html">Join Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3. PREMIUM HERO SECTION -->
+    <section class="bdgs-t10-pr-hero-premium bdgs-animate-fade-up">
+        <div class="container">
+            <div class="row" style="display: flex; align-items: center; flex-wrap: wrap;">
+                
+                <!-- LEFT CONTENT -->
+                <div class="col-md-6 bdgs-t10-pr-hero-content">
+                    <div class="bdgs-t10-pr-status-pill">
+                        <div class="bdgs-t10-pr-status-dot"></div>
+                        Support Team: Online
+                    </div>
+                    
+                    <h1 class="bdgs-t10-pr-hero-title">
+                        Let's start a <br>
+                        <span class="bdgs-t10-pr-gradient-text">Conversation.</span>
+                    </h1>
+                    
+                    <p class="bdgs-t10-pr-hero-desc">
+                        Experience our VIP support tier. Whether you need an emergency consult, billing assistance, or technical help, our team responds in seconds.
+                    </p>
+                    
+                    <div class="bdgs-t10-pr-hero-avatars">
+                        <div class="bdgs-t10-pr-avatar-group">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100" alt="Support">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&h=100" alt="Support">
+                            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=100&h=100" alt="Support">
+                        </div>
+                        <div class="bdgs-t10-pr-hero-trust">
+                            240+ Agents 
+                            <span>Available Now</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT 3D VISUAL -->
+                <div class="col-md-6">
+                    <div class="bdgs-t10-pr-3d-wrapper">
+                        <!-- Floating Elements -->
+                        <div class="bdgs-t10-pr-float-card bdgs-t10-pr-float-1">
+                            <i class="fa fa-bolt" style="color: #F59E0B;"></i> Typically replies in 2s
+                        </div>
+
+                        <!-- AI Chatbot Card -->
+                        <div class="bdgs-t10-pr-chat-card">
+                            <!-- Header -->
+                            <div class="bdgs-t10-pr-chat-header">
+                                <div class="bdgs-t10-pr-ai-avatar-wrap">
+                                    <div class="bdgs-t10-pr-blink-circle"></div>
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150" class="bdgs-t10-pr-ai-avatar" alt="AI Assistant">
+                                    <div class="bdgs-t10-pr-status-dot-ai"></div>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0; font-size: 16px; color: var(--bdgs-t10-pr-dark);">Sarah AI</h4>
+                                    <span style="font-size: 12px; color: #10B981; font-weight: 600;">Active Now</span>
+                                </div>
+                                <i class="fa fa-ellipsis-h" style="margin-left: auto; color: #94A3B8;"></i>
+                            </div>
+
+                            <!-- Chat Body -->
+                            <div class="bdgs-t10-pr-chat-body">
+                                <div class="bdgs-t10-pr-msg bdgs-t10-pr-msg-ai">
+                                    Hello! 👋 I'm Sarah. How can I help you reach the right department today?
+                                </div>
+                                <div class="bdgs-t10-pr-msg bdgs-t10-pr-msg-user">
+                                    I need to reschedule my appointment.
+                                </div>
+                                <div class="bdgs-t10-pr-typing">
+                                    <div class="bdgs-t10-pr-dot"></div>
+                                    <div class="bdgs-t10-pr-dot"></div>
+                                    <div class="bdgs-t10-pr-dot"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Input Mockup -->
+                            <div style="margin-top: 20px; position: relative;">
+                                <input type="text" placeholder="Type a message..." style="width: 100%; padding: 12px 40px 12px 15px; border-radius: 50px; border: 1px solid #E2E8F0; background: #fff; font-size: 12px; outline: none;">
+                                <div style="position: absolute; right: 5px; top: 5px; width: 30px; height: 30px; background: var(--bdgs-t10-pr-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">
+                                    <i class="fa fa-paper-plane"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. MAIN CONTENT & FORM -->
+    <div class="container" style="padding-bottom: 20px;">
+        <div class="row">
+            
+            <!-- Left: Contact Info -->
+            <div class="col-md-5 bdgs-animate-fade-up bdgs-delay-1" style="margin-bottom: 40px;">
+                <div class="bdgs-t10-pr-card">
+                    <h3 style="margin-bottom: 30px;">Contact Information</h3>
+                    
+                    <div class="bdgs-t10-pr-info-item">
+                        <div class="bdgs-t10-pr-info-icon"><i class="fa fa-phone"></i></div>
+                        <div class="bdgs-t10-pr-info-content">
+                            <h4>Phone Support</h4>
+                            <p>24/7 Concierge: <a href="#">+1 (800) 123-4567</a></p>
+                            <p>Billing: <a href="#">+1 (800) 987-6543</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="bdgs-t10-pr-info-item">
+                        <div class="bdgs-t10-pr-info-icon"><i class="fa fa-envelope-o"></i></div>
+                        <div class="bdgs-t10-pr-info-content">
+                            <h4>Email Us</h4>
+                            <p>Support: <a href="#">help@edgecare.com</a></p>
+                            <p>VIP Services: <a href="#">vip@edgecare.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="bdgs-t10-pr-info-item">
+                        <div class="bdgs-t10-pr-info-icon"><i class="fa fa-map-marker"></i></div>
+                        <div class="bdgs-t10-pr-info-content">
+                            <h4>Global HQ</h4>
+                            <p>1200 Health Park Blvd,<br>Silicon Valley, CA 94025</p>
+                        </div>
+                    </div>
+                    
+                    <hr style="margin: 30px 0; border-color: rgba(0,0,0,0.05);">
+                    
+                    <h4 style="font-size: 16px; margin-bottom: 15px;">Follow Us</h4>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" class="bdgs-t10-pr-social-icon" style="background:#F1F5F9; color:#64748B;"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="bdgs-t10-pr-social-icon" style="background:#F1F5F9; color:#64748B;"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="bdgs-t10-pr-social-icon" style="background:#F1F5F9; color:#64748B;"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="col-md-7 bdgs-animate-fade-up bdgs-delay-2">
+                <div class="bdgs-t10-pr-form-wrap">
+                    <h3 style="margin-bottom: 25px;">Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="bdgs-t10-pr-input-group">
+                                    <input type="text" class="bdgs-t10-pr-input" placeholder="First Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bdgs-t10-pr-input-group">
+                                    <input type="text" class="bdgs-t10-pr-input" placeholder="Last Name" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bdgs-t10-pr-input-group">
+                            <input type="email" class="bdgs-t10-pr-input" placeholder="Email Address" required>
+                        </div>
+                        
+                        <div class="bdgs-t10-pr-input-group">
+                            <select class="bdgs-t10-pr-input" style="color: #334155;">
+                                <option>General Inquiry</option>
+                                <option>Technical Support</option>
+                                <option>Billing Question</option>
+                                <option>Partnership</option>
+                            </select>
+                        </div>
+                        
+                        <div class="bdgs-t10-pr-input-group">
+                            <textarea class="bdgs-t10-pr-input" placeholder="How can we help you?" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="bdgs-t10-pr-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 5. SUPPORT STATISTICS -->
+        <div class="bdgs-t10-pr-stats-sec bdgs-animate-fade-up">
+            <div class="bdgs-t10-pr-stats-pattern"></div>
+            <div class="row">
+                <div class="col-md-4 bdgs-t10-pr-stat-box">
+                    <span class="bdgs-t10-pr-stat-num">30s</span>
+                    <span class="bdgs-t10-pr-stat-label">Avg. Response Time</span>
+                </div>
+                <div class="col-md-4 bdgs-t10-pr-stat-box">
+                    <span class="bdgs-t10-pr-stat-num">99.8%</span>
+                    <span class="bdgs-t10-pr-stat-label">Satisfaction Score</span>
+                </div>
+                <div class="col-md-4 bdgs-t10-pr-stat-box">
+                    <span class="bdgs-t10-pr-stat-num">24/7</span>
+                    <span class="bdgs-t10-pr-stat-label">Global Support</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. EMERGENCY TRIAGE BANNER -->
+    <div class="container bdgs-animate-fade-up">
+        <div class="bdgs-t10-pr-emergency">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                    <i class="fa fa-ambulance"></i>
+                </div>
+                <div>
+                    <h3 style="color: white; margin: 0 0 5px;">Medical Emergency?</h3>
+                    <p style="color: rgba(255,255,255,0.9); margin: 0;">Do not use this form for urgent medical issues. Call emergency services immediately.</p>
+                </div>
+            </div>
+            <a href="tel:911" class="bdgs-t10-pr-emer-btn">Call Emergency <i class="fa fa-phone " style="font-weight:bold; color: #0F172A;"> 911</i></a>
+        </div>
+    </div>
+
+    <!-- 7. DIRECT DEPARTMENT ACCESS -->
+    <section class="bdgs-t10-pr-process-sec" style="padding-top: 20px;">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 40px;">
+                <h2 style="font-size: 32px;">Direct Departments</h2>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4" style="margin-bottom: 30px;">
+                    <div class="bdgs-t10-pr-dept-card">
+                        <div class="bdgs-t10-pr-dept-icon"><i class="fa fa-credit-card"></i></div>
+                        <h4 class="bdgs-t10-pr-dept-title">Billing & Insurance</h4>
+                        <p style="color: #64748B; font-size: 14px;">Questions about invoices, claims, or coverage plans.</p>
+                        <a href="#" class="bdgs-t10-pr-dept-link">Contact Billing <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" style="margin-bottom: 30px;">
+                    <div class="bdgs-t10-pr-dept-card">
+                        <div class="bdgs-t10-pr-dept-icon"><i class="fa fa-file-text-o"></i></div>
+                        <h4 class="bdgs-t10-pr-dept-title">Medical Records</h4>
+                        <p style="color: #64748B; font-size: 14px;">Request copies of test results or transfer your history.</p>
+                        <a href="#" class="bdgs-t10-pr-dept-link">Request Records <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" style="margin-bottom: 30px;">
+                    <div class="bdgs-t10-pr-dept-card">
+                        <div class="bdgs-t10-pr-dept-icon"><i class="fa fa-laptop"></i></div>
+                        <h4 class="bdgs-t10-pr-dept-title">Tech Support</h4>
+                        <p style="color: #64748B; font-size: 14px;">Issues with the app, login problems, or video calls.</p>
+                        <a href="#" class="bdgs-t10-pr-dept-link">Get Help <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. GLOBAL REGIONAL OFFICES -->
+    <section class="bdgs-t10-pr-global-sec" style="background: #F8FAFC;">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <span style="color: var(--bdgs-t10-pr-primary); font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">International Presence</span>
+                <h2 style="margin-top: 10px;">Our Regional Hubs</h2>
+            </div>
+            <div class="row">
+                <!-- Location 1 -->
+                <div class="col-md-4" style="margin-bottom: 30px;">
+                    <div class="bdgs-t10-pr-loc-card">
+                        <!-- Placeholder Image -->
+                        <img src="https://plus.unsplash.com/premium_photo-1714051660720-888e8454a021?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bmV3eW9ya3xlbnwwfHwwfHx8MA%3D%3D" class="bdgs-t10-pr-loc-img" alt="New York">
+                        <div class="bdgs-t10-pr-loc-body">
+                            <div class="bdgs-t10-pr-loc-city">
+                                New York, USA 
+                                <img src="https://flagcdn.com/w40/us.png" style="width: 24px; border-radius: 4px;">
+                            </div>
+                            <p style="font-size: 14px; color: #64748B; margin-bottom: 15px;">
+                                10 Hudson Yards, Suite 400<br>New York, NY 10001
+                            </p>
+                            <a href="#" style="color: var(--bdgs-t10-pr-primary); font-size: 13px; font-weight: 600;">Get Directions <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Location 2 -->
+                <div class="col-md-4" style="margin-bottom: 30px;">
+                    <div class="bdgs-t10-pr-loc-card">
+                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=500" class="bdgs-t10-pr-loc-img" alt="London">
+                        <div class="bdgs-t10-pr-loc-body">
+                            <div class="bdgs-t10-pr-loc-city">
+                                London, UK 
+                                <img src="https://flagcdn.com/w40/gb.png" style="width: 24px; border-radius: 4px;">
+                            </div>
+                            <p style="font-size: 14px; color: #64748B; margin-bottom: 15px;">
+                                22 Bishopsgate, Level 35<br>London EC2N 4BQ
+                            </p>
+                            <a href="#" style="color: var(--bdgs-t10-pr-primary); font-size: 13px; font-weight: 600;">Get Directions <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location 3 -->
+                <div class="col-md-4" style="margin-bottom: 30px;">
+                    <div class="bdgs-t10-pr-loc-card">
+                        <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=500" class="bdgs-t10-pr-loc-img" alt="Tokyo">
+                        <div class="bdgs-t10-pr-loc-body">
+                            <div class="bdgs-t10-pr-loc-city">
+                                Tokyo, Japan 
+                                <img src="https://flagcdn.com/w40/jp.png" style="width: 24px; border-radius: 4px;">
+                            </div>
+                            <p style="font-size: 14px; color: #64748B; margin-bottom: 15px;">
+                                Roppongi Hills Mori Tower<br>Minato City, Tokyo 106-6108
+                            </p>
+                            <a href="#" style="color: var(--bdgs-t10-pr-primary); font-size: 13px; font-weight: 600;">Get Directions <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. EMBEDDED MAP -->
+    <section class="bdgs-t10-pr-map-wrap bdgs-animate-fade-up">
+        <div class="container">
+            <h2 style="margin-bottom: 30px; text-align: center;">Visit Our HQ</h2>
+            <div class="bdgs-t10-pr-map-card">
+                <iframe src="https://maps.google.com/maps?q=Silicon%20Valley&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: #0F172A; color: white; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="row">
+                <!-- Brand Column -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 40px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <i style="font-size: 24px; color: var(--bdgs-t10-pr-primary);"><img src="../assets/img/edited-photo.png" alt="brandLogo" height="45px"></i>
+                        <span style="font-size: 24px; font-weight: 800;">EdgeCare VIP</span>
+                    </div>
+                    <p style="color: #94A3B8; line-height: 1.6; margin-bottom: 25px;">
+                        Revolutionizing healthcare access with cutting-edge technology and a patient-first approach. Your health, our priority.
+                    </p>
+                    <div style="display: flex; gap: 5px;">
+                        <a href="#" class="bdgs-t10-pr-social-icon"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="bdgs-t10-pr-social-icon"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="bdgs-t10-pr-social-icon"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="bdgs-t10-pr-social-icon"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" class="bdgs-t10-pr-social-icon"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Company</h5>
+                    <a href="aboute.html" class="bdgs-t10-pr-footer-link">About Us</a>
+                    <a href="job_post.html" class="bdgs-t10-pr-footer-link">Careers</a>
+                    <a href="#" class="bdgs-t10-pr-footer-link">Press</a>
+                    <a href="Blog.html" class="bdgs-t10-pr-footer-link">Blog</a>
+                    <a href="contact.html" class="bdgs-t10-pr-footer-link">Contact</a>
+                </div>
+
+                <!-- Services -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Services</h5>
+                    <a href="find_doc.html" class="bdgs-t10-pr-footer-link">Find Doctors</a>
+                    <a href="#" class="bdgs-t10-pr-footer-link">Video Consult</a>
+                    <a href="#" class="bdgs-t10-pr-footer-link">Lab Tests</a>
+                    <a href="#" class="bdgs-t10-pr-footer-link">Health Checkups</a>
+                    <a href="#" class="bdgs-t10-pr-footer-link">Surgeries</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Stay Updated</h5>
+                    <p style="color: #94A3B8; font-size: 14px; margin-bottom: 15px;">Subscribe to our newsletter for the latest health tips and updates.</p>
+                    <form>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Enter your email" class="bdgs-t10-pr-footer-input">
+                            <button class="bdgs-t10-pr-btn bdgs-t10-pr-btn-primary" style="padding: 12px 20px; border-radius: 8px;">Go</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="color: #64748B; margin: 0; font-size: 14px;">&copy; 2026 EdgeCare. All rights reserved.</p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <a href="#" style="color: #64748B; font-size: 14px;">Privacy Policy</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Terms of Service</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 10. FLOATING CHAT WIDGET STRUCTURE -->
+    <div class="bdgs-t10-pr-chat-widget-box" id="chatWidget">
+        <div class="bdgs-t10-pr-widget-header">
+            <div class="bdgs-t10-pr-widget-avatar">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150" alt="Sarah AI">
+                <div class="bdgs-t10-pr-widget-status"></div>
+            </div>
+            <div>
+                <h5 style="margin: 0; font-size: 16px; color: white;">Sarah AI</h5>
+                <span style="font-size: 12px; opacity: 0.9;">Online Now</span>
+            </div>
+        </div>
+        <div class="bdgs-t10-pr-widget-body" id="chatBody">
+            <div class="bdgs-t10-pr-msg bdgs-t10-pr-msg-ai">
+                Hi there! 👋 Welcome to EdgeCare VIP support. How can I assist you today?
+            </div>
+        </div>
+        <div class="bdgs-t10-pr-widget-input">
+            <input type="text" placeholder="Type a message..." id="chatInput">
+            <button class="bdgs-t10-pr-widget-send" id="sendBtn"><i class="fa fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <div class="bdgs-t10-pr-chat-widget-btn" id="chatToggle">
+        <i class="fa fa-commenting-o"></i>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize Select2 for Auth Dropdown
+            $('.BDGS-T10-PR-auth-select').select2({
+                minimumResultsForSearch: Infinity, 
+                placeholder: "My Account",
+                allowClear: false,
+                templateSelection: function(data) {
+                      if (!data.id) { 
+                          return $('<span style="color:#334155;"><i class="fa fa-user-circle-o" style="margin-right:8px; color:var(--bdgs-t10-pr-primary);"></i> My Account</span>');
+                      }
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '" style="margin-right:8px; color:var(--bdgs-t10-pr-primary);"></i> ' + data.text + '</span>');
+                },
+                templateResult: function(data) {
+                      if (!data.id) { return data.text; }
+                      var iconClass = $(data.element).data('icon');
+                      return $('<span><i class="fa ' + iconClass + '"></i> ' + data.text + '</span>');
+                }
+            });
+
+            // Handle Navbar Redirect
+            $('.BDGS-T10-PR-auth-select').on('select2:select', function (e) {
+                var url = e.params.data.id;
+                if(url) {
+                    window.location.href = url;
+                }
+            });
+
+            // Mobile Menu Toggle Logic
+            $('.BDGS-T10-PR-mobile-toggle').click(function() {
+                $('.BDGS-T10-PR-mobile-menu').toggleClass('active');
+                $(this).find('i').toggleClass('fa-bars fa-times');
+            });
+
+            // Close mobile menu when clicking outside
+            $(document).click(function(event) {
+                if (!$(event.target).closest('.BDGS-T10-PR-navbar').length) {
+                    $('.BDGS-T10-PR-mobile-menu').removeClass('active');
+                    $('.BDGS-T10-PR-mobile-toggle i').removeClass('fa-times').addClass('fa-bars');
+                }
+            });
+
+            // Contact Form Submission with SweetAlert
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                const btn = $(this).find('button[type="submit"]');
+                const originalText = btn.text();
+                
+                // Loading state
+                btn.prop('disabled', true).text('Sending...');
+
+                // Simulate sending delay
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'Message Sent!',
+                        text: 'Thank you for reaching out. Our support team will get back to you within 24 hours.',
+                        icon: 'success',
+                        confirmButtonColor: '#2563EB',
+                        confirmButtonText: 'Great!',
+                        background: '#fff',
+                        timer: 4000,
+                        timerProgressBar: true
+                    }).then(() => {
+                        // Reset form
+                        $('#contactForm')[0].reset();
+                        btn.prop('disabled', false).text(originalText);
+                    });
+                }, 1500);
+            });
+
+            // Chat Widget Logic
+            $('#chatToggle').click(function() {
+                $('#chatWidget').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+
+            // Send Message Logic
+            function sendMessage() {
+                const input = $('#chatInput');
+                const message = input.val().trim();
+                const chatBody = $('#chatBody');
+
+                if (message) {
+                    // Add User Message
+                    chatBody.append(`
+                        <div class="bdgs-t10-pr-msg bdgs-t10-pr-msg-user">
+                            ${message}
+                        </div>
+                    `);
+                    input.val('');
+                    
+                    // Auto-scroll
+                    chatBody.scrollTop(chatBody[0].scrollHeight);
+
+                    // Simulate AI Typing & Reply
+                    setTimeout(() => {
+                        const typingIndicator = `
+                            <div class="bdgs-t10-pr-typing" id="tempTyping">
+                                <div class="bdgs-t10-pr-dot"></div>
+                                <div class="bdgs-t10-pr-dot"></div>
+                                <div class="bdgs-t10-pr-dot"></div>
+                            </div>
+                        `;
+                        chatBody.append(typingIndicator);
+                        chatBody.scrollTop(chatBody[0].scrollHeight);
+
+                        setTimeout(() => {
+                            $('#tempTyping').remove();
+                            chatBody.append(`
+                                <div class="bdgs-t10-pr-msg bdgs-t10-pr-msg-ai">
+                                    Thanks for reaching out! A specialist will be with you shortly.
+                                </div>
+                            `);
+                            chatBody.scrollTop(chatBody[0].scrollHeight);
+                        }, 1500);
+                    }, 500);
+                }
+            }
+
+            $('#sendBtn').click(sendMessage);
+            $('#chatInput').keypress(function(e) {
+                if(e.which == 13) sendMessage();
+            });
+        });
+    </script>
+</body>
+</html>

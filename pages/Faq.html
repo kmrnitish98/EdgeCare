@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FAQ & Help Center – EdgeCare VIP</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 4.7 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <style>
+        /* =========================================
+           1. VIP THEME VARIABLES
+           ========================================= */
+        :root {
+            --BDGS-T10-PR-primary:    #2563EB; /* Royal Blue */
+            --BDGS-T10-PR-accent:     #06B6D4; /* Cyan */
+            --BDGS-T10-PR-purple:     #7C3AED; /* Deep Purple */
+            --BDGS-T10-PR-dark:       #0F172A; /* Slate 900 */
+            --BDGS-T10-PR-text:       #334155; /* Slate 700 */
+            --BDGS-T10-PR-border:     rgba(255, 255, 255, 0.4);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--BDGS-T10-PR-text);
+            overflow-x: hidden;
+            padding-top: 80px;
+            background: #F0F9FF;
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: var(--BDGS-T10-PR-dark);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        /* =========================================
+           2. BACKGROUNDS & ANIMATIONS
+           ========================================= */
+        .BDGS-T10-PR-bg-mesh {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -2; background: #ffffff; overflow: hidden;
+        }
+        .BDGS-T10-PR-orb {
+            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.7;
+            animation: meshFloat 20s infinite alternate ease-in-out;
+        }
+        .BDGS-T10-PR-orb-1 { width: 800px; height: 800px; background: radial-gradient(circle, rgba(124, 58, 237, 0.25), transparent 70%); top: -20%; left: -10%; }
+        .BDGS-T10-PR-orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .BDGS-T10-PR-orb-3 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%); top: 40%; left: 40%; animation-duration: 25s; }
+
+        @keyframes meshFloat {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(10deg); }
+            100% { transform: translate(-30px, -20px) rotate(-5deg); }
+        }
+
+        .BDGS-T10-PR-bg-icons {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1; pointer-events: none; overflow: hidden;
+        }
+        .BDGS-T10-PR-icon-bubble {
+            position: absolute;
+            color: rgba(37, 99, 235, 0.08);
+            font-size: 24px;
+            animation: floatIcon 25s infinite linear;
+            display: flex; align-items: center; justify-content: center;
+            width: 50px; height: 50px; border-radius: 50%;
+            background: rgba(255,255,255,0.2); backdrop-filter: blur(2px);
+        }
+        /* Sample Icon Positions */
+        .BDGS-T10-PR-icon-bubble:nth-child(1) { top: 90%; left: 10%; font-size: 30px; animation-duration: 20s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(2) { top: 85%; left: 80%; font-size: 40px; animation-duration: 25s; animation-delay: -5s; }
+        .BDGS-T10-PR-icon-bubble:nth-child(3) { top: 95%; left: 40%; font-size: 25px; animation-duration: 22s; animation-delay: -10s; }
+
+        @keyframes floatIcon {
+            0% { transform: translateY(100px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* =========================================
+           3. NAVBAR
+           ========================================= */
+        .BDGS-T10-PR-navbar {
+            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 12px 0;
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px); border-bottom: 1px solid var(--BDGS-T10-PR-border);
+            transition: all 0.3s ease;
+        }
+        .BDGS-T10-PR-logo { display: flex; align-items: center; gap: 10px; text-decoration: none !important; }
+        .BDGS-T10-PR-logo i { font-size: 28px; background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .BDGS-T10-PR-logo-text { font-size: 22px; font-weight: 800; background: linear-gradient(135deg, var(--BDGS-T10-PR-primary), var(--BDGS-T10-PR-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .BDGS-T10-PR-nav-link { font-weight: 600; color: var(--BDGS-T10-PR-text); padding: 8px 16px; transition: 0.3s; font-size: 14px; text-decoration: none !important; }
+        .BDGS-T10-PR-nav-link:hover, .BDGS-T10-PR-nav-link.active { color: var(--BDGS-T10-PR-primary); }
+        .BDGS-T10-PR-btn { border: none; padding: 10px 24px; border-radius: 10px; font-weight: 600; font-size: 13px; transition: all 0.3s; position: relative; overflow: hidden; }
+        .BDGS-T10-PR-btn-primary { background: var(--BDGS-T10-PR-dark); color: white; box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3); }
+        .BDGS-T10-PR-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.4); color: white; }
+        .BDGS-T10-PR-mobile-toggle { background: transparent; border: none; font-size: 24px; color: var(--BDGS-T10-PR-dark); cursor: pointer; padding: 5px; }
+        .BDGS-T10-PR-mobile-menu { position: absolute; top: 100%; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px; display: none; flex-direction: column; gap: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .BDGS-T10-PR-mobile-menu.active { display: flex; }
+        .BDGS-T10-PR-mobile-menu a { padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); color: var(--BDGS-T10-PR-dark); font-weight: 600; font-size: 16px; text-decoration: none; }
+
+        /* =========================================
+           4. FAQ SPECIFIC STYLES
+           ========================================= */
+        
+        /* Hero Section */
+        .BDGS-T10-PR-faq-hero {
+            text-align: center;
+            padding: 120px 0 60px;
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            margin-top: -20px;
+        }
+        .BDGS-T10-PR-faq-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(240, 249, 255, 0.92) 0%, rgba(240, 249, 255, 0.8) 100%);
+            z-index: 1;
+        }
+        .BDGS-T10-PR-hero-content { position: relative; z-index: 2; }
+
+        .BDGS-T10-PR-search-container {
+            max-width: 600px;
+            margin: 30px auto 0;
+            position: relative;
+        }
+        .BDGS-T10-PR-search-input {
+            width: 100%;
+            padding: 20px 25px 20px 60px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            font-size: 16px;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+            transition: 0.3s;
+        }
+        .BDGS-T10-PR-search-input:focus {
+            outline: none;
+            background: #fff;
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
+            border-color: var(--BDGS-T10-PR-primary);
+        }
+        .BDGS-T10-PR-search-icon {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--BDGS-T10-PR-primary);
+            font-size: 20px;
+        }
+
+        /* Category Tabs */
+        .BDGS-T10-PR-tabs-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        .BDGS-T10-PR-tab-btn {
+            padding: 12px 25px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.6);
+            color: #64748B;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .BDGS-T10-PR-tab-btn:hover, .BDGS-T10-PR-tab-btn.active {
+            background: #fff;
+            color: var(--BDGS-T10-PR-primary);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* FAQ Grid */
+        .BDGS-T10-PR-faq-grid {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+        .BDGS-T10-PR-faq-col {
+            padding: 0 15px;
+        }
+        .BDGS-T10-PR-faq-box {
+            background: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .BDGS-T10-PR-faq-box::before {
+            content: '';
+            position: absolute; left: 0; top: 0; width: 4px; height: 100%;
+            background: var(--BDGS-T10-PR-primary);
+            opacity: 0; transition: 0.3s;
+        }
+        .BDGS-T10-PR-faq-box.active::before { opacity: 1; }
+        
+        .BDGS-T10-PR-faq-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.08);
+        }
+        .BDGS-T10-PR-faq-q {
+            display: flex; justify-content: space-between; align-items: center;
+            font-weight: 700; font-size: 16px; color: var(--BDGS-T10-PR-dark);
+        }
+        .BDGS-T10-PR-faq-a {
+            display: none; margin-top: 15px; padding-top: 15px;
+            border-top: 1px solid #F1F5F9; color: #64748B; line-height: 1.6;
+        }
+        .BDGS-T10-PR-faq-box.active .BDGS-T10-PR-faq-a { display: block; animation: slideDown 0.3s ease-out; }
+        .BDGS-T10-PR-faq-box.active .BDGS-T10-PR-faq-q i { transform: rotate(180deg); color: var(--BDGS-T10-PR-primary); }
+
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Animation Utility */
+        .bdgs-animate-fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .bdgs-animate-fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* Help Card */
+        .BDGS-T10-PR-help-card {
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            border-radius: 24px; padding: 40px; text-align: center; color: white;
+            margin-top: 60px; position: relative; overflow: hidden;
+        }
+        .BDGS-T10-PR-help-card i { font-size: 40px; color: var(--BDGS-T10-PR-accent); margin-bottom: 20px; }
+
+        /* Footer Styles (Matched) */
+        .BDGS-T10-PR-footer-link { color: #94A3B8; display: block; margin-bottom: 12px; transition: 0.3s; text-decoration: none !important; }
+        .BDGS-T10-PR-footer-link:hover { color: var(--BDGS-T10-PR-primary); transform: translateX(5px); }
+        .BDGS-T10-PR-social-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #fff; margin-right: 10px; transition: 0.3s; text-decoration: none !important; }
+        .BDGS-T10-PR-social-icon:hover { background: var(--BDGS-T10-PR-primary); color: #fff; transform: translateY(-3px); }
+        .BDGS-T10-PR-footer-input { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 15px; border-radius: 8px; color: #fff; width: 100%; margin-bottom: 10px; }
+        .BDGS-T10-PR-footer-input:focus { outline: none; border-color: var(--BDGS-T10-PR-primary); }
+
+        /* =========================================
+           5. RESPONSIVE MEDIA QUERIES
+           ========================================= */
+        @media (max-width: 991px) {
+            .BDGS-T10-PR-page-title { font-size: 36px; }
+            .BDGS-T10-PR-search-container { max-width: 90%; }
+        }
+
+        @media (max-width: 768px) {
+            /* Hero Adjustments */
+            .BDGS-T10-PR-faq-hero {
+                padding: 100px 0 40px; /* Reduced padding */
+            }
+            .BDGS-T10-PR-hero-content h1 {
+                font-size: 32px !important; /* Smaller title */
+            }
+            .BDGS-T10-PR-hero-content p {
+                font-size: 16px !important;
+            }
+            
+            /* Search Bar Mobile */
+            .BDGS-T10-PR-search-input {
+                padding: 15px 20px 15px 50px;
+                font-size: 14px;
+            }
+            .BDGS-T10-PR-search-icon {
+                left: 20px;
+                font-size: 18px;
+            }
+
+            /* Stack Tabs on Mobile */
+            .BDGS-T10-PR-tabs-wrapper {
+                gap: 10px;
+                flex-direction: column; /* Stack vertically */
+                align-items: stretch;
+            }
+            .BDGS-T10-PR-tab-btn {
+                width: 100%;
+                justify-content: center;
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            /* FAQ Box Spacing */
+            .BDGS-T10-PR-faq-box {
+                padding: 20px;
+            }
+            .BDGS-T10-PR-faq-q {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. BACKGROUND -->
+    <div class="BDGS-T10-PR-bg-mesh">
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-1"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-2"></div>
+        <div class="BDGS-T10-PR-orb BDGS-T10-PR-orb-3"></div>
+    </div>
+
+    <div class="BDGS-T10-PR-bg-icons">
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-question"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-info"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-comments-o"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-support"></i></div>
+        <div class="BDGS-T10-PR-icon-bubble"><i class="fa fa-life-ring"></i></div>
+    </div>
+
+    <!-- 2. NAVBAR -->
+    <header>
+        <nav class="BDGS-T10-PR-navbar">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center;">
+                        <a href="index.html" class="BDGS-T10-PR-logo">
+                            <i class=""><img src="../assets/img/edited-photo.png" alt="brandLogo" height="45px"></i>
+                            <span class="BDGS-T10-PR-logo-text">EdgeCare</span>
+                        </a>
+                    </div>
+                    
+                    <div class="hidden-xs hidden-sm">
+                        <a href="index.html" class="BDGS-T10-PR-nav-link">Home</a>
+                        <a href="find_doc.html" class="BDGS-T10-PR-nav-link">Specialists</a>
+                        <a href="appointment.html" class="BDGS-T10-PR-nav-link">Appointment</a>
+                        <a href="Blog.html" class="BDGS-T10-PR-nav-link">Health Blog</a>
+                        <a href="aboute.html" class="BDGS-T10-PR-nav-link">About</a>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <a href="Login.html" class="BDGS-T10-PR-btn hidden-xs" style="background: transparent; border: 1px solid #ccc; text-decoration:none; color:inherit;">Log In</a>
+                        <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary">Join Now</button>
+                        <!-- Mobile Toggle -->
+                        <button class="BDGS-T10-PR-mobile-toggle visible-xs visible-sm" style="margin-left: 10px;">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Dropdown -->
+                <div class="BDGS-T10-PR-mobile-menu">
+                    <a href="index.html">Home</a>
+                    <a href="find_doc.html">Specialists</a>
+                    <a href="appointment.html">Appointment</a>
+                    <a href="Blog.html">Health Blogs</a>
+                    <a href="aboute.html">About</a>
+                    <a href="Login.html">Log In</a>
+                    <a href="join.html" style="color: var(--BDGS-T10-PR-primary);">Join Now</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 3. HERO SECTION WITH SEARCH -->
+    <section class="BDGS-T10-PR-faq-hero bdgs-animate-fade-up">
+        <div class="container BDGS-T10-PR-hero-content">
+            <h1 style="font-size: 48px; margin-bottom: 15px;">Help Center</h1>
+            <p style="font-size: 18px; color: #475569; margin-bottom: 30px;">Find answers to your questions instantly.</p>
+            
+            <div class="BDGS-T10-PR-search-container">
+                <i class="fa fa-search BDGS-T10-PR-search-icon"></i>
+                <input type="text" class="BDGS-T10-PR-search-input" placeholder="Search for keywords (e.g., insurance, refund)...">
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. MAIN CONTENT -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            
+            <!-- Category Tabs -->
+            <div class="BDGS-T10-PR-tabs-wrapper bdgs-animate-fade-up">
+                <div class="BDGS-T10-PR-tab-btn active" onclick="filterFAQ('all')">View All</div>
+                <div class="BDGS-T10-PR-tab-btn" onclick="filterFAQ('general')"><i class="fa fa-circle-o-notch"></i> General</div>
+                <div class="BDGS-T10-PR-tab-btn" onclick="filterFAQ('medical')"><i class="fa fa-user-md"></i> Medical Services</div>
+                <div class="BDGS-T10-PR-tab-btn" onclick="filterFAQ('billing')"><i class="fa fa-credit-card"></i> Billing & Insurance</div>
+                <div class="BDGS-T10-PR-tab-btn" onclick="filterFAQ('tech')"><i class="fa fa-laptop"></i> Technical Support</div>
+            </div>
+
+            <!-- FAQ Grid -->
+            <div class="row BDGS-T10-PR-faq-grid" id="faqContainer">
+                
+                <!-- General -->
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item general">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            How do I sign up for EdgeCare VIP?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Signing up is easy. Click the "Book Now" or "Log In" button at the top right, select "Register", and fill in your basic details. You'll gain instant access to our network.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item general">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            Is my personal information safe?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Yes. We use end-to-end encryption and comply with all HIPAA regulations to ensure your medical and personal data remains completely private and secure.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW GENERAL QUESTIONS -->
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item general">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            Is EdgeCare available internationally?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Currently, our services are primarily available within the United States and Canada. However, our travel health advisory service is accessible globally for existing members.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item general">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            How do I reset my password?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Go to the login page and click "Forgot Password?". Enter your registered email address, and we will send you a secure link to reset your credentials immediately.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medical -->
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item medical">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            Can I get a prescription online?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Absolutely. If the doctor deems it medically necessary, they can send a digital prescription directly to your preferred pharmacy immediately after your video consultation.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item medical">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            Are the doctors board-certified?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Yes, 100% of our specialists are board-certified and vetted through a rigorous background check process to ensure you receive top-tier care.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW MEDICAL QUESTIONS -->
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item medical">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            Can I request a specific doctor?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Yes! You can browse doctor profiles, read reviews, and select the specific specialist you wish to see. If they are unavailable, we will suggest equally qualified alternatives.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item medical">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            What if I need a specialist referral?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Our primary care physicians can issue digital referrals to specialists within the EdgeCare network or external providers, ensuring seamless continuity of care.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Billing -->
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item billing">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            Do you accept insurance?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            We accept most major insurance plans. You can upload your insurance card during booking to verify eligibility and view your co-pay amount before confirming.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item billing">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            What is the cancellation policy?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            You can cancel or reschedule an appointment up to 2 hours before the scheduled time for a full refund. Late cancellations may incur a small fee.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW BILLING QUESTIONS -->
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item billing">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            How do I get a receipt for my visit?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Receipts and superbills are automatically generated after every consultation. You can download them anytime from the "Billing" section of your user dashboard.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item billing">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            Are there hidden fees?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Never. We believe in full transparency. The price you see during booking includes the consultation fee and administrative costs. Lab tests and medications are billed separately.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech -->
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item tech">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            My video call isn't working. What do I do?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            First, ensure you have a stable internet connection. If issues persist, try refreshing the page or switching browsers (Chrome is recommended). Our support team is also available 24/7.
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="col-md-6 BDGS-T10-PR-faq-col faq-item tech">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            Can I access my records from the app?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Yes, all your consultation notes, prescriptions, and lab results are automatically stored in your secure patient portal, accessible via the app or website at any time.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW TECH QUESTIONS -->
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item tech">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            Does the app work on tablets?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Yes, the EdgeCare app is fully optimized for iPads and Android tablets, offering a larger screen experience perfect for video consultations.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 BDGS-T10-PR-faq-col faq-item tech">
+                    <div class="BDGS-T10-PR-faq-box bdgs-animate-fade-up">
+                        <div class="BDGS-T10-PR-faq-q">
+                            How do I enable notifications?
+                            <i class="fa fa-chevron-down" style="color: #94A3B8; transition: 0.3s;"></i>
+                        </div>
+                        <div class="BDGS-T10-PR-faq-a">
+                            Go to Profile > Settings > Notifications. We recommend keeping them on to receive timely appointment reminders and prescription updates.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Still Need Help? -->
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="BDGS-T10-PR-help-card bdgs-animate-fade-up">
+                        <i class="fa fa-headphones"></i>
+                        <h3 style="margin: 0 0 15px;">Still have questions?</h3>
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 25px;">Our support team is just a click away.</p>
+                        <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="background: var(--BDGS-T10-PR-primary); border: none;">Contact Support</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 7. FOOTER -->
+    <footer style="background: #0F172A; color: white; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="row">
+                <!-- Brand Column -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 40px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <i style="font-size: 24px; color: var(--BDGS-T10-PR-primary);"><img src="../assets/img/edited-photo.png" alt="brandLogo" height="45px"></i>
+                        <span style="font-size: 24px; font-weight: 800;">EdgeCare</span>
+                    </div>
+                    <p style="color: #94A3B8; line-height: 1.6; margin-bottom: 25px;">
+                        Revolutionizing healthcare access with cutting-edge technology and a patient-first approach. Your health, our priority.
+                    </p>
+                    <div style="display: flex; gap: 5px;">
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" class="BDGS-T10-PR-social-icon"><i class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Company</h5>
+                    <a href="aboute.html" class="BDGS-T10-PR-footer-link">About Us</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Careers</a>
+                    <a href="review.html" class="BDGS-T10-PR-footer-link">Review</a>
+                    <a href="Blog.html" class="BDGS-T10-PR-footer-link">Blog</a>
+                    <a href="contact.html" class="BDGS-T10-PR-footer-link">Contact</a>
+                </div>
+
+                <!-- Services -->
+                <div class="col-md-2 col-sm-6 col-xs-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Services</h5>
+                    <a href="find_doc.html" class="BDGS-T10-PR-footer-link">Find Doctors</a>
+                    <a href="Coupon.html" class="BDGS-T10-PR-footer-link">Coupon</a>
+                    <a href="job_post.html" class="BDGS-T10-PR-footer-link">Job Post</a>
+                    <a href="How_it.html" class="BDGS-T10-PR-footer-link">How it work</a>
+                    <a href="Faq.html" class="BDGS-T10-PR-footer-link">FAQ</a>
+                    <a href="Get_match.html" class="BDGS-T10-PR-footer-link">Get Match</a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                    <h5 style="color: #fff; margin-bottom: 20px;">Stay Updated</h5>
+                    <p style="color: #94A3B8; font-size: 14px; margin-bottom: 15px;">Subscribe to our newsletter for the latest health tips and updates.</p>
+                    <form>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Enter your email" class="BDGS-T10-PR-footer-input">
+                            <button class="BDGS-T10-PR-btn BDGS-T10-PR-btn-primary" style="padding: 12px 20px; border-radius: 8px;">Go</button>
+                        </div>
+                    </form>
+
+                    <!-- ADDED: App Download Icons -->
+                    <div style="margin-top: 25px;">
+                        <h5 style="color: #fff; margin-bottom: 15px; font-size: 14px;">Get the App</h5>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-apple" style="font-size: 22px;"></i>
+                            </a>
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; transition: all 0.3s ease;" onmouseover="this.style.background='var(--BDGS-T10-PR-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+                                <i class="fa fa-android" style="font-size: 20px;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p style="color: #64748B; margin: 0; font-size: 14px;">&copy; 2026 EdgeCare. All rights reserved.</p>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <a href="#" style="color: #64748B; font-size: 14px;">Privacy Policy</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Terms of Service</a>
+                    <a href="#" style="color: #64748B; font-size: 14px;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        // Mobile Toggle Logic
+        const mobileToggle = document.querySelector('.BDGS-T10-PR-mobile-toggle');
+        const mobileMenu = document.querySelector('.BDGS-T10-PR-mobile-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        window.addEventListener('resize', function() {
+            // Bootstrap 3 mein desktop menu 992px (md) par aata hai
+            // Kyunki aapne "hidden-sm" use kiya hai, hum 992px par menu close karenge
+            if (window.innerWidth >= 992) { 
+                mobileMenu.classList.remove('active');
+            }
+        });
+        // FAQ Toggle Logic
+        const faqs = document.querySelectorAll('.BDGS-T10-PR-faq-box');
+        faqs.forEach(faq => {
+            faq.addEventListener('click', () => {
+                faq.classList.toggle('active');
+            });
+        });
+
+        // FAQ Filtering Logic
+        function filterFAQ(category) {
+            const items = document.querySelectorAll('.faq-item');
+            const buttons = document.querySelectorAll('.BDGS-T10-PR-tab-btn');
+            
+            // Update Active Button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Scroll Animation Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bdgs-animate-fade-up').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
